@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Inconsolata-Black';
+  src: url('../public/fonts/Inconsolata-Black.ttf');
+}
+
+@font-face {
+  font-family: 'Inconsolata-Bold';
+  src: url('../public/fonts/Inconsolata-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'Inconsolata-Medium';
+  src: url('../public/fonts/Inconsolata-Medium.ttf');
+}
+
+@font-face {
+  font-family: 'Inconsolata-Regular';
+  src: url('../public/fonts/Inconsolata-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Inconsolata-Light';
+  src: url('../public/fonts/Inconsolata-Light.ttf');
+}
+
+@font-face {
+  font-family: 'Montserrat-Black';
+  src: url('../public/fonts/Montserrat-Black.ttf');
+}
+
+@font-face {
+  font-family: 'Montserrat-Bold';
+  src: url('../public/fonts/Montserrat-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'Montserrat-Medium';
+  src: url('../public/fonts/Montserrat-Medium.ttf');
+}
+
+@font-face {
+  font-family: 'Montserrat-Regular';
+  src: url('../public/fonts/Montserrat-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Montserrat-Light';
+  src: url('../public/fonts/Montserrat-Light.ttf');
+}
+
+@font-face {
+  font-family: 'Montserrat-Thin';
+  src: url('../public/fonts/Montserrat-Thin.ttf');
+}
