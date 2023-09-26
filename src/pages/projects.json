@@ -1,0 +1,29 @@
+[
+  {
+    "title": "StrawPoll discord bot",
+    "description": "A discord bot that allows you to create strawpolls",
+    "link": "http://invite.coodo.xyz",
+    "image": "https://i.ibb.co/Y7Nqz57/Banner-embed-website.png",
+    "date": "may. 2021 - present",
+    "tags": ["discord", "bot", "strawpoll"],
+    "tools": ["nodejs", "discordjs", "javascript", "adobe illustrator"]
+  },
+  {
+    "title": "Discord bot Dashboard",
+    "description": "A dashboard for my discord bots",
+    "link": "https://dashboard.coodo.xyz",
+    "image": "https://i.ibb.co/NjtVVSx/image.png",
+    "date": "aug. 2023 - present",
+    "tags": ["discord", "bot", "dashboard"],
+    "tools": ["nodejs", "javascript", "react", "tailwindcss", "figma"]
+  },
+  {
+    "title": "My Portfolio",
+    "description": "My portfolio website",
+    "link": "/",
+    "image": "https://i.ibb.co/0YQJY1n/image.png",
+    "date": "sep. 2023 - present",
+    "tags": ["website", "portfolio"],
+    "tools": ["nodejs", "typescript", "react", "tailwindcss", "figma"]
+  }
+]
