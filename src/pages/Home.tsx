@@ -117,7 +117,7 @@ const Home: React.FC = () => {
         </p>
       </section>
       <div className='flex flex-col w-full gap-36'>
-        <section className='flex flex-row w-full gap-16'>
+        <section className='flex flex-row w-full gap-16 flex-wrap'>
           <h2 className='flex flex-shrink-0 text-xl font-Mblack
           text-secondary-500'>
             SKILLS
@@ -138,8 +138,8 @@ const Home: React.FC = () => {
             ))}
           </div>
         </section>
-        <section className='flex flex-row w-full gap-16'>
-          <h2 className='flex flex-shrink-0 text-xl font-Mblack
+        <section className='flex flex-row w-full gap-16 flex-wrap xl:flex-nowrap'>
+          <h2 className='flex md:flex-shrink-0 text-xl font-Mblack
           text-secondary-500'>
             EXPERIENCES & EDUCATION
             <img src={graduationEmoji} alt='Laptop'
@@ -163,14 +163,15 @@ const Home: React.FC = () => {
                     </p>
                   )}
                 </div>
-                <p className='font-Imedium w-56 flex justify-end flex-shrink-0'>
+                <p className='font-Imedium w-56 flex justify-end md:flex-shrink-0
+                text-right ml-5 md:ml-0'>
                   {skill.date}
                 </p>
               </li>
             ))}
           </ul>
         </section>
-        <section className='flex flex-row w-full gap-16'>
+        <section className='flex flex-row w-full gap-16 flex-wrap xl:flex-nowrap'>
           <h2 className='flex flex-shrink-0 text-xl font-Mblack
           text-secondary-500'>
             PROJECTS
@@ -178,7 +179,7 @@ const Home: React.FC = () => {
               className='w-7 h-7 inline-block ml-2' />
           </h2>
           <ul className='flex flex-row font-Mregular text-white
-          text-sm gap-5 w-full'>
+          text-sm gap-5 w-full flex-wrap'>
             {projects.map((project: Project, index: number) => (
               <li key={index} className='bg-tertiary-500 p-4 rounded-sm w-96
               overflow-hidden hover:scale-101 cursor-pointer transition-all
@@ -187,7 +188,7 @@ const Home: React.FC = () => {
                   .title.toLowerCase().replace(/ /g, '-')}`);
               }}>
                 <img src={project.image} alt={project.title}
-                  className='w-full h-[200px] object-cover rounded-md' />
+                  className='w-full h-[190px] object-cover rounded-md' />
                 <div className='flex flex-col mt-1'>
                   <h3 className='font-Mbold text-base mt-2'>
                     {project.title}

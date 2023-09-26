@@ -2,7 +2,9 @@
   {
     "title": "StrawPoll discord bot",
     "description": "A discord bot that allows you to create strawpolls",
-    "link": "http://invite.coodo.xyz",
+    "links": {
+      "app": "http://invite.coodo.xyz"
+    },
     "image": "https://i.ibb.co/Y7Nqz57/Banner-embed-website.png",
     "date": "may. 2021 - present",
     "tags": ["discord", "bot", "strawpoll"],
@@ -11,7 +13,9 @@
   {
     "title": "Discord bot Dashboard",
     "description": "A dashboard for my discord bots",
-    "link": "https://dashboard.coodo.xyz",
+    "links": {
+      "app": "https://dashboard.coodo.xyz"
+    },
     "image": "https://i.ibb.co/NjtVVSx/image.png",
     "date": "aug. 2023 - present",
     "tags": ["discord", "bot", "dashboard"],
@@ -19,9 +23,12 @@
   },
   {
     "title": "My Portfolio",
-    "description": "My portfolio website",
-    "link": "/",
-    "image": "https://i.ibb.co/0YQJY1n/image.png",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vehicula, nibh eu semper lobortis, justo turpis tristique nibh, eu iaculis ipsum dui non ex. Donec at nisl ac orci tincidunt sodales. Nulla non mi ac ex fringilla vulputate ac eget turpis. Nam accumsan erat in sapien suscipit, a eleifend diam suscipit. Duis in leo laoreet, lacinia massa eget, auctor ex. Nam et sapien ut lectus congue malesuada eu vitae nisl. Integer pulvinar velit ultrices, ultricies arcu sed, semper erat. Ut vulputate metus tortor, a cursus nunc eleifend et.",
+    "links": {
+      "github": "https://github.com/LouisLanganay/portfolio",
+      "app": "/"
+    },
+    "image": "https://i.ibb.co/jDZnswT/Screenshot-2023-09-26-171224.png",
     "date": "sep. 2023 - present",
     "tags": ["website", "portfolio"],
     "tools": ["nodejs", "typescript", "react", "tailwindcss", "figma"]
