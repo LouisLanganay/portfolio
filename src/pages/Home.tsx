@@ -9,6 +9,9 @@ import {
 } from '../assets/emojis/index';
 import projects from './projects.json';
 import getIcon from '../utils/getIcon';
+import { ProjectCard } from '../components';
+import skills from './skills.json';
+import experiences from './experiences.json';
 
 interface Skill {
   title: string;
@@ -24,82 +27,22 @@ interface Experience {
 
 interface Project {
   title: string;
+  description: string;
+  links: {
+    github?: string;
+    app?: string;
+  }
   image: string;
-  tools: string[];
   date: string;
+  tags: string[];
+  tools: string[];
+  stats?: {
+    users?: string;
+    downloads?: string;
+  }
 }
 
 const Home: React.FC = () => {
-  const skills: Skill[] = [
-    {
-      'title': 'languages',
-      'options': [
-        'Javascript',
-        'NodeJS',
-        'C/C++',
-        'Typescript',
-        'Java',
-        'Bash'
-      ]
-    },
-    {
-      'title': 'tools',
-      'options': [
-        'API Rest',
-        'Git',
-        'Linux systems',
-        'Github Actions',
-        'Docker',
-        'MongoDB',
-        'Postman'
-      ]
-    },
-    {
-      'title': 'design',
-      'options': [
-        'Tailwindcss',
-        'Figma',
-        'Adobe Illustrator',
-        'Adobe Photoshop'
-      ]
-    },
-    {
-      'title': 'frameworks',
-      'options': [
-        'React'
-      ]
-    }
-  ];
-
-  const experiences: Experience[] = [
-    {
-      'title': 'Baccalauréat STI2D - \
-      Information and Digital Systems (SIN) specialism (distinction)',
-      'location': 'Campus La Chataigneraie',
-      'date': 'sep. 2019 - 2022'
-    },
-    {
-      'title': 'Expert in Information Technologies',
-      'location': 'Epitech Rennes',
-      'date': 'sep. 2022 - 2027',
-      'description': 'RNCP 7 Professional Certification - BAC +5.'
-    },
-    {
-      'title': 'Internship - Developer',
-      'location': 'Centre hospitalier intercommunal Elbeuf \
-      Louviers Val de Reuil',
-      'date': 'jul. 2023 - aug. 2023',
-      'description': 'Development of an intranet for the hospital\'s\
-      various divisions.'
-    },
-    {
-      'title': 'Internship - Front-end developer',
-      'location': 'Venture\'s Game • Remote',
-      'date': 'sep. 2023 - nov. 2023',
-      'description': 'Development of a showcase site.'
-    }
-  ];
-
   return (
     <Layout>
       <section className='flex flex-col justify-center w-full sm:w-[550px]
@@ -125,7 +68,7 @@ const Home: React.FC = () => {
               className='w-7 h-7 inline-block ml-2' />
           </h2>
           <div className='flex flex-row gap-16 flex-wrap'>
-            {skills.map((skill, index) => (
+            {skills.map((skill: Skill, index: number) => (
               <ul key={index} className='flex flex-col font-Mregular text-white
               text-sm gap-1'>
                 <li className='font-Mbold text-base'>
@@ -147,7 +90,7 @@ const Home: React.FC = () => {
           </h2>
           <ul className='flex flex-col font-Mregular text-white
           text-sm gap-5 w-full'>
-            {experiences.map((skill, index) => (
+            {experiences.map((skill: Experience, index: number) => (
               <li key={index} className='font-Mbold text-base flex flex-row w-full
               justify-between'>
                 <div className='flex flex-col'>
@@ -211,6 +154,7 @@ const Home: React.FC = () => {
                 </div>
               </li>
             ))}
+            <ProjectCard project={projects[0]} />
           </ul>
         </section>
       </div>

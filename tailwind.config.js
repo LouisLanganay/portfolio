@@ -17,6 +17,7 @@ export const theme = {
     },
     tertiary: {
       0: '#ffffff',
+      100: '#d0d0d0',
       200: '#a0a0a0',
       250: '#898989',
       300: '#717171',

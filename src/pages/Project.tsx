@@ -6,6 +6,10 @@ import getIcon from '../utils/getIcon';
 import {
   ArrowRightIcon
 } from '@heroicons/react/24/solid';
+import {
+  backhand_index_pointing_right as rightHandEmoji
+} from '../assets/emojis/index';
+
 interface Project {
   title: string;
   description: string;
@@ -20,7 +24,7 @@ interface Project {
 }
 
 const Project: React.FC = () => {
-  const [project, setProject] = useState<Project | null>(null);
+  const [ project, setProject ] = useState<Project | null>(null);
   const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
@@ -28,7 +32,8 @@ const Project: React.FC = () => {
       const project = projects.find((project) => {
         return project.title.toLowerCase().replace(/ /g, '-') === id;
       });
-      if (project) setProject(project);
+      if (project)
+        setProject(project);
     }
   }, []);
 
@@ -57,7 +62,7 @@ const Project: React.FC = () => {
             ))}
           </div>
           <div className='flex flex-row items-center'>
-            <p className='font-Imedium text-tertiary-200 mr-5'>
+            <p className='font-Imedium text-tertiary-100 mr-5'>
               {project.date}
             </p>
             <div className='flex flex-row gap-2 flex-wrap'>
@@ -71,37 +76,36 @@ const Project: React.FC = () => {
             </div>
           </div>
           <hr className='border-tertiary-400 my-5' />
-          <p className='font-Mregular text-tertiary-200'>
+          <p className='font-Mregular text-tertiary-100'>
             {project.description}
           </p>
           <hr className='border-tertiary-400 my-5' />
           <div className='flex flex-col gap-2'>
             {project.links.github && (
-              <a href={project.links.github}
+              <a onClick={() => window.open(project.links.github, '_blank')}
                 className='group w-fit ease-in-out font-Mmedium text-tertiary-0
-                hover:text-secondary-500'>
-                <span className='bg-left-bottom bg-gradient-to-r from-secondary-500
-                to-secondary-500 bg-[length:0%_2px] bg-no-repeat pb-1
-                group-hover:bg-[length:100%_2px] transition-all duration-500
-                ease-out'>
+                hover:text-secondary-500 cursor-pointer'>
+                <span className='bg-left-bottom bg-gradient-to-r
+                from-secondary-500 to-secondary-500 bg-[length:0%_2px]
+                bg-no-repeat pb-1 group-hover:bg-[length:100%_2px] transition-all
+                duration-500 ease-out flex gap-2'>
+                  <img src={rightHandEmoji} alt='Right Hand Emoji'
+                    className='w-5 h-5 inline-block' />
                   View on GitHub
-                  <ArrowRightIcon className='w-5 h-5 inline-block ml-1
-                  group-hover:ml-3 transition-all hover:text-secondary-500' />
                 </span>
               </a>
             )}
             {project.links.app && (
-              <a href={project.links.app}
+              <a onClick={() => window.open(project.links.app, '_blank')}
                 className='group w-fit ease-in-out font-Mmedium text-tertiary-0
-                hover:text-secondary-500'>
-                <span className='bg-left-bottom bg-gradient-to-r from-secondary-500
-                to-secondary-500 bg-[length:0%_1px] bg-no-repeat pb-1
-                group-hover:bg-[length:100%_1px] transition-all duration-500
-                ease-out pr-2'>
+                hover:text-secondary-500 cursor-pointer'>
+                <span className='bg-left-bottom bg-gradient-to-r
+                from-secondary-500 to-secondary-500 bg-[length:0%_2px]
+                bg-no-repeat pb-1 group-hover:bg-[length:100%_2px] transition-all
+                duration-500 ease-out flex gap-2'>
+                  <img src={rightHandEmoji} alt='Right Hand Emoji'
+                    className='w-5 h-5 inline-block' />
                   View App
-                  <ArrowRightIcon className='w-5 h-5 inline-block ml-1
-                  group-hover:translate-x-3 transition-transform
-                  hover:text-secondary-500' />
                 </span>
               </a>
             )}

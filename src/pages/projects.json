@@ -1,25 +1,32 @@
 [
   {
     "title": "StrawPoll discord bot",
-    "description": "A discord bot that allows you to create strawpolls",
+    "description": "The Strawpoll project emerged from the need to create a flexible and powerful tool for the Discord community. At the time, I was searching for a poll bot that would fully meet my requirements, but I couldn't find any that offered the specific features I was looking for. That's when I decided to take on the challenge of creating my own Discord poll bot, one that would be both user-friendly and customizable. The result of this endeavor is Strawpoll, a Discord bot designed to streamline the creation and management of polls within Discord servers. With Strawpoll, users can create polls using a simple Discord command, and the bot instantly generates an elegant embed that displays the poll details. It's not just a voting tool but also an effective means of communication within the community. One of Strawpoll's distinctive features is the ability for users to customize their polls. They can add detailed descriptions, images to provide more context, and even make their polls anonymous if needed. This ensures that users have full control over their polls and can tailor them to their specific needs. Strawpoll's user-friendly interface is also highlighted through interactive buttons located beneath the poll embed, allowing server members to vote with a single click. Results are then presented clearly and concisely within the embed, providing a seamless polling experience. Ultimately, Strawpoll isn't just a tool I created for myself but a resource I chose to make public. My motivation behind this was to share a tool that could not only simplify my own experience on Discord but also be useful to others and contribute to enriching the Discord community. Since its creation in May 2021, Strawpoll continues to evolve and improve thanks to feedback and suggestions from the community. I'm proud to see how this project has grown and been helpful to many people. Strawpoll is a tangible example of my passion for creating useful and innovative tools within the Discord ecosystem, and I look forward to continuing to develop it to meet the changing needs of the community.",
     "links": {
-      "app": "http://invite.coodo.xyz"
+      "app": "https://discord.com/application-directory/823271140410916986"
     },
     "image": "https://i.ibb.co/Y7Nqz57/Banner-embed-website.png",
     "date": "may. 2021 - present",
     "tags": ["discord", "bot", "strawpoll"],
-    "tools": ["nodejs", "discordjs", "javascript", "adobe illustrator"]
+    "tools": ["nodejs", "discordjs", "javascript", "adobe illustrator"],
+    "stats": {
+      "downloads": "3.000",
+      "users": "+1M"
+    }
   },
   {
     "title": "Discord bot Dashboard",
-    "description": "A dashboard for my discord bots",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vehicula, nibh eu semper lobortis, justo turpis tristique nibh, eu iaculis ipsum dui non ex. Donec at nisl ac orci tincidunt sodales. Nulla non mi ac ex fringilla vulputate ac eget turpis. Nam accumsan erat in sapien suscipit, a eleifend diam suscipit. Duis in leo laoreet, lacinia massa eget, auctor ex. Nam et sapien ut lectus congue malesuada eu vitae nisl. Integer pulvinar velit ultrices, ultricies arcu sed, semper erat. Ut vulputate metus tortor, a cursus nunc eleifend et.",
     "links": {
       "app": "https://dashboard.coodo.xyz"
     },
     "image": "https://i.ibb.co/NjtVVSx/image.png",
     "date": "aug. 2023 - present",
     "tags": ["discord", "bot", "dashboard"],
-    "tools": ["nodejs", "javascript", "react", "tailwindcss", "figma"]
+    "tools": ["nodejs", "javascript", "react", "tailwindcss", "figma"],
+    "stats": {
+      "users": "+16.000"
+    }
   },
   {
     "title": "My Portfolio",

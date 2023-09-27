@@ -1,0 +1,40 @@
+[
+  {
+    "title": "languages",
+    "options": [
+      "Javascript",
+      "NodeJS",
+      "C/C++",
+      "Typescript",
+      "Java",
+      "Bash"
+    ]
+  },
+  {
+    "title": "tools",
+    "options": [
+      "API Rest",
+      "Git",
+      "Linux systems",
+      "Github Actions",
+      "Docker",
+      "MongoDB",
+      "Postman"
+    ]
+  },
+  {
+    "title": "design",
+    "options": [
+      "Tailwindcss",
+      "Figma",
+      "Adobe Illustrator",
+      "Adobe Photoshop"
+    ]
+  },
+  {
+    "title": "frameworks",
+    "options": [
+      "React"
+    ]
+  }
+]
