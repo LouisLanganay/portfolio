@@ -7,7 +7,8 @@ import {
   tailwindcss,
   typescript,
   adobeillustrator,
-  figma
+  figma,
+  c
 } from '../assets/icons/index';
 
 const emojis = [
@@ -46,6 +47,10 @@ const emojis = [
   {
     'name': 'figma',
     'emoji': figma
+  },
+  {
+    'name': 'c',
+    'emoji': c
   }
 ];
 

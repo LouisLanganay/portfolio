@@ -23,24 +23,25 @@ interface Project {
   }
 }
 
-const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
+const ProjectCard: React.FC<{ project: Project, position: number }> = ({
+  project, position
+}) => {
   return (
-    <li className='hover:bg-tertiary-500 p-4 rounded-lg w-[600px]
+    <li className='hover:bg-tertiary-500 p-4 rounded-lg max-w-[700px] w-full
     overflow-hidden cursor-pointer transition-all h-fit
     duration-150 group flex flex-col bg-opacity-60 hover:shadow-lg'
     onClick={() => {
       window.location.href = (`/project/${project
         .title.toLowerCase().replace(/ /g, '-')}`);
-    }}>
-      <div className='flex flex-row gap-5'>
-        <div className='flex flex-col gap-3 w-52 flex-shrink-0'>
+    }} key={position}>
+      <div className='flex flex-row gap-5 flex-wrap md:flex-nowrap'>
+        <div className='flex flex-col gap-3 w-60 flex-shrink-0'>
           <img src={project.image} alt={project.title}
-            className='w-full h-28 object-cover rounded-lg border-2 transition-all
+            className='w-full h-32 object-cover rounded-xl border-2 transition-all
             duration-150 border-tertiary-450 group-hover:border-tertiary-400' />
           <div className='flex flex-row gap-1 flex-wrap'>
-            {project.tools.map((tool: string, index: number) => (
+            {project.tools.map((tool: string) => (
               <img
-                key={index}
                 src={getIcon(tool)}
                 alt={tool} className='w-6 h-6 inline-block mr-2 rounded-sm'
               />
@@ -57,11 +58,14 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
           <h4 className='font-Imedium text-tertiary-100 text-base'>
             {project.date}
           </h4>
-          <p className='font-Mregular text-tertiary-100 mt-3'>
-            {project.description.slice(0, 100)}...
+          <p className='font-Mregular text-tertiary-100 mt-3 text-base'>
+            {project.description.slice(0, 100)}
+            {project.description.length > 100 && '...'}
           </p>
-          <div className='h-[1px] bg-tertiary-450 w-full my-4
+          {(project.stats?.downloads || project.stats?.users) && (
+            <div className='h-[1px] bg-tertiary-450 w-full my-4
           group-hover:bg-tertiary-400 transition-all duration-150' />
+          )}
           <div className='flex flex-row items-center gap-5'>
             {project.stats?.downloads && (
               <div className='flex flex-row items-center gap-1'>

@@ -19,6 +19,7 @@ interface Skill {
 }
 
 interface Experience {
+  type: string | 'education' | 'job';
   title: string;
   location: string;
   date: string;
@@ -62,7 +63,7 @@ const Home: React.FC = () => {
       <div className='flex flex-col w-full gap-36'>
         <section className='flex flex-row w-full gap-16 flex-wrap'>
           <h2 className='flex flex-shrink-0 text-xl font-Mblack
-          text-secondary-500'>
+          text-secondary-500 w-60'>
             SKILLS
             <img src={laptopEmoji} alt='Laptop'
               className='w-7 h-7 inline-block ml-2' />
@@ -71,11 +72,13 @@ const Home: React.FC = () => {
             {skills.map((skill: Skill, index: number) => (
               <ul key={index} className='flex flex-col font-Mregular text-white
               text-sm gap-1'>
-                <li className='font-Mbold text-base'>
+                <li className='font-Mbold text-lg mb-2'>
                   {skill.title.toUpperCase()}
                 </li>
                 {skill.options.map((skill, index) => (
-                  <li key={index} className='text-tertiary-200'>{skill}</li>
+                  <li key={index} className='text-tertiary-200 text-base'>
+                    {skill}
+                  </li>
                 ))}
               </ul>
             ))}
@@ -83,40 +86,69 @@ const Home: React.FC = () => {
         </section>
         <section className='flex flex-row w-full gap-16 flex-wrap xl:flex-nowrap'>
           <h2 className='flex md:flex-shrink-0 text-xl font-Mblack
-          text-secondary-500'>
+          text-secondary-500 w-60'>
             EXPERIENCES & EDUCATION
             <img src={graduationEmoji} alt='Laptop'
               className='w-7 h-7 inline-block ml-2' />
           </h2>
           <ul className='flex flex-col font-Mregular text-white
           text-sm gap-5 w-full'>
-            {experiences.map((skill: Experience, index: number) => (
-              <li key={index} className='font-Mbold text-base flex flex-row w-full
-              justify-between'>
-                <div className='flex flex-col'>
-                  <h3>{skill.title}</h3>
-                  <h4 className='font-Mmedium text-tertiary-200'>
-                    <img src={locationEmoji} alt='Location'
-                      className='w-4 h-4 inline-block mr-1' />
-                    {skill.location}
-                  </h4>
-                  {skill.description && (
-                    <p className='font-Mregular text-tertiary-200'>
-                      {skill.description}
-                    </p>
-                  )}
-                </div>
-                <p className='font-Imedium w-56 flex justify-end md:flex-shrink-0
-                text-right ml-5 md:ml-0'>
-                  {skill.date}
-                </p>
-              </li>
-            ))}
+            {experiences.filter(e => e.type === 'job')
+              .map((skill: Experience, index: number) => (
+                <li key={index} className='font-Mbold flex flex-row w-full
+                justify-between'>
+                  <div className='flex flex-col'>
+                    <h3 className='text-lg'>
+                      {skill.title}
+                    </h3>
+                    <h4 className='font-Mmedium text-tertiary-200 text-base'>
+                      <img src={locationEmoji} alt='Location'
+                        className='w-5 h-5 inline-block mr-1' />
+                      {skill.location}
+                    </h4>
+                    {skill.description && (
+                      <p className='font-Mregular text-tertiary-200 text-base'>
+                        {skill.description}
+                      </p>
+                    )}
+                  </div>
+                  <p className='font-Imedium w-56 flex justify-end md:flex-shrink-0
+                  text-right ml-5 md:ml-0 text-base'>
+                    {skill.date}
+                  </p>
+                </li>
+              ))}
+            <hr className='w-full border-tertiary-400 my-5' />
+            {experiences.filter(e => e.type === 'educational')
+              .map((skill: Experience, index: number) => (
+                <li key={index} className='font-Mbold flex flex-row w-full
+                justify-between'>
+                  <div className='flex flex-col'>
+                    <h3 className='text-lg'>
+                      {skill.title}
+                    </h3>
+                    <h4 className='font-Mmedium text-tertiary-200 text-base'>
+                      <img src={locationEmoji} alt='Location'
+                        className='w-5 h-5 inline-block mr-1' />
+                      {skill.location}
+                    </h4>
+                    {skill.description && (
+                      <p className='font-Mregular text-tertiary-200 text-base'>
+                        {skill.description}
+                      </p>
+                    )}
+                  </div>
+                  <p className='font-Imedium w-56 flex justify-end md:flex-shrink-0
+                  text-right ml-5 md:ml-0 text-base'>
+                    {skill.date}
+                  </p>
+                </li>
+              ))}
           </ul>
         </section>
         <section className='flex flex-row w-full gap-16 flex-wrap xl:flex-nowrap'>
           <h2 className='flex flex-shrink-0 text-xl font-Mblack
-          text-secondary-500'>
+          text-secondary-500 w-56'>
             PROJECTS
             <img src={plantEmoji} alt='Laptop'
               className='w-7 h-7 inline-block ml-2' />
@@ -124,37 +156,8 @@ const Home: React.FC = () => {
           <ul className='flex flex-row font-Mregular text-white
           text-sm gap-5 w-full flex-wrap'>
             {projects.map((project: Project, index: number) => (
-              <li key={index} className='bg-tertiary-500 p-4 rounded-sm w-96
-              overflow-hidden hover:scale-101 cursor-pointer transition-all
-              duration-150 group' onClick={() => {
-                window.location.href = (`/project/${project
-                  .title.toLowerCase().replace(/ /g, '-')}`);
-              }}>
-                <img src={project.image} alt={project.title}
-                  className='w-full h-[190px] object-cover rounded-md' />
-                <div className='flex flex-col mt-1'>
-                  <h3 className='font-Mbold text-base mt-2'>
-                    {project.title}
-                  </h3>
-                  <p className='font-Imedium text-tertiary-200'>
-                    {project.date}
-                  </p>
-                  <div className='h-[1px] bg-tertiary-400 w-full my-4' />
-                  <div className='flex flex-row gap-1'>
-                    {project.tools.map((tool: string, index: number) => (
-                      <img
-                        key={index}
-                        src={getIcon(tool)}
-                        alt={tool} className='w-6 h-6 inline-block mr-2 grayscale
-                        group-hover:grayscale-0 transition-all duration-150
-                        rounded-sm'
-                      />
-                    ))}
-                  </div>
-                </div>
-              </li>
+              <ProjectCard project={project} position={index} />
             ))}
-            <ProjectCard project={projects[0]} />
           </ul>
         </section>
       </div>

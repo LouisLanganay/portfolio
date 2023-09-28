@@ -4,11 +4,15 @@ import projects from './projects.json';
 import { useParams } from 'react-router-dom';
 import getIcon from '../utils/getIcon';
 import {
-  ArrowRightIcon
-} from '@heroicons/react/24/solid';
-import {
   backhand_index_pointing_right as rightHandEmoji
 } from '../assets/emojis/index';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import {
+  strawpoll_discord_bot,
+  discord_bot_dashboard,
+  my_portfolio
+} from './projects/index';
 
 interface Project {
   title: string;
@@ -26,14 +30,29 @@ interface Project {
 const Project: React.FC = () => {
   const [ project, setProject ] = useState<Project | null>(null);
   const { id } = useParams<{ id: string }>();
+  const [fileContent, setFileContent] = useState<string | null>(null);
 
   useEffect(() => {
     if (id) {
       const project = projects.find((project) => {
         return project.title.toLowerCase().replace(/ /g, '-') === id;
       });
-      if (project)
+      if (project) {
         setProject(project);
+        const projectId = project.title.toLowerCase().replace(/ /g, '-');
+        if (projectId === 'coodo.xyz---discord-bot') {
+          fetch(strawpoll_discord_bot).then((res) => res.text())
+            .then((text) => setFileContent(text));
+        }
+        if (projectId === 'coodo.xyz---dashboard') {
+          fetch(discord_bot_dashboard).then((res) => res.text())
+            .then((text) => setFileContent(text));
+        }
+        if (projectId === 'my-portfolio') {
+          fetch(my_portfolio).then((res) => res.text())
+            .then((text) => setFileContent(text));
+        }
+      }
     }
   }, []);
 
@@ -76,9 +95,34 @@ const Project: React.FC = () => {
             </div>
           </div>
           <hr className='border-tertiary-400 my-5' />
-          <p className='font-Mregular text-tertiary-100'>
-            {project.description}
-          </p>
+          <div className='font-Mregular text-tertiary-100'>
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              children={fileContent || project.description}
+              components={{
+                h1(props) {
+                  const {...rest} = props;
+                  return <h1 className='font-Mbold text-2xl' {...rest} />;
+                },
+                h2(props) {
+                  const {...rest} = props;
+                  return <h2 className='font-Mbold text-xl' {...rest} />;
+                },
+                h3(props) {
+                  const {...rest} = props;
+                  return <h2 className='font-Mbold text-lg' {...rest} />;
+                },
+                code(props) {
+                  const {children, className, ...rest} = props;
+                  return (
+                    <code {...rest} className={className}>
+                      {children}
+                    </code>
+                  );
+                }
+              }}
+            />
+          </div>
           <hr className='border-tertiary-400 my-5' />
           <div className='flex flex-col gap-2'>
             {project.links.github && (

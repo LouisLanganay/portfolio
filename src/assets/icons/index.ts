@@ -7,6 +7,7 @@ import mongodb from './mongodb.png';
 import tailwindcss from './tailwindcss.svg';
 import figma from './figma.png';
 import adobeillustrator from './adobeillustrator.png';
+import c from './c.png';
 
 export {
   nodejs,
@@ -17,5 +18,6 @@ export {
   mongodb,
   tailwindcss,
   figma,
-  adobeillustrator
+  adobeillustrator,
+  c
 };

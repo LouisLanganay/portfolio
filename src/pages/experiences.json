@@ -1,25 +1,29 @@
 [
   {
-    "title": "Baccalauréat STI2D - Information and Digital Systems (SIN) specialism (distinction)",
-    "location": "Campus La Chataigneraie",
-    "date": "sep. 2019 - 2022"
+    "type": "job",
+    "title": "Internship - Front-end developer",
+    "location": "Venture\"s Game • Remote",
+    "date": "sep. 2023 - nov. 2023",
+    "description": "Development of a showcase site."
   },
   {
-    "title": "Expert in Information Technologies",
-    "location": "Epitech Rennes",
-    "date": "sep. 2022 - 2027",
-    "description": "RNCP 7 Professional Certification - BAC +5."
-  },
-  {
+    "type": "job",
     "title": "Internship - Developer",
     "location": "Centre hospitalier intercommunal Elbeuf Louviers Val de Reuil",
     "date": "jul. 2023 - aug. 2023",
     "description": "Development of an intranet for the hospital's various divisions."
   },
   {
-    "title": "Internship - Front-end developer",
-    "location": "Venture\"s Game • Remote",
-    "date": "sep. 2023 - nov. 2023",
-    "description": "Development of a showcase site."
+    "type": "educational",
+    "title": "Expert in software engineering",
+    "location": "Epitech Rennes",
+    "date": "sep. 2022 - 2027",
+    "description": "RNCP 7 Professional Certification - BAC +5."
+  },
+  {
+    "type": "educational",
+    "title": "Baccalauréat STI2D - Information and Digital Systems (SIN) specialism (distinction)",
+    "location": "Campus La Chataigneraie",
+    "date": "sep. 2019 - 2022"
   }
 ]
