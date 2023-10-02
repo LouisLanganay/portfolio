@@ -90,6 +90,12 @@ export const theme = {
       800: '#141417',
       900: '#0a0a0c',
       1000: '#000000'
+    },
+    blue: {
+      500: '#2f81f7'
+    },
+    purple: {
+      500: '#a371f7'
     }
   },
   fontFamily: {
