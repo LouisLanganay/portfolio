@@ -8,7 +8,6 @@ import {
   potted_plant as plantEmoji
 } from '../assets/emojis/index';
 import projects from './projects.json';
-import getIcon from '../utils/getIcon';
 import { ProjectCard } from '../components';
 import skills from './skills.json';
 import experiences from './experiences.json';

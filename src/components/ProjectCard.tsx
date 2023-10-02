@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import getIcon from '../utils/getIcon';
 import {
   ArrowTopRightOnSquareIcon,
   UsersIcon,
-  ArrowDownTrayIcon
+  ArrowDownTrayIcon,
+  StarIcon
 } from '@heroicons/react/24/solid';
+import getRepository from '../utils/getRepository';
 
 interface Project {
   title: string;
@@ -23,15 +25,30 @@ interface Project {
   }
 }
 
+interface Repo {
+  watchers_count: number;
+}
+
 const ProjectCard: React.FC<{ project: Project, position: number }> = ({
   project, position
 }) => {
+  const [ repository, setRepository ] = React.useState<Repo | null>(null);
+
+  useEffect(() => {
+    if (project.links.github) {
+      getRepository(project.links.github).then((repo) => {
+        setRepository(repo);
+      });
+    }
+  }, []);
+
+  console.info(repository);
   return (
     <li className='hover:bg-tertiary-500 p-4 rounded-lg max-w-[700px] w-full
     overflow-hidden cursor-pointer transition-all h-fit
     duration-150 group flex flex-col bg-opacity-60 hover:shadow-lg'
     onClick={() => {
-      window.location.href = (`/project/${project
+      window.location.href = (`/projects/${project
         .title.toLowerCase().replace(/ /g, '-')}`);
     }} key={position}>
       <div className='flex flex-row gap-5 flex-wrap md:flex-nowrap'>
@@ -62,7 +79,9 @@ const ProjectCard: React.FC<{ project: Project, position: number }> = ({
             {project.description.slice(0, 100)}
             {project.description.length > 100 && '...'}
           </p>
-          {(project.stats?.downloads || project.stats?.users) && (
+          {(project.stats?.downloads ||
+          project.stats?.users ||
+          repository?.watchers_count) && (
             <div className='h-[1px] bg-tertiary-450 w-full my-4
           group-hover:bg-tertiary-400 transition-all duration-150' />
           )}
@@ -80,6 +99,14 @@ const ProjectCard: React.FC<{ project: Project, position: number }> = ({
                 <UsersIcon className='w-5 h-5 text-secondary-500' />
                 <p className='font-Mbold text-secondary-500 text-base'>
                   {project.stats.users}
+                </p>
+              </div>
+            )}
+            {repository?.watchers_count && (
+              <div className='flex flex-row items-center gap-1'>
+                <StarIcon className='w-5 h-5 text-yellow' />
+                <p className='font-Mbold text-yellow text-base'>
+                  {repository.watchers_count}
                 </p>
               </div>
             )}
