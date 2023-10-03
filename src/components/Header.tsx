@@ -16,10 +16,13 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', listenScrollEvent);
   }, []);
 
+  if (window.location.pathname !== '/')
+    return null;
+
   return (
     <header className={`py-4 lg:px-36 px-5 flex flex-row justify-between
     items-center sticky top-0 ${style}
-    transition-all duration-300`}>
+    transition-all duration-300 z-50`}>
       <div className='flex flex-row items-center'>
         <h1 className='text-2xl font-Mblack text-white cursor-pointer'
           onClick={() => window.location.href = '/'}>

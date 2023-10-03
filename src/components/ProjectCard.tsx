@@ -12,9 +12,9 @@ interface Project {
   title: string;
   description: string;
   links?: {
-    github?: string;
-    app?: string;
-  }
+    name: string;
+    url: string;
+  }[];
   image: string;
   date: string;
   tags: string[];
@@ -22,7 +22,8 @@ interface Project {
   stats?: {
     users?: string;
     downloads?: string;
-  }
+  },
+  repository?: string;
 }
 
 interface Repo {
@@ -35,8 +36,8 @@ const ProjectCard: React.FC<{ project: Project, position: number }> = ({
   const [ repository, setRepository ] = React.useState<Repo | null>(null);
 
   useEffect(() => {
-    if (project.links?.github) {
-      getRepository(project.links.github).then((repo) => {
+    if (project.repository) {
+      getRepository(project.repository).then((repo) => {
         setRepository(repo);
       });
     }
@@ -44,7 +45,7 @@ const ProjectCard: React.FC<{ project: Project, position: number }> = ({
 
   console.info(repository);
   return (
-    <li className='hover:bg-tertiary-500 p-4 rounded-lg max-w-[700px] w-full
+    <li className='hover:bg-tertiary-500 p-4 rounded-lg max-w-[650px] w-full
     overflow-hidden cursor-pointer transition-all h-fit
     duration-150 group flex flex-col bg-opacity-60 hover:shadow-lg'
     onClick={() => {

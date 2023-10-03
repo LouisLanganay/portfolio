@@ -7,6 +7,9 @@ import potted_plant from './potted_plant_3d.png';
 import hammer_and_wrench from './hammer_and_wrench_3d.png';
 import backhand_index_pointing_right from './backhand_index_pointing_right_3d_default.png';
 import backhand_index_pointing_left from './backhand_index_pointing_left_3d_default.png';
+import house from './house_3d.png';
+import building_construction from './building_construction_3d.png';
+import control_knobs from './control_knobs_3d.png';
 
 export {
   laptop,
@@ -16,5 +19,8 @@ export {
   potted_plant,
   hammer_and_wrench,
   backhand_index_pointing_right,
-  backhand_index_pointing_left
+  backhand_index_pointing_left,
+  house,
+  control_knobs,
+  building_construction
 };

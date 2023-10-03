@@ -29,9 +29,9 @@ interface Project {
   title: string;
   description: string;
   links?: {
-    github?: string;
-    app?: string;
-  }
+    name: string;
+    url: string;
+  }[];
   image: string;
   date: string;
   tags: string[];
@@ -39,7 +39,8 @@ interface Project {
   stats?: {
     users?: string;
     downloads?: string;
-  }
+  };
+  repository?: string;
 }
 
 const Home: React.FC = () => {

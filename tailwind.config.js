@@ -115,6 +115,9 @@ export const theme = {
     scale: {
       99: '.99',
       101: '1.01'
+    },
+    backgroundImage: {
+      'noisy-texture': 'url("assets/background_noisy.png")'
     }
   }
 };

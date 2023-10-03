@@ -2,9 +2,12 @@
   {
     "title": "Coodo.xyz - Dashboard",
     "description": "The initial version was released in May 2022. One year later, I embarked on creating the V2 of the dashboard, utilizing React and Tailwind CSS—two tools I had never worked with before.",
-    "links": {
-      "app": "https://dashboard.coodo.xyz"
-    },
+    "links":  [
+      {
+        "name": "View App",
+        "url": "https://dashboard.coodo.xyz"
+      }
+    ],
     "image": "https://i.ibb.co/NjtVVSx/image.png",
     "date": "jul. 2023 - present",
     "tags": ["web", "restAPI"],
@@ -24,9 +27,12 @@
   {
     "title": "Coodo.xyz - Discord bot",
     "description": "Strawpoll emerged from the need to create a flexible and powerful tool for the Discord community.",
-    "links": {
-      "app": "https://discord.com/application-directory/823271140410916986"
-    },
+    "links": [
+      {
+        "name": "View App",
+        "url": "https://discord.com/application-directory/823271140410916986"
+      }
+    ],
     "image": "https://i.ibb.co/Y7Nqz57/Banner-embed-website.png",
     "date": "may. 2021 - present",
     "tags": ["discord", "restAPI"],
@@ -39,22 +45,28 @@
   {
     "title": "My Portfolio",
     "description": "After honing my skills and accumulating a diverse set of projects, I felt the need to showcase my work and talents in a more organized and accessible manner. This led me to embark on the creation of my own portfolio.",
-    "links": {
-      "github": "https://github.com/LouisLanganay/portfolio",
-      "app": "/"
-    },
+    "links": [
+      {
+        "name": "View App",
+        "url": "/"
+      }
+    ],
+    "repository": "https://github.com/LouisLanganay/portfolio",
     "image": "https://i.ibb.co/jDZnswT/Screenshot-2023-09-26-171224.png",
     "date": "sep. 2023 - present",
-    "tags": ["web"],
+    "tags": ["web", "design"],
     "tools": ["nodejs", "typescript", "react", "tailwindcss", "figma"]
   },
   {
     "title": "Zombie-Quarter-Rampage",
     "description": "A rpg that is inspired by a literary series \"U4\" and the last of us. School Project",
-    "links": {
-      "github": "https://github.com/LouisLanganay/Zombie-Quarter-Rampage",
-      "app": "https://github.com/LouisLanganay/Zombie-Quarter-Rampage"
-    },
+    "repository": "https://github.com/LouisLanganay/Zombie-Quarter-Rampage",
+    "links": [
+      {
+        "name": "View Wiki",
+        "url": "https://github.com/LouisLanganay/Zombie-Quarter-Rampage-my_rpg/wiki"
+      }
+    ],
     "image": "https://user-images.githubusercontent.com/114762819/232165451-7c377d28-00c4-4cfa-8d45-33b05849b849.png",
     "date": "27 mar. 2023 - 23 apr. 2023",
     "tags": ["game", "rpg", "survival", "zombies", "apocalypse", "thelastofus"],

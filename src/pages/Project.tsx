@@ -4,8 +4,7 @@ import projects from './projects/projects.json';
 import { useParams } from 'react-router-dom';
 import getIcon from '../utils/getIcon';
 import {
-  backhand_index_pointing_right as rightHandEmoji,
-  backhand_index_pointing_left as leftHandEmoji
+  backhand_index_pointing_right as rightHandEmoji
 } from '../assets/emojis/index';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -14,7 +13,8 @@ import {
   strawpoll_discord_bot,
   discord_bot_dashboard,
   my_portfolio,
-  api
+  api,
+  zombie_quarter_rampage
 } from './projects/index';
 import {
   ArrowDownTrayIcon,
@@ -34,9 +34,9 @@ interface Project {
   title: string;
   description: string;
   links?: {
-    github?: string;
-    app?: string;
-  }
+    name: string;
+    url: string;
+  }[];
   image: string;
   date: string;
   tags: string[];
@@ -44,7 +44,8 @@ interface Project {
   stats?: {
     users?: string;
     downloads?: string;
-  }
+  };
+  repository?: string;
 }
 
 interface Repo {
@@ -81,8 +82,12 @@ const Project: React.FC = () => {
           fetch(api).then((res) => res.text())
             .then((text) => setFileContent(text));
         }
-        if (project.links?.github) {
-          getRepository(project.links.github).then((repo) => {
+        if (projectId === 'zombie-quarter-rampage') {
+          fetch(zombie_quarter_rampage).then((res) => res.text())
+            .then((text) => setFileContent(text));
+        }
+        if (project.repository) {
+          getRepository(project.repository).then((repo) => {
             setRepository(repo);
           });
         }
@@ -101,18 +106,8 @@ const Project: React.FC = () => {
   return (
     <Layout>
       <div className='flex flex-col h-full'>
-        <div className='relative'>
-          <img src={project.image} alt={project.title}
-            className='w-full h-64 object-cover rounded-2xl shadow-lg' />
-          <div className='px-10 absolute top-0 -left-24 mb-2 ml-2 cursor-pointer
-            hover:-translate-x-10 duration-300 transition-all group
-            hover:pr-20'
-          onClick={() => window.location.href = '/#projects'}>
-            <img src={leftHandEmoji} alt='Left Hand Emoji'
-              className='w-10 h-10 group-hover:scale-110 transition-all
-              duration-300'/>
-          </div>
-        </div>
+        <img src={project.image} alt={project.title}
+          className='w-full h-64 object-cover rounded-2xl shadow-lg' />
         <div className='flex flex-col gap-2 mt-4'>
           <div className='flex flex-row items-center flex-wrap gap-2'>
             <h1 className='font-Mbold text-3xl text-secondary-500 mr-5'>
@@ -366,8 +361,8 @@ const Project: React.FC = () => {
           </div>
           <hr className='border-tertiary-400 my-5' />
           <div className='flex flex-col gap-2'>
-            {project.links?.github && (
-              <a onClick={() => window.open(project.links?.github, '_blank')}
+            {project.repository && (
+              <a onClick={() => window.open(project.repository, '_blank')}
                 className='group w-fit ease-in-out font-Mmedium text-tertiary-0
                 hover:text-secondary-500 cursor-pointer'>
                 <span className='bg-left-bottom bg-gradient-to-r
@@ -380,8 +375,8 @@ const Project: React.FC = () => {
                 </span>
               </a>
             )}
-            {project.links?.app && (
-              <a onClick={() => window.open(project.links?.app, '_blank')}
+            {project.links?.map((link) => (
+              <a onClick={() => window.open(link.url, '_blank')}
                 className='group w-fit ease-in-out font-Mmedium text-tertiary-0
                 hover:text-secondary-500 cursor-pointer'>
                 <span className='bg-left-bottom bg-gradient-to-r
@@ -390,10 +385,10 @@ const Project: React.FC = () => {
                 duration-500 ease-out flex gap-2'>
                   <img src={rightHandEmoji} alt='Right Hand Emoji'
                     className='w-5 h-5 inline-block' />
-                  View App
+                  {link.name}
                 </span>
               </a>
-            )}
+            ))}
           </div>
         </div>
       </div>
