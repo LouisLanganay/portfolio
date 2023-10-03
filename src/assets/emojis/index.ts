@@ -6,6 +6,7 @@ import graduation_cap from './graduation_cap_3d.png';
 import potted_plant from './potted_plant_3d.png';
 import hammer_and_wrench from './hammer_and_wrench_3d.png';
 import backhand_index_pointing_right from './backhand_index_pointing_right_3d_default.png';
+import backhand_index_pointing_left from './backhand_index_pointing_left_3d_default.png';
 
 export {
   laptop,
@@ -14,5 +15,6 @@ export {
   graduation_cap,
   potted_plant,
   hammer_and_wrench,
-  backhand_index_pointing_right
+  backhand_index_pointing_right,
+  backhand_index_pointing_left
 };

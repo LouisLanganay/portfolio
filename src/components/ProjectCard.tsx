@@ -11,7 +11,7 @@ import getRepository from '../utils/getRepository';
 interface Project {
   title: string;
   description: string;
-  links: {
+  links?: {
     github?: string;
     app?: string;
   }
@@ -35,7 +35,7 @@ const ProjectCard: React.FC<{ project: Project, position: number }> = ({
   const [ repository, setRepository ] = React.useState<Repo | null>(null);
 
   useEffect(() => {
-    if (project.links.github) {
+    if (project.links?.github) {
       getRepository(project.links.github).then((repo) => {
         setRepository(repo);
       });

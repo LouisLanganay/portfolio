@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Layout from './Layout';
-import projects from './projects.json';
+import projects from './projects/projects.json';
 import { useParams } from 'react-router-dom';
 import getIcon from '../utils/getIcon';
 import {
-  backhand_index_pointing_right as rightHandEmoji
+  backhand_index_pointing_right as rightHandEmoji,
+  backhand_index_pointing_left as leftHandEmoji
 } from '../assets/emojis/index';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -12,7 +13,8 @@ import rehypeRaw from 'rehype-raw';
 import {
   strawpoll_discord_bot,
   discord_bot_dashboard,
-  my_portfolio
+  my_portfolio,
+  api
 } from './projects/index';
 import {
   ArrowDownTrayIcon,
@@ -31,7 +33,7 @@ import Theme from 'react-syntax-highlighter/dist/esm/styles/prism/one-dark';
 interface Project {
   title: string;
   description: string;
-  links: {
+  links?: {
     github?: string;
     app?: string;
   }
@@ -53,7 +55,7 @@ const Project: React.FC = () => {
   const [ project, setProject ] = useState<Project | null>(null);
   const { id } = useParams<{ id: string }>();
   const [fileContent, setFileContent] = useState<string | null>(null);
-  const [ repository, setRepository ] = React.useState<Repo | null>(null);
+  const [ repository, setRepository ] = useState<Repo | null>(null);
 
   useEffect(() => {
     if (id) {
@@ -75,7 +77,11 @@ const Project: React.FC = () => {
           fetch(my_portfolio).then((res) => res.text())
             .then((text) => setFileContent(text));
         }
-        if (project.links.github) {
+        if (projectId === 'coodo.xyz---api') {
+          fetch(api).then((res) => res.text())
+            .then((text) => setFileContent(text));
+        }
+        if (project.links?.github) {
           getRepository(project.links.github).then((repo) => {
             setRepository(repo);
           });
@@ -95,8 +101,18 @@ const Project: React.FC = () => {
   return (
     <Layout>
       <div className='flex flex-col h-full'>
-        <img src={project.image} alt={project.title}
-          className='w-full h-64 object-cover rounded-2xl shadow-lg' />
+        <div className='relative'>
+          <img src={project.image} alt={project.title}
+            className='w-full h-64 object-cover rounded-2xl shadow-lg' />
+          <div className='px-10 absolute top-0 -left-24 mb-2 ml-2 cursor-pointer
+            hover:-translate-x-10 duration-300 transition-all group
+            hover:pr-20'
+          onClick={() => window.location.href = '/#projects'}>
+            <img src={leftHandEmoji} alt='Left Hand Emoji'
+              className='w-10 h-10 group-hover:scale-110 transition-all
+              duration-300'/>
+          </div>
+        </div>
         <div className='flex flex-col gap-2 mt-4'>
           <div className='flex flex-row items-center flex-wrap gap-2'>
             <h1 className='font-Mbold text-3xl text-secondary-500 mr-5'>
@@ -115,7 +131,7 @@ const Project: React.FC = () => {
               {project.date}
             </p>
             {project.tools.length > 0 && (
-              <p className='text-white'>
+              <p className='text-tertiary-100'>
                 •
               </p>
             )}
@@ -131,7 +147,7 @@ const Project: React.FC = () => {
             {(project.stats?.downloads ||
             project.stats?.users ||
             repository?.watchers_count) && (
-              <p className='text-white'>
+              <p className='text-tertiary-100'>
                 •
               </p>
             )}
@@ -198,7 +214,73 @@ const Project: React.FC = () => {
                   return <hr className='border-secondary-500 my-5' {...rest} />;
                 },
                 blockquote(props) {
-                  const {...rest} = props;
+                  const {children, ...rest} = props;
+                  if (props.node.children[1].type === 'element') {
+                    const value = (props.node.children[1].children[0] as {
+                      value: string
+                    }).value;
+                    const content = (children[1] as {
+                      props: {
+                        children: string
+                      }
+                    }).props.children;
+                    const contentArray = content.slice(1);
+                    if (value.startsWith('[!NOTE]')) {
+                      return (
+                        <blockquote className='border-l-4 border-blue-500
+                        pl-3 my-2 flex flex-col gap-1' {...rest}>
+                          <div className='flex flex-row items-center gap-2'>
+                            <InformationCircleIcon className='w-5 h-5
+                          text-blue-500' />
+                            <span className='font-Mbold text-base
+                          border-blue-500 text-blue-500'>
+                              Note
+                            </span>
+                          </div>
+                          <p className='text-base'>
+                            {content[0].slice(7)}
+                            {contentArray}
+                          </p>
+                        </blockquote>
+                      );
+                    }
+                    if (value.startsWith('[!IMPORTANT]')) {
+                      return (
+                        <blockquote className='border-l-4 border-purple-500
+                        pl-3 my-2 flex flex-col gap-1' {...rest}>
+                          <div className='flex flex-row items-center gap-2'>
+                            <ChatBubbleBottomCenterTextIcon className='w-5 h-5
+                          text-purple-500' />
+                            <span className='font-Mbold text-base
+                          border-purple-500 text-purple-500'>
+                              Important
+                            </span>
+                          </div>
+                          <p className='text-base'>
+                            {value.slice(13)}
+                          </p>
+                        </blockquote>
+                      );
+                    }
+                    if (value.startsWith('[!WARNING]')) {
+                      return (
+                        <blockquote className='border-l-4 border-orange-500
+                        pl-3 my-2 flex flex-col gap-1' {...rest}>
+                          <div className='flex flex-row items-center gap-2'>
+                            <ExclamationTriangleIcon className='w-5 h-5
+                          text-orange-500' />
+                            <span className='font-Mbold text-base
+                          border-orange-500 text-orange-500'>
+                              Warning
+                            </span>
+                          </div>
+                          <p className='text-base'>
+                            {value.slice(11)}
+                          </p>
+                        </blockquote>
+                      );
+                    }
+                  }
                   return (
                     <blockquote className='border-l-4 border-secondary-500
                     pl-3 my-2' {...rest} />
@@ -274,50 +356,9 @@ const Project: React.FC = () => {
                 img(props) {
                   const {...rest} = props;
                   return (
-                    <img className='w-fit h-fit
-                    max-w-2xl rounded shadow-lg' {...rest} />
-                  );
-                },
-                div(props) {
-                  const {id, ...rest} = props;
-                  if (id === 'note' || id === 'important' || id === 'warning') {
-                    return (
-                      <div className={`border-l-4 pl-3 my-2
-                      ${id === 'note' && 'border-blue-500'}
-                      ${id === 'important' && 'border-purple-500'}
-                      ${id === 'warning' && 'border-orange-500'}`}>
-                        <div className='flex flex-col gap-1'>
-                          <div className='flex flex-row items-center gap-2'>
-                            {id === 'note' && (
-                              <InformationCircleIcon className='w-5 h-5
-                              text-blue-500' />
-                            )}
-                            {id === 'important' && (
-                              <ChatBubbleBottomCenterTextIcon className='w-5 h-5
-                              text-purple-500' />
-                            )}
-                            {id === 'warning' && (
-                              <ExclamationTriangleIcon className='w-5 h-5
-                              text-orange-500' />
-                            )}
-                            <span className={`font-Mbold text-base
-                      ${id === 'note' && 'border-blue-500 text-blue-500'}
-                      ${id === 'important' && 'border-purple-500 text-purple-500'}
-                      ${id === 'warning' && 'border-orange-500 text-orange-500'}`}>
-                              {id === 'note' && 'Note'}
-                              {id === 'important' && 'Important'}
-                              {id === 'warning' && 'Warning'}
-                            </span>
-                          </div>
-                          <p className='text-base'>
-                            {props.children}
-                          </p>
-                        </div>
-                      </div>
-                    );
-                  }
-                  return (
-                    <div {...rest} />
+                    <div className='w-full h-full'>
+                      <img className='w-full h-full rounded' {...rest} />
+                    </div>
                   );
                 }
               }}
@@ -325,8 +366,8 @@ const Project: React.FC = () => {
           </div>
           <hr className='border-tertiary-400 my-5' />
           <div className='flex flex-col gap-2'>
-            {project.links.github && (
-              <a onClick={() => window.open(project.links.github, '_blank')}
+            {project.links?.github && (
+              <a onClick={() => window.open(project.links?.github, '_blank')}
                 className='group w-fit ease-in-out font-Mmedium text-tertiary-0
                 hover:text-secondary-500 cursor-pointer'>
                 <span className='bg-left-bottom bg-gradient-to-r
@@ -339,8 +380,8 @@ const Project: React.FC = () => {
                 </span>
               </a>
             )}
-            {project.links.app && (
-              <a onClick={() => window.open(project.links.app, '_blank')}
+            {project.links?.app && (
+              <a onClick={() => window.open(project.links?.app, '_blank')}
                 className='group w-fit ease-in-out font-Mmedium text-tertiary-0
                 hover:text-secondary-500 cursor-pointer'>
                 <span className='bg-left-bottom bg-gradient-to-r

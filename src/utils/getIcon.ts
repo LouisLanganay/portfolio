@@ -8,7 +8,8 @@ import {
   typescript,
   adobeillustrator,
   figma,
-  c
+  c,
+  postman
 } from '../assets/icons/index';
 
 const emojis = [
@@ -51,6 +52,10 @@ const emojis = [
   {
     'name': 'c',
     'emoji': c
+  },
+  {
+    'name': 'postman',
+    'emoji': postman
   }
 ];
 

@@ -8,6 +8,7 @@ import tailwindcss from './tailwindcss.svg';
 import figma from './figma.png';
 import adobeillustrator from './adobeillustrator.png';
 import c from './c.png';
+import postman from './postman.png';
 
 export {
   nodejs,
@@ -19,5 +20,6 @@ export {
   tailwindcss,
   figma,
   adobeillustrator,
-  c
+  c,
+  postman
 };

@@ -1,13 +1,13 @@
 [
   {
     "title": "Coodo.xyz - Dashboard",
-    "description": "After creating my Discord bot, I was eager to explore new technologies. That's when I conceived the idea of developing a web dashboard for my Discord bot. The initial version was released in May 2022. One year later, I embarked on creating the V2 of the dashboard, utilizing React and Tailwind CSS—two tools I had never worked with before.",
+    "description": "The initial version was released in May 2022. One year later, I embarked on creating the V2 of the dashboard, utilizing React and Tailwind CSS—two tools I had never worked with before.",
     "links": {
       "app": "https://dashboard.coodo.xyz"
     },
     "image": "https://i.ibb.co/NjtVVSx/image.png",
     "date": "jul. 2023 - present",
-    "tags": ["web"],
+    "tags": ["web", "restAPI"],
     "tools": ["nodejs", "javascript", "react", "tailwindcss", "figma"],
     "stats": {
       "users": "+16.000"
@@ -15,15 +15,11 @@
   },
   {
     "title": "Coodo.xyz - API",
-    "description": "",
-    "links": {
-    },
+    "description": "This API has been developed to support the services provided by Coodo.xyz, and it offers a range of routes to allow you to manage polls and users.",
     "image": "https://i.ibb.co/mCT5jhf/coodo-motif-banner.png",
     "date": "jun. 2023 - present",
-    "tags": [],
-    "tools": ["nodejs", "javascript", "mongodb"],
-    "stats": {
-    }
+    "tags": ["restAPI"],
+    "tools": ["nodejs", "javascript", "mongodb", "postman"]
   },
   {
     "title": "Coodo.xyz - Discord bot",
@@ -33,7 +29,7 @@
     },
     "image": "https://i.ibb.co/Y7Nqz57/Banner-embed-website.png",
     "date": "may. 2021 - present",
-    "tags": ["discord", "bot"],
+    "tags": ["discord", "restAPI"],
     "tools": ["nodejs", "discordjs", "javascript", "adobe illustrator"],
     "stats": {
       "downloads": "3.000",

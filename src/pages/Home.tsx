@@ -7,7 +7,7 @@ import {
   graduation_cap as graduationEmoji,
   potted_plant as plantEmoji
 } from '../assets/emojis/index';
-import projects from './projects.json';
+import projects from './projects/projects.json';
 import { ProjectCard } from '../components';
 import skills from './skills.json';
 import experiences from './experiences.json';
@@ -28,7 +28,7 @@ interface Experience {
 interface Project {
   title: string;
   description: string;
-  links: {
+  links?: {
     github?: string;
     app?: string;
   }
@@ -145,7 +145,8 @@ const Home: React.FC = () => {
               ))}
           </ul>
         </section>
-        <section className='flex flex-row w-full gap-16 flex-wrap xl:flex-nowrap'>
+        <section className='flex flex-row w-full gap-16 flex-wrap xl:flex-nowrap'
+          id='projects'>
           <h2 className='flex flex-shrink-0 text-xl font-Mblack
           text-secondary-500 w-56'>
             PROJECTS
