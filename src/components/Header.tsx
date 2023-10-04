@@ -37,6 +37,14 @@ const Header: React.FC = () => {
         alt='Github'
         className='w-8 h-8 rounded-full cursor-pointer'
         />
+        <button onClick={() => {
+          window.open('https://discord.com/users/660435627757666311','_blank');
+        }}
+        className='transition-all duration-300 hover:bg-secondary-500
+        ease-in-out text-white font-Mmedium px-4 py-2
+        border-tertiary-400 border-2 rounded-full ml-4'>
+          Contact Me
+        </button>
       </div>
     </header>
   );

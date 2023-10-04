@@ -7,13 +7,16 @@ export const theme = {
     transparent: '#00000000',
     main: {
       0: '#ffffff',
-      500: '#D81E5B',
+      500: '#DD7373',
       1000: '#000000'
     },
     secondary: {
       0: '#ffffff',
       500: '#7678ED',
       1000: '#000000'
+    },
+    light: {
+      500: '#FFC875'
     },
     tertiary: {
       0: '#ffffff',
@@ -31,19 +34,7 @@ export const theme = {
       1000: '#000000'
     },
     green: {
-      0: '#ffffff',
-      100: '#d3f3dd',
-      200: '#a6e6bb',
-      300: '#7ad999',
-      400: '#4dcc77',
-      450: '#37c666',
-      480: '#29c25c',
-      500: '#20BF55',
-      600: '#1a9944',
-      700: '#147333',
-      800: '#0d4d22',
-      900: '#072711',
-      1000: '#000000'
+      500: '#628B48'
     },
     red: {
       0: '#ffffff',
@@ -95,7 +86,7 @@ export const theme = {
       500: '#2f81f7'
     },
     purple: {
-      500: '#a371f7'
+      500: '#BC88FF'
     }
   },
   fontFamily: {
@@ -118,6 +109,25 @@ export const theme = {
     },
     backgroundImage: {
       'noisy-texture': 'url("assets/background_noisy.png")'
+    },
+    animation: {
+      blob: 'blob 7s infinite'
+    },
+    keyframes: {
+      blob: {
+        '0%': {
+          transform: 'translate(0px, 0px) scale(1)'
+        },
+        '33%': {
+          transform: 'translate(15px, -15px) scale(1.03)'
+        },
+        '66%': {
+          transform: 'translate(-15px, 15px) scale(0.97)'
+        },
+        '100%': {
+          transform: 'translate(0px, 0px) scale(1)'
+        }
+      }
     }
   }
 };

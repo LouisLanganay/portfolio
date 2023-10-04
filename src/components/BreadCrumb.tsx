@@ -11,7 +11,6 @@ const BreadCrumb: React.FC = () => {
     setPath(window.location.pathname);
   }, []);
 
-  console.info(path);
   if (path === '/')
     return null;
 
@@ -19,7 +18,7 @@ const BreadCrumb: React.FC = () => {
     {
       'name': 'projects',
       'emoji': BuildingEmoji,
-      'link': '/#projects'
+      'link': '/projects'
     }
   ];
 
@@ -28,16 +27,18 @@ const BreadCrumb: React.FC = () => {
     mb-4'>
       <ul className='flex flex-row gap-2'>
         <li className='hover:underline cursor-pointer flex flex-row items-center
-        font-Mmedium hover:bg-tertiary-450 rounded px-2'
+        font-Mmedium hover:bg-tertiary-450 rounded px-2 flex-shrink-0'
         onClick={() => window.location.href = '/'}>
-          <img src={HouseEmoji} alt='house' className='w-4 h-4 mr-2' />
-          Home
+          <img src={HouseEmoji} alt='house' className='w-4 h-4 mr-0 sm:mr-2' />
+          <p className='hidden sm:block'>
+            Home
+          </p>
         </li>
         {path?.slice(1).split('/').map((p: string, index: number) => {
           const page = pagesEmoji.find((page) => page.name === p);
           return (
             <>
-              <div className='text-tertiary-200 font-Mmedium'>
+              <div className='text-tertiary-200 font-Mmedium items-center flex'>
                 /
               </div>
               <li key={index} className='flex flex-row hover:underline
@@ -54,7 +55,9 @@ const BreadCrumb: React.FC = () => {
                 {page?.emoji && (
                   <img src={page.emoji} alt={page.name} className='w-4 h-4 mr-2' />
                 )}
-                {p}
+                <p className='overflow-clip'>
+                  {p}
+                </p>
               </li>
             </>
           );

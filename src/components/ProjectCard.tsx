@@ -105,8 +105,8 @@ const ProjectCard: React.FC<{ project: Project, position: number }> = ({
             )}
             {repository?.watchers_count && (
               <div className='flex flex-row items-center gap-1'>
-                <StarIcon className='w-5 h-5 text-yellow' />
-                <p className='font-Mbold text-yellow text-base'>
+                <StarIcon className='w-5 h-5 text-light-500' />
+                <p className='font-Mbold text-light-500 text-base'>
                   {repository.watchers_count}
                 </p>
               </div>

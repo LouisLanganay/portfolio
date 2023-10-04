@@ -9,9 +9,9 @@ interface LayoutProps {
 
 const Layout: FunctionComponent<LayoutProps> = ({ children }) => {
   return (
-    <div className='bg-tertiary-480 h-fit min-h-screen flex flex-col'>
+    <div className='bg-tertiary-480 h-fit min-h-screen flex flex-col relative'>
       <Header />
-      <div className='pointer-events-none opacity-50 bg-blend-normal
+      <div className='pointer-events-none opacity-70 bg-blend-normal
       bg-noisy-texture fixed top-0 left-0 z-[1] h-screen w-screen'/>
       <div className='flex flex-col flex-1 px-5 lg:px-36 py-10 z-[2]'>
         <BreadCrumb />

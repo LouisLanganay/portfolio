@@ -197,11 +197,8 @@ const Project: React.FC = () => {
                   return (
                     <a className='text-secondary-500 hover:underline
                     cursor-pointer'
-                    {...rest} href={undefined}
-                    onClick={() => {
-                      window.open(props.href, '_blank');
-                    }}
-                    />
+                    {...rest} href={props.href}
+                    target='_blank' rel='noreferrer' />
                   );
                 },
                 hr(props) {
@@ -210,6 +207,7 @@ const Project: React.FC = () => {
                 },
                 blockquote(props) {
                   const {children, ...rest} = props;
+                  console.info(props.node.children[1].type);
                   if (props.node.children[1].type === 'element') {
                     const value = (props.node.children[1].children[0] as {
                       value: string
@@ -220,15 +218,17 @@ const Project: React.FC = () => {
                       }
                     }).props.children;
                     const contentArray = content.slice(1);
+                    console.info(contentArray);
+                    console.info(value);
                     if (value.startsWith('[!NOTE]')) {
                       return (
-                        <blockquote className='border-l-4 border-blue-500
+                        <blockquote className='border-l-4 border-secondary-500
                         pl-3 my-2 flex flex-col gap-1' {...rest}>
                           <div className='flex flex-row items-center gap-2'>
                             <InformationCircleIcon className='w-5 h-5
-                          text-blue-500' />
+                          text-secondary-500' />
                             <span className='font-Mbold text-base
-                          border-blue-500 text-blue-500'>
+                          border-secondary-500 text-secondary-500'>
                               Note
                             </span>
                           </div>
@@ -259,13 +259,13 @@ const Project: React.FC = () => {
                     }
                     if (value.startsWith('[!WARNING]')) {
                       return (
-                        <blockquote className='border-l-4 border-orange-500
+                        <blockquote className='border-l-4 border-main-500
                         pl-3 my-2 flex flex-col gap-1' {...rest}>
                           <div className='flex flex-row items-center gap-2'>
                             <ExclamationTriangleIcon className='w-5 h-5
-                          text-orange-500' />
+                          text-main-500' />
                             <span className='font-Mbold text-base
-                          border-orange-500 text-orange-500'>
+                          border-main-500 text-main-500'>
                               Warning
                             </span>
                           </div>
@@ -275,6 +275,14 @@ const Project: React.FC = () => {
                         </blockquote>
                       );
                     }
+                    return (
+                      <blockquote className='border-l-4 border-green-500
+                      pl-3 my-2 flex flex-col gap-1' {...rest}>
+                        <p className='text-base'>
+                          {value}
+                        </p>
+                      </blockquote>
+                    );
                   }
                   return (
                     <blockquote className='border-l-4 border-secondary-500
@@ -362,7 +370,7 @@ const Project: React.FC = () => {
           <hr className='border-tertiary-400 my-5' />
           <div className='flex flex-col gap-2'>
             {project.repository && (
-              <a onClick={() => window.open(project.repository, '_blank')}
+              <a href={project.repository} target='_blank' rel='noreferrer'
                 className='group w-fit ease-in-out font-Mmedium text-tertiary-0
                 hover:text-secondary-500 cursor-pointer'>
                 <span className='bg-left-bottom bg-gradient-to-r
@@ -376,7 +384,7 @@ const Project: React.FC = () => {
               </a>
             )}
             {project.links?.map((link) => (
-              <a onClick={() => window.open(link.url, '_blank')}
+              <a href={link.url} target='_blank' rel='noreferrer'
                 className='group w-fit ease-in-out font-Mmedium text-tertiary-0
                 hover:text-secondary-500 cursor-pointer'>
                 <span className='bg-left-bottom bg-gradient-to-r
