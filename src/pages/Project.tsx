@@ -14,7 +14,8 @@ import {
   discord_bot_dashboard,
   my_portfolio,
   api,
-  zombie_quarter_rampage
+  zombie_quarter_rampage,
+  commit_ai_generator
 } from './projects/index';
 import {
   ArrowDownTrayIcon,
@@ -84,6 +85,10 @@ const Project: React.FC = () => {
         }
         if (projectId === 'zombie-quarter-rampage') {
           fetch(zombie_quarter_rampage).then((res) => res.text())
+            .then((text) => setFileContent(text));
+        }
+        if (projectId === 'commit-ai-generator') {
+          fetch(commit_ai_generator).then((res) => res.text())
             .then((text) => setFileContent(text));
         }
         if (project.repository) {
