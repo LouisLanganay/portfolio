@@ -48,6 +48,12 @@ const ProjectCard: React.FC<{ project: Project, position: number }> = ({
     <li className='hover:bg-tertiary-500 p-4 rounded-lg max-w-[650px] w-full
     overflow-hidden cursor-pointer transition-all h-fit
     duration-150 group flex flex-col bg-opacity-60 hover:shadow-lg'
+    onMouseDown={(e) => {
+      if (e.button === 1) {
+        window.open(`/projects/${project
+          .title.toLowerCase().replace(/ /g, '-')}`, '_blank');
+      }
+    }}
     onClick={() => {
       window.location.href = (`/projects/${project
         .title.toLowerCase().replace(/ /g, '-')}`);

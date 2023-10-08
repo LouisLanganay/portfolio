@@ -17,12 +17,19 @@
     }
   },
   {
-    "title": "Coodo.xyz - API",
-    "description": "This API has been developed to support the services provided by Coodo.xyz, and it offers a range of routes to allow you to manage polls and users.",
-    "image": "https://i.ibb.co/mCT5jhf/coodo-motif-banner.png",
-    "date": "jun. 2023 - present",
-    "tags": ["restAPI"],
-    "tools": ["nodejs", "javascript", "mongodb", "postman"]
+    "title": "Commit AI Generator",
+    "description": "A vscode extension to generate a commit message with Open AI API",
+    "repository": "https://github.com/LouisLanganay/commit-ai-generator",
+    "links": [
+      {
+        "name": "View on VSCode Marketplace",
+        "url": "https://marketplace.visualstudio.com/items?itemName=Coodo.commit-generator"
+      }
+    ],
+    "image": "https://i.ibb.co/xhW337H/image.png",
+    "date": "04 oct. 2023",
+    "tags": ["ai", "generator", "openai", "commit", "gpt"],
+    "tools": ["typescript"]
   },
   {
     "title": "Coodo.xyz - Discord bot",
@@ -41,6 +48,14 @@
       "downloads": "3.000",
       "users": "+20.000"
     }
+  },
+  {
+    "title": "Coodo.xyz - API",
+    "description": "This API has been developed to support the services provided by Coodo.xyz, and it offers a range of routes to allow you to manage polls and users.",
+    "image": "https://i.ibb.co/mCT5jhf/coodo-motif-banner.png",
+    "date": "jun. 2023 - present",
+    "tags": ["restAPI"],
+    "tools": ["nodejs", "javascript", "mongodb", "postman"]
   },
   {
     "title": "My Portfolio",
@@ -71,20 +86,5 @@
     "date": "27 mar. 2023 - 23 apr. 2023",
     "tags": ["game", "rpg", "survival", "zombies", "apocalypse", "thelastofus"],
     "tools": ["C"]
-  },
-  {
-    "title": "Commit AI Generator",
-    "description": "A vscode extension to generate a commit message with Open AI API",
-    "repository": "https://github.com/LouisLanganay/commit-ai-generator",
-    "links": [
-      {
-        "name": "View on VSCode Marketplace",
-        "url": "https://marketplace.visualstudio.com/items?itemName=Coodo.commit-generator"
-      }
-    ],
-    "image": "https://i.ibb.co/xhW337H/image.png",
-    "date": "04 oct. 2023",
-    "tags": ["ai", "generator", "openai", "commit", "gpt"],
-    "tools": ["typescript"]
   }
 ]
