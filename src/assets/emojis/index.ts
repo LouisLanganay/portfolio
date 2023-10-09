@@ -10,6 +10,7 @@ import backhand_index_pointing_left from './backhand_index_pointing_left_3d_defa
 import house from './house_3d.png';
 import building_construction from './building_construction_3d.png';
 import control_knobs from './control_knobs_3d.png';
+import hourglass_not_done from './hourglass_not_done_3d.png';
 
 export {
   laptop,
@@ -22,5 +23,6 @@ export {
   backhand_index_pointing_left,
   house,
   control_knobs,
-  building_construction
+  building_construction,
+  hourglass_not_done
 };

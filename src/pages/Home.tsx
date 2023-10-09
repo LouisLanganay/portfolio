@@ -33,7 +33,7 @@ interface Project {
     name: string;
     url: string;
   }[];
-  image: string;
+  image?: string;
   date: string;
   tags: string[];
   tools: string[];

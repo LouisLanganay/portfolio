@@ -4,7 +4,8 @@ import projects from './projects/projects.json';
 import { useParams } from 'react-router-dom';
 import getIcon from '../utils/getIcon';
 import {
-  backhand_index_pointing_right as rightHandEmoji
+  backhand_index_pointing_right as rightHandEmoji,
+  hourglass_not_done as hourglassEmoji
 } from '../assets/emojis/index';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -38,7 +39,7 @@ interface Project {
     name: string;
     url: string;
   }[];
-  image: string;
+  image?: string;
   date: string;
   tags: string[];
   tools: string[];
@@ -111,8 +112,20 @@ const Project: React.FC = () => {
   return (
     <Layout>
       <div className='flex flex-col h-full'>
-        <img src={project.image} alt={project.title}
-          className='w-full h-64 object-cover rounded-2xl shadow-lg' />
+        {project.image ? (
+          <img src={project.image} alt={project.title}
+            className='w-full h-64 object-cover rounded-2xl shadow-lg' />
+        ) : (
+          <div className='w-full h-64 rounded-2xl shadow-lg flex flex-row
+          items-center justify-center'>
+            <h2 className='font-Iregular text-tertiary-100 text-lg
+            flex justify-center items-center h-full'>
+              Nothing here yet!
+            </h2>
+            <img src={hourglassEmoji} alt='Hourglass Emoji'
+              className='w-7 h-7 inline-block ml-2' />
+          </div>
+        )}
         <div className='flex flex-col gap-2 mt-4'>
           <div className='flex flex-row items-center flex-wrap gap-2'>
             <h1 className='font-Mbold text-3xl text-secondary-500 mr-5'>

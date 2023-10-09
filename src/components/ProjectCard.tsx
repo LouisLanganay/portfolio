@@ -7,6 +7,9 @@ import {
   StarIcon
 } from '@heroicons/react/24/solid';
 import getRepository from '../utils/getRepository';
+import {
+  hourglass_not_done as hourglassEmoji
+} from '../assets/emojis/index';
 
 interface Project {
   title: string;
@@ -15,7 +18,7 @@ interface Project {
     name: string;
     url: string;
   }[];
-  image: string;
+  image?: string;
   date: string;
   tags: string[];
   tools: string[];
@@ -60,9 +63,23 @@ const ProjectCard: React.FC<{ project: Project, position: number }> = ({
     }} key={position}>
       <div className='flex flex-row gap-5 flex-wrap md:flex-nowrap'>
         <div className='flex flex-col gap-3 w-60 flex-shrink-0'>
-          <img src={project.image} alt={project.title}
-            className='w-full h-32 object-cover rounded-xl border-2 transition-all
-            duration-150 border-tertiary-450 group-hover:border-tertiary-400' />
+          {project.image ? (
+            <img src={project.image} alt={project.title}
+              className='w-full h-32 object-cover rounded-xl border-2
+              transition-all duration-150 border-tertiary-450
+              group-hover:border-tertiary-400' />
+          ) : (
+            <div className='w-full h-32 rounded-xl border-2 transition-all
+            duration-150 border-tertiary-450 group-hover:border-tertiary-400
+            flex flex-row justify-center items-center'>
+              <h2 className='font-Iregular text-tertiary-100 text-lg
+              text-center'>
+                Nothing here yet!
+              </h2>
+              <img src={hourglassEmoji} alt='Hourglass'
+                className='w-6 h-6' />
+            </div>
+          )}
           <div className='flex flex-row gap-1 flex-wrap'>
             {project.tools.map((tool: string) => (
               <img

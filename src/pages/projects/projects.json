@@ -28,6 +28,9 @@
     ],
     "image": "https://i.ibb.co/xhW337H/image.png",
     "date": "04 oct. 2023",
+    "stats": {
+      "downloads": "+10"
+    },
     "tags": ["ai", "generator", "openai", "commit", "gpt"],
     "tools": ["typescript"]
   },
@@ -86,5 +89,12 @@
     "date": "27 mar. 2023 - 23 apr. 2023",
     "tags": ["game", "rpg", "survival", "zombies", "apocalypse", "thelastofus"],
     "tools": ["C"]
+  },
+  {
+    "title": "BeMoon",
+    "description": "Soon..",
+    "date": "sep. 2023 - nov. 2023",
+    "tags": [],
+    "tools": []
   }
 ]
