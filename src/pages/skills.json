@@ -3,24 +3,10 @@
     "title": "languages",
     "options": [
       "Javascript",
-      "NodeJS",
       "C/C++",
       "Typescript",
       "Java",
       "Bash"
-    ]
-  },
-  {
-    "title": "tools",
-    "options": [
-      "API Rest",
-      "Git",
-      "Linux systems",
-      "Github Actions",
-      "Docker",
-      "MongoDB",
-      "Postman",
-      "Stripe"
     ]
   },
   {
@@ -35,7 +21,23 @@
   {
     "title": "frameworks",
     "options": [
-      "React"
+      "React",
+      "NodeJS",
+      "NPM",
+      "ExpressJS"
+    ]
+  },
+  {
+    "title": "tools",
+    "options": [
+      "API Rest",
+      "Git",
+      "Linux systems",
+      "Github Actions",
+      "Docker",
+      "MongoDB",
+      "Postman",
+      "Stripe"
     ]
   }
 ]
