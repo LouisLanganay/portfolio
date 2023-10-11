@@ -89,7 +89,7 @@ After installing the extension, you need to configure it with your OpenAI API ke
 
 &nbsp;
 
-If you encounter any issues or have suggestions for improving the Commit AI extension, please visit the [GitHub repository](https://github.com/yourusername/commit-ai-extension) and create an issue. Your feedback is valuable in enhancing the extension's functionality.
+If you encounter any issues or have suggestions for improving the Commit AI extension, please visit the [GitHub repository](https://github.com/LouisLanganay/commit-ai-generator) and create an issue. Your feedback is valuable in enhancing the extension's functionality.
 
 &nbsp;
 
