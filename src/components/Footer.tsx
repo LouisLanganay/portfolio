@@ -1,4 +1,5 @@
 import React from 'react';
+import ContactButton from './ContactButton';
 
 const Footer: React.FC = () => {
   const Year = new Date().getFullYear();
@@ -14,6 +15,10 @@ const Footer: React.FC = () => {
     {
       name: 'Discord',
       url: 'https://discord.com/users/660435627757666311'
+    },
+    {
+      name: 'E-Mail',
+      url: 'mailto:louislanganay@gmail.com'
     }
   ];
 
@@ -21,19 +26,23 @@ const Footer: React.FC = () => {
     <footer className='py-4 lg:px-36 px-5 flex flex-row
     justify-between items-center border-t border-tertiary-450 flex-wrap-reverse
     md:flex-nowrap gap-y-5'>
-      <div className='flex flex-col flex-shrink-0'>
-        <h1 className='text-2xl font-Mblack text-white'>
-          Louis.L
-        </h1>
-        <p className='text-sm text-white opacity-40'>
-          louislanganay@gmail.com
-        </p>
-        <p className='text-sm text-white opacity-40'>
-          © Louis {Year}. All Rights Reserved.
-        </p>
+      <div className='flex flex-row flex-shrink-0 gap-4'>
+        <img onClick={() => { window.location.href = '/'; }}
+          src='https://avatars.githubusercontent.com/u/114762819?v=4'
+          alt='Github'
+          className='w-10 h-10 rounded-full cursor-pointer'
+        />
+        <div className='flex flex-col'>
+          <p className='text-sm text-white opacity-40'>
+            louislanganay@gmail.com
+          </p>
+          <p className='text-sm text-white opacity-40'>
+            © Louis {Year}. All Rights Reserved.
+          </p>
+        </div>
       </div>
       <div className='flex flex-row gap-4 justify-center md:justify-end w-full
-      items-center'>
+      items-center flex-wrap md:flex-nowrap'>
         {links.map((link, i) => (
           <a href={link.url} key={i} target='_blank'
             className='group w-fit ease-in-out font-Mmedium text-tertiary-0
@@ -46,14 +55,7 @@ const Footer: React.FC = () => {
             </span>
           </a>
         ))}
-        <button onClick={() => {
-          window.open('https://discord.com/users/660435627757666311','_blank');
-        }}
-        className='transition-all duration-300 hover:bg-secondary-500
-        ease-in-out text-white font-Mmedium px-4 py-2 ml-16
-        border-tertiary-400 border-2 rounded-full'>
-          Contact Me
-        </button>
+        <ContactButton />
       </div>
     </footer>
   );
