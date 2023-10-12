@@ -21,3 +21,6 @@ This project is one of the freest project of your first year. Create your own RP
 # 📖 Project Documentation
 
 Get the project documentation [on github](https://github.com/LouisLanganay/Zombie-Quarter-Rampage-my_rpg/wiki).
+
+### Video of the project:
+[![video](https://img.youtube.com/vi/AVhD-_HdyUU/0.jpg)](https://www.youtube.com/watch?v=AVhD-_HdyUU)
