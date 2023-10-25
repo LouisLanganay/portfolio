@@ -8,16 +8,6 @@
 
 ---
 
-## 📖 Table of Contents
-- [🚀 Getting Started](#-getting-started)
-    - [🔧 Installation](#-installation)
-    - [🤖 Running ](#-running-)
-    - [🧪 Tests](#-tests)
-- [📄 License](#-license)
-
----
-
-
 ## 🚀 Getting Started
 
 ### 🔧 Installation
