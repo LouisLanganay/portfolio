@@ -70,7 +70,7 @@
       }
     ],
     "repository": "https://github.com/LouisLanganay/portfolio",
-    "image": "https://i.ibb.co/jDZnswT/Screenshot-2023-09-26-171224.png",
+    "image": "https://i.ibb.co/HCwxRTb/image.png",
     "date": "sep. 2023 - present",
     "tags": ["web", "design"],
     "tools": ["nodejs", "typescript", "react", "tailwindcss", "figma"]
@@ -94,6 +94,14 @@
     "title": "BeMoon",
     "description": "Soon..",
     "date": "sep. 2023 - nov. 2023",
+    "tags": [],
+    "tools": []
+  },
+  {
+    "title": "Readme Creator",
+    "description": "Soon..",
+    "image": "https://i.ibb.co/xSWcsBg/image.png",
+    "date": "nov. 2023",
     "tags": [],
     "tools": []
   }
