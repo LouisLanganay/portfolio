@@ -14,9 +14,7 @@ The primary goal of the **Coodo.xyz - Discord** Bot project was to create a vers
 
 &nbsp;
 
-| Features | Image |
-| -- | -- |
-| Poll creation using slash commands and embed generated. | ![Poll Creation](https://i.ibb.co/rmx1H9K/Page1-small.png) |
+<img src="https://i.ibb.co/rmx1H9K/Page1-small.png" alt="Page1-small" style="max-width: 40%;"/>
 
 &nbsp;
 
