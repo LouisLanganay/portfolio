@@ -95,7 +95,7 @@
     "description": "Soon..",
     "date": "sep. 2023 - nov. 2023",
     "tags": [],
-    "tools": []
+    "tools": ["typescript", "react", "tailwindcss", "sass", "javascript"]
   },
   {
     "title": "Readme Creator",
@@ -103,6 +103,6 @@
     "image": "https://i.ibb.co/xSWcsBg/image.png",
     "date": "nov. 2023",
     "tags": [],
-    "tools": []
+    "tools": ["typescript", "react", "tailwindcss"]
   }
 ]

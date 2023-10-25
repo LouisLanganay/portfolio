@@ -31,6 +31,7 @@ interface Project {
 
 interface Repo {
   watchers_count: number;
+  subscribers_count: number;
 }
 
 const ProjectCard: React.FC<{ project: Project, position: number }> = ({
@@ -81,7 +82,7 @@ const ProjectCard: React.FC<{ project: Project, position: number }> = ({
             </div>
           )}
           <div className='flex flex-row gap-1 flex-wrap'>
-            {project.tools.map((tool: string) => (
+            {project.tools.sort().map((tool: string) => (
               <img
                 src={getIcon(tool)}
                 alt={tool} className='w-6 h-6 inline-block mr-2 rounded-sm'
@@ -105,10 +106,10 @@ const ProjectCard: React.FC<{ project: Project, position: number }> = ({
           </p>
           {(project.stats?.downloads ||
           project.stats?.users ||
-          repository?.watchers_count) && (
-            <div className='h-[1px] bg-tertiary-450 w-full my-4
-          group-hover:bg-tertiary-400 transition-all duration-150' />
-          )}
+          repository?.watchers_count) ? (
+              <div className='h-[1px] bg-tertiary-450 w-full my-4
+            group-hover:bg-tertiary-400 transition-all duration-150' />
+            ) : null }
           <div className='flex flex-row items-center gap-5'>
             {project.stats?.downloads && (
               <div className='flex flex-row items-center gap-1'>
@@ -126,14 +127,14 @@ const ProjectCard: React.FC<{ project: Project, position: number }> = ({
                 </p>
               </div>
             )}
-            {repository?.watchers_count && (
+            {repository?.watchers_count ? (
               <div className='flex flex-row items-center gap-1'>
                 <StarIcon className='w-5 h-5 text-light-500' />
                 <p className='font-Mbold text-light-500 text-base'>
                   {repository.watchers_count}
                 </p>
               </div>
-            )}
+            ) : null}
           </div>
         </div>
       </div>

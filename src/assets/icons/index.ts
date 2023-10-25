@@ -9,6 +9,7 @@ import figma from './figma.png';
 import adobeillustrator from './adobeillustrator.png';
 import c from './c.png';
 import postman from './postman.png';
+import sass from './sass.png';
 
 export {
   nodejs,
@@ -21,5 +22,6 @@ export {
   figma,
   adobeillustrator,
   c,
-  postman
+  postman,
+  sass
 };

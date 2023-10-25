@@ -9,7 +9,8 @@ import {
   adobeillustrator,
   figma,
   c,
-  postman
+  postman,
+  sass
 } from '../assets/icons/index';
 
 const emojis = [
@@ -56,6 +57,10 @@ const emojis = [
   {
     'name': 'postman',
     'emoji': postman
+  },
+  {
+    'name': 'sass',
+    'emoji': sass
   }
 ];
 

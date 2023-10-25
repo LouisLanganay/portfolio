@@ -105,7 +105,9 @@ const Project: React.FC = () => {
 
   if (!project) return (
     <Layout>
-      Loading....
+      <h4 className='font-Mbold text-2xl text-tertiary-100'>
+        Loading....
+      </h4>
     </Layout>
   );
 
@@ -149,7 +151,7 @@ const Project: React.FC = () => {
               </p>
             )}
             <div className='flex flex-row gap-2 flex-wrap'>
-              {project.tools.map((tool: string, index: number) => (
+              {project.tools.sort().map((tool: string, index: number) => (
                 <img
                   key={index}
                   src={getIcon(tool)}
