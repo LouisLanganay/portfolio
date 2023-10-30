@@ -42,4 +42,4 @@ Remember, your feedback and contributions are always welcome!
 
 &nbsp;
 
-> 📩 Feel free to reach out if you have any questions or suggestions about the **Coodo.xyz Dashboard project**!
+> 📩 Feel free to reach out if you have any questions or suggestions about the Coodo.xyz Dashboard project!
