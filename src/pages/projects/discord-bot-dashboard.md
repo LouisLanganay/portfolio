@@ -20,6 +20,7 @@ Here are some of the key features of the **Coodo.xyz - Dashboard**:
 | Poll results page displaying all the data from a poll. (Choice, description, title, creator, options, etc.) | ![Dashboard Image](https://i.ibb.co/sHGwtpN/Screenshot-2023-10-02-235358.png) |
 | Poll edit page allowing the poll creator to modify the title, description, image and status. | ![Dashboard Image](https://i.ibb.co/CMN6qDb/Screenshot-2023-10-03-001846.png) |
 | Premium page allowing users to purchase a premium subscription to cover operating costs. | ![Dashboard Image](https://i.ibb.co/pZmfwC7/Screenshot-2023-10-03-002111.png) |
+| Administrator panel with daily statistics such as the number of guilds, users, votes, etc. | ![Dashboard Image](https://i.ibb.co/Z2pRMPv/image.png) |
 
 &nbsp;
 
