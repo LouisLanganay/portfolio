@@ -110,8 +110,12 @@ export const theme = {
       99: '.99',
       101: '1.01'
     },
+    transitionProperty: {
+      'height': 'height'
+    },
     backgroundImage: {
-      'noisy-texture': 'url("assets/background_noisy.png")'
+      'noisy-texture': 'url("assets/background_noisy.png")',
+      'grid-texture': 'url("assets/grid.png")'
     },
     animation: {
       blob: 'blob 7s infinite'

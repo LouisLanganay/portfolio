@@ -16,7 +16,7 @@ const Layout: FunctionComponent<LayoutProps> = ({ children }) => {
         bg-noisy-texture fixed top-0 left-0 z-[1] h-screen w-screen'/>
        */}
       <div className='flex flex-col flex-1 z-[2] items-center'>
-        <div className='max-w-4xl'>
+        <div className='max-w-4xl px-5 py-10'>
           <BreadCrumb />
           {children}
         </div>

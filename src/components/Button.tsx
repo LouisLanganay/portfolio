@@ -25,7 +25,7 @@ const Button: FC<ButtonProps> = ({
     break;
   }
   return (
-    <button className={`items-center text-sm
+    <button className={`items-center text-sm md:text-base
     font-Mmedium py-1 px-4 h-fit rounded-lg flex flex-row justify-center
     disabled:opacity-60 disabled:cursor-not-allowed min-h-10 ${style}
     transition duration-200 ease-in-out shadow-md

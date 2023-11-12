@@ -40,34 +40,36 @@ const Header: React.FC = () => {
     return null;
 
   return (
-    <header className={`py-4 lg:px-36 px-5 flex flex-row justify-between
-    items-center sticky top-0 ${style} transition-all duration-300 z-50`}>
-      <div className='flex flex-row items-center'>
-        <img onClick={() => { window.location.href = '/'; }}
-          src='https://avatars.githubusercontent.com/u/114762819?v=4'
-          alt='Github'
-          className='w-10 h-10 rounded-full cursor-pointer'
-        />
-      </div>
-      <div className='flex flex-row gap-4 justify-end md:justify-end w-full
-      items-center flex-wrap md:flex-nowrap'>
-        {links.map((link, i) => (
-          <a href={link.url} key={i} target='_blank'
-            className='group w-fit ease-in-out font-Mmedium text-tertiary-0
-            hover:text-secondary-500 cursor-pointer hidden sm:block'>
-            <span className='bg-left-bottom bg-gradient-to-r
-            from-secondary-500 to-secondary-500 bg-[length:0%_2px]
-            bg-no-repeat pb-1 group-hover:bg-[length:100%_2px] transition-all
-            duration-500 ease-out flex gap-2'>
-              {link.name}
-            </span>
-          </a>
-        ))}
-        <Button type='primary' link='mailto:louislanganay@gmail.com' className='ml-5'>
-          Contact me
-        </Button>
-      </div>
-    </header>
+    <div className={`sticky top-0 ${style} transition-all duration-300 z-50`}>
+      <header className={`py-4 px-5 flex flex-row justify-between max-w-4xl
+      items-center m-auto`}>
+        <div className='flex flex-row items-center'>
+          <img onClick={() => { window.location.href = '/'; }}
+            src='https://avatars.githubusercontent.com/u/114762819?v=4'
+            alt='Github'
+            className='w-10 h-10 rounded-full cursor-pointer'
+          />
+        </div>
+        <div className='flex flex-row gap-4 justify-end md:justify-end w-full
+        items-center flex-wrap md:flex-nowrap'>
+          {links.map((link, i) => (
+            <a href={link.url} key={i} target='_blank'
+              className='group w-fit ease-in-out font-Mmedium text-tertiary-0
+              hover:text-secondary-500 cursor-pointer hidden sm:block'>
+              <span className='bg-left-bottom bg-gradient-to-r
+              from-secondary-500 to-secondary-500 bg-[length:0%_2px]
+              bg-no-repeat pb-1 group-hover:bg-[length:100%_2px] transition-all
+              duration-500 ease-out flex gap-2'>
+                {link.name}
+              </span>
+            </a>
+          ))}
+          <Button type='primary' link='mailto:louislanganay@gmail.com' className='ml-5'>
+            Contact me
+          </Button>
+        </div>
+      </header>
+    </div>
   );
 };
 
