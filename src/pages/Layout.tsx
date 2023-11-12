@@ -9,13 +9,17 @@ interface LayoutProps {
 
 const Layout: FunctionComponent<LayoutProps> = ({ children }) => {
   return (
-    <div className='bg-tertiary-480 h-fit min-h-screen flex flex-col relative'>
+    <div className='bg-tertiary-550 h-fit min-h-screen flex flex-col relative'>
       <Header />
-      <div className='pointer-events-none opacity-70 bg-blend-normal
-      bg-noisy-texture fixed top-0 left-0 z-[1] h-screen w-screen'/>
-      <div className='flex flex-col flex-1 px-5 lg:px-36 py-10 z-[2]'>
-        <BreadCrumb />
-        {children}
+      {/**
+        <div className='pointer-events-none opacity-70 bg-blend-normal
+        bg-noisy-texture fixed top-0 left-0 z-[1] h-screen w-screen'/>
+       */}
+      <div className='flex flex-col flex-1 z-[2] items-center'>
+        <div className='max-w-4xl'>
+          <BreadCrumb />
+          {children}
+        </div>
         <Analytics />
       </div>
       <Footer />

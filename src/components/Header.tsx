@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import ContactButton from './ContactButton';
+import Button from './Button';
 
 const Header: React.FC = () => {
-  const [ style, setStyle ] = useState<string | null>('bg-tertiary-500');
+  const [ style, setStyle ] = useState<string | null>('');
 
   const listenScrollEvent = () => {
     if (window.scrollY > 50) {
-      setStyle('bg-tertiary-480 backdrop-blur bg-opacity-80');
+      setStyle('transition-all duration-150 -translate-y-14');
     } else {
-      setStyle('bg-tertiary-500');
+      setStyle('');
     }
   };
 
@@ -41,8 +41,7 @@ const Header: React.FC = () => {
 
   return (
     <header className={`py-4 lg:px-36 px-5 flex flex-row justify-between
-    items-center sticky top-0 ${style}
-    transition-all duration-300 z-50`}>
+    items-center sticky top-0 ${style} transition-all duration-300 z-50`}>
       <div className='flex flex-row items-center'>
         <img onClick={() => { window.location.href = '/'; }}
           src='https://avatars.githubusercontent.com/u/114762819?v=4'
@@ -64,7 +63,9 @@ const Header: React.FC = () => {
             </span>
           </a>
         ))}
-        <ContactButton />
+        <Button type='primary' link='mailto:louislanganay@gmail.com' className='ml-5'>
+          Contact me
+        </Button>
       </div>
     </header>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import ContactButton from './ContactButton';
+import Button from './Button';
 
 const Footer: React.FC = () => {
   const Year = new Date().getFullYear();
@@ -55,7 +55,9 @@ const Footer: React.FC = () => {
             </span>
           </a>
         ))}
-        <ContactButton />
+        <Button type='primary' link='mailto:louislanganay@gmail.com'>
+          Contact me
+        </Button>
       </div>
     </footer>
   );
