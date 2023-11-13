@@ -30,8 +30,8 @@ const Button: FC<ButtonProps> = ({
     <button className={`items-center text-sm md:text-base w-fit
     font-Mregular py-1 px-4 h-fit rounded-lg flex flex-row justify-center
     disabled:opacity-60 disabled:cursor-not-allowed min-h-10 ${style}
-    transition duration-200 ease-in-out
-    ${className}`} disabled={disabled || false}
+    transition duration-200 ease-in-out ${className}`}
+    disabled={disabled || false}
     onClick={() => handleClick(link)}>
       {loading ? (
         <ArrowPathIcon className='animate-spin h-5 w-5 mr-3' />

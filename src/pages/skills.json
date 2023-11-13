@@ -2,40 +2,38 @@
   {
     "title": "languages",
     "options": [
-      "Javascript",
+      "JS & Typecript",
       "C/C++",
       "Typescript",
       "Bash"
     ]
   },
   {
-    "title": "design",
-    "options": [
-      "Tailwind CSS",
-      "Figma",
-      "Adobe Illustrator",
-      "Adobe Photoshop"
-    ]
-  },
-  {
-    "title": "frameworks",
+    "title": "frameworks & libs",
     "options": [
       "React",
       "NodeJS",
-      "NPM",
-      "ExpressJS"
+      "ExpressJS",
+      "Tailwind CSS"
     ]
   },
   {
     "title": "tools",
     "options": [
-      "API Rest",
       "Git",
       "Linux systems",
-      "Github Actions",
       "MongoDB",
       "Postman",
       "Stripe"
+    ]
+  },
+  {
+    "title": "other",
+    "options": [
+      "CI/CD",
+      "Figma",
+      "Adobe Illustrator",
+      "Adobe Photoshop"
     ]
   }
 ]

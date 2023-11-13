@@ -6,7 +6,7 @@ const Header: React.FC = () => {
 
   const listenScrollEvent = () => {
     if (window.scrollY > 50) {
-      setStyle('transition-all duration-150 -translate-y-14');
+      setStyle('transition-all duration-200 -translate-y-20');
     } else {
       setStyle('');
     }
@@ -41,8 +41,8 @@ const Header: React.FC = () => {
 
   return (
     <div className={`sticky top-0 ${style} transition-all duration-300 z-50`}>
-      <header className={`py-4 px-5 flex flex-row justify-between max-w-4xl
-      items-center m-auto`}>
+      <header className='py-4 px-5 flex flex-row justify-between max-w-4xl items-center
+      m-auto'>
         <div className='flex flex-row items-center'>
           <img onClick={() => { window.location.href = '/'; }}
             src='https://avatars.githubusercontent.com/u/114762819?v=4'

@@ -34,24 +34,24 @@ const Home: React.FC = () => {
         </div>
       </section>
       <Section title='SKILLS'>
-        <div className='flex flex-row gap-16 flex-wrap'>
+        <div className='flex flex-row gap-5 flex-wrap justify-between'>
           {skills.map((skill: Skill, index: number) => (
             <ul key={index} className='flex flex-row font-Mregular text-white
-            text-sm gap-2'>
+            text-sm gap-2 h-fit max-w-[150px]'>
               <div className='flex flex-col items-center'>
                 <div className='flex items-center justify-center w-5 h-5 md:w-6 md:h-6
                 bg-tertiary-500 border-[1px] border-tertiary-480 rounded-full mb-4
                 text-xs md:text-sm mt-1'>
                   {index + 1}
                 </div>
-                <hr className='w-[1px] h-full bg-tertiary-480 border-0' />
+                <hr className='w-[1px] h-full bg-tertiary-480 border-0 mb-1' />
               </div>
               <div className='flex flex-col h-fit'>
-                <li className='font-Mbold text-lg mb-2'>
+                <li className='font-Mbold text-base md:text-lg mb-2'>
                   {skill.title.toUpperCase()}
                 </li>
                 {skill.options.map((skill, index) => (
-                  <li key={index} className='text-tertiary-200 text-base'>
+                  <li key={index} className='text-tertiary-200 text-sm md:text-base'>
                     {skill}
                   </li>
                 ))}

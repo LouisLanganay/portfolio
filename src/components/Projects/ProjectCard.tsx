@@ -72,8 +72,9 @@ const ProjectCard: React.FC<{ project: Project, key: number }> = ({
         }}
         />
         <div className='flex flex-col gap-5 w-full'>
-          <div className='w-full h-72 overflow-hidden border-tertiary-480 duration-150
-          group-hover:border-tertiary-450 rounded-lg border-[1px] transition-all'>
+          <div className='w-full h-40 md:h-64 overflow-hidden border-tertiary-480
+          duration-150 group-hover:border-tertiary-450 rounded-lg border-[1px]
+          transition-all'>
             {project.image ? (
               <img src={project.image} alt={project.title}
                 className='object-cover group-hover:scale-101 h-full w-full transition-all
