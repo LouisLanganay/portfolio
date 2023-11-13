@@ -16,19 +16,21 @@ const Button: FC<ButtonProps> = ({
 
   switch (type) {
   case 'primary':
-    style += 'bg-tertiary-500 hover:bg-tertiary-450 active:bg-tertiary-600 \
-    text-white disabled:hover:bg-tertiary-500 border-[1px] border-tertiary-300';
+    style += 'bg-tertiary-500 hover:bg-tertiary-480 active:bg-tertiary-550 \
+    text-white disabled:hover:bg-tertiary-500 border-[1px] border-tertiary-480 \
+    hover:border-tertiary-450 disabled:border-tertiary-480 shadow-sm';
     break;
-  default:
-    style += 'bg-main-500 hover:bg-main-450 active:bg-main-600 text-white \
-    disabled:hover:bg-main-500';
+  case 'secondary':
+    style += 'active:bg-tertiary-550 text-white disabled:hover:text-white  \
+    disabled:hover:bg-tertiary-500 border-[1px] \
+    border-tertiary-480 hover:border-tertiary-450';
     break;
   }
   return (
-    <button className={`items-center text-sm md:text-base
-    font-Mmedium py-1 px-4 h-fit rounded-lg flex flex-row justify-center
+    <button className={`items-center text-sm md:text-base w-fit
+    font-Mregular py-1 px-4 h-fit rounded-lg flex flex-row justify-center
     disabled:opacity-60 disabled:cursor-not-allowed min-h-10 ${style}
-    transition duration-200 ease-in-out shadow-md
+    transition duration-200 ease-in-out
     ${className}`} disabled={disabled || false}
     onClick={() => handleClick(link)}>
       {loading ? (

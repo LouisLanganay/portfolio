@@ -1,51 +1,24 @@
 import React from 'react';
 import Layout from './Layout';
 import {
-  person_raising_hand as heyEmoji,
-  laptop as laptopEmoji,
-  round_pushpin as locationEmoji,
-  graduation_cap as graduationEmoji,
-  potted_plant as plantEmoji,
   backhand_index_pointing_right as rightHandEmoji
 } from '../assets/emojis/index';
 import projects from './projects/projects.json';
-import { ExperienceDropdown, ProjectCard, Section } from '../components';
+import { Button, ExperienceDropdown, ProjectCard, Section } from '../components';
 import skills from './skills.json';
 import experiences from './experiences.json';
 import { AcademicCapIcon, BriefcaseIcon } from '@heroicons/react/24/outline';
+import { Experience, Project } from '../utils/types';
+import { useNavigate } from 'react-router';
 
 interface Skill {
   title: string;
   options: string[];
 }
 
-interface Experience {
-  type: string | 'education' | 'job';
-  title: string;
-  location: string;
-  date: string;
-  description?: string;
-}
-
-interface Project {
-  title: string;
-  description: string;
-  links?: {
-    name: string;
-    url: string;
-  }[];
-  image?: string;
-  date: string;
-  tags: string[];
-  tools: string[];
-  stats?: {
-    users?: string;
-    downloads?: string;
-  };
-  repository?: string;
-}
-
 const Home: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <Layout>
       <section className='flex flex-col justify-center w-full h-[400px]'>
@@ -61,18 +34,28 @@ const Home: React.FC = () => {
         </div>
       </section>
       <Section title='SKILLS'>
-        <div className='flex flex-col gap-16 flex-wrap'>
+        <div className='flex flex-row gap-16 flex-wrap'>
           {skills.map((skill: Skill, index: number) => (
-            <ul key={index} className='flex flex-col font-Mregular text-white
-            text-sm gap-1'>
-              <li className='font-Mbold text-lg mb-2'>
-                {skill.title.toUpperCase()}
-              </li>
-              {skill.options.map((skill, index) => (
-                <li key={index} className='text-tertiary-200 text-base'>
-                  {skill}
+            <ul key={index} className='flex flex-row font-Mregular text-white
+            text-sm gap-2'>
+              <div className='flex flex-col items-center'>
+                <div className='flex items-center justify-center w-5 h-5 md:w-6 md:h-6
+                bg-tertiary-500 border-[1px] border-tertiary-480 rounded-full mb-4
+                text-xs md:text-sm mt-1'>
+                  {index + 1}
+                </div>
+                <hr className='w-[1px] h-full bg-tertiary-480 border-0' />
+              </div>
+              <div className='flex flex-col h-fit'>
+                <li className='font-Mbold text-lg mb-2'>
+                  {skill.title.toUpperCase()}
                 </li>
-              ))}
+                {skill.options.map((skill, index) => (
+                  <li key={index} className='text-tertiary-200 text-base'>
+                    {skill}
+                  </li>
+                ))}
+              </div>
             </ul>
           ))}
         </div>
@@ -116,35 +99,17 @@ const Home: React.FC = () => {
             ))}
         </ul>
       </Section>
-      <section className='flex flex-row w-full gap-16 flex-wrap xl:flex-nowrap'
-        id='projects'>
-        <h2 className='flex flex-shrink-0 text-xl font-Mblack
-        text-secondary-500 w-56'>
-          PROJECTS
-          <img src={plantEmoji} alt='Laptop'
-            className='w-7 h-7 inline-block ml-2' />
-        </h2>
-        <div className='flex flex-col gap-12'>
-          <ul className='flex flex-row font-Mregular text-white
-          text-sm gap-5 w-full flex-wrap'>
-            {projects.slice(0, 4).map((project: Project, index: number) => (
-              <ProjectCard project={project} position={index} />
-            ))}
-          </ul>
-          <a href='/projects'
-            className='group w-fit ease-in-out font-Mmedium text-tertiary-0
-            hover:text-secondary-500 cursor-pointer'>
-            <span className='bg-left-bottom bg-gradient-to-r
-            from-secondary-500 to-secondary-500 bg-[length:0%_2px]
-            bg-no-repeat pb-1 group-hover:bg-[length:100%_2px] transition-all
-            duration-500 ease-out flex gap-2'>
-              <img src={rightHandEmoji} alt='Right Hand Emoji'
-                className='w-5 h-5 inline-block' />
-              View more projects
-            </span>
-          </a>
-        </div>
-      </section>
+      <Section title='PROJECTS'>
+        <ul className='grid sm:grid-cols-1 md:grid-cols-2 font-Mregular text-white
+        text-sm gap-4 w-full'>
+          {projects.slice(0, 4).map((project: Project, index: number) => (
+            <ProjectCard project={project} key={index} />
+          ))}
+        </ul>
+        <Button type='secondary' onClick={() => navigate('/projects')} className='mt-4'>
+          View more projects &rarr;
+        </Button>
+      </Section>
     </Layout>
   );
 };

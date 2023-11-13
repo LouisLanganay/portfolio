@@ -1,5 +1,5 @@
 interface ButtonProps {
-  type?: 'primary';
+  type?: 'primary' | 'secondary';
   link?: string;
   className?: string;
   children?: React.ReactNode;

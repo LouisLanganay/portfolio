@@ -9,7 +9,7 @@ interface LayoutProps {
 
 const Layout: FunctionComponent<LayoutProps> = ({ children }) => {
   return (
-    <div className='bg-tertiary-550 h-fit min-h-screen flex flex-col relative'>
+    <div className='bg-tertiary-600 h-fit min-h-screen flex flex-col relative'>
       <Header />
       {/**
         <div className='pointer-events-none opacity-70 bg-blend-normal

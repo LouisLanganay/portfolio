@@ -1,5 +1,5 @@
 export interface Experience {
-  type?: 'job' | 'educational';
+  type?: string | 'job' | 'educational';
   title: string;
   location: string;
   date: string;

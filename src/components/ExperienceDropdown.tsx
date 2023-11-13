@@ -1,28 +1,29 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Experience } from '../utils/types';
-import { Menu, Transition } from '@headlessui/react';
-import { MapPinIcon, PlusCircleIcon } from '@heroicons/react/24/outline';
+import { Transition } from '@headlessui/react';
+import { MapPinIcon, PlusIcon } from '@heroicons/react/24/outline';
 
 const ExperienceDropdown: FC<Experience> = ({
   title, location, date, description
-}, key ) => {
+}, index) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [style, setStyle] = useState('max-h-0');
 
   return (
-    <li key={key}>
-      <button className='bg-tertiary-500 hover:bg-tertiary-480 active:bg-tertiary-600
-      border-[1px] border-tertiary-480 items-center py-1 px-4 h-fit rounded-lg flex
-      flex-row transition duration-200 ease-in-out w-full'
+    <li key={index}>
+      <button className='bg-tertiary-500 hover:bg-tertiary-480 border-[1px]
+      border-tertiary-480 items-center py-1 px-4 h-fit rounded-lg flex
+      flex-row transition duration-200 ease-in-out w-full shadow-sm
+      hover:border-tertiary-450'
       onClick={() => setIsExpanded(!isExpanded)}>
         <a className='flex flex-row w-full items-center justify-between'>
           <div className='flex flex-row items-center gap-4'>
-            <PlusCircleIcon className='h-4 w-4 md:h-5 md:w-5 flex-shrink-0 text-white' />
-            <p className='text-sm md:text-base font-Mbold text-white/70 mr-5 text-left'>
+            <PlusIcon className={`h-4 w-4 md:h-5 md:w-5 flex-shrink-0 text-white/90
+            ${isExpanded && 'rotate-45'} transition-all duration-200`} />
+            <p className='text-sm md:text-base font-Mbold text-white/90 mr-5 text-left'>
               {title}
             </p>
           </div>
-          <p className='text-sm md:text-base font-Mmedium text-white/60
+          <p className='text-sm md:text-base font-Iregular text-white/60
           whitespace-nowrap'>
             {date}
           </p>
@@ -43,7 +44,7 @@ const ExperienceDropdown: FC<Experience> = ({
               <MapPinIcon className='h-4 w-4 inline-block mr-1' />
               {location}
             </p>
-            <p className='text-xs md:text-sm font-Mmedium text-white/70'>
+            <p className='text-xs md:text-sm font-Mregular text-white/70'>
               {description}
             </p>
           </div>

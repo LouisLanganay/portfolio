@@ -1,6 +1,6 @@
 import Header from './Header';
 import Footer from './Footer';
-import ProjectCard from './ProjectCard';
+import ProjectCard from './Projects/ProjectCard';
 import BreadCrumb from './BreadCrumb';
 import Button from './Button';
 import Section from './Section';

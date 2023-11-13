@@ -31,34 +31,13 @@ import {
 import getRepository from '../utils/getRepository';
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 import Theme from 'react-syntax-highlighter/dist/esm/styles/prism/one-dark';
+import { Project, Repository } from '../utils/types';
 
-interface Project {
-  title: string;
-  description: string;
-  links?: {
-    name: string;
-    url: string;
-  }[];
-  image?: string;
-  date: string;
-  tags: string[];
-  tools: string[];
-  stats?: {
-    users?: string;
-    downloads?: string;
-  };
-  repository?: string;
-}
-
-interface Repo {
-  watchers_count: number;
-}
-
-const Project: React.FC = () => {
+const ProjectPage: React.FC = () => {
   const [ project, setProject ] = useState<Project | null>(null);
   const { id } = useParams<{ id: string }>();
   const [fileContent, setFileContent] = useState<string | null>(null);
-  const [ repository, setRepository ] = useState<Repo | null>(null);
+  const [ repository, setRepository ] = useState<Repository | null>(null);
 
   useEffect(() => {
     if (id) {
@@ -171,7 +150,7 @@ const Project: React.FC = () => {
                 <div className='flex flex-row items-center gap-1'>
                   <ArrowDownTrayIcon className='w-5 h-5 text-secondary-500' />
                   <p className='font-Mbold text-secondary-500 text-base'>
-                    {project.stats.downloads}
+                    {project.stats.downloads.value}
                   </p>
                 </div>
               )}
@@ -179,7 +158,7 @@ const Project: React.FC = () => {
                 <div className='flex flex-row items-center gap-1'>
                   <UsersIcon className='w-5 h-5 text-secondary-500' />
                   <p className='font-Mbold text-secondary-500 text-base'>
-                    {project.stats.users}
+                    {project.stats.users.value}
                   </p>
                 </div>
               )}
@@ -424,4 +403,4 @@ const Project: React.FC = () => {
   );
 };
 
-export default Project;
+export default ProjectPage;
