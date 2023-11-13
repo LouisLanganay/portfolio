@@ -1,13 +1,14 @@
 import React, { FC, ReactNode } from 'react';
 
-const ProjectCardItem: FC<{ children: ReactNode, tooltip: string | undefined }> = ({
+const ProjectCardItem: FC<{ children: ReactNode, tooltip?: string | undefined }> = ({
   children, tooltip
 }) => {
   return (
     <div className='flex-col flex-shrink-0 text-center justify-center items-center flex
     relative'>
-      <span className='flex flex-row items-center bg-tertiary-480 py-1 px-3 transition-all
-      rounded-lg border-[1px] border-tertiary-450 duration-300 peer'>
+      <span className={`flex flex-row items-center bg-tertiary-480 py-1 px-3
+      transition-all rounded-lg border-[1px] border-tertiary-450 duration-300 peer
+      ${tooltip && 'cursor-pointer'}`}>
         {children}
       </span>
       {tooltip && (

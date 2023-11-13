@@ -21,7 +21,9 @@ const Home: React.FC = () => {
 
   return (
     <Layout>
-      <section className='flex flex-col justify-center w-full h-[400px]'>
+      <section className='flex flex-col relative h-[450px] justify-center'>
+        <div className='w-full h-full opacity-90 bg-grid-texture bg-cover bg-center
+          absolute -z-[1] md:-left-36'/>
         <div className='flex flex-col w-full md:max-w-xl'>
           <h1 className='text-2xl md:text-4xl font-Mblack flex bg-clip-text
           text-transparent bg-white'>

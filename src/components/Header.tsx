@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Button from './Button';
+import { useNavigate } from 'react-router-dom';
 
 const Header: React.FC = () => {
   const [ style, setStyle ] = useState<string | null>('');
+  const navigate = useNavigate();
 
   const listenScrollEvent = () => {
     if (window.scrollY > 50) {
@@ -36,18 +38,17 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', listenScrollEvent);
   }, []);
 
-  if (window.location.pathname !== '/')
-    return null;
-
   return (
     <div className={`sticky top-0 ${style} transition-all duration-300 z-50`}>
       <header className='py-4 px-5 flex flex-row justify-between max-w-4xl items-center
       m-auto'>
         <div className='flex flex-row items-center'>
-          <img onClick={() => { window.location.href = '/'; }}
-            src='https://avatars.githubusercontent.com/u/114762819?v=4'
-            alt='Github'
-            className='w-10 h-10 rounded-full cursor-pointer'
+          <img onClick={() => {
+            navigate('/');
+          }}
+          src='https://avatars.githubusercontent.com/u/114762819?v=4'
+          alt='Github'
+          className='w-10 h-10 rounded-full cursor-pointer'
           />
         </div>
         <div className='flex flex-row gap-4 justify-end md:justify-end w-full
