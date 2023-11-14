@@ -1,8 +1,5 @@
 import React from 'react';
 import Layout from './Layout';
-import {
-  backhand_index_pointing_right as rightHandEmoji
-} from '../assets/emojis/index';
 import projects from './projects/projects.json';
 import { Button, ExperienceDropdown, ProjectCard, Section } from '../components';
 import skills from './skills.json';

@@ -3,9 +3,6 @@ import Layout from './Layout';
 import projects from './projects/projects.json';
 import { useParams } from 'react-router-dom';
 import getIcon from '../utils/getIcon';
-import {
-  hourglass_not_done as hourglassEmoji
-} from '../assets/emojis/index';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
@@ -24,7 +21,8 @@ import {
   TagIcon,
   ArrowDownTrayIcon,
   StarIcon,
-  UsersIcon
+  UsersIcon,
+  MagnifyingGlassIcon
 } from '@heroicons/react/24/outline';
 import getRepository from '../utils/getRepository';
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
@@ -103,8 +101,8 @@ const ProjectPage: React.FC = () => {
             flex justify-center items-center h-full'>
               Nothing here yet!
             </h2>
-            <img src={hourglassEmoji} alt='Hourglass Emoji'
-              className='w-7 h-7 inline-block ml-2' />
+            <MagnifyingGlassIcon className='w-4 h-4 md:w-5 md:h-5 ml-2
+            text-tertiary-100' />
           </div>
         )}
         <div className='flex flex-col gap-2 mt-4'>
