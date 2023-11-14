@@ -3,10 +3,6 @@ import Layout from './Layout';
 import projects from './projects/projects.json';
 import { useParams } from 'react-router-dom';
 import getIcon from '../utils/getIcon';
-import {
-  backhand_index_pointing_right as rightHandEmoji,
-  hourglass_not_done as hourglassEmoji
-} from '../assets/emojis/index';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
@@ -19,46 +15,27 @@ import {
   commit_ai_generator
 } from './projects/index';
 import {
-  ArrowDownTrayIcon,
-  StarIcon,
-  UsersIcon
-} from '@heroicons/react/24/solid';
-import {
   InformationCircleIcon,
   ChatBubbleBottomCenterTextIcon,
-  ExclamationTriangleIcon
+  ExclamationTriangleIcon,
+  TagIcon,
+  ArrowDownTrayIcon,
+  StarIcon,
+  UsersIcon,
+  MagnifyingGlassIcon
 } from '@heroicons/react/24/outline';
 import getRepository from '../utils/getRepository';
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 import Theme from 'react-syntax-highlighter/dist/esm/styles/prism/one-dark';
+import { Project, Repository } from '../utils/types';
+import ProjectCardItem from '../components/Projects/ProjectCardItem';
+import { Button } from '../components';
 
-interface Project {
-  title: string;
-  description: string;
-  links?: {
-    name: string;
-    url: string;
-  }[];
-  image?: string;
-  date: string;
-  tags: string[];
-  tools: string[];
-  stats?: {
-    users?: string;
-    downloads?: string;
-  };
-  repository?: string;
-}
-
-interface Repo {
-  watchers_count: number;
-}
-
-const Project: React.FC = () => {
+const ProjectPage: React.FC = () => {
   const [ project, setProject ] = useState<Project | null>(null);
   const { id } = useParams<{ id: string }>();
   const [fileContent, setFileContent] = useState<string | null>(null);
-  const [ repository, setRepository ] = useState<Repo | null>(null);
+  const [ repository, setRepository ] = useState<Repository | null>(null);
 
   useEffect(() => {
     if (id) {
@@ -124,25 +101,26 @@ const Project: React.FC = () => {
             flex justify-center items-center h-full'>
               Nothing here yet!
             </h2>
-            <img src={hourglassEmoji} alt='Hourglass Emoji'
-              className='w-7 h-7 inline-block ml-2' />
+            <MagnifyingGlassIcon className='w-4 h-4 md:w-5 md:h-5 ml-2
+            text-tertiary-100' />
           </div>
         )}
         <div className='flex flex-col gap-2 mt-4'>
           <div className='flex flex-row items-center flex-wrap gap-2'>
-            <h1 className='font-Mbold text-3xl text-secondary-500 mr-5'>
+            <h1 className='font-Mbold text-xl md:text-2xl text-white mr-5'>
               {project.title}
             </h1>
             {project.tags.map((tag: string, index: number) => (
-              <span key={index} className='bg-secondary-500 text-tertiary-0
+              <span key={index} className='bg-tertiary-480 text-tertiary-0
               font-Mmedium text-sm rounded-full px-3 py-1 h-fit bg-opacity-30
-              border border-secondary-500'>
+              border border-tertiary-450'>
+                <TagIcon className='w-4 h-4 inline-block mr-1' />
                 {tag}
               </span>
             ))}
           </div>
           <div className='flex flex-row items-center gap-5'>
-            <p className='font-Imedium text-tertiary-100'>
+            <p className='font-Imedium text-white/60 text-xs md:text-sm'>
               {project.date}
             </p>
             {project.tools.length > 0 && (
@@ -152,10 +130,8 @@ const Project: React.FC = () => {
             )}
             <div className='flex flex-row gap-2 flex-wrap'>
               {project.tools.sort().map((tool: string, index: number) => (
-                <img
-                  key={index}
-                  src={getIcon(tool)}
-                  alt={tool} className='w-6 h-6 inline-block rounded-sm'
+                <img key={index} src={getIcon(tool)} alt={tool}
+                  className='w-4 h-4 md:w-5 md:h-5 inline-block rounded-sm'
                 />
               ))}
             </div>
@@ -168,33 +144,34 @@ const Project: React.FC = () => {
             )}
             <div className='flex flex-row items-center gap-5'>
               {project.stats?.downloads && (
-                <div className='flex flex-row items-center gap-1'>
-                  <ArrowDownTrayIcon className='w-5 h-5 text-secondary-500' />
-                  <p className='font-Mbold text-secondary-500 text-base'>
-                    {project.stats.downloads}
+                <ProjectCardItem tooltip={project.stats.downloads.tooltip}>
+                  <ArrowDownTrayIcon className='w-4 h-4 md:w-5 md:h-5 text-white/70
+                  mr-2' />
+                  <p className='font-Imedium text-white/70 text-xs md:text-sm'>
+                    {project.stats.downloads.value}
                   </p>
-                </div>
+                </ProjectCardItem>
               )}
               {project.stats?.users && (
-                <div className='flex flex-row items-center gap-1'>
-                  <UsersIcon className='w-5 h-5 text-secondary-500' />
-                  <p className='font-Mbold text-secondary-500 text-base'>
-                    {project.stats.users}
+                <ProjectCardItem tooltip={project.stats.users.tooltip}>
+                  <UsersIcon className='w-4 h-4 md:w-5 md:h-5 text-white/70 mr-2' />
+                  <p className='font-Imedium text-white/70 text-xs md:text-sm'>
+                    {project.stats.users.value}
                   </p>
-                </div>
+                </ProjectCardItem>
               )}
               {repository?.watchers_count && (
-                <div className='flex flex-row items-center gap-1'>
-                  <StarIcon className='w-5 h-5 text-yellow' />
-                  <p className='font-Mbold text-yellow text-base'>
+                <ProjectCardItem tooltip='Number of stars on GitHub repository'>
+                  <StarIcon className='w-4 h-4 md:w-5 md:h-5 text-white/70 mr-2' />
+                  <p className='font-Imedium text-white/70 text-xs md:text-sm'>
                     {repository.watchers_count}
                   </p>
-                </div>
+                </ProjectCardItem>
               )}
             </div>
           </div>
           <hr className='border-tertiary-400 my-5' />
-          <div className='font-Mregular text-tertiary-100'>
+          <div className='font-Mregular text-tertiary-100 text-sm md:text-base'>
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               rehypePlugins={[rehypeRaw]}
@@ -202,15 +179,15 @@ const Project: React.FC = () => {
               components={{
                 h1(props) {
                   const {...rest} = props;
-                  return <h1 className='font-Mbold text-2xl mb-2' {...rest} />;
+                  return <h1 className='font-Mbold text-xl md:text-2xl mb-2' {...rest} />;
                 },
                 h2(props) {
                   const {...rest} = props;
-                  return <h2 className='font-Mbold text-xl mb-2' {...rest} />;
+                  return <h2 className='font-Mbold text-lg md:text-xl mb-2' {...rest} />;
                 },
                 h3(props) {
                   const {...rest} = props;
-                  return <h2 className='font-Mbold text-lg mb-2' {...rest} />;
+                  return <h2 className='font-Mbold text-base md:text-lg mb-2' {...rest}/>;
                 },
                 a(props) {
                   const {...rest} = props;
@@ -390,32 +367,14 @@ const Project: React.FC = () => {
           <hr className='border-tertiary-400 my-5' />
           <div className='flex flex-col gap-2'>
             {project.repository && (
-              <a href={project.repository} target='_blank' rel='noreferrer'
-                className='group w-fit ease-in-out font-Mmedium text-tertiary-0
-                hover:text-secondary-500 cursor-pointer'>
-                <span className='bg-left-bottom bg-gradient-to-r
-                from-secondary-500 to-secondary-500 bg-[length:0%_2px]
-                bg-no-repeat pb-1 group-hover:bg-[length:100%_2px] transition-all
-                duration-500 ease-out flex gap-2'>
-                  <img src={rightHandEmoji} alt='Right Hand Emoji'
-                    className='w-5 h-5 inline-block' />
-                  View on GitHub
-                </span>
-              </a>
+              <Button type='secondary' link={project.repository}>
+                  View on GitHub &rarr;
+              </Button>
             )}
             {project.links?.map((link) => (
-              <a href={link.url} target='_blank' rel='noreferrer'
-                className='group w-fit ease-in-out font-Mmedium text-tertiary-0
-                hover:text-secondary-500 cursor-pointer'>
-                <span className='bg-left-bottom bg-gradient-to-r
-                from-secondary-500 to-secondary-500 bg-[length:0%_2px]
-                bg-no-repeat pb-1 group-hover:bg-[length:100%_2px] transition-all
-                duration-500 ease-out flex gap-2'>
-                  <img src={rightHandEmoji} alt='Right Hand Emoji'
-                    className='w-5 h-5 inline-block' />
-                  {link.name}
-                </span>
-              </a>
+              <Button type='secondary' link={link.url}>
+                {link.name} &rarr;
+              </Button>
             ))}
           </div>
         </div>
@@ -424,4 +383,4 @@ const Project: React.FC = () => {
   );
 };
 
-export default Project;
+export default ProjectPage;

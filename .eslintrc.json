@@ -27,7 +27,7 @@
     "comma-dangle": ["error", "never"],
     "no-var": "error",
     "prefer-arrow-callback": "error",
-    "max-len": ["warn", { "code": 83 }],
+    "max-len": ["warn", { "code": 90 }],
     "no-param-reassign": "error",
     "no-unused-vars": "warn",
     "no-implicit-globals": "error",

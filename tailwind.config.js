@@ -20,17 +20,20 @@ export const theme = {
     },
     tertiary: {
       0: '#ffffff',
-      100: '#d0d0d0',
-      200: '#a0a0a0',
-      250: '#898989',
-      300: '#717171',
-      400: '#424242',
-      450: '#2a2a2a',
-      480: '#1c1c1c',
-      500: '#121212',
-      550: '#101010',
-      600: '#0e0e0e',
-      650: '#0c0c0c',
+      100: '#d1d1d1',
+      200: '#a3a3a3',
+      250: '#8c8c8c',
+      300: '#757575',
+      400: '#484848',
+      450: '#313131',
+      480: '#232323',
+      500: '#1a1a1a',
+      550: '#171717',
+      600: '#141414',
+      650: '#121212',
+      700: '#0f0f0f',
+      800: '#0a0a0a',
+      900: '#050505',
       1000: '#000000'
     },
     green: {
@@ -107,8 +110,12 @@ export const theme = {
       99: '.99',
       101: '1.01'
     },
+    transitionProperty: {
+      'height': 'height'
+    },
     backgroundImage: {
-      'noisy-texture': 'url("assets/background_noisy.png")'
+      'noisy-texture': 'url("assets/background_noisy.png")',
+      'grid-texture': 'url("assets/grid.png")'
     },
     animation: {
       blob: 'blob 7s infinite'

@@ -13,7 +13,10 @@
     "tags": ["web", "restAPI"],
     "tools": ["nodejs", "javascript", "react", "tailwindcss", "figma"],
     "stats": {
-      "users": "+16.000"
+      "users": {
+        "value": "+15.000",
+        "tooltip": "Users who have already logged to the dashboard"
+      }
     }
   },
   {
@@ -29,7 +32,10 @@
     "image": "https://i.ibb.co/xhW337H/image.png",
     "date": "04 oct. 2023",
     "stats": {
-      "downloads": "+10"
+      "downloads": {
+        "value": "+100",
+        "tooltip": "Number of downloads on vscode marketplace"
+      }
     },
     "tags": ["ai", "generator", "openai", "commit", "gpt"],
     "tools": ["typescript"]
@@ -48,8 +54,14 @@
     "tags": ["discord", "restAPI"],
     "tools": ["nodejs", "discordjs", "javascript", "adobe illustrator"],
     "stats": {
-      "downloads": "3.000",
-      "users": "+20.000"
+      "downloads": {
+        "value": "+3.000",
+        "tooltip": "Number of discord servers that have added the bot"
+      },
+      "users": {
+        "value": "+22.000",
+        "tooltip": "Number of users who have used the bot"
+      }
     }
   },
   {
