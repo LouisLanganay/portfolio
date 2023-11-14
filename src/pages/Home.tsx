@@ -23,7 +23,7 @@ const Home: React.FC = () => {
     <Layout>
       <section className='flex flex-col relative h-[450px] justify-center'>
         <div className='w-full h-full opacity-90 bg-grid-texture bg-cover bg-center
-          absolute -z-[1] md:-left-36'/>
+          absolute -z-[1] -left-5 md:-left-36'/>
         <div className='flex flex-col w-full md:max-w-xl'>
           <h1 className='text-2xl md:text-4xl font-Mblack flex bg-clip-text
           text-transparent bg-white'>
@@ -36,10 +36,11 @@ const Home: React.FC = () => {
         </div>
       </section>
       <Section title='SKILLS'>
-        <div className='flex flex-row gap-5 flex-wrap justify-between'>
+        <div className='grid grid-cols-2 md:flex md:flex-row gap-4 w-full
+        justify-between flex-wrap'>
           {skills.map((skill: Skill, index: number) => (
             <ul key={index} className='flex flex-row font-Mregular text-white
-            text-sm gap-2 h-fit max-w-[150px]'>
+            text-sm gap-2 h-fit max-w-[160px] w-fit'>
               <div className='flex flex-col items-center'>
                 <div className='flex items-center justify-center w-5 h-5 md:w-6 md:h-6
                 bg-tertiary-500 border-[1px] border-tertiary-480 rounded-full mb-4

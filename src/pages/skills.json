@@ -4,7 +4,6 @@
     "options": [
       "JS & Typecript",
       "C/C++",
-      "Typescript",
       "Bash"
     ]
   },
@@ -32,8 +31,8 @@
     "options": [
       "CI/CD",
       "Figma",
-      "Adobe Illustrator",
-      "Adobe Photoshop"
+      "Illustrator",
+      "Photoshop"
     ]
   }
 ]

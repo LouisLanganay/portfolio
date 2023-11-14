@@ -18,14 +18,13 @@ import {
   commit_ai_generator
 } from './projects/index';
 import {
+  InformationCircleIcon,
+  ChatBubbleBottomCenterTextIcon,
+  ExclamationTriangleIcon,
+  TagIcon,
   ArrowDownTrayIcon,
   StarIcon,
   UsersIcon
-} from '@heroicons/react/24/solid';
-import {
-  InformationCircleIcon,
-  ChatBubbleBottomCenterTextIcon,
-  ExclamationTriangleIcon
 } from '@heroicons/react/24/outline';
 import getRepository from '../utils/getRepository';
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
@@ -114,9 +113,10 @@ const ProjectPage: React.FC = () => {
               {project.title}
             </h1>
             {project.tags.map((tag: string, index: number) => (
-              <span key={index} className='bg-secondary-500 text-tertiary-0
+              <span key={index} className='bg-tertiary-480 text-tertiary-0
               font-Mmedium text-sm rounded-full px-3 py-1 h-fit bg-opacity-30
-              border border-secondary-500'>
+              border border-tertiary-450'>
+                <TagIcon className='w-4 h-4 inline-block mr-1' />
                 {tag}
               </span>
             ))}

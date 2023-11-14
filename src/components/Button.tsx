@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { ButtonProps } from '../utils/types';
-import ArrowPathIcon from '@heroicons/react/24/solid/ArrowPathIcon';
+import ArrowPathIcon from '@heroicons/react/24/outline/ArrowPathIcon';
 
 const Button: FC<ButtonProps> = ({
   type, link, className, children, onClick, disabled, loading
