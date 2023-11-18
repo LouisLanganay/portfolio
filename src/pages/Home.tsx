@@ -4,7 +4,7 @@ import projects from './projects/projects.json';
 import { Button, ExperienceDropdown, ProjectCard, Section } from '../components';
 import skills from './skills.json';
 import experiences from './experiences.json';
-import { AcademicCapIcon, ArrowDownIcon, BriefcaseIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
+import { AcademicCapIcon, BriefcaseIcon } from '@heroicons/react/24/outline';
 import { Experience, Project } from '../utils/types';
 import { useNavigate } from 'react-router';
 

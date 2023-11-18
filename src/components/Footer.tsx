@@ -41,7 +41,7 @@ const Footer: React.FC = () => {
       my-2' />
       <div className='flex flex-row justify-between w-full'>
         <div className='flex flex-row items-center flex-shrink-0'>
-          <img onClick={() => { window.location.href = '/'; }}
+          <img onClick={() => { navigate('/'); }}
             src='https://avatars.githubusercontent.com/u/114762819?v=4'
             alt='Github'
             className='w-8 h-8 md:w-10 md:h-10 rounded-full cursor-pointer'
