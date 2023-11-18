@@ -135,14 +135,14 @@ const ProjectCard: React.FC<{ project: Project, key: number }> = ({
                   </p>
                 </ProjectCardItem>
               )}
-              {repository?.watchers_count && (
+              {repository?.watchers_count ? (
                 <ProjectCardItem tooltip='Number of stars on GitHub repository'>
                   <StarIcon className='w-4 h-4 md:w-5 md:h-5 text-white/70 mr-2' />
                   <p className='font-Imedium text-white/70 text-xs md:text-sm'>
                     {repository.watchers_count}
                   </p>
                 </ProjectCardItem>
-              )}
+              ) : null }
             </div>
           </div>
         </div>

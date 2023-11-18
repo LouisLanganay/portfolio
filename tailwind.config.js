@@ -12,7 +12,7 @@ export const theme = {
     },
     secondary: {
       0: '#ffffff',
-      500: '#7678ED',
+      500: '#55b5ff',
       1000: '#000000'
     },
     light: {
