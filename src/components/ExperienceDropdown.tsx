@@ -11,20 +11,23 @@ const ExperienceDropdown: FC<Experience> = ({
   return (
     <li key={index}>
       <button className='bg-tertiary-500 hover:bg-tertiary-480 border-[1px]
-      border-tertiary-480 items-center py-1 px-4 h-fit rounded-lg flex
+      border-tertiary-480 items-center py-1 h-fit rounded-lg flex
       flex-row transition duration-200 ease-in-out w-full shadow-sm
       hover:border-tertiary-450'
       onClick={() => setIsExpanded(!isExpanded)}>
         <a className='flex flex-row w-full items-center justify-between'>
-          <div className='flex flex-row items-center gap-4'>
-            <PlusIcon className={`h-4 w-4 md:h-5 md:w-5 flex-shrink-0 text-white/90
+          <div className='flex flex-row items-center'>
+            <div className='px-2 md:px-4'>
+              <PlusIcon className={`h-4 w-4 md:h-5 md:w-5 flex-shrink-0 text-white/90
             ${isExpanded && 'rotate-45'} transition-all duration-200`} />
-            <p className='text-sm md:text-base font-Mbold text-white/90 mr-5 text-left'>
+            </div>
+            <p className='text-sm md:text-base font-Mbold text-white/90 mr-2
+            md:mr-5 text-left'>
               {title}
             </p>
           </div>
           <p className='text-sm md:text-base font-Iregular text-white/60
-          whitespace-nowrap'>
+          md:whitespace-nowrap pr-2 md:pr-4'>
             {date}
           </p>
         </a>

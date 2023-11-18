@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Layout from './Layout';
 import projects from './projects/projects.json';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import getIcon from '../utils/getIcon';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -36,6 +36,7 @@ const ProjectPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [fileContent, setFileContent] = useState<string | null>(null);
   const [ repository, setRepository ] = useState<Repository | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (id) {
@@ -91,6 +92,9 @@ const ProjectPage: React.FC = () => {
   return (
     <Layout>
       <div className='flex flex-col h-full'>
+        <Button type='secondary' className='mb-4' onClick={() => navigate('/projects')}>
+          &larr; Back to projects
+        </Button>
         {project.image ? (
           <img src={project.image} alt={project.title}
             className='w-full h-64 object-cover rounded-2xl shadow-lg' />
@@ -119,12 +123,12 @@ const ProjectPage: React.FC = () => {
               </span>
             ))}
           </div>
-          <div className='flex flex-row items-center gap-5'>
+          <div className='flex md:items-center gap-2 md:gap-5 flex-col md:flex-row'>
             <p className='font-Imedium text-white/60 text-xs md:text-sm'>
               {project.date}
             </p>
             {project.tools.length > 0 && (
-              <p className='text-tertiary-100'>
+              <p className='text-tertiary-100 hidden md:block'>
                 •
               </p>
             )}
@@ -138,7 +142,7 @@ const ProjectPage: React.FC = () => {
             {(project.stats?.downloads ||
             project.stats?.users ||
             repository?.watchers_count) && (
-              <p className='text-tertiary-100'>
+              <p className='text-tertiary-100 hidden md:block'>
                 •
               </p>
             )}

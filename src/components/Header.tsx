@@ -42,13 +42,13 @@ const Header: React.FC = () => {
     <div className={`sticky top-0 ${style} transition-all duration-300 z-50`}>
       <header className='py-4 px-5 flex flex-row justify-between max-w-4xl items-center
       m-auto'>
-        <div className='flex flex-row items-center'>
+        <div className='flex flex-row items-center flex-shrink-0'>
           <img onClick={() => {
             navigate('/');
           }}
           src='https://avatars.githubusercontent.com/u/114762819?v=4'
           alt='Github'
-          className='w-10 h-10 rounded-full cursor-pointer'
+          className='w-8 h-8 md:w-10 md:h-10 rounded-full cursor-pointer'
           />
         </div>
         <div className='flex flex-row gap-4 justify-end md:justify-end w-full

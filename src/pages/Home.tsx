@@ -41,7 +41,7 @@ const Home: React.FC = () => {
               <div className='flex flex-col items-center'>
                 <div className='flex items-center justify-center w-5 h-5 md:w-6 md:h-6
                 bg-tertiary-500 border-[1px] border-tertiary-480 rounded-full mb-4
-                text-xs md:text-sm mt-1'>
+                text-xs md:text-sm mt-1 text-secondary-500'>
                   {index + 1}
                 </div>
                 <hr className='w-[1px] h-full bg-tertiary-480 border-0 mb-1' />
@@ -63,40 +63,54 @@ const Home: React.FC = () => {
       <Section title='EXPERIENCES & EDUCATION'>
         <ul className='flex flex-col font-Mregular text-white
         text-sm gap-4 w-full'>
-          <div className='flex flex-row items-center gap-4'>
-            <BriefcaseIcon className='w-5 h-5 md:w-6 md:h-6 inline-block
-            text-secondary-500' />
-            <h5 className='text-xs md:text-sm font-Mmedium text-white/70'>
-              EXPERIENCE
-            </h5>
+          <div className='flex flex-row gap-2'>
+            <div className='flex flex-col justify-between flex-shrink-0
+            items-center'>
+              <div className='flex items-center justify-center w-5 h-5 md:w-6 md:h-6
+                bg-tertiary-500 border-[1px] border-tertiary-480 rounded-full mb-4
+                text-xs md:text-sm mt-1 p-[2.3px]'>
+                <BriefcaseIcon className='w-5 h-5 md:w-6 md:h-6
+                text-secondary-500' />
+              </div>
+              <hr className='w-[1px] h-full bg-tertiary-480 border-0 mb-1' />
+            </div>
+            <div className='flex flex-col gap-1 w-full'>
+              {experiences.filter(e => e.type === 'job')
+                .map((experience: Experience, index: number) => (
+                  <ExperienceDropdown
+                    key={index}
+                    title={experience.title}
+                    location={experience.location}
+                    date={experience.date}
+                    description={experience.description}
+                  />
+                ))}
+            </div>
           </div>
-          {experiences.filter(e => e.type === 'educational')
-            .map((experience: Experience, index: number) => (
-              <ExperienceDropdown
-                key={index}
-                title={experience.title}
-                location={experience.location}
-                date={experience.date}
-                description={experience.description}
-              />
-            ))}
-          <div className='flex flex-row items-center gap-4 mt-8'>
-            <AcademicCapIcon className='w-5 h-5 md:w-6 md:h-6 inline-block
-            text-secondary-500' />
-            <h5 className='text-xs md:text-sm font-Mmedium text-white/70'>
-              EDUCATION
-            </h5>
+          <div className='flex flex-row gap-2'>
+            <div className='flex flex-col justify-between flex-shrink-0
+            items-center'>
+              <div className='flex items-center justify-center w-5 h-5 md:w-6 md:h-6
+                bg-tertiary-500 border-[1px] border-tertiary-480 rounded-full mb-4
+                text-xs md:text-sm mt-1 p-[2.3px]'>
+                <AcademicCapIcon className='w-5 h-5 md:w-6 md:h-6
+                text-secondary-500' />
+              </div>
+              <hr className='w-[1px] h-full bg-tertiary-480 border-0 mb-1' />
+            </div>
+            <div className='flex flex-col gap-1 w-full'>
+              {experiences.filter(e => e.type === 'educational')
+                .map((experience: Experience, index: number) => (
+                  <ExperienceDropdown
+                    key={index}
+                    title={experience.title}
+                    location={experience.location}
+                    date={experience.date}
+                    description={experience.description}
+                  />
+                ))}
+            </div>
           </div>
-          {experiences.filter(e => e.type === 'job')
-            .map((experience: Experience, index: number) => (
-              <ExperienceDropdown
-                key={index}
-                title={experience.title}
-                location={experience.location}
-                date={experience.date}
-                description={experience.description}
-              />
-            ))}
         </ul>
       </Section>
       <Section title='PROJECTS'>
