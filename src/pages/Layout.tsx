@@ -15,8 +15,8 @@ const Layout: FunctionComponent<LayoutProps> = ({ children }) => {
       <div className='flex flex-col flex-1 z-[2] items-center'>
         <div className='max-w-4xl px-5 py-10'>
           {children}
+          <SpeedInsights />
         </div>
-        <SpeedInsights />
         <Analytics />
       </div>
       <Footer />
