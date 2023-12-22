@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { Header, Footer } from '../components';
 import PropTypes from 'prop-types';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -15,6 +16,7 @@ const Layout: FunctionComponent<LayoutProps> = ({ children }) => {
         <div className='max-w-4xl px-5 py-10'>
           {children}
         </div>
+        <SpeedInsights />
         <Analytics />
       </div>
       <Footer />
