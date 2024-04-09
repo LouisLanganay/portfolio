@@ -4,6 +4,8 @@ import ProjectCard from './Projects/ProjectCard';
 import Button from './Button';
 import Section from './Section';
 import ExperienceDropdown from './ExperienceDropdown';
+import AvailabilityTag from './AvailabilityTag';
+import HiringModal from './HiringModal';
 
 export {
   Header,
@@ -11,5 +13,7 @@ export {
   ProjectCard,
   Button,
   Section,
-  ExperienceDropdown
+  ExperienceDropdown,
+  AvailabilityTag,
+  HiringModal
 };

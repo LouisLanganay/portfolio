@@ -23,13 +23,13 @@ const Button: FC<ButtonProps> = ({
   case 'secondary':
     style += 'active:bg-tertiary-550 text-white disabled:hover:text-white  \
     disabled:hover:bg-tertiary-500 border-[1px] \
-    border-tertiary-480 hover:border-tertiary-450';
+    border-tertiary-480 hover:border-tertiary-450 shadow-sm';
     break;
   }
   return (
     <button className={`items-center text-sm md:text-base w-fit
     font-Mregular py-1 px-4 h-fit rounded-lg flex flex-row justify-center
-    disabled:opacity-60 disabled:cursor-not-allowed min-h-10 ${style}
+    disabled:opacity-80 disabled:cursor-not-allowed min-h-10 ${style}
     transition duration-200 ease-in-out ${className}`}
     disabled={disabled || false}
     onClick={() => handleClick(link)}>

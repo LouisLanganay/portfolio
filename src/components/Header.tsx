@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Button from './Button';
 import { useNavigate } from 'react-router-dom';
+import AvailabilityTag from './AvailabilityTag';
 
 const Header: React.FC = () => {
   const [ style, setStyle ] = useState<string | null>('');
@@ -65,9 +66,7 @@ const Header: React.FC = () => {
               </span>
             </a>
           ))}
-          <Button type='primary' link='mailto:louislanganay@gmail.com' className='ml-5'>
-            Contact me
-          </Button>
+          <AvailabilityTag />
         </div>
       </header>
     </div>
