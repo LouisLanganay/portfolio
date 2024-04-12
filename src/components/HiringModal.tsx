@@ -1,6 +1,7 @@
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import React, { FC, useEffect, useRef } from 'react';
 import Button from './Button';
+import { useTranslation } from 'react-i18next';
 
 interface HiringModalProps {
   available: boolean
@@ -9,6 +10,7 @@ interface HiringModalProps {
 
 const HiringModal: FC<HiringModalProps> = ({ available, onClose }) => {
   const modalRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -40,7 +42,8 @@ const HiringModal: FC<HiringModalProps> = ({ available, onClose }) => {
                 <p className='text-lg font-regular text-white pl-3'>
                   {
                     available === true ?
-                      'AVAILABLE FOR HIRING' : 'NOT AVAILABLE FOR HIRING'
+                      t('hiring.modal.title.hiring') :
+                      t('hiring.modal.title.not_hiring')
                   }
                 </p>
               </div>
@@ -57,17 +60,17 @@ const HiringModal: FC<HiringModalProps> = ({ available, onClose }) => {
               <Button type='primary' className='w-full' onClick={() => {
                 window.open('https://discord.com/users/660435627757666311', '_blank');
               }}>
-                Contact me on Discord
+                {t('buttons.contact.discord')}
               </Button>
               <Button type='primary' className='w-full' onClick={() => {
                 window.open('mailto:louis.langanay@epitech.eu', '_blank');
               }}>
-                Contact me by E-Mail
+                {t('buttons.contact.email')}
               </Button>
               <Button type='secondary' className='w-full' onClick={() => {
                 window.open('https://www.linkedin.com/in/louis-langanay/', '_blank');
               }}>
-                View my LinkedIn
+                {t('buttons.contact.linkedin')}
               </Button>
             </div>
           </div>

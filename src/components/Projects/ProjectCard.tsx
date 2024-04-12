@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import ProjectCardItem from './ProjectCardItem';
 import { Project, Repository } from '../../utils/types';
+import { useTranslation } from 'react-i18next';
 
 const ProjectCard: React.FC<{ project: Project, key: number }> = ({
   project, key
@@ -20,6 +21,7 @@ const ProjectCard: React.FC<{ project: Project, key: number }> = ({
   const [opacity, setOpacity] = useState(0);
   const [ repository, setRepository ] = React.useState<Repository | null>(null);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!divRef.current) return;
@@ -83,7 +85,7 @@ const ProjectCard: React.FC<{ project: Project, key: number }> = ({
               <div className='w-full h-full flex flex-row justify-center items-center'>
                 <h2 className='font-Iregular text-white/70 text-base md:text-lg
                 text-center'>
-                  Nothing here yet!
+                  {t('nothing_here_yet')}
                 </h2>
                 <MagnifyingGlassIcon className='w-4 h-4 md:w-5 md:h-5 ml-2
                 text-white/70' />

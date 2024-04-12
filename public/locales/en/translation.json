@@ -1,6 +1,6 @@
 {
     "home": {
-        "title": "Welcome to the app! A Developer's Journey passionate about web development and design",
+        "title": "A Developer's Journey passionate about web development and design",
         "subtitle": "My name is Louis, and I am a 2nd year student developer at Epitech in France, loving web development and UI/UX design.",
         "skills": {
             "title": "Skills",
@@ -10,12 +10,41 @@
                 "tools": "Tools",
                 "other": "Other"
             }
+        },
+        "experiences": {
+            "title": "Experiences & Education"
+        },
+        "projects": {
+            "title": "Projects"
         }
     },
-    "skills": {
-        "languages": "Languages",
-        "frameworks & libs": "Frameworks",
-        "tools": "Tools",
-        "other": "Other"
+    "hiring": {
+        "status": {
+            "hiring": "AVAILABLE FOR HIRING",
+            "not_hiring": "NOT AVAILABLE FOR HIRING"
+        },
+        "modal": {
+            "title": {
+                "hiring": "I am available for hiring!",
+                "not_hiring": "I am not available for hiring"
+            }
+        }
+    },
+    "buttons": {
+        "contact": {
+            "discord": "Contact me on Discord",
+            "email": "Contact me by email",
+            "linkedin": "Contact me on LinkedIn"
+        },
+        "view_more_projects": "View more projects",
+        "back_to_projects": "Back to projects",
+        "view_on_github": "View on GitHub"
+    },
+    "loading": "Loading...",
+    "nothing_here_yet": "Nothing here yet!",
+    "codeblocks": {
+        "note": "Note",
+        "warning": "Warning",
+        "important": "Important"
     }
 }

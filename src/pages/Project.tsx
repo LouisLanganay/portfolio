@@ -30,6 +30,7 @@ import Theme from 'react-syntax-highlighter/dist/esm/styles/prism/one-dark';
 import { Project, Repository } from '../utils/types';
 import ProjectCardItem from '../components/Projects/ProjectCardItem';
 import { Button } from '../components';
+import { useTranslation } from 'react-i18next';
 
 const ProjectPage: React.FC = () => {
   const [ project, setProject ] = useState<Project | null>(null);
@@ -37,6 +38,7 @@ const ProjectPage: React.FC = () => {
   const [fileContent, setFileContent] = useState<string | null>(null);
   const [ repository, setRepository ] = useState<Repository | null>(null);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (id) {
@@ -84,7 +86,7 @@ const ProjectPage: React.FC = () => {
   if (!project) return (
     <Layout>
       <h4 className='font-Mbold text-2xl text-tertiary-100'>
-        Loading....
+        {t('loading')}
       </h4>
     </Layout>
   );
@@ -93,7 +95,7 @@ const ProjectPage: React.FC = () => {
     <Layout>
       <div className='flex flex-col h-full'>
         <Button type='secondary' className='mb-4' onClick={() => navigate('/projects')}>
-          &larr; Back to projects
+          &larr; {t('buttons.back_to_projects')}
         </Button>
         {project.image ? (
           <img src={project.image} alt={project.title}
@@ -103,7 +105,7 @@ const ProjectPage: React.FC = () => {
           items-center justify-center'>
             <h2 className='font-Iregular text-tertiary-100 text-lg
             flex justify-center items-center h-full'>
-              Nothing here yet!
+              {t('nothing_here_yet')}
             </h2>
             <MagnifyingGlassIcon className='w-4 h-4 md:w-5 md:h-5 ml-2
             text-tertiary-100' />
@@ -230,7 +232,7 @@ const ProjectPage: React.FC = () => {
                           text-secondary-500' />
                             <span className='font-Mbold text-base
                           border-secondary-500 text-secondary-500'>
-                              Note
+                              {t('codeblocks.note')}
                             </span>
                           </div>
                           <p className='text-base'>
@@ -249,7 +251,7 @@ const ProjectPage: React.FC = () => {
                           text-purple-500' />
                             <span className='font-Mbold text-base
                           border-purple-500 text-purple-500'>
-                              Important
+                              {t('codeblocks.important')}
                             </span>
                           </div>
                           <p className='text-base'>
@@ -267,7 +269,7 @@ const ProjectPage: React.FC = () => {
                           text-main-500' />
                             <span className='font-Mbold text-base
                           border-main-500 text-main-500'>
-                              Warning
+                              {t('codeblocks.warning')}
                             </span>
                           </div>
                           <p className='text-base'>
@@ -372,7 +374,7 @@ const ProjectPage: React.FC = () => {
           <div className='flex flex-col gap-2'>
             {project.repository && (
               <Button type='secondary' link={project.repository}>
-                  View on GitHub &rarr;
+                {t('buttons.view_on_github')} &rarr;
               </Button>
             )}
             {project.links?.map((link) => (

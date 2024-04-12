@@ -1,10 +1,12 @@
 import React, { FC, useState } from 'react';
 import HiringModal from './HiringModal';
 import Button from './Button';
+import { useTranslation } from 'react-i18next';
 
 const AvailabilityTag: FC = () => {
   const available = true;
   const [modalOpen, setModalOpen] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <>
@@ -22,7 +24,10 @@ const AvailabilityTag: FC = () => {
             <div className={`w-3 h-3 ${available ?
               'bg-green-500' : 'bg-red-500'} rounded-full absolute`}/>
           </div>
-          <span>{available ? 'AVAILABLE FOR HIRING' : 'NOT AVAILABLE FOR HIRING'}</span>
+          <span>{available ?
+            t('hiring.status.hiring') :
+            t('hiring.status.not_hiring')}
+          </span>
         </div>
       </Button>
     </>

@@ -33,7 +33,7 @@ const Home: React.FC = () => {
           </p>
         </div>
       </section>
-      <Section title={t('home.skills.title')}>
+      <Section title={t('home.skills.title').toUpperCase()}>
         <div className='grid grid-cols-2 md:flex md:flex-row gap-4 w-full
         justify-between flex-wrap'>
           {skills.map((skill: Skill, index: number) => (
@@ -61,7 +61,7 @@ const Home: React.FC = () => {
           ))}
         </div>
       </Section>
-      <Section title='EXPERIENCES & EDUCATION'>
+      <Section title={t('home.experiences.title').toUpperCase()}>
         <ul className='flex flex-col font-Mregular text-white
         text-sm gap-4 w-full'>
           <div className='flex flex-row gap-2'>
@@ -114,7 +114,7 @@ const Home: React.FC = () => {
           </div>
         </ul>
       </Section>
-      <Section title='PROJECTS'>
+      <Section title={t('home.projects.title').toUpperCase()}>
         <ul className='grid sm:grid-cols-1 md:grid-cols-2 font-Mregular text-white
         text-sm gap-4 w-full'>
           {projects.slice(0, 4).map((project: Project, index: number) => (
@@ -122,7 +122,7 @@ const Home: React.FC = () => {
           ))}
         </ul>
         <Button type='secondary' onClick={() => navigate('/projects')} className='mt-4'>
-          View more projects &rarr;
+          {t('buttons.view_more_projects')} &rarr;
         </Button>
       </Section>
     </Layout>

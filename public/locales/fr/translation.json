@@ -1,6 +1,50 @@
 {
     "home": {
-        "title": "Todo",
-        "subtitle": "Todo"
+        "title": "Le parcours d'un développeur passionné par le développement web et le design",
+        "subtitle": "Je m'appelle Louis, et je suis étudiant développeur en 2ème année à Epitech en France, passionné par le développement web et le design UI/UX.",
+        "skills": {
+            "title": "Compétences",
+            "list": {
+                "languages": "Langages",
+                "frameworks & libs": "Frameworks",
+                "tools": "Outils",
+                "other": "Autres"
+            }
+        },
+        "experiences": {
+            "title": "Expériences & Éducation"
+        },
+        "projects": {
+            "title": "Projets"
+        }
+    },
+    "hiring": {
+        "status": {
+            "hiring": "DISPONIBLE POUR L'EMBAUCHE",
+            "not_hiring": "PAS DISPONIBLE POUR L'EMBAUCHE"
+        },
+        "modal": {
+            "title": {
+                "hiring": "Je suis disponible pour l'embauche !",
+                "not_hiring": "Je ne suis pas disponible pour l'embauche"
+            }
+        }
+    },
+    "buttons": {
+        "contact": {
+            "discord": "Contactez-moi sur Discord",
+            "email": "Contactez-moi par e-mail",
+            "linkedin": "Contactez-moi sur LinkedIn"
+        },
+        "view_more_projects": "Voir plus de projets",
+        "back_to_projects": "Retour aux projets",
+        "view_on_github": "Voir sur GitHub"
+    },
+    "loading": "Chargement...",
+    "nothing_here_yet": "Rien n'est encore disponible ici !",
+    "codeblocks": {
+        "note": "Note",
+        "warning": "Avertissement",
+        "important": "Important"
     }
 }
