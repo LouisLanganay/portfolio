@@ -1,0 +1,21 @@
+{
+    "home": {
+        "title": "Welcome to the app! A Developer's Journey passionate about web development and design",
+        "subtitle": "My name is Louis, and I am a 2nd year student developer at Epitech in France, loving web development and UI/UX design.",
+        "skills": {
+            "title": "Skills",
+            "list": {
+                "languages": "Languages",
+                "frameworks & libs": "Frameworks",
+                "tools": "Tools",
+                "other": "Other"
+            }
+        }
+    },
+    "skills": {
+        "languages": "Languages",
+        "frameworks & libs": "Frameworks",
+        "tools": "Tools",
+        "other": "Other"
+    }
+}

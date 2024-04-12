@@ -7,6 +7,7 @@ import experiences from './experiences.json';
 import { AcademicCapIcon, BriefcaseIcon } from '@heroicons/react/24/outline';
 import { Experience, Project } from '../utils/types';
 import { useNavigate } from 'react-router';
+import { useTranslation } from 'react-i18next';
 
 interface Skill {
   title: string;
@@ -15,6 +16,7 @@ interface Skill {
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <Layout>
@@ -24,15 +26,14 @@ const Home: React.FC = () => {
         <div className='flex flex-col w-full md:max-w-xl'>
           <h1 className='text-2xl md:text-4xl font-Mblack flex bg-clip-text
           text-transparent bg-white'>
-            A Developer's Journey passionate about web development and design
+            {t('home.title')}
           </h1>
           <p className='text-sm md:text-base text-white/70 font-Mmedium z-10 mt-4'>
-            My name is Louis, and I am a 2nd year student developer at Epitech in
-            France, loving web development and UI/UX design.
+            {t('home.subtitle')}
           </p>
         </div>
       </section>
-      <Section title='SKILLS'>
+      <Section title={t('home.skills.title')}>
         <div className='grid grid-cols-2 md:flex md:flex-row gap-4 w-full
         justify-between flex-wrap'>
           {skills.map((skill: Skill, index: number) => (
@@ -48,7 +49,7 @@ const Home: React.FC = () => {
               </div>
               <div className='flex flex-col h-fit'>
                 <li className='font-Mbold text-base md:text-lg mb-2'>
-                  {skill.title.toUpperCase()}
+                  {t('home.skills.list.' + skill.title).toUpperCase()}
                 </li>
                 {skill.options.map((skill, index) => (
                   <li key={index} className='text-tertiary-200 text-sm md:text-base'>
