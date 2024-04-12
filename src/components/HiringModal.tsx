@@ -39,7 +39,7 @@ const HiringModal: FC<HiringModalProps> = ({ available, onClose }) => {
               <div className='flex flex-row w-full items-center'>
                 <p className='text-lg font-regular text-white pl-3'>
                   {
-                    status === 'AVAILABLE' ?
+                    available === true ?
                       'AVAILABLE FOR HIRING' : 'NOT AVAILABLE FOR HIRING'
                   }
                 </p>

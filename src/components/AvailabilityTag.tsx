@@ -3,7 +3,7 @@ import HiringModal from './HiringModal';
 import Button from './Button';
 
 const AvailabilityTag: FC = () => {
-  const available = false;
+  const available = true;
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
