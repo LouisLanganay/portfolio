@@ -11,7 +11,6 @@ import { useNavigate } from 'react-router';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import ProjectCardItem from './ProjectCardItem';
 import { Project, Repository } from '../../utils/types';
-import { translateText } from '../../api/translate';
 
 const ProjectCard: React.FC<{ project: Project, key: number }> = ({
   project, key
@@ -21,7 +20,6 @@ const ProjectCard: React.FC<{ project: Project, key: number }> = ({
   const [opacity, setOpacity] = useState(0);
   const [ repository, setRepository ] = React.useState<Repository | null>(null);
   const navigate = useNavigate();
-  const [description, setDescription] = useState<string>('');
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!divRef.current) return;
@@ -46,10 +44,6 @@ const ProjectCard: React.FC<{ project: Project, key: number }> = ({
         setRepository(repo);
       });
     }
-
-    translateText(project.description, 'fr').then((translated) => {
-      setDescription(translated);
-    });
   }, []);
 
   console.info(repository);
@@ -115,8 +109,8 @@ const ProjectCard: React.FC<{ project: Project, key: number }> = ({
               {project.date}
             </h4>
             <p className='font-Mregular text-white/70 text-xs md:text-sm'>
-              {description.slice(0, 100)}
-              {description.length > 100 && '...'}
+              {project.description.slice(0, 100)}
+              {project.description.length > 100 && '...'}
             </p>
             {(project.stats?.downloads || project.stats?.users ||
             repository?.watchers_count) ? (
