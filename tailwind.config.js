@@ -37,7 +37,7 @@ export const theme = {
       1000: '#000000'
     },
     green: {
-      500: '#628B48'
+      500: '#51FF86'
     },
     red: {
       0: '#ffffff',
