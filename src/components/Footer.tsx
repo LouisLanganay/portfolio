@@ -61,7 +61,7 @@ const Footer: React.FC = () => {
               </span>
             </a>
           ))}
-          <Button type='primary' link='mailto:louislanganay@gmail.com' className='ml-5'>
+          <Button variant='primary' link='mailto:louislanganay@gmail.com' className='ml-5'>
             Contact me
           </Button>
         </div>

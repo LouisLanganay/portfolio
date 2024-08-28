@@ -92,7 +92,7 @@ const ProjectPage: React.FC = () => {
   return (
     <Layout>
       <div className='flex flex-col h-full'>
-        <Button type='secondary' className='mb-4' onClick={() => navigate('/projects')}>
+        <Button variant='secondary' className='mb-4' onClick={() => navigate('/projects')}>
           &larr; Back to projects
         </Button>
         {project.image ? (
@@ -371,12 +371,12 @@ const ProjectPage: React.FC = () => {
           <hr className='border-tertiary-400 my-5' />
           <div className='flex flex-col gap-2'>
             {project.repository && (
-              <Button type='secondary' link={project.repository}>
+              <Button variant='secondary' link={project.repository}>
                   View on GitHub &rarr;
               </Button>
             )}
             {project.links?.map((link) => (
-              <Button type='secondary' link={link.url}>
+              <Button variant='secondary' link={link.url}>
                 {link.name} &rarr;
               </Button>
             ))}

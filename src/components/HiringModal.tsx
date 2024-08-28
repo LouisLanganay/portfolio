@@ -54,17 +54,17 @@ const HiringModal: FC<HiringModalProps> = ({ available, onClose }) => {
             </div>
             <div className='flex flex-col justify-center items-center w-full h-full
             gap-y-2 mt-4 px-3'>
-              <Button type='primary' className='w-full' onClick={() => {
+              <Button variant='primary' className='w-full' onClick={() => {
                 window.open('https://discord.com/users/660435627757666311', '_blank');
               }}>
                 Contact me on Discord
               </Button>
-              <Button type='primary' className='w-full' onClick={() => {
+              <Button variant='primary' className='w-full' onClick={() => {
                 window.open('mailto:louis.langanay@epitech.eu', '_blank');
               }}>
                 Contact me by E-Mail
               </Button>
-              <Button type='secondary' className='w-full' onClick={() => {
+              <Button variant='secondary' className='w-full' onClick={() => {
                 window.open('https://www.linkedin.com/in/louis-langanay/', '_blank');
               }}>
                 View my LinkedIn
