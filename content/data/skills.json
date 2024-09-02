@@ -1,0 +1,40 @@
+[
+  {
+    "title": "languages",
+    "options": [
+      "JS & Typecript",
+      "C & C++",
+      "Bash"
+    ]
+  },
+  {
+    "title": "frameworks & libs",
+    "options": [
+      "React",
+      "NodeJS",
+      "NextJS",
+      "ExpressJS",
+      "Tailwind CSS",
+      "DiscordJS"
+    ]
+  },
+  {
+    "title": "tools",
+    "options": [
+      "Git",
+      "Linux systems",
+      "MongoDB",
+      "Postman",
+      "Stripe"
+    ]
+  },
+  {
+    "title": "other",
+    "options": [
+      "CI/CD",
+      "Figma",
+      "Illustrator",
+      "Photoshop"
+    ]
+  }
+]
