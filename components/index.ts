@@ -6,6 +6,7 @@ import Section from './Section';
 import ExperienceDropdown from './ExperienceDropdown';
 import AvailabilityTag from './AvailabilityTag';
 import HiringModal from './HiringModal';
+import Badge from './Badge';
 
 export {
   Header,
@@ -15,5 +16,6 @@ export {
   Section,
   ExperienceDropdown,
   AvailabilityTag,
-  HiringModal
+  HiringModal,
+  Badge
 };

@@ -88,45 +88,37 @@ export default function Home() {
       </Section>
       <Section title='EXPERIENCES & EDUCATION'>
         <ul className='flex flex-col font-normal text-white text-sm gap-4 w-full'>
-          <div className='flex flex-row gap-2'>
-            <div className='flex flex-col justify-between flex-shrink-0 items-center'>
-              <div className='flex items-center justify-center w-5 h-5 md:w-6 md:h-6 bg-tertiary-500 border-[1px] border-tertiary-480 rounded-full mb-4 text-xs md:text-sm mt-1 p-[2.3px]'>
-                <BriefcaseIcon className='w-5 h-5 md:w-6 md:h-6 text-secondary-500' />
-              </div>
-              <hr className='w-[1px] h-full bg-tertiary-480 border-0 mb-1' />
-            </div>
-            <div className='flex flex-col gap-2 w-full'>
-              {experiences.filter(e => e.type === 'job')
-                .map((experience: Experience, index: number) => (
-                  <ExperienceDropdown
-                    key={index}
-                    title={experience.title}
-                    location={experience.location}
-                    date={experience.date}
-                    description={experience.description}
-                  />
-                ))}
-            </div>
+          <h5 className='text-sm font-normal text-white/70 flex-shrink-0'>
+            - Work Experience
+          </h5>
+          <div className='flex flex-col gap-4 w-full'>
+            {experiences.filter(e => e.type === 'job')
+              .map((experience: Experience, index: number) => (
+                <ExperienceDropdown
+                  key={index}
+                  title={experience.title}
+                  location={experience.location}
+                  date={experience.date}
+                  description={experience.description}
+                  image={experience.image}
+                />
+              ))}
           </div>
-          <div className='flex flex-row gap-2'>
-            <div className='flex flex-col justify-between flex-shrink-0 items-center'>
-              <div className='flex items-center justify-center w-5 h-5 md:w-6 md:h-6 bg-tertiary-500 border-[1px] border-tertiary-480 rounded-full mb-4 text-xs md:text-sm mt-1 p-[2.3px]'>
-                <AcademicCapIcon className='w-5 h-5 md:w-6 md:h-6 text-secondary-500' />
-              </div>
-              <hr className='w-[1px] h-full bg-tertiary-480 border-0 mb-1' />
-            </div>
-            <div className='flex flex-col gap-2 w-full'>
-              {experiences.filter(e => e.type === 'educational')
-                .map((experience: Experience, index: number) => (
-                  <ExperienceDropdown
-                    key={index}
-                    title={experience.title}
-                    location={experience.location}
-                    date={experience.date}
-                    description={experience.description}
-                  />
-                ))}
-            </div>
+          <h5 className='text-sm font-normal text-white/70 flex-shrink-0'>
+            - Educational Experience
+          </h5>
+          <div className='flex flex-col gap-2 w-full'>
+            {experiences.filter(e => e.type === 'educational')
+              .map((experience: Experience, index: number) => (
+                <ExperienceDropdown
+                  key={index}
+                  title={experience.title}
+                  location={experience.location}
+                  date={experience.date}
+                  description={experience.description}
+                  image={experience.image}
+                />
+              ))}
           </div>
         </ul>
       </Section>

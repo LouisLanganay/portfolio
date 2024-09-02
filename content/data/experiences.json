@@ -3,33 +3,38 @@
     "type": "job",
     "title": "Internship - Web developer",
     "location": "Luminess",
-    "date": "sep. 2024 - feb. 2025"
+    "date": "sep. 2024 - feb. 2025",
+    "image": "/experiences/luminess.jpg"
   },
   {
     "type": "job",
     "title": "Internship - Front-end developer",
-    "location": "Venture\"s Game • Remote",
+    "location": "Venture\"s Game",
     "date": "sep. 2023 - nov. 2023",
-    "description": "Development of a showcase site."
+    "description": "A remote internship in a start-up that develops a discord bot. I was in charge of the front-end part of the showcase website and a part of the dashboard."
   },
   {
     "type": "job",
     "title": "Internship - Developer",
     "location": "Centre hospitalier intercommunal Elbeuf Louviers Val de Reuil",
     "date": "jul. 2023 - aug. 2023",
-    "description": "Development of an intranet for the hospital's various divisions."
+    "description": "Start of the development of a web application for the hospital's workers. I was in charge of the front-end and back-end part of the application.",
+    "image": "/experiences/chielvr.png"
   },
   {
     "type": "educational",
     "title": "Expert in software engineering",
-    "location": "Epitech Rennes - 2nd year student",
+    "location": "Epitech Rennes",
     "date": "sep. 2022 - 2027",
-    "description": "RNCP 7 Professional Certification - BAC +5."
+    "description": "RNCP 7 Professional Certification - BAC +5.",
+    "image": "/experiences/epitech.png"
   },
   {
     "type": "educational",
-    "title": "Baccalauréat STI2D - Information and Digital Systems (SIN) specialism (distinction)",
+    "title": "Baccalauréat STI2D",
     "location": "Campus La Chataigneraie",
-    "date": "sep. 2019 - 2022"
+    "date": "sep. 2019 - 2022",
+    "description": "Information and Digital Systems (SIN) specialism (distinction).",
+    "image": "/experiences/chatos.jpg"
   }
 ]
