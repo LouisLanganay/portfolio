@@ -32,7 +32,7 @@ export default function Home() {
         <div className='flex flex-col w-full md:max-w-xl'>
           <WordPullUp
             words="A Developer's Journey passionate about web development and design"
-            className='text-2xl md:text-4xl font-black flex bg-clip-text text-transparent bg-white flex-wrap'
+            className='text-2xl md:text-4xl font-black flex bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60 flex-wrap'
           />
           <motion.p
             className='text-sm md:text-base text-white/70 font-medium z-10 mt-4'
