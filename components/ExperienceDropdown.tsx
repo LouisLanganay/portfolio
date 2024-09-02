@@ -2,35 +2,25 @@
 
 import React, { FC, useState } from 'react';
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import clsx from 'clsx';
 import { Experience } from '@/types';
 import Image from 'next/image';
 import Badge from './Badge';
 
 function checkDateInterval(interval: string) {
-  // Split the interval string to get the start and end dates
-  const [startStr, endStr] = interval.split(" - ");
-  
-  // Create date objects from the strings
+  const [startStr, endStr] = interval.split(' - ');
   const startDate = new Date(startStr);
   const endDate = new Date(endStr);
-  
-  // Get the current date
   const currentDate = new Date();
 
-  // Check if the interval is in the past
-  if (endDate < currentDate) {
-      return "Past";
-  }
-  
-  // Check if the interval is current
-  if (startDate <= currentDate && currentDate <= endDate) {
-      return "Current";
-  }
-  
-  // Otherwise, the interval is in the future
-  return "Future";
+  if (endDate < currentDate)
+    return 'Past';
+
+  if (startDate <= currentDate && currentDate <= endDate)
+    return 'Current';
+
+  return 'Future';
 }
 
 const ExperienceDropdown: FC<Experience> = ({
@@ -69,7 +59,14 @@ const ExperienceDropdown: FC<Experience> = ({
               <p className='inline-flex items-center justify-center font-normal text-white text-base'>
                 {location}
                 {checkDateInterval(date) === 'Current' && (
-                  <Badge className='ml-2 bg-green-500 ring-green-500 text-white'>Current</Badge>
+                  <Badge className='ml-2 bg-green-500/10 ring-green-500/30 text-white group-hover:scale-105 group-hover:rotate-6 transition-all duration-150'>
+                    Current
+                  </Badge>
+                )}
+                {checkDateInterval(date) === 'Future' && (
+                  <Badge className='ml-2 bg-blue-500/10 ring-blue-500/30 text-white group-hover:scale-105 group-hover:rotate-6 transition-all duration-150'>
+                    Planned
+                  </Badge>
                 )}
                 <ChevronRightIcon
                   className={clsx(

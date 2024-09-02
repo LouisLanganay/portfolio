@@ -14,7 +14,6 @@ import { useRef, useState } from 'react';
 import { getProjects } from '@/lib/Documents';
 
 export default function Home() {
-  const router = useRouter();
   const projects = getProjects();
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
