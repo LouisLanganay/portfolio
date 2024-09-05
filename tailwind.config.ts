@@ -1,3 +1,4 @@
+import { transform } from "next/dist/build/swc";
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -115,6 +116,7 @@ const config: Config = {
       animation: {
         blob: 'blob 7s infinite',
         slide: 'slide 2s linear infinite',
+        spotlight: 'spotlight 2s ease .75s 1 forwards',
       },
       keyframes: {
         blob: {
@@ -135,6 +137,10 @@ const config: Config = {
           '0%': { transform: 'skew(-12deg) translateX(-100%)' },
           '50%': { transform: 'skew(-12deg) translateX(0)' },
           '100%': { transform: 'skew(-12deg) translateX(100%)' },
+        },
+        spotlight: {
+          '0%': { opacity: '0%', transform: 'translate(-72%, -62%) scale(0.5)' },
+          '100%': { opacity: '100%', transform: 'translate(-50%,-40%) scale(1)' }
         },
       }
     }
