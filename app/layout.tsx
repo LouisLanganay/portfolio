@@ -42,7 +42,7 @@ export default function RootLayout({
           <div className='bg-tertiary-600 h-fit min-h-screen flex flex-col relative'>
             <Header />
             <div className='flex flex-col flex-1 z-[2] items-center'>
-              <div className='max-w-4xl px-5 py-10'>
+              <div className='max-w-4xl px-5 py-10 w-full'>
                 {children}
                 <SpeedInsights />
               </div>

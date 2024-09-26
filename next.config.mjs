@@ -7,7 +7,10 @@ const nextConfig = {
   swcMinify: true,
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
   images: {
-    domains: ['user-images.githubusercontent.com'],
+    domains: [
+      'user-images.githubusercontent.com',
+      'i.ibb.co',
+    ],
   },
 };
 

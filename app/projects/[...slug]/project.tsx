@@ -14,6 +14,7 @@ import { getRepository } from '@/lib/GetRepository';
 import { Repository } from '@/types';
 import { getIcon } from '@/lib/GetIcon';
 import Image from 'next/image';
+import { Mdx } from '@/components/Mdx';
 
 export default function ProjectPage({ project }: { project: any }) {
   const router = useRouter();
@@ -33,7 +34,7 @@ export default function ProjectPage({ project }: { project: any }) {
     </h4>
   );
   return (
-    <div className='flex flex-col h-full'>
+    <div className='flex flex-col h-full w-full'>
       <Button variant='secondary' className='mb-4' onClick={() => router.push('/projects')}>
         &larr; Back to projects
       </Button>
@@ -53,9 +54,9 @@ export default function ProjectPage({ project }: { project: any }) {
           </h1>
           {project.tags?.map((tag: string, index: number) => (
             <span key={index} className='bg-tertiary-480 text-tertiary-0
-            font-Mmedium text-sm rounded-full px-3 py-1 h-fit bg-opacity-30
-            border border-tertiary-450'>
-              <TagIcon className='w-4 h-4 inline-block mr-1' />
+            font-Mmedium rounded-full px-2 py-0.5 h-fit bg-opacity-30
+            border border-tertiary-450 text-sm'>
+              <TagIcon className='size-3 inline-block mr-1' />
               {tag}
             </span>
           ))}
@@ -78,13 +79,13 @@ export default function ProjectPage({ project }: { project: any }) {
           </div>
           {(project.stats?.downloads ||
           project.stats?.users ||
-          repository?.watchers_count) && (
+          repository?.watchers_count) ? (
             <p className='text-tertiary-100 hidden md:block'>
               •
             </p>
-          )}
+          ) : null}
           <div className='flex flex-row items-center gap-5'>
-            {project.stats?.downloads && (
+            {project.stats?.downloads ? (
               <ProjectCardItem tooltip={project.stats.downloads.tooltip}>
                 <ArrowDownTrayIcon className='w-4 h-4 md:w-5 md:h-5 text-white/70
                 mr-2' />
@@ -92,221 +93,28 @@ export default function ProjectPage({ project }: { project: any }) {
                   {project.stats.downloads.value}
                 </p>
               </ProjectCardItem>
-            )}
-            {project.stats?.users && (
+            ) : null}
+            {project.stats?.users ? (
               <ProjectCardItem tooltip={project.stats.users.tooltip}>
                 <UsersIcon className='w-4 h-4 md:w-5 md:h-5 text-white/70 mr-2' />
                 <p className='font-Imedium text-white/70 text-xs md:text-sm'>
                   {project.stats.users.value}
                 </p>
               </ProjectCardItem>
-            )}
-            {repository?.watchers_count && (
+            ) : null}
+            {repository?.watchers_count ? (
               <ProjectCardItem tooltip='Number of stars on GitHub repository' className='group/item'>
                 <StarIcon className='w-4 h-4 md:w-5 md:h-5 text-white/70 mr-2 fill-transparent group-hover/item:fill-yellow group-hover/item:text-yellow transition-all duration-200' />
                 <p className='font-Imedium text-white/70 text-xs md:text-sm'>
                   {repository.watchers_count}
                 </p>
               </ProjectCardItem>
-            )}
+            ) : null}
           </div>
         </div>
         <hr className='border-tertiary-400 my-5' />
         <div className='font-Mregular text-tertiary-100 text-sm md:text-base'>
-          <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            rehypePlugins={[rehypeRaw]}
-            // eslint-disable-next-line react/no-children-prop
-            children={project.body.raw || project.description}
-            components={{
-              h1(props) {
-                const {...rest} = props;
-                return <h1 className='font-Mbold text-xl md:text-2xl mb-2' {...rest} />;
-              },
-              h2(props) {
-                const {...rest} = props;
-                return <h2 className='font-Mbold text-lg md:text-xl mb-2' {...rest} />;
-              },
-              h3(props) {
-                const {...rest} = props;
-                return <h2 className='font-Mbold text-base md:text-lg mb-2' {...rest}/>;
-              },
-              a(props) {
-                const {...rest} = props;
-                return (
-                  <a className='text-secondary-500 hover:underline
-                  cursor-pointer'
-                  {...rest} href={props.href}
-                  target='_blank' rel='noreferrer' />
-                );
-              },
-              hr(props) {
-                const {...rest} = props;
-                return <hr className='border-secondary-500 my-5' {...rest} />;
-              },
-              blockquote(props) {
-                const {children, ...rest} = props;
-                if (props.node?.children[1].type === 'element') {
-                  const value = (props.node.children[1].children[0] as {
-                    value: string
-                  }).value;
-                  if (!Array.isArray(children))
-                    return null;
-                  const content = (children[1] as {
-                    props: {
-                      children: string
-                    }
-                  }).props.children;
-                  const contentArray = content.slice(1);
-                  if (value.startsWith('[!NOTE]')) {
-                    return (
-                      <blockquote className='border-l-4 border-secondary-500
-                      pl-3 my-2 flex flex-col gap-1' {...rest}>
-                        <div className='flex flex-row items-center gap-2'>
-                          <InformationCircleIcon className='w-5 h-5
-                        text-secondary-500' />
-                          <span className='font-Mbold text-base
-                        border-secondary-500 text-secondary-500'>
-                            Note
-                          </span>
-                        </div>
-                        <p className='text-base'>
-                          {content[0].slice(7)}
-                          {contentArray}
-                        </p>
-                      </blockquote>
-                    );
-                  }
-                  if (value.startsWith('[!IMPORTANT]')) {
-                    return (
-                      <blockquote className='border-l-4 border-purple-500
-                      pl-3 my-2 flex flex-col gap-1' {...rest}>
-                        <div className='flex flex-row items-center gap-2'>
-                          <ChatBubbleBottomCenterTextIcon className='w-5 h-5
-                        text-purple-500' />
-                          <span className='font-Mbold text-base
-                        border-purple-500 text-purple-500'>
-                            Important
-                          </span>
-                        </div>
-                        <p className='text-base'>
-                          {value.slice(13)}
-                        </p>
-                      </blockquote>
-                    );
-                  }
-                  if (value.startsWith('[!WARNING]')) {
-                    return (
-                      <blockquote className='border-l-4 border-main-500
-                      pl-3 my-2 flex flex-col gap-1' {...rest}>
-                        <div className='flex flex-row items-center gap-2'>
-                          <ExclamationTriangleIcon className='w-5 h-5
-                        text-main-500' />
-                          <span className='font-Mbold text-base
-                        border-main-500 text-main-500'>
-                            Warning
-                          </span>
-                        </div>
-                        <p className='text-base'>
-                          {value.slice(11)}
-                        </p>
-                      </blockquote>
-                    );
-                  }
-                  return (
-                    <blockquote className='border-l-4 border-green-500
-                    pl-3 my-2 flex flex-col gap-1' {...rest}>
-                      <p className='text-base'>
-                        {value}
-                      </p>
-                    </blockquote>
-                  );
-                }
-                return (
-                  <blockquote className='border-l-4 border-secondary-500
-                  pl-3 my-2' {...rest} />
-                );
-              },
-              code(props) {
-                const {children, className, ...rest} = props;
-                const match = /language-(\w+)/.exec(className || '');
-                return match ? (
-                  <SyntaxHighlighter
-                    {...rest}
-                    // eslint-disable-next-line react/no-children-prop
-                    children={String(children).replace(/\n$/, '')}
-                    language={match[1]}
-                    PreTag='div'
-                    style={Theme}
-                    ref={undefined}
-                  />
-                ) : (
-                  <pre
-                    className='bg-tertiary-500 rounded-sm px-[2.72px] w-fit select-all inline-block'
-                  >
-                    {children}
-                  </pre>
-                );
-              },
-              li(props) {
-                const {...rest} = props;
-                return (
-                  <li className='list-disc list-inside' {...rest} />
-                );
-              },
-              input(props) {
-                const {...rest} = props;
-                return (
-                  <input className='w-4 h-4 text-secondary-500 rounded
-                  bg-tertiary-500 border border-tertiary-450
-                  checked:bg-tertiary-450'
-                  {...rest}>
-                  </input>
-                );
-              },
-              table(props) {
-                const {...rest} = props;
-                return (
-                  <table className='table-auto border-collapse' {...rest} />
-                );
-              },
-              th(props) {
-                const {...rest} = props;
-                return (
-                  <th className='border-tertiary-400 border-2 px-3 py-2'
-                    {...rest} />
-                );
-              },
-              td(props) {
-                const {...rest} = props;
-                return (
-                  <td className='border-tertiary-400 border-2 px-3 py-2'
-                    {...rest} />
-                );
-              },
-              tr(props) {
-                const {...rest} = props;
-                return (
-                  <tr className='border-tertiary-400 border-2 px-3 py-2'
-                    {...rest} />
-                );
-              },
-              br(props) {
-                const {...rest} = props;
-                return (
-                  <br className='my-7' {...rest} />
-                );
-              },
-              img(props) {
-                const {...rest} = props;
-                return (
-                  <div className='w-full h-full'>
-                    <img className='w-full h-full rounded' {...rest} />
-                  </div>
-                );
-              }
-            }}
-          />
+          <Mdx code={project.code} raw={project.body.code} />
         </div>
         <hr className='border-tertiary-400 my-5' />
         <div className='flex flex-col gap-2'>
