@@ -7,6 +7,7 @@ import clsx from 'clsx';
 import { Experience } from '@/types';
 import Image from 'next/image';
 import Badge from './Badge';
+import { getIcon } from '@/lib/GetIcon';
 
 function checkDateInterval(interval: string) {
   const [startStr, endStr] = interval.split(' - ');
@@ -24,7 +25,7 @@ function checkDateInterval(interval: string) {
 }
 
 const ExperienceDropdown: FC<Experience> = ({
-  title, location, date, description, image
+  title, location, date, description, image, technologies
 }, index) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
@@ -91,6 +92,30 @@ const ExperienceDropdown: FC<Experience> = ({
             className='overflow-hidden'
           >
             <p className='font-light text-white/70 text-sm'>{description}</p>
+            {technologies && technologies.length > 0 && (
+              <div className='flex flex-wrap gap-2 mt-3'>
+                {technologies.map((tech, i) => {
+                  const icon = getIcon(tech);
+                  return (
+                    <div
+                      key={i}
+                      className='flex items-center gap-1.5 px-2 py-1 rounded-md bg-tertiary-600/30 border border-tertiary-480'
+                    >
+                      {icon && (
+                        <Image
+                          src={icon}
+                          alt={tech}
+                          width={14}
+                          height={14}
+                          className='object-contain'
+                        />
+                      )}
+                      <span className='text-xs text-white/70'>{tech}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </motion.div>
         </div>
       </div>

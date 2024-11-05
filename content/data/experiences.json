@@ -5,14 +5,16 @@
     "location": "Luminess",
     "date": "sep. 2024 - feb. 2025",
     "image": "/experiences/luminess.jpg",
-    "description": "I developed a web configuration panel using Angular for a photo analysis tool, primarily used by banks and insurance companies to process administrative documents, during my internship at Luminess."
+    "description": "I developed a web configuration panel using Angular for a photo analysis tool, primarily used by banks and insurance companies to process administrative documents, during my internship at Luminess.",
+    "technologies": ["Angular", "TailwindCSS"]
   },
   {
     "type": "job",
     "title": "Internship - Front-end developer",
     "location": "Venture\"s Game",
     "date": "sep. 2023 - nov. 2023",
-    "description": "A remote internship in a start-up that develops a discord bot. I was in charge of the front-end part of the showcase website and a part of the dashboard."
+    "description": "A remote internship in a start-up that develops a discord bot. I was in charge of the front-end part of the showcase website and a part of the dashboard.",
+    "technologies": ["React", "Sass", "TypeScript"]
   },
   {
     "type": "job",
@@ -20,7 +22,8 @@
     "location": "Centre hospitalier intercommunal Elbeuf Louviers Val de Reuil",
     "date": "jul. 2023 - aug. 2023",
     "description": "Start of the development of a web application for the hospital's workers. I was in charge of the front-end and back-end part of the application.",
-    "image": "/experiences/chielvr.png"
+    "image": "/experiences/chielvr.png",
+    "technologies": ["WordPress", "PHP"]
   },
   {
     "type": "educational",
@@ -28,7 +31,8 @@
     "location": "Epitech Rennes",
     "date": "sep. 2022 - 2027",
     "description": "RNCP 7 Professional Certification - BAC +5.",
-    "image": "/experiences/epitech.png"
+    "image": "/experiences/epitech.png",
+    "technologies": ["C", "C++", "JavaScript", "TypeScript", "Python", "Java", "SQL", "Git", "Docker"]
   },
   {
     "type": "educational",

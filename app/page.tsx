@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import clsx from 'clsx';
 import { ArrowDownIcon } from '@heroicons/react/24/outline';
+import Image from 'next/image';
 
 import { Button, ExperienceDropdown, ProjectCard, Section } from '@/components';
 import GridPattern from '@/components/Magicui/GridPattern';
@@ -14,6 +15,7 @@ import { Experience, Project } from '@/types';
 import { getProjects } from '@/lib/Documents';
 import experiences from '@/content/data/experiences.json';
 import skills from '@/content/data/skills.json';
+import { getIcon } from '@/lib/GetIcon';
 
 export default function Home() {
   const projects = getProjects();
@@ -97,17 +99,29 @@ function SkillItem({ skill, index }: { skill: { title: string; options: string[]
         <li className='font-bold text-base md:text-lg mb-2'>
           {skill.title.toUpperCase()}
         </li>
-        {skill.options.map((option, optionIndex) => (
-          <motion.li
-            key={optionIndex}
-            className='text-tertiary-200 text-sm md:text-base'
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
-            transition={{ duration: 1, delay: 0.2 * optionIndex }}
-          >
-            {option}
-          </motion.li>
-        ))}
+        {skill.options.map((option, optionIndex) => {
+          const icon = getIcon(option.toLowerCase());
+          return (
+            <motion.li
+              key={optionIndex}
+              className='text-tertiary-200 text-sm md:text-base flex items-center gap-2'
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
+              transition={{ duration: 1, delay: 0.2 * optionIndex }}
+            >
+              {option}
+              {icon && (
+                <Image
+                  src={icon}
+                  alt={option}
+                  width={16}
+                  height={16}
+                  className="rounded-sm"
+                />
+              )}
+            </motion.li>
+          );
+        })}
       </div>
     </ul>
   );
@@ -141,6 +155,7 @@ function ExperienceList({ type, title }: { type: string; title: string }) {
             date={experience.date}
             description={experience.description}
             image={experience.image}
+            technologies={experience.technologies}
           />
         ))}
       </div>

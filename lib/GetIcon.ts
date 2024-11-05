@@ -1,63 +1,85 @@
 const emojis = [
   {
-    'name': 'nodejs',
+    'name': ['nodejs', 'node'],
     'emoji': '/icons/nodejs.png'
   },
   {
-    'name': 'react',
+    'name': ['react'],
     'emoji': '/icons/react.png'
   },
   {
-    'name': 'discordjs',
+    'name': ['discordjs'],
     'emoji': '/icons/discordjs.png'
   },
   {
-    'name': 'javascript',
+    'name': ['javascript'],
     'emoji': '/icons/javascript.png'
   },
   {
-    'name': 'mongodb',
+    'name': ['mongodb'],
     'emoji': '/icons/mongodb.png'
   },
   {
-    'name': 'tailwindcss',
+    'name': ['tailwindcss'],
     'emoji': '/icons/tailwindcss.svg'
   },
   {
-    'name': 'typescript',
+    'name': ['typescript'],
     'emoji': '/icons/typescript.png'
   },
   {
-    'name': 'adobe illustrator',
+    'name': ['adobe illustrator', 'illustrator'],
     'emoji': '/icons/adobeillustrator.png'
   },
   {
-    'name': 'figma',
+    'name': ['figma'],
     'emoji': '/icons/figma.png'
   },
   {
-    'name': 'c',
+    'name': ['c'],
     'emoji': '/icons/c.png'
   },
   {
-    'name': 'postman',
+    'name': ['postman'],
     'emoji': '/icons/postman.png'
   },
   {
-    'name': 'sass',
+    'name': ['sass'],
     'emoji': '/icons/sass.png'
   },
   {
-    'name': 'nextjs',
+    'name': ['nextjs'],
     'emoji': '/icons/nextjs.svg'
   },
   {
-    'name': 'stripe',
+    'name': ['stripe'],
     'emoji': '/icons/stripe.svg'
+  },
+  {
+    'name': ['c++'],
+    'emoji': '/icons/cpp.png'
+  },
+  {
+    'name': ['photoshop'],
+    'emoji': '/icons/photoshop.png'
+  },
+  {
+    'name': ['linux'],
+    'emoji': '/icons/linux.png'
+  },
+  {
+    'name': ['git'],
+    'emoji': '/icons/git.png'
+  },
+  {
+    'name': ['angular'],
+    'emoji': '/icons/angular.png'
   }
 ];
 
 export const getIcon = (name: string) => {
-  const icon = emojis.find((emoji) => emoji.name === name.toLowerCase());
+  const icon = emojis.find((emoji) => 
+    emoji.name.some(n => n === name.toLowerCase())
+  );
   return icon?.emoji;
 };

@@ -41,6 +41,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
   const handleMouseEnter = () => {
     setOpacity(1);
     setShowPreview(true);
+
+    router.prefetch(`/projects/${project.slug}`);
   };
 
   const handleMouseLeave = () => {
@@ -70,14 +72,18 @@ const ProjectCard: FC<ProjectCardProps> = ({
         onMouseDown={(e) => {
           if (e.button === 1) {
             window.open(
-              `/projects/${project.title
-                .toLowerCase()
-                .replace(/ /g, '-')}`,
+              `/projects/${project.slug}`,
               '_blank'
             );
           }
         }}
-        onClick={() => router.push(`/projects/${project.slug}`)}
+        onClick={(e) => {
+          e.preventDefault();
+          const target = e.currentTarget;
+          target.style.opacity = '0.7';
+          target.style.transform = 'scale(0.98)';
+          router.push(`/projects/${project.slug}`);
+        }}
       >
         <div
           className='pointer-events-none absolute -inset-px opacity-0 transition

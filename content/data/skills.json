@@ -2,8 +2,9 @@
   {
     "title": "languages",
     "options": [
-      "JS & Typecript",
-      "C & C++",
+      "TypeScript",
+      "C",
+      "C++",
       "Bash"
     ]
   },
@@ -13,8 +14,10 @@
       "React",
       "NodeJS",
       "NextJS",
+      "Angular",
       "ExpressJS",
-      "Tailwind CSS",
+      "TailwindCSS",
+      "Sass",
       "DiscordJS"
     ]
   },

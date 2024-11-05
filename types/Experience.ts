@@ -5,6 +5,7 @@ export interface Experience {
   date: string;
   description?: string;
   image?: string;
+  technologies?: string[];
 }
 
 export default Experience;
