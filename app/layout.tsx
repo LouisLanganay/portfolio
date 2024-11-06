@@ -37,9 +37,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className='font-poppins'>
+      <body className='font-poppins transition-colors duration-300'>
         <ThemeProvider attribute='class'>
-          <div className='bg-tertiary-600 h-fit min-h-screen flex flex-col relative'>
+          <div className='dark:bg-tertiary-600 bg-white h-fit min-h-screen flex flex-col relative'>
             <Header />
             <div className='flex flex-col flex-1 z-[2] items-center'>
               <div className='max-w-4xl px-5 py-10 w-full'>

@@ -13,7 +13,7 @@ const ProjectCardItem: FC<ProjectCardItemProps> = ({
   return (
     <div className='flex-col flex-shrink-0 text-center justify-center items-center flex relative'>
       <span className={clsx(
-        'flex flex-row items-center bg-tertiary-480 py-1 px-3 transition-all rounded-lg border-[1px] border-tertiary-450 duration-300 peer',
+        'flex flex-row items-center dark:bg-tertiary-480 bg-tertiary-50 py-1 px-3 transition-all rounded-lg border-[1px] dark:border-tertiary-450 border-tertiary-150 duration-300 peer',
         tooltip && 'cursor-pointer',
         className
       )}>

@@ -4,9 +4,8 @@ import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import clsx from 'clsx';
 import { ArrowDownIcon } from '@heroicons/react/24/outline';
-import Image from 'next/image';
 
-import { Button, ExperienceDropdown, ProjectCard, Section } from '@/components';
+import { Button, ExperienceDropdown, ProjectCard, Section, TechBadge } from '@/components';
 import GridPattern from '@/components/Magicui/GridPattern';
 import WordPullUp from '@/components/Magicui/WordPullUp';
 import { Spotlight } from '@/components/Aceternity/Spotlight';
@@ -24,7 +23,7 @@ export default function Home() {
   const displayedProjects = isExpanded ? projects : projects.slice(0, 6);
 
   return (
-    <main className="space-y-16">
+    <main className='space-y-16'>
       <HeroSection />
       <SkillsSection />
       <ExperienceSection />
@@ -41,21 +40,22 @@ function HeroSection() {
         maxOpacity={0.1}
         duration={3}
         className={clsx(
-          '[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]',
+          'dark:[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]',
+          '[mask-image:radial-gradient(400px_circle_at_center,black,transparent)]',
           'inset-x-0 inset-y-[+10%] h-[200%] skew-y-12 -left-5 md:-left-36'
         )}
       />
       <div className='relative flex flex-col w-full md:max-w-xl'>
         <Spotlight
-          className='-top-10 md:-top-20 md:-left-10'
+          className='-top-10 md:-top-20 md:-left-10 hidden dark:block'
           fill='white'
         />
         <WordPullUp
           words="A Developer's Journey passionate about web development and design"
-          className='text-2xl md:text-4xl font-black flex bg-clip-text text-transparent bg-gradient-to-b from-white to-white/70 flex-wrap'
+          className='text-2xl md:text-4xl font-black flex bg-clip-text text-transparent bg-gradient-to-b dark:from-white dark:to-white/70 from-black to-black/70 flex-wrap'
         />
         <motion.p
-          className='text-sm md:text-base text-white/70 font-medium z-10 mt-4'
+          className='text-sm md:text-base dark:text-white/70 text-black/70 font-medium z-10 mt-4'
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
@@ -87,41 +87,35 @@ function SkillItem({ skill, index }: { skill: { title: string; options: string[]
   return (
     <ul
       ref={ref}
-      className='flex flex-row font-normal text-white text-sm gap-2 h-fit max-w-[160px] w-fit'
+      className='flex flex-row font-normal dark:text-white text-black text-sm gap-2 h-fit max-w-[200px] w-fit'
     >
       <div className='flex flex-col items-center'>
-        <div className='flex items-center justify-center w-5 h-5 md:w-6 md:h-6 bg-tertiary-500 border-[1px] border-tertiary-480 rounded-full mb-4 text-xs md:text-sm mt-1 text-secondary-500'>
+        <div className='flex items-center justify-center w-5 h-5 md:w-6 md:h-6 dark:bg-tertiary-500 bg-white border-[1px] dark:border-tertiary-650 border-tertiary-200 rounded-full mb-4 text-xs md:text-sm mt-1 dark:text-secondary-500 text-tertiary-650'>
           {index + 1}
         </div>
-        <hr className='w-[1px] h-full bg-tertiary-480 border-0 mb-1' />
+        <hr className='w-[1px] h-full dark:bg-tertiary-450 bg-tertiary-100 border-0 mb-1' />
       </div>
       <div className='flex flex-col h-fit'>
         <li className='font-bold text-base md:text-lg mb-2'>
           {skill.title.toUpperCase()}
         </li>
-        {skill.options.map((option, optionIndex) => {
-          const icon = getIcon(option.toLowerCase());
-          return (
-            <motion.li
-              key={optionIndex}
-              className='text-tertiary-200 text-sm md:text-base flex items-center gap-2'
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
-              transition={{ duration: 1, delay: 0.2 * optionIndex }}
-            >
-              {option}
-              {icon && (
-                <Image
-                  src={icon}
-                  alt={option}
-                  width={16}
-                  height={16}
-                  className="rounded-sm"
-                />
-              )}
-            </motion.li>
-          );
-        })}
+        <div className='flex flex-wrap gap-1'>
+          {skill.options.map((option, optionIndex) => {
+            const icon = getIcon(option.toLowerCase());
+            return (
+              <motion.li
+                key={optionIndex}
+                className='text-tertiary-200 text-sm md:text-base flex items-center gap-2'
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, delay: 0.2 * optionIndex }}
+              >
+                <TechBadge tech={option} icon={icon} />
+              </motion.li>
+            );
+          })}
+        </div>
       </div>
     </ul>
   );
@@ -130,9 +124,9 @@ function SkillItem({ skill, index }: { skill: { title: string; options: string[]
 function ExperienceSection() {
   return (
     <Section title='EXPERIENCES & EDUCATION'>
-      <ul className='flex flex-col font-normal text-white text-sm gap-4 w-full'>
-        <ExperienceList type="job" title="Work Experience" />
-        <ExperienceList type="educational" title="Educational Experience" />
+      <ul className='flex flex-col font-normal dark:text-white text-black text-sm gap-4 w-full'>
+        <ExperienceList type='job' title='Work Experience' />
+        <ExperienceList type='educational' title='Educational Experience' />
       </ul>
     </Section>
   );
@@ -143,7 +137,7 @@ function ExperienceList({ type, title }: { type: string; title: string }) {
 
   return (
     <>
-      <h5 className='text-sm font-normal text-white/70 flex-shrink-0'>
+      <h5 className='text-sm font-normal dark:text-white/70 text-black/70 flex-shrink-0'>
         - {title}
       </h5>
       <div className='flex flex-col gap-4 w-full'>

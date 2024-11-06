@@ -26,7 +26,9 @@ const config: Config = {
       },
       tertiary: {
         0: '#ffffff',
+        50: '#fafafa',
         100: '#d1d1d1',
+        150: '#b8b8b8',
         200: '#a3a3a3',
         250: '#8c8c8c',
         300: '#757575',
@@ -76,6 +78,7 @@ const config: Config = {
       },
       yellow: '#FFC561',
       white: '#fff',
+      black: '#000',
       gray: {
         0: '#ffffff',
         100: '#d6d6d8',

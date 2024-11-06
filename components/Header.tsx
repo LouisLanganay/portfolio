@@ -3,9 +3,9 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import AvailabilityTag from './AvailabilityTag';
-import clsx from 'clsx';
 import { useTheme } from 'next-themes';
-import Image from 'next/image';
+import { MoonIcon } from '@heroicons/react/24/outline';
+import { SunIcon } from '@heroicons/react/24/outline';
 import Button from './Button';
 
 const links = [
@@ -33,7 +33,7 @@ const Header: React.FC = () => {
 
   return (
     <div
-      className='sticky top-0 transition-all duration-300 z-10 bg-tertiary-600/10 backdrop-blur-lg'
+      className='sticky top-0 transition-all duration-300 z-10 bg-white/10 dark:bg-tertiary-600/10 backdrop-blur-lg'
     >
       <header className='py-4 px-5 flex flex-row justify-between max-w-4xl items-center m-auto'>
         <div className='flex flex-row items-center flex-shrink-0'>
@@ -53,13 +53,20 @@ const Header: React.FC = () => {
               href={link.url}
               key={i}
               target='_blank'
-              className='group w-fit ease-in-out font-medium text-gray-200 hover:text-gray-100 cursor-pointer hidden sm:block text-sm md:text-base'>
+              className='group w-fit ease-in-out font-medium text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-gray-100 cursor-pointer hidden sm:block text-sm md:text-base'>
               <span className='bg-left-bottom bg-gradient-to-r from-white/90 to-white/90 bg-[length:0%_1px] bg-no-repeat pb-0 group-hover:bg-[length:100%_1px] transition-all duration-500 ease-out flex gap-2'>
                 {link.name}
               </span>
             </a>
           ))}
           <AvailabilityTag />
+          <Button variant='ghost' size='icon' onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
+            {theme === 'dark' ? (
+              <MoonIcon className='size-5' />
+            ) : (
+              <SunIcon className='size-5' />
+            )}
+          </Button>
         </div>
       </header>
     </div>
