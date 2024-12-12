@@ -4,6 +4,8 @@ import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Footer, Header } from '@/components';
 import './globals.css';
 import { ThemeProvider } from 'next-themes';
+import { Poppins } from '@next/font/google';
+import clsx from 'clsx';
 
 export const metadata: Metadata = {
   title: 'Louis Langanay - Portfolio',
@@ -30,6 +32,12 @@ export const metadata: Metadata = {
   },
 };
 
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  style: ['normal', 'italic'],
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -37,7 +45,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className='font-poppins transition-colors duration-300'>
+      <body
+        className={clsx(
+          'font-poppins transition-colors duration-300',
+          poppins.className
+        )}
+      >
         <ThemeProvider attribute='class'>
           <div className='dark:bg-tertiary-600 bg-white h-fit min-h-screen flex flex-col relative'>
             <Header />
