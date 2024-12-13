@@ -5,19 +5,21 @@ import { cva } from 'class-variance-authority';
 import { ButtonProps } from '@/types';
 
 const buttonVariants = cva(
-  'group/button items-center text-sm md:text-base w-fit font-normal h-fit rounded-lg flex flex-row justify-center disabled:opacity-80 disabled:cursor-not-allowed transition duration-200 ease-in-out',
+  'group/button items-center w-fit font-normal h-fit rounded-lg flex flex-row justify-center disabled:opacity-80 disabled:cursor-not-allowed transition duration-200 ease-in-out',
   {
     variants: {
       variant: {
+        outline: 'bg-transparent hover:bg-tertiary-500 active:bg-tertiary-480 text-tertiary-500 dark:text-white disabled:hover:bg-tertiary-500 border-[1px] border-tertiary-480 hover:border-tertiary-450 disabled:border-tertiary-480 shadow-sm',
         primary: 'bg-tertiary-500 hover:bg-tertiary-480 active:bg-tertiary-550 text-white disabled:hover:bg-tertiary-500 border-[1px] border-tertiary-480 hover:border-tertiary-450 disabled:border-tertiary-480 shadow-sm',
         secondary: 'active:bg-tertiary-550 dark:text-white text-black disabled:hover:text-white disabled:hover:bg-tertiary-500 border-[1px] dark:border-tertiary-480 border-tertiary-100 dark:hover:border-tertiary-450 hover:border-tertiary-200 shadow-sm',
         ghost: 'active:bg-tertiary-550 dark:text-white text-black disabled:hover:text-white disabled:hover:bg-tertiary-500 border-[1px] border-transparent hover:border-tertiary-450'
       },
       size: {
         icon: 'p-2 rounded-full',
-        sm: 'py-1 px-2',
-        md: 'py-1.5 px-4',
-        lg: 'py-2 px-5'
+        sm: 'py-1 px-2 text-sm md:text-base',
+        md: 'py-1.5 px-4 text-sm md:text-base',
+        lg: 'py-2 px-5 text-sm md:text-base',
+        xs: 'py-1 px-3 text-xs md:text-sm'
       }
     }
   }

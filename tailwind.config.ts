@@ -113,7 +113,6 @@ const config: Config = {
         'height': 'height'
       },
       backgroundImage: {
-        'noisy-texture': 'url("assets/background_noisy.png")',
         'grid-texture': 'url("assets/grid.png")'
       },
       animation: {
@@ -148,6 +147,6 @@ const config: Config = {
       }
     }
   },
-  plugins: [],
+  plugins: [require('tailwindcss-dotted-background')],
 };
 export default config;

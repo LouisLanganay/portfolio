@@ -31,7 +31,8 @@
     "react-syntax-highlighter": "^15.5.0",
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^3.0.1",
-    "tailwind-merge": "^2.5.2"
+    "tailwind-merge": "^2.5.2",
+    "tailwindcss-dotted-background": "^1.1.0"
   },
   "devDependencies": {
     "@types/node": "^20",

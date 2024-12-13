@@ -60,7 +60,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
   }, [project.repository, repository]);
 
   return (
-    <li className='w-full h-auto rounded-lg' key={project.title}>
+    <li className='w-full h-full rounded-lg' key={project.title}>
       <div
         className='dark:bg-tertiary-500 bg-white border-[1px] dark:border-tertiary-480 border-tertiary-100 items-center
         rounded-lg flex transition-all ease-in-out w-full cursor-pointer duration-200 group/card

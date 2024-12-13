@@ -6,6 +6,7 @@ import './globals.css';
 import { ThemeProvider } from 'next-themes';
 import { Poppins } from '@next/font/google';
 import clsx from 'clsx';
+import { TechBadgeProvider } from '@/contexts/TechBadgeContext';
 
 export const metadata: Metadata = {
   title: 'Louis Langanay - Portfolio',
@@ -52,17 +53,19 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider attribute='class'>
-          <div className='dark:bg-tertiary-600 bg-white h-fit min-h-screen flex flex-col relative'>
-            <Header />
-            <div className='flex flex-col flex-1 z-[2] items-center'>
-              <div className='max-w-4xl px-5 py-10 w-full'>
-                {children}
-                <SpeedInsights />
+          <TechBadgeProvider>
+            <div className='dark:bg-tertiary-600 bg-white h-fit min-h-screen flex flex-col relative'>
+              <Header />
+              <div className='flex flex-col flex-1 z-[2] items-center'>
+                <div className='max-w-4xl px-5 py-10 w-full'>
+                  {children}
+                  <SpeedInsights />
+                </div>
+                <Analytics />
               </div>
-              <Analytics />
+              <Footer />
             </div>
-            <Footer />
-          </div>
+          </TechBadgeProvider>
         </ThemeProvider>
       </body>
     </html>

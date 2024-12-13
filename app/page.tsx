@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import clsx from 'clsx';
-import { ArrowDownIcon } from '@heroicons/react/24/outline';
+import { ArrowDownIcon, InformationCircleIcon, XMarkIcon } from '@heroicons/react/24/outline';
 
 import { Button, ExperienceDropdown, ProjectCard, Section, TechBadge } from '@/components';
 import GridPattern from '@/components/Magicui/GridPattern';
@@ -15,6 +15,8 @@ import { getProjects } from '@/lib/Documents';
 import experiences from '@/content/data/experiences.json';
 import skills from '@/content/data/skills.json';
 import { getIcon } from '@/lib/GetIcon';
+import { useTechBadge } from '@/contexts/TechBadgeContext';
+import Link from 'next/link';
 
 export default function Home() {
   const projects = getProjects();
@@ -69,6 +71,17 @@ function HeroSection() {
 }
 
 function SkillsSection() {
+  const { selectedTechs, resetSelection } = useTechBadge();
+  const projects = getProjects();
+
+  const filteredProjects = projects.filter(project =>
+    selectedTechs.size === 0 || project.tools?.some((tech: string) => selectedTechs.has(tech.toLowerCase()))
+  );
+
+  const lastProject = filteredProjects.reduce((last, project) => {
+    return new Date(project.date) > new Date(last.date) ? project : last;
+  }, filteredProjects[0]);
+
   return (
     <Section title='SKILLS'>
       <div className='grid grid-cols-2 md:flex md:flex-row gap-4 w-full justify-between flex-wrap'>
@@ -76,6 +89,39 @@ function SkillsSection() {
           <SkillItem key={index} skill={skill} index={index} />
         ))}
       </div>
+      {selectedTechs.size > 0 && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+          className='mt-4 p-4 dark:bg-tertiary-600 bg-tertiary-50 rounded-md border dark:border-tertiary-480 border-tertiary-100 shadow-sm'
+        >
+          <h4 className='text-md font-normal flex items-center mb-2'>
+            <InformationCircleIcon className='size-4 mr-2' />
+            Somes informations about selection
+          </h4>
+          <p className='text-sm font-light tracking-wide'>
+            {filteredProjects.length === 0 ?
+              'Oh no, it seems like there are no projects related to the technologies you selected on my portfolio.' :
+              `On my portfolio, you can see ${filteredProjects.length} projects related to the technologies you selected.`
+            }
+          </p>
+          {lastProject && (
+            <p className='text-sm font-light tracking-wide'>
+              The last project related to the technologies you selected is <Link href={`/projects/${lastProject.id}`} className='underline text-sm font-light tracking-wide'>{lastProject.title}</Link>
+            </p>
+          )}
+          <Button
+            variant='outline'
+            className='mt-2'
+            size='xs'
+            onClick={resetSelection}
+          >
+            <XMarkIcon className='size-4 mr-2' />
+            Reset Selection
+          </Button>
+        </motion.div>
+      )}
     </Section>
   );
 }
@@ -133,7 +179,12 @@ function ExperienceSection() {
 }
 
 function ExperienceList({ type, title }: { type: string; title: string }) {
-  const filteredExperiences = experiences.filter(e => e.type === type);
+  const { selectedTechs } = useTechBadge();
+
+  const filteredExperiences = experiences.filter(e =>
+    e.type === type &&
+    (selectedTechs.size === 0 || e.technologies?.some(tech => selectedTechs.has(tech.toLowerCase())))
+  );
 
   return (
     <>
@@ -142,15 +193,22 @@ function ExperienceList({ type, title }: { type: string; title: string }) {
       </h5>
       <div className='flex flex-col gap-4 w-full'>
         {filteredExperiences.map((experience: Experience, index: number) => (
-          <ExperienceDropdown
+          <motion.div
             key={index}
-            title={experience.title}
-            location={experience.location}
-            date={experience.date}
-            description={experience.description}
-            image={experience.image}
-            technologies={experience.technologies}
-          />
+            initial={{ opacity: 0, scale: 0.99 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.99 }}
+            transition={{ duration: 0.3 }}
+          >
+            <ExperienceDropdown
+              title={experience.title}
+              location={experience.location}
+              date={experience.date}
+              description={experience.description}
+              image={experience.image}
+              technologies={experience.technologies}
+            />
+          </motion.div>
         ))}
       </div>
     </>
@@ -166,16 +224,30 @@ function ProjectsSection({
   isExpanded: boolean;
   setIsExpanded: React.Dispatch<React.SetStateAction<boolean>>
 }) {
+  const { selectedTechs } = useTechBadge();
+
+  const filteredProjects = projects.filter(project =>
+    selectedTechs.size === 0 || project.tools?.some((tech: string) => selectedTechs.has(tech.toLowerCase()))
+  );
+
   return (
     <Section title='PROJECTS'>
       <ul className='grid sm:grid-cols-1 md:grid-cols-2 font-normal text-white text-sm gap-4 w-full'>
-        {projects.map((project: Project, index: number) => (
-          <ProjectCard project={project} key={index} />
+        {filteredProjects.map((project: Project, index: number) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+          >
+            <ProjectCard project={project} />
+          </motion.div>
         ))}
       </ul>
       <Button
         variant='secondary'
-        className='mt-5 w-full md:w-fit'
+        className={clsx('mt-5 w-full md:w-fit', selectedTechs.size > 0 && 'hidden')}
         shiny
         onClick={() => setIsExpanded(!isExpanded)}
       >
