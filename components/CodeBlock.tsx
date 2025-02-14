@@ -7,12 +7,12 @@ import { CopyButton } from './CopyButton';
 
 interface CodeBlockProps extends React.HTMLAttributes<HTMLDivElement> {
   buttonTitle?: string;
-  language: string;
+  language?: string;
 }
 
 export function CodeBlock({
   buttonTitle,
-  language,
+  language = 'plaintext',
   children,
   className,
   ...props
