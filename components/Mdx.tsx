@@ -3,8 +3,8 @@ import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { InformationCircleIcon } from '@heroicons/react/20/solid';
 import { ChatBubbleBottomCenterTextIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import Theme from 'react-syntax-highlighter/dist/esm/styles/prism/one-dark';
+import { CodeBlock } from './CodeBlock';
+import { ComponentPreview } from './ComponentPreview';
 
 interface MDXProps {
   code: MDXRemoteSerializeResult;
@@ -12,14 +12,21 @@ interface MDXProps {
 }
 
 const components = {
+  ComponentPreview,
   h1: ({ ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h1 className='font-Mbold text-xl md:text-2xl mb-2' {...props} />
+    <h1 className='font-black text-xl md:text-2xl mb-2 text-white' {...props} />
   ),
   h2: ({ ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h2 className='font-Mbold text-lg md:text-xl mb-2' {...props} />
+    <h2 className='font-extrabold text-lg md:text-xl mb-2 text-white' {...props} />
   ),
   h3: ({ ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h3 className='font-Mbold text-base md:text-lg mb-2' {...props} />
+    <h3 className='font-bold text-base md:text-lg mb-2 text-white' {...props} />
+  ),
+  h4: ({ ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h4 className='font-semibold text-sm md:text-base mb-2 text-white' {...props} />
+  ),
+  h5: ({ ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h5 className='font-medium text-xs md:text-sm mb-2 text-white' {...props} />
   ),
   a: ({ ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
     <a
@@ -88,15 +95,12 @@ const components = {
   code: ({ children, className, ...props }: React.HTMLAttributes<HTMLElement>) => {
     const match = /language-(\w+)/.exec(className || '');
     return match ? (
-      <SyntaxHighlighter
-        {...props}
-        // eslint-disable-next-line react/no-children-prop
-        children={String(children).replace(/\n$/, '')}
+      <CodeBlock
         language={match[1]}
-        PreTag='div'
-        style={Theme}
-        ref={undefined}
-      />
+        {...props}
+      >
+        {children}
+      </CodeBlock>
     ) : (
       <pre className='bg-tertiary-500 rounded-sm px-[2.72px] w-fit select-all inline-block'>{children}</pre>
     );
@@ -132,13 +136,10 @@ const components = {
   ),
 };
 
-
-
-
 export function Mdx({ code, raw }: MDXProps) {
   const MDXContent = useMDXComponent(raw);
   return (
-    <article className='font-poppins text-foreground'>
+    <article className='font-poppins text-white/70 text-md'>
       <MDXContent components={components} />
     </article>
   );

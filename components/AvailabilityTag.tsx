@@ -1,11 +1,11 @@
 'use client';
 
 import React, { FC, useState } from 'react';
-import HiringModal from './HiringModal';
-import Button from './Button';
 import clsx from 'clsx';
+import { Button } from './ui/button';
+import { HiringModal } from './HiringModal';
 
-const AvailabilityTag: FC = () => {
+export function AvailabilityTag() {
   const available = true;
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -38,5 +38,3 @@ const AvailabilityTag: FC = () => {
     </>
   );
 };
-
-export default AvailabilityTag;

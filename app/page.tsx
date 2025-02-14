@@ -1,25 +1,31 @@
 'use client';
 
-import { useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
-import clsx from 'clsx';
 import { ArrowDownIcon, InformationCircleIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import clsx from 'clsx';
+import { motion, useInView } from 'framer-motion';
+import { useRef, useState } from 'react';
 
-import { Button, ExperienceDropdown, ProjectCard, Section, TechBadge } from '@/components';
+import { Spotlight } from '@/components/Aceternity/Spotlight';
 import GridPattern from '@/components/Magicui/GridPattern';
 import WordPullUp from '@/components/Magicui/WordPullUp';
-import { Spotlight } from '@/components/Aceternity/Spotlight';
+import { Section } from '@/components/Section';
 
-import { Experience, Project } from '@/types';
-import { getProjects } from '@/lib/Documents';
+import { ExperienceDropdown } from '@/components/ExperienceDropdown';
+import { ProjectCard } from '@/components/Projects/ProjectCard';
+import { TechBadge } from '@/components/TechBadge';
+import { Button } from '@/components/ui/button';
 import experiences from '@/content/data/experiences.json';
 import skills from '@/content/data/skills.json';
-import { getIcon } from '@/lib/GetIcon';
 import { useTechBadge } from '@/contexts/TechBadgeContext';
-import Link from 'next/link';
+import { getProjects, getArticles } from '@/lib/Documents';
+import { getIcon } from '@/lib/GetIcon';
+import { Experience, Project, Skill } from '@/types';
+import Image from 'next/image';
+import { ArticleCard } from '@/components/Articles/ArticleCard';
 
 export default function Home() {
   const projects = getProjects();
+  const articles = getArticles();
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
   const displayedProjects = isExpanded ? projects : projects.slice(0, 6);
@@ -30,6 +36,7 @@ export default function Home() {
       <SkillsSection />
       <ExperienceSection />
       <ProjectsSection projects={displayedProjects} isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
+      <ArticlesSection articles={articles} />
     </main>
   );
 }
@@ -82,6 +89,14 @@ function SkillsSection() {
     return new Date(project.date) > new Date(last.date) ? project : last;
   }, filteredProjects[0]);
 
+  const validTechEntries = Array.from(selectedTechs).filter(tech => {
+    const techInfo = skills
+      .flatMap(category => category.options)
+      .find(opt => opt.name.toLowerCase() === tech);
+    const icon = getIcon(techInfo?.name.toLowerCase() || '');
+    return techInfo && icon && techInfo.description;
+  });
+
   return (
     <Section title='SKILLS'>
       <div className='grid grid-cols-2 md:flex md:flex-row gap-4 w-full justify-between flex-wrap'>
@@ -89,7 +104,7 @@ function SkillsSection() {
           <SkillItem key={index} skill={skill} index={index} />
         ))}
       </div>
-      {selectedTechs.size > 0 && (
+      {selectedTechs.size > 0 && validTechEntries.length > 0 && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -98,22 +113,34 @@ function SkillsSection() {
         >
           <h4 className='text-md font-normal flex items-center mb-2'>
             <InformationCircleIcon className='size-4 mr-2' />
-            Somes informations about selection
+            Selected technologies
           </h4>
-          <p className='text-sm font-light tracking-wide'>
-            {filteredProjects.length === 0 ?
-              'Oh no, it seems like there are no projects related to the technologies you selected on my portfolio.' :
-              `On my portfolio, you can see ${filteredProjects.length} projects related to the technologies you selected.`
-            }
-          </p>
-          {lastProject && (
-            <p className='text-sm font-light tracking-wide'>
-              The last project related to the technologies you selected is <Link href={`/projects/${lastProject.id}`} className='underline text-sm font-light tracking-wide'>{lastProject.title}</Link>
-            </p>
-          )}
+          <div className='space-y-3'>
+            {validTechEntries.map((tech) => {
+              const techInfo = skills
+                .flatMap(category => category.options)
+                .find(opt => opt.name.toLowerCase() === tech);
+              const icon = getIcon(techInfo?.name.toLowerCase() || '');
+              return techInfo && icon && techInfo.description && (
+                <div key={tech} className='text-sm flex flex-row items-start gap-2'>
+                  <div className='p-1 rounded-md bg-tertiary-600/30 border border-tertiary-480 flex flex-row items-center justify-center gap-1'>
+                    <Image
+                      src={icon}
+                      alt={techInfo.name}
+                      width={14}
+                      height={14}
+                      className='object-contain'
+                    />
+                    <div className='text-xs'>{techInfo.name}</div>
+                  </div>
+                  <div className='text-muted-foreground'> - {techInfo.description}</div>
+                </div>
+              );
+            })}
+          </div>
           <Button
             variant='outline'
-            className='mt-2'
+            className='mt-4'
             size='xs'
             onClick={resetSelection}
           >
@@ -126,7 +153,7 @@ function SkillsSection() {
   );
 }
 
-function SkillItem({ skill, index }: { skill: { title: string; options: string[] }, index: number }) {
+function SkillItem({ skill, index }: { skill: Skill, index: number }) {
   const ref = useRef<HTMLUListElement>(null);
   const isInView = useInView(ref);
 
@@ -146,20 +173,25 @@ function SkillItem({ skill, index }: { skill: { title: string; options: string[]
           {skill.title.toUpperCase()}
         </li>
         <div className='flex flex-wrap gap-1'>
-          {skill.options.map((option, optionIndex) => {
-            const icon = getIcon(option.toLowerCase());
-            return (
-              <motion.li
-                key={optionIndex}
-                className='text-tertiary-200 text-sm md:text-base flex items-center gap-2'
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, delay: 0.2 * optionIndex }}
-              >
-                <TechBadge tech={option} icon={icon} />
-              </motion.li>
-            );
+          {skill.options
+            .filter(option => option.display)
+            .map((option, optionIndex) => {
+              const icon = getIcon(option.name.toLowerCase());
+              return (
+                <motion.li
+                  key={optionIndex}
+                  className='text-tertiary-200 text-sm md:text-base flex items-center gap-2'
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1, delay: 0.2 * optionIndex }}
+                >
+                  <TechBadge
+                    tech={option.name}
+                    icon={icon}
+                  />
+                </motion.li>
+              );
           })}
         </div>
       </div>
@@ -185,6 +217,9 @@ function ExperienceList({ type, title }: { type: string; title: string }) {
     e.type === type &&
     (selectedTechs.size === 0 || e.technologies?.some(tech => selectedTechs.has(tech.toLowerCase())))
   );
+
+  if (filteredExperiences.length === 0)
+    return null;
 
   return (
     <>
@@ -259,6 +294,32 @@ function ProjectsSection({
           )}
         />
       </Button>
+    </Section>
+  );
+}
+
+function ArticlesSection({ articles }: { articles: any[] }) {
+  const { selectedTechs } = useTechBadge();
+
+  const filteredArticles = articles.filter(article =>
+    selectedTechs.size === 0 || article.tools?.some((tech: string) => selectedTechs.has(tech.toLowerCase()))
+  );
+
+  return (
+    <Section title='ARTICLES'>
+      <ul className='grid sm:grid-cols-1 md:grid-cols-2 font-normal text-white text-sm gap-4 w-full'>
+        {filteredArticles.map((article, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+          >
+            <ArticleCard article={article} />
+          </motion.div>
+        ))}
+      </ul>
     </Section>
   );
 }

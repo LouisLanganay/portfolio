@@ -2,42 +2,159 @@
   {
     "title": "languages",
     "options": [
-      "TypeScript",
-      "C",
-      "C++",
-      "Bash"
+      {
+        "name": "TypeScript",
+        "display": true,
+        "description": "I use TypeScript for most of my personal projects. It's my favorite language."
+      },
+      {
+        "name": "C",
+        "display": true,
+        "description": "I learned C during my studies and practiced it for 3 years in school."
+      },
+      {
+        "name": "C++",
+        "display": true,
+        "description": "Like C, I learned C++ during my studies and used it extensively throughout my 3 years of school."
+      },
+      {
+        "name": "Bash",
+        "display": false
+      },
+      {
+        "name": "JavaScript",
+        "display": true,
+        "description": "JavaScript was my first programming language, which I learned in college. I used it for my very first projects, and it was my favorite language before discovering TypeScript."
+      },
+      {
+        "name": "Python",
+        "display": true,
+        "description": "I use Python occasionally for artificial intelligence projects and automation tasks."
+      },
+      {
+        "name": "PHP",
+        "display": true
+      }
     ]
   },
   {
     "title": "frameworks & libs",
     "options": [
-      "React",
-      "NodeJS",
-      "NextJS",
-      "Angular",
-      "ExpressJS",
-      "TailwindCSS",
-      "Sass",
-      "DiscordJS"
+      {
+        "name": "React",
+        "display": true,
+        "description": "React was the first web framework I learned, discovering it while working on a Discord bot dashboard project. It remains my favorite framework."
+      },
+      {
+        "name": "NodeJS",
+        "display": true,
+        "description": "I mainly use NodeJS for building APIs."
+      },
+      {
+        "name": "NextJS",
+        "display": true,
+        "description": "I recently discovered NextJS and find it interesting, though it can be overkill compared to React for certain projects."
+      },
+      {
+        "name": "Angular",
+        "display": true,
+        "description": "I discovered Angular in a professional setting and had no trouble learning to use it."
+      },
+      {
+        "name": "ExpressJS",
+        "display": false
+      },
+      {
+        "name": "TailwindCSS",
+        "display": true,
+        "description": "TailwindCSS has been my best discovery since I started web development. It brings only positives to my development method, saving me considerable time."
+      },
+      {
+        "name": "Sass",
+        "display": true
+      },
+      {
+        "name": "DiscordJS",
+        "display": true,
+        "description": "I've been using DiscordJS since college, and I built my first Discord bot with it."
+      },
+      {
+        "name": "NestJS",
+        "display": true
+      },
+      {
+        "name": "Prisma",
+        "display": true
+      },
+      {
+        "name": "Vite",
+        "display": true
+      },
+      {
+        "name": "Capacitor",
+        "display": true
+      }
     ]
   },
   {
     "title": "tools",
     "options": [
-      "Git",
-      "Linux systems",
-      "MongoDB",
-      "Postman",
-      "Stripe"
+      {
+        "name": "Git",
+        "display": true,
+        "description": "I've been using Git for version control since I started programming."
+      },
+      {
+        "name": "Docker",
+        "display": true,
+        "description": "I started using Docker during my studies, and since then I use it whenever possible in my projects."
+      },
+      {
+        "name": "Linux systems",
+        "display": true,
+        "description": "I've been using Linux since my higher education, with a particular preference for Arch Linux."
+      },
+      {
+        "name": "MongoDB",
+        "display": true,
+        "description": "MongoDB is my favorite database system."
+      },
+      {
+        "name": "Stripe",
+        "display": true,
+        "description": "While I find Stripe complex to use, it's the most comprehensive payment intermediary I know."
+      },
+      {
+        "name": "Postman",
+        "display": true
+      },
+      {
+        "name": "OpenAI",
+        "display": true,
+        "description": "I've been using OpenAI for a while now, and I find it a powerful tool for AI-powered applications."
+      }
     ]
   },
   {
     "title": "other",
     "options": [
-      "CI/CD",
-      "Figma",
-      "Illustrator",
-      "Photoshop"
+      {
+        "name": "CI/CD",
+        "display": true,
+        "description": "I generally work with GitHub Actions, but I have experience with Jenkins as well."
+      },
+      {
+        "name": "Figma",
+        "display": true
+      },
+      {
+        "name": "Illustrator",
+        "display": true
+      },
+      {
+        "name": "Photoshop",
+        "display": true
+      }
     ]
   }
 ]

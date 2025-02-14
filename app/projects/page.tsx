@@ -1,4 +1,4 @@
-import { ProjectCard } from '@/components';
+import { ProjectCard } from '@/components/Projects/ProjectCard';
 import { getProjects } from '@/lib/Documents';
 import { Project } from '@/types';
 import React from 'react';

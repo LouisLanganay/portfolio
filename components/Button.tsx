@@ -5,21 +5,23 @@ import { cva } from 'class-variance-authority';
 import { ButtonProps } from '@/types';
 
 const buttonVariants = cva(
-  'group/button items-center w-fit font-normal h-fit rounded-lg flex flex-row justify-center disabled:opacity-80 disabled:cursor-not-allowed transition duration-200 ease-in-out',
+  'group/button inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
   {
     variants: {
       variant: {
         outline: 'bg-transparent hover:bg-tertiary-500 active:bg-tertiary-480 text-tertiary-500 dark:text-white disabled:hover:bg-tertiary-500 border-[1px] border-tertiary-480 hover:border-tertiary-450 disabled:border-tertiary-480 shadow-sm',
         primary: 'bg-tertiary-500 hover:bg-tertiary-480 active:bg-tertiary-550 text-white disabled:hover:bg-tertiary-500 border-[1px] border-tertiary-480 hover:border-tertiary-450 disabled:border-tertiary-480 shadow-sm',
         secondary: 'active:bg-tertiary-550 dark:text-white text-black disabled:hover:text-white disabled:hover:bg-tertiary-500 border-[1px] dark:border-tertiary-480 border-tertiary-100 dark:hover:border-tertiary-450 hover:border-tertiary-200 shadow-sm',
-        ghost: 'active:bg-tertiary-550 dark:text-white text-black disabled:hover:text-white disabled:hover:bg-tertiary-500 border-[1px] border-transparent hover:border-tertiary-450'
+        ghost: 'active:bg-tertiary-550 dark:text-white text-black disabled:hover:text-white disabled:hover:bg-tertiary-500 border-[1px] border-transparent hover:border-tertiary-450',
+        primaryOutline: 'border border-[#feca77] bg-gradient-to-r from-[#feca77] to-[#fed1b3] text-[#171717] hover:bg-opacity-80 ring-[1px] ring-[#feca77]/50 ring-offset-[3px] ring-offset-[#121212] hover:ring-[#feca77]/70'
       },
       size: {
-        icon: 'p-2 rounded-full',
-        sm: 'py-1 px-2 text-sm md:text-base',
-        md: 'py-1.5 px-4 text-sm md:text-base',
-        lg: 'py-2 px-5 text-sm md:text-base',
-        xs: 'py-1 px-3 text-xs md:text-sm'
+        md: "h-9 px-4 py-2",
+        xs: "h-7 rounded-md px-2.5 py-0 text-xs",
+        sm: "h-8 rounded-md px-3 text-xs",
+        lg: "h-10 rounded-md px-8",
+        icon: "h-9 w-9",
+        iconSm: "h-7 w-7"
       }
     }
   }
@@ -33,14 +35,16 @@ const getRingColor = (variant: string) => {
     return 'ring-tertiary-480';
   case 'ghost':
     return 'ring-tertiary-480';
+  case 'primaryOutline':
+    return 'ring-[#feca77]';
   default:
     return 'ring-tertiary-500';
   }
 };
 
-const Button: FC<ButtonProps> = ({
+export function Button({
   variant, ring, link, className, children, onClick, loading, shiny, size = 'md', ...props
-}) => {
+}: ButtonProps) {
   const handleClick = (link: string | undefined) => {
     if (link) {
       window.open(link, '_blank');
@@ -76,6 +80,4 @@ const Button: FC<ButtonProps> = ({
       )}
     </button>
   );
-};
-
-export default Button;
+}

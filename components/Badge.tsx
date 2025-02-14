@@ -6,7 +6,7 @@ interface BadgeProps {
   className?: string;
 }
 
-const Badge: FC<BadgeProps> = ({ children, className }) => {
+export function Badge({ children, className }: BadgeProps) {
   return (
     <span
       className={clsx(
@@ -17,6 +17,4 @@ const Badge: FC<BadgeProps> = ({ children, className }) => {
       {children}
     </span>
   );
-};
-
-export default Badge;
+}

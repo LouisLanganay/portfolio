@@ -1,0 +1,47 @@
+---
+title: Apply a gradient to text with TailwindCSS
+description: Learn how to apply a gradient to text with TailwindCSS
+publishedAt: 2025-01-21
+tools: [React, TypeScript, TailwindCSS]
+published: true
+newsLetter: true
+author: Louis Langanay
+---
+
+### Demo and Context
+
+In modern design, using gradients adds an attractive visual touch to user interfaces. Applying a gradient directly to text creates dynamic and aesthetic effects, often used for titles or slogans. With TailwindCSS, it's possible to achieve this effect simply and quickly without adding custom CSS. Here's an example of the final component:
+
+&nbsp;
+
+<ComponentPreview name="text-gradient" />
+
+### How to achieve this effect?
+
+To get a gradient on text with TailwindCSS, follow these steps:
+
+&nbsp;
+
+#### 1. Environment Setup:
+
+Make sure you have a project with TailwindCSS configured. If not, you can follow [the official documentation](https://tailwindcss.com/docs/installation) to install it.
+
+&nbsp;
+
+#### 2. Component Creation:
+
+Add the following code to your HTML file or React component.
+
+&nbsp;
+
+```html
+<h1 class="text-5xl font-extrabold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
+  My text with gradient
+</h1>
+```
+
+&nbsp;
+
+### Conclusion
+With these few classes, you can transform any text into a visually appealing element. Using TailwindCSS makes this technique simple, fast, and reusable in your projects. Feel free to experiment with different colors and gradient directions to create unique designs.
+

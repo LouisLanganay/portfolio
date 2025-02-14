@@ -14,15 +14,13 @@ import Image from 'next/image';
 import { Project, Repository } from '@/types';
 import { getRepository } from '@/lib/GetRepository';
 import { getIcon } from '@/lib/GetIcon';
-import TechBadge from '../TechBadge';
+import { TechBadge } from '../TechBadge';
 
 interface ProjectCardProps {
   project: Project;
 }
 
-const ProjectCard: FC<ProjectCardProps> = ({
-  project, ...props
-}) => {
+export function ProjectCard({ project }: ProjectCardProps) {
   const divRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [opacity, setOpacity] = useState(0);
@@ -188,6 +186,4 @@ const ProjectCard: FC<ProjectCardProps> = ({
       </div>
     </li>
   );
-};
-
-export default ProjectCard;
+}

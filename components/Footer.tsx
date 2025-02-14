@@ -1,16 +1,15 @@
 'use client';
 
 import React from 'react';
-import Button from './Button';
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
+import { Button } from './ui/button';
 
 interface Link {
   name: string;
   url: string;
 }
 
-const Footer: React.FC = () => {
+export function Footer() {
   const Year = new Date().getFullYear();
   const router = useRouter();
   const links: Link[] = [
@@ -74,6 +73,4 @@ const Footer: React.FC = () => {
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

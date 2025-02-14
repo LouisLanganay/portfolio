@@ -1,0 +1,107 @@
+---
+title: Create a button with outline and gradient using Shadcn/ui
+description: Learn how to create a stylish button with outline and gradient using Shadcn/ui and TailwindCSS
+publishedAt: 2024-02-14
+tools: [React, TypeScript, TailwindCSS, Shadcn/ui]
+published: true
+newsLetter: true
+author: Louis Langanay
+---
+
+### Demo and Context
+
+Buttons are essential elements of any user interface. In this tutorial, we'll create an elegant button with an outline and gradient using Shadcn/ui and TailwindCSS. Here's the final result:
+
+&nbsp;
+
+<ComponentPreview name="button-outline" />
+
+### How to create this button?
+
+Follow these steps to create this custom button:
+
+&nbsp;
+
+#### 1. Installing Shadcn/ui
+
+Start by installing Shadcn/ui in your project. Use the following command:
+
+&nbsp;
+
+```bash
+npx shadcn-ui@latest init
+```
+
+&nbsp;
+
+Then install the Button component:
+
+&nbsp;
+
+```bash
+npx shadcn-ui@latest add button
+```
+
+&nbsp;
+
+#### 2. Button Customization
+
+In your button configuration file (usually `components/Button.tsx`), add a new variant to the component. We'll call it `primaryOutline`:
+
+&nbsp;
+
+```typescript
+const buttonVariants = cva(
+  // ... existing base styles ...
+  {
+    variants: {
+      variant: {
+        // ... other variants ...
+        primaryOutline: 'border border-[#feca77] bg-gradient-to-r from-[#feca77] to-[#fed1b3] text-[#171717] hover:bg-opacity-80 ring-[1px] ring-[#feca77]/50 ring-offset-[3px] ring-offset-[#121212] hover:ring-[#feca77]/70'
+      },
+      // ... other configurations ...
+    }
+  }
+);
+```
+
+&nbsp;
+
+#### 3. Using the Button
+
+Now that our variant is created, we can use our custom button in any component:
+
+&nbsp;
+
+```typescript
+import { Button } from '@/components/Button';
+import { RocketLaunchIcon } from '@heroicons/react/24/outline';
+
+export default function MyComponent() {
+  return (
+    <Button variant="primaryOutline" size="md">
+      Upgrade to Pro <RocketLaunchIcon className="size-5" />
+    </Button>
+  );
+}
+```
+
+&nbsp;
+
+### Explanation of Classes Used
+
+Let's break down the TailwindCSS classes used to create this effect:
+
+- `border border-[#feca77]`: Creates a golden-colored border
+- `bg-gradient-to-r from-[#feca77] to-[#fed1b3]`: Applies a horizontal gradient
+- `text-[#171717]`: Sets the text color
+- `hover:bg-opacity-80`: Slightly reduces opacity on hover
+- `ring-[1px] ring-[#feca77]/50`: Adds an outer ring with 50% opacity
+- `ring-offset-[3px] ring-offset-[#121212]`: Creates a ring offset
+- `hover:ring-[#feca77]/70`: Increases ring opacity on hover
+
+&nbsp;
+
+### Conclusion
+
+This tutorial has shown you how to create an elegant button with an outline and gradient using Shadcn/ui. This technique can be adapted to create different button variants by modifying colors and properties according to your needs.

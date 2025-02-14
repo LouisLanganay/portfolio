@@ -2,11 +2,11 @@
 
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import AvailabilityTag from './AvailabilityTag';
 import { useTheme } from 'next-themes';
 import { MoonIcon } from '@heroicons/react/24/outline';
 import { SunIcon } from '@heroicons/react/24/outline';
-import Button from './Button';
+import { AvailabilityTag } from './AvailabilityTag';
+import { Button } from './ui/button';
 
 const links = [
   {
@@ -27,7 +27,7 @@ const links = [
   }
 ];
 
-const Header: React.FC = () => {
+export function Header() {
   const router = useRouter();
   const { theme, setTheme } = useTheme();
 
@@ -60,17 +60,8 @@ const Header: React.FC = () => {
             </a>
           ))}
           <AvailabilityTag />
-          <Button variant='ghost' size='icon' onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
-            {theme === 'dark' ? (
-              <MoonIcon className='size-5' />
-            ) : (
-              <SunIcon className='size-5' />
-            )}
-          </Button>
         </div>
       </header>
     </div>
   );
-};
-
-export default Header;
+}

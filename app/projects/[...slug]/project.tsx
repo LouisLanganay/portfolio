@@ -1,6 +1,5 @@
 'use client';
 
-import { Button, TechBadge } from '@/components';
 import ProjectCardItem from '@/components/Projects/ProjectCardItem';
 import { ArrowDownTrayIcon, StarIcon, TagIcon, UsersIcon } from '@heroicons/react/24/outline';
 import { useRouter } from 'next/navigation';
@@ -10,6 +9,9 @@ import { Repository } from '@/types';
 import { getIcon } from '@/lib/GetIcon';
 import Image from 'next/image';
 import { Mdx } from '@/components/Mdx';
+import { TechBadge } from '@/components/TechBadge';
+import { Button } from '@/components/Button';
+import HeroVideoDialog from '@/components/ui/hero-video-dialog';
 
 export default function ProjectPage({ project }: { project: any }) {
   const router = useRouter();
@@ -28,20 +30,29 @@ export default function ProjectPage({ project }: { project: any }) {
       Loading....
     </h4>
   );
+  console.log(project);
   return (
     <div className='flex flex-col h-full w-full'>
       <Button variant='secondary' className='mb-4' onClick={() => router.push('/projects')}>
         &larr; Back to projects
       </Button>
-      {project.image ? (
-        <Image
-          src={project.image}
-          alt={project.title}
-          className='w-full h-64 object-cover rounded-2xl shadow-lg'
-          width={1000}
-          height={256}
+      {project.video ? (
+        <HeroVideoDialog
+          videoSrc={project.video}
+          thumbnailSrc={project.image}
+          thumbnailAlt={project.title}
         />
-      ) : null }
+      ) : (
+        project.image ? (
+          <Image
+            src={project.image}
+            alt={project.title}
+            className='w-full h-64 object-cover rounded-2xl shadow-lg'
+            width={1000}
+            height={256}
+          />
+        ) : null
+      )}
       <div className='flex flex-col gap-2 mt-4'>
         <div className='flex flex-row items-center flex-wrap gap-2'>
           <h1 className='font-Mbold text-xl md:text-2xl dark:text-white text-black mr-5'>
