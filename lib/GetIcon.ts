@@ -74,11 +74,43 @@ const emojis = [
   {
     'name': ['angular'],
     'emoji': '/icons/angular.png'
+  },
+  {
+    'name': ['vite', 'vitejs'],
+    'emoji': '/icons/vite.svg'
+  },
+  {
+    'name': ['nestjs', 'nest'],
+    'emoji': '/icons/nestjs.svg'
+  },
+  {
+    'name': ['capacitors', 'capacitor', 'capacitorjs'],
+    'emoji': '/icons/capacitor.svg'
+  },
+  {
+    'name': ['prisma'],
+    'emoji': '/icons/prisma.svg'
+  },
+  {
+    'name': ['php'],
+    'emoji': '/icons/php.svg'
+  },
+  {
+    'name': ['python'],
+    'emoji': '/icons/python.svg'
+  },
+  {
+    'name': ['docker'],
+    'emoji': '/icons/docker.svg'
+  },
+  {
+    'name': ['openai'],
+    'emoji': '/icons/openai.svg'
   }
 ];
 
 export const getIcon = (name: string) => {
-  const icon = emojis.find((emoji) => 
+  const icon = emojis.find((emoji) =>
     emoji.name.some(n => n === name.toLowerCase())
   );
   return icon?.emoji;

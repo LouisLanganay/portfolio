@@ -5,7 +5,7 @@ interface SectionProps {
   title?: string;
 }
 
-const Section: FC<SectionProps> = ({ children , title}) => {
+export function Section({ children, title }: SectionProps) {
   return (
     <section className='flex flex-col w-full flex-wrap xl:flex-nowrap my-16'>
       {title && (
@@ -19,6 +19,4 @@ const Section: FC<SectionProps> = ({ children , title}) => {
       {children}
     </section>
   );
-};
-
-export default Section;
+}

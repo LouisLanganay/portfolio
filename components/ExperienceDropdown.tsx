@@ -6,14 +6,15 @@ import { motion } from 'framer-motion';
 import clsx from 'clsx';
 import { Experience } from '@/types';
 import Image from 'next/image';
-import Badge from './Badge';
 import { getIcon } from '@/lib/GetIcon';
-import TechBadge from './TechBadge';
+import { Badge } from './Badge';
+import { TechBadge } from './TechBadge';
 
 function checkDateInterval(interval: string) {
   const [startStr, endStr] = interval.split(' - ');
   const startDate = new Date(startStr);
   const endDate = new Date(endStr);
+  endDate.setMonth(endDate.getMonth() + 1, 0);
   const currentDate = new Date();
 
   if (endDate < currentDate)
@@ -25,14 +26,13 @@ function checkDateInterval(interval: string) {
   return 'Future';
 }
 
-const ExperienceDropdown: FC<Experience> = ({
+export function ExperienceDropdown({
   title, location, date, description, image, technologies
-}, index) => {
+}: Experience) {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
   return (
     <li
-      key={index}
       className={clsx(
         'flex flex-col gap-4 group',
         description && 'cursor-pointer'
@@ -109,6 +109,4 @@ const ExperienceDropdown: FC<Experience> = ({
       </div>
     </li>
   );
-};
-
-export default ExperienceDropdown;
+}

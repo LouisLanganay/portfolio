@@ -6,7 +6,7 @@
     "date": "sep. 2024 - feb. 2025",
     "image": "/experiences/luminess.jpg",
     "description": "I developed a web configuration panel using Angular for a photo analysis tool, primarily used by banks and insurance companies to process administrative documents, during my internship at Luminess.",
-    "technologies": ["Angular", "TailwindCSS"]
+    "technologies": ["Angular", "TailwindCSS", "PHP", "TypeScript"]
   },
   {
     "type": "job",

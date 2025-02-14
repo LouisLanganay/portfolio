@@ -1,9 +1,8 @@
 'use client';
 
-import { XMarkIcon } from '@heroicons/react/24/outline';
-import React, { FC, useEffect, useRef } from 'react';
-import Button from './Button';
 import { Dialog, DialogPanel } from '@headlessui/react';
+import { XMarkIcon } from '@heroicons/react/24/outline';
+import { Button } from './ui/button';
 
 interface HiringModalProps {
   available: boolean
@@ -11,7 +10,7 @@ interface HiringModalProps {
   onClose: () => void;
 }
 
-const HiringModal: FC<HiringModalProps> = ({ available, isOpen, onClose }) => {
+export function HiringModal({ available, isOpen, onClose }: HiringModalProps) {
   return (
     <Dialog open={isOpen} as='div' className='relative z-10 focus:outline-none' onClose={onClose}>
       <div className='fixed top-0 left-0 right-0 bottom-0 bg-gray-1000 bg-opacity-50 backdrop-filter backdrop-blur-sm z-50 transition data-[closed]:bg-opacity-0'/>
@@ -73,6 +72,4 @@ const HiringModal: FC<HiringModalProps> = ({ available, isOpen, onClose }) => {
       </div>
     </Dialog>
   );
-};
-
-export default HiringModal;
+}

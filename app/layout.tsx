@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
-import { Footer, Header } from '@/components';
 import './globals.css';
 import { ThemeProvider } from 'next-themes';
-import { Poppins } from '@next/font/google';
+import { Poppins } from "next/font/google";
 import clsx from 'clsx';
 import { TechBadgeProvider } from '@/contexts/TechBadgeContext';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Louis Langanay - Portfolio',

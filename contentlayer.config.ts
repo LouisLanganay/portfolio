@@ -50,7 +50,7 @@ const StatsProperties = defineNestedType(() => ({
 export const Project = defineDocumentType(() => ({
   name: 'Project',
   contentType: 'mdx',
-  filePathPattern: '**/*.mdx',
+  filePathPattern: 'pages/**/*.mdx',
   fields: {
     title: {
       type: 'string',
@@ -86,6 +86,11 @@ export const Project = defineDocumentType(() => ({
     },
     preview: {
       type: 'string',
+      required: false,
+    },
+    video: {
+      type: 'string',
+      required: false,
     },
     tags: {
       type: 'list',
@@ -119,9 +124,63 @@ export const Project = defineDocumentType(() => ({
   },
 }))
 
+export const Article = defineDocumentType(() => ({
+  name: 'Article',
+  contentType: 'mdx',
+  filePathPattern: 'articles/**/*.mdx',
+  fields: {
+    title: {
+      type: 'string',
+      required: true,
+    },
+    description: {
+      type: 'string',
+      required: true,
+    },
+    publishedAt: {
+      type: 'string',
+      required: true
+    },
+    author: {
+      type: 'string',
+      required: true,
+    },
+    newsLetter: {
+      type: 'boolean',
+      default: false,
+    },
+    image: {
+      type: 'string',
+      required: false,
+    },
+    published: {
+      type: 'boolean',
+      default: true,
+    },
+    tags: {
+      type: 'list',
+      of: { type: 'string' },
+    },
+    tools: {
+      type: 'list',
+      of: { type: 'string' },
+    },
+    repository: {
+      type: 'string',
+      required: false,
+    }
+  },
+  computedFields: {
+    slug: {
+      type: 'string',
+      resolve: (doc) => `/${doc._raw.flattenedPath.split('/').pop()}`,
+    },
+  },
+}))
+
 export default makeSource({
-  contentDirPath: 'content/pages',
-  documentTypes: [Project],
+  contentDirPath: 'content',
+  documentTypes: [Project, Article],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [],

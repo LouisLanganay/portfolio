@@ -8,7 +8,7 @@ interface TechBadgeProps {
   icon?: string;
 }
 
-const TechBadge: FC<TechBadgeProps> = ({ tech, icon }) => {
+export function TechBadge({ tech, icon }: TechBadgeProps) {
   const { selectedTechs, toggleTech } = useTechBadge();
 
   const isSelected = tech ? selectedTechs.has(tech.toLowerCase()) : false;
@@ -41,6 +41,4 @@ const TechBadge: FC<TechBadgeProps> = ({ tech, icon }) => {
       )}
     </div>
   );
-};
-
-export default TechBadge;
+}
