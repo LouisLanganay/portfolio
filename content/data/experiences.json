@@ -1,9 +1,16 @@
 [
   {
     "type": "job",
-    "title": "Internship - Software developer",
+    "title": "Internship - Software Developer",
     "location": "Luminess",
-    "date": "sep. 2024 - feb. 2025",
+    "date": "31 mar. 2025 - 31 jul. 2025",
+    "image": "/experiences/luminess.jpg"
+  },
+  {
+    "type": "job",
+    "title": "Part-time internship - Software developer",
+    "location": "Luminess",
+    "date": "sep. 2024 - 21 feb. 2025",
     "image": "/experiences/luminess.jpg",
     "description": "I developed a web configuration panel using Angular for a photo analysis tool, primarily used by banks and insurance companies to process administrative documents, during my internship at Luminess.",
     "technologies": ["Angular", "TailwindCSS", "PHP", "TypeScript"]

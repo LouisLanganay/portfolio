@@ -12,24 +12,40 @@ import { TechBadge } from './TechBadge';
 
 function checkDateInterval(interval: string) {
   const [startStr, endStr] = interval.split(' - ');
-  const startDate = new Date(startStr);
-  const endDate = new Date(endStr);
-  endDate.setMonth(endDate.getMonth() + 1, 0);
+
+  const parseDate = (dateStr: string) => {
+    const parts = dateStr.split(' ');
+    if (parts.length === 3) {
+      return {
+        display: `${parts[1]} ${parts[2]}`,
+        date: new Date(`${parts[1]} ${parts[0]}, ${parts[2]}`)
+      };
+    } else {
+      return {
+        display: `${parts[0]} ${parts[1]}`,
+        date: new Date(`${parts[0]} 1, ${parts[1]}`)
+      };
+    }
+  };
+
+  const start = parseDate(startStr);
+  const end = parseDate(endStr);
   const currentDate = new Date();
 
-  if (endDate < currentDate)
-    return 'Past';
+  if (end.date < currentDate)
+    return { status: 'Past', display: `${start.display} - ${end.display}` };
 
-  if (startDate <= currentDate && currentDate <= endDate)
-    return 'Current';
+  if (start.date <= currentDate && currentDate <= end.date)
+    return { status: 'Current', display: `${start.display} - ${end.display}` };
 
-  return 'Future';
+  return { status: 'Future', display: `${start.display} - ${end.display}` };
 }
 
 export function ExperienceDropdown({
   title, location, date, description, image, technologies
 }: Experience) {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  const dateInfo = checkDateInterval(date);
 
   return (
     <li
@@ -60,12 +76,12 @@ export function ExperienceDropdown({
             <div className='flex flex-row justify-between w-full'>
               <p className='inline-flex items-center justify-center font-normal dark:text-white text-black text-base'>
                 {location}
-                {checkDateInterval(date) === 'Current' && (
+                {dateInfo.status === 'Current' && (
                   <Badge className='ml-2 bg-green-500/10 ring-green-500/30 dark:text-white text-black group-hover:scale-105 group-hover:rotate-6 transition-all duration-150'>
                     Current
                   </Badge>
                 )}
-                {checkDateInterval(date) === 'Future' && (
+                {dateInfo.status === 'Future' && (
                   <Badge className='ml-2 bg-blue-500/10 ring-blue-500/30 dark:text-white text-black group-hover:scale-105 group-hover:rotate-6 transition-all duration-150'>
                     Planned
                   </Badge>
@@ -78,7 +94,7 @@ export function ExperienceDropdown({
                   )}
                 />
               </p>
-              <p className='font-light dark:text-white/70 text-black/70 text-sm text-right'>{date}</p>
+              <p className='font-light dark:text-white/70 text-black/70 text-sm text-right'>{dateInfo.display}</p>
             </div>
             <div className='flex flex-col gap-2 w-full'>
               <p className='font-light dark:text-white/70 text-black/70 text-sm'>
