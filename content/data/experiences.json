@@ -36,7 +36,7 @@
     "type": "educational",
     "title": "Expert in software engineering",
     "location": "Epitech Rennes",
-    "date": "sep. 2022 - 2027",
+    "date": "sep. 2022 - jul. 2027",
     "description": "RNCP 7 Professional Certification - BAC +5.",
     "image": "/experiences/epitech.png",
     "technologies": ["C", "C++", "JavaScript", "TypeScript", "Python", "Java", "SQL", "Git", "Docker"]
@@ -45,7 +45,7 @@
     "type": "educational",
     "title": "Baccalauréat STI2D",
     "location": "Campus La Chataigneraie",
-    "date": "sep. 2019 - 2022",
+    "date": "sep. 2019 - jul. 2022",
     "description": "Information and Digital Systems (SIN) specialism (distinction).",
     "image": "/experiences/chatos.jpg"
   }
