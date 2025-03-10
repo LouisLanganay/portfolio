@@ -8,6 +8,15 @@
   },
   {
     "type": "job",
+    "title": "Freelance - Full Stack Developer",
+    "location": "IDEA Explorer",
+    "date": "24 feb. 2025 - 24 may. 2025",
+    "image": "/experiences/idea.png",
+    "technologies": ["NextJs", "TailwindCSS", "MongoDB", "TypeScript", "Stripe"],
+    "description": "The IDEA Explorer project is a website that allows the presentation of products with a store using Stripe. The application manages the creation and management of user accounts."
+  },
+  {
+    "type": "job",
     "title": "Part-time internship - Software developer",
     "location": "Luminess",
     "date": "sep. 2024 - 21 feb. 2025",
