@@ -8,6 +8,15 @@
   },
   {
     "type": "job",
+    "title": "Freelance - Web Developer",
+    "location": "IDEA Explorers",
+    "date": "feb. 2025 - present",
+    "description": "Development of a website and a backend for IDEA Explorers, following a Figma mockup. Using Nextjs, MongoDB and Docker to create a solid and performant infrastructure.",
+    "technologies": ["Nextjs", "MongoDB", "Docker", "TailwindCSS", "TypeScript", "Stripe"],
+    "image": "/experiences/ideaexplorers.png"
+  },
+  {
+    "type": "job",
     "title": "Part-time internship - Software developer",
     "location": "Luminess",
     "date": "sep. 2024 - 21 feb. 2025",

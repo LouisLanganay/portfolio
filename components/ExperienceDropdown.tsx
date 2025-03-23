@@ -14,6 +14,13 @@ function checkDateInterval(interval: string) {
   const [startStr, endStr] = interval.split(' - ');
 
   const parseDate = (dateStr: string) => {
+    if (dateStr.toLowerCase() === 'present') {
+      return {
+        display: 'Present',
+        date: new Date()
+      };
+    }
+
     const parts = dateStr.split(' ');
     if (parts.length === 3) {
       return {
@@ -32,13 +39,14 @@ function checkDateInterval(interval: string) {
   const end = parseDate(endStr);
   const currentDate = new Date();
 
-  if (end.date < currentDate)
-    return { status: 'Past', display: `${start.display} - ${end.display}` };
+  if (endStr.toLowerCase() === 'present' || end.date >= currentDate) {
+    if (start.date <= currentDate) {
+      return { status: 'Current', display: `${start.display} - ${end.display}` };
+    }
+    return { status: 'Future', display: `${start.display} - ${end.display}` };
+  }
 
-  if (start.date <= currentDate && currentDate <= end.date)
-    return { status: 'Current', display: `${start.display} - ${end.display}` };
-
-  return { status: 'Future', display: `${start.display} - ${end.display}` };
+  return { status: 'Past', display: `${start.display} - ${end.display}` };
 }
 
 export function ExperienceDropdown({
