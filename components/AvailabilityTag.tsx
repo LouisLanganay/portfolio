@@ -6,8 +6,13 @@ import { Button } from './ui/button';
 import { HiringModal } from './HiringModal';
 
 export function AvailabilityTag() {
-  const available = true;
+  const available = false;
   const [modalOpen, setModalOpen] = useState(false);
+
+  const handleClick = () => {
+    if (available)
+      setModalOpen(true);
+  };
 
   return (
     <>
@@ -16,7 +21,13 @@ export function AvailabilityTag() {
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
       />
-      <Button variant='primary' ring shiny onClick={() => setModalOpen(true)} disabled={!available}>
+      <Button
+        variant='primary'
+        ring
+        shiny
+        onClick={() => handleClick()}
+        className={clsx(available ? 'cursor-pointer' : 'cursor-not-allowed')}
+      >
         <div className='relative flex flex-row items-center gap-x-5'>
           <div className='relative flex flex-row items-center gap-x-2'>
             <div

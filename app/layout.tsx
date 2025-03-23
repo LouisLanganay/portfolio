@@ -53,7 +53,7 @@ export default function RootLayout({
           poppins.className
         )}
       >
-        <ThemeProvider attribute='class'>
+        <ThemeProvider attribute='class' defaultTheme='dark' forcedTheme='dark'>
           <TechBadgeProvider>
             <div className='dark:bg-tertiary-600 bg-white h-fit min-h-screen flex flex-col relative'>
               <Header />
