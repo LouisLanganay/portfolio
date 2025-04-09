@@ -5,15 +5,15 @@ import { cva } from 'class-variance-authority';
 import { ButtonProps } from '@/types';
 
 const buttonVariants = cva(
-  'group/button inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
+  'group/button inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all duration-200 focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
   {
     variants: {
       variant: {
-        outline: 'bg-transparent hover:bg-tertiary-500 active:bg-tertiary-480 text-tertiary-500 dark:text-white disabled:hover:bg-tertiary-500 border-[1px] border-tertiary-480 hover:border-tertiary-450 disabled:border-tertiary-480 shadow-sm',
-        primary: 'bg-tertiary-500 hover:bg-tertiary-480 active:bg-tertiary-550 text-white disabled:hover:bg-tertiary-500 border-[1px] border-tertiary-480 hover:border-tertiary-450 disabled:border-tertiary-480 shadow-sm',
-        secondary: 'active:bg-tertiary-550 dark:text-white text-black disabled:hover:text-white disabled:hover:bg-tertiary-500 border-[1px] dark:border-tertiary-480 border-tertiary-100 dark:hover:border-tertiary-450 hover:border-tertiary-200 shadow-sm',
+        outline: 'bg-transparent hover:bg-tertiary-500 active:bg-tertiary-480 text-tertiary-500 dark:text-white disabled:hover:bg-tertiary-500 border-[1px] border-tertiary-480 hover:border-tertiary-450 disabled:border-tertiary-480 shadow-xs',
+        primary: 'bg-tertiary-500 hover:bg-tertiary-480 active:bg-tertiary-550 text-white disabled:hover:bg-tertiary-500 border-[1px] border-tertiary-480 hover:border-tertiary-450 disabled:border-tertiary-480 shadow-xs',
+        secondary: 'active:bg-tertiary-550 dark:text-white text-black disabled:hover:text-white disabled:hover:bg-tertiary-500 border-[1px] dark:border-tertiary-480 border-tertiary-100 dark:hover:border-tertiary-450 hover:border-tertiary-200 shadow-xs',
         ghost: 'active:bg-tertiary-550 dark:text-white text-black disabled:hover:text-white disabled:hover:bg-tertiary-500 border-[1px] border-transparent hover:border-tertiary-450',
-        primaryOutline: 'border border-[#feca77] bg-gradient-to-r from-[#feca77] to-[#fed1b3] text-[#171717] hover:bg-opacity-80 ring-[1px] ring-[#feca77]/50 ring-offset-[3px] ring-offset-[#121212] hover:ring-[#feca77]/70'
+        primaryOutline: 'border border-[#feca77] bg-linear-to-r from-[#feca77] to-[#fed1b3] text-[#171717] hover:bg-opacity-80 ring-[1px] ring-[#feca77]/50 ring-offset-[3px] ring-offset-[#121212] hover:ring-[#feca77]/70'
       },
       size: {
         md: "h-9 px-4 py-2",
@@ -67,7 +67,7 @@ export function Button({
       {shiny ? (
         <div className='absolute inset-0 flex h-full w-full justify-center animate-slide'>
           <div className={clsx(
-            'absolute w-16 h-full bg-gradient-to-r',
+            'absolute w-16 h-full bg-linear-to-r',
             variant === 'primary' ? 'from-white/0 dark:via-white/5 via-white/15 to-white/0' : 'dark:from-white/0 dark:via-white/5 dark:to-white/0 from-black/0 via-black/5 to-black/0'
             )}
           />

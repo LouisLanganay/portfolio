@@ -10,6 +10,7 @@ const nextConfig = {
     domains: [
       'user-images.githubusercontent.com',
       'i.ibb.co',
+      'avatars.githubusercontent.com',
     ],
   },
 };

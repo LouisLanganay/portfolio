@@ -102,7 +102,7 @@ const components = {
         {children}
       </CodeBlock>
     ) : (
-      <pre className='bg-tertiary-500 rounded-sm px-[2.72px] w-fit select-all inline-block'>{children}</pre>
+      <pre className='bg-tertiary-500 rounded-xs px-[2.72px] w-fit select-all inline-block'>{children}</pre>
     );
   },
   li: ({ ...props }: React.HTMLAttributes<HTMLLIElement>) => (
@@ -110,7 +110,7 @@ const components = {
   ),
   input: ({ ...props }: React.HTMLAttributes<HTMLInputElement>) => (
     <input
-      className='w-4 h-4 text-secondary-500 rounded bg-tertiary-500 border border-tertiary-450 checked:bg-tertiary-450'
+      className='w-4 h-4 text-secondary-500 rounded-sm bg-tertiary-500 border border-tertiary-450 checked:bg-tertiary-450'
       {...props}
     />
   ),
@@ -131,7 +131,7 @@ const components = {
   ),
   img: ({ ...props }: React.HTMLAttributes<HTMLImageElement>) => (
     <div className='w-full h-full'>
-      <img className='w-full h-full rounded' {...props} />
+      <img className='w-full h-full rounded-sm' {...props} />
     </div>
   ),
 };
