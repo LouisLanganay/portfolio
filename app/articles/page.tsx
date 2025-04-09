@@ -22,7 +22,7 @@ export default function Page() {
   return (
     <section className='flex flex-col w-full gap-8' id='articles'>
       <div className='flex flex-wrap gap-2'>
-        {allTools.map((tool) => (
+        {allTools.sort().map((tool) => (
           <TechBadge
             key={tool}
             tech={tool}

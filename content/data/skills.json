@@ -134,27 +134,5 @@
         "description": "I've been using OpenAI for a while now, and I find it a powerful tool for AI-powered applications."
       }
     ]
-  },
-  {
-    "title": "other",
-    "options": [
-      {
-        "name": "CI/CD",
-        "display": true,
-        "description": "I generally work with GitHub Actions, but I have experience with Jenkins as well."
-      },
-      {
-        "name": "Figma",
-        "display": true
-      },
-      {
-        "name": "Illustrator",
-        "display": true
-      },
-      {
-        "name": "Photoshop",
-        "display": true
-      }
-    ]
   }
 ]

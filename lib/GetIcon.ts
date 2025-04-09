@@ -106,7 +106,15 @@ const emojis = [
   {
     'name': ['openai'],
     'emoji': '/icons/openai.svg'
-  }
+  },
+  {
+    'name': ['mysql', 'sql'],
+    'emoji': '/icons/mysql.svg'
+  },
+  {
+    'name': ['java'],
+    'emoji': '/icons/java.svg'
+  },
 ];
 
 export const getIcon = (name: string) => {
