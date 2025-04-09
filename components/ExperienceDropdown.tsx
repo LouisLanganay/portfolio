@@ -101,7 +101,7 @@ export function ExperienceDropdown({
       <div className='flex flex-row gap-4'>
         <div className='flex-none'>
           {image ? (
-            <div className='relative flex-shrink-0 overflow-hidden rounded-full size-11 m-auto flex items-center justify-between dark:bg-tertiary-600 bg-tertiary-400 border dark:border-tertiary-480 border-tertiary-650'>
+            <div className='relative shrink-0 overflow-hidden rounded-full size-11 m-auto flex items-center justify-between dark:bg-tertiary-600 bg-tertiary-400 border dark:border-tertiary-480 border-tertiary-650'>
               <Image
                 src={image}
                 alt={title}

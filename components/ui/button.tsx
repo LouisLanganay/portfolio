@@ -5,13 +5,13 @@ import { cn } from "@/lib/utils"
 import ArrowPathIcon from '@heroicons/react/24/outline/ArrowPathIcon'
 
 const buttonVariants = cva(
-  "group/button items-center w-fit font-normal h-fit rounded-lg flex flex-row justify-center disabled:opacity-70 disabled:cursor-not-allowed transition duration-200 ease-in-out",
+  "group/button cursor-pointer items-center w-fit font-normal h-fit rounded-lg flex flex-row justify-center disabled:opacity-70 disabled:cursor-not-allowed transition duration-200 ease-in-out",
   {
     variants: {
       variant: {
-        outline: 'bg-transparent hover:bg-tertiary-500 active:bg-tertiary-480 text-tertiary-500 dark:text-white disabled:hover:bg-tertiary-500 border-[1px] border-tertiary-480 hover:border-tertiary-450 disabled:border-tertiary-480 shadow-sm',
-        primary: 'bg-tertiary-500 hover:bg-tertiary-480 active:bg-tertiary-550 text-white disabled:hover:bg-tertiary-500 border-[1px] border-tertiary-480 hover:border-tertiary-450 disabled:border-tertiary-480 shadow-sm',
-        secondary: 'active:bg-tertiary-550 dark:text-white text-black disabled:hover:text-white disabled:hover:bg-tertiary-500 border-[1px] dark:border-tertiary-480 border-tertiary-100 dark:hover:border-tertiary-450 hover:border-tertiary-200 shadow-sm',
+        outline: 'bg-transparent hover:bg-tertiary-500 active:bg-tertiary-480 text-tertiary-500 dark:text-white disabled:hover:bg-tertiary-500 border-[1px] border-tertiary-480 hover:border-tertiary-450 disabled:border-tertiary-480 shadow-xs',
+        primary: 'bg-tertiary-500 hover:bg-tertiary-480 active:bg-tertiary-550 text-white disabled:hover:bg-tertiary-500 border-[1px] border-tertiary-480 hover:border-tertiary-450 disabled:border-tertiary-480 shadow-xs',
+        secondary: 'active:bg-tertiary-550 dark:text-white text-black disabled:hover:text-white disabled:hover:bg-tertiary-500 border-[1px] dark:border-tertiary-480 border-tertiary-100 dark:hover:border-tertiary-450 hover:border-tertiary-200 shadow-xs',
         ghost: 'active:bg-tertiary-550 dark:text-white text-black disabled:hover:text-white disabled:hover:bg-tertiary-500 border-[1px] border-transparent hover:border-tertiary-450'
       },
       size: {
@@ -80,7 +80,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {shiny && (
           <div className='absolute inset-0 flex h-full w-full justify-center animate-slide'>
             <div className={cn(
-              'absolute w-16 h-full bg-gradient-to-r',
+              'absolute w-16 h-full bg-linear-to-r',
               variant === 'primary' ? 'from-white/0 dark:via-white/5 via-white/15 to-white/0' : 'dark:from-white/0 dark:via-white/5 dark:to-white/0 from-black/0 via-black/5 to-black/0'
             )} />
           </div>

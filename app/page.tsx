@@ -61,7 +61,7 @@ function HeroSection() {
         />
         <WordPullUp
           words="A Developer's Journey passionate about web development and design"
-          className='text-2xl md:text-4xl font-black flex bg-clip-text text-transparent bg-gradient-to-b dark:from-white dark:to-white/70 from-black to-black/70 flex-wrap'
+          className='text-2xl md:text-4xl font-black flex bg-clip-text text-transparent bg-linear-to-b dark:from-white dark:to-white/70 from-black to-black/70 flex-wrap'
         />
         <motion.p
           className='text-sm md:text-base dark:text-white/70 text-black/70 font-medium z-10 mt-4'
@@ -109,14 +109,14 @@ function SkillsSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
-          className='relative overflow-hidden mt-4 p-4 dark:bg-tertiary-600 bg-tertiary-50 rounded-md border dark:border-tertiary-480 border-tertiary-100 shadow-sm'
+          className='relative overflow-hidden mt-4 p-4 dark:bg-tertiary-600 bg-tertiary-50 rounded-md border dark:border-tertiary-480 border-tertiary-100 shadow-xs'
         >
-          <div className='absolute bottom-0 left-0 w-full bg-gradient-to-t from-light-500/50 to-transparent h-10'></div>
-          <h4 className='text-md font-normal flex items-center mb-2'>
+          <div className='absolute -bottom-20 left-[-20%] w-[140%] bg-radial from-light-500/5 to-60% to-transparent h-40 pointer-events-none'></div>
+          <h4 className='text-md font-normal flex items-center mb-2 z-10'>
             <InformationCircleIcon className='size-4 mr-2' />
             Selected technologies
           </h4>
-          <div className='space-y-3'>
+          <div className='space-y-3 z-10'>
             {validTechEntries.map((tech) => {
               const techInfo = skills
                 .flatMap(category => category.options)
@@ -124,7 +124,7 @@ function SkillsSection() {
               const icon = getIcon(techInfo?.name.toLowerCase() || '');
               return techInfo && icon && techInfo.description && (
                 <div key={tech} className='text-sm flex flex-row items-start gap-2'>
-                  <div className='p-1 flex-shrink-0 rounded-md bg-tertiary-600/30 border border-tertiary-480 flex flex-row items-center justify-center gap-1'>
+                  <div className='p-1 shrink-0 rounded-md bg-tertiary-600/30 border border-tertiary-480 flex flex-row items-center justify-center gap-1'>
                     <Image
                       src={icon}
                       alt={techInfo.name}
@@ -255,7 +255,7 @@ function ExperienceList({ type, title }: { type: string; title: string }) {
 
   return (
     <>
-      <h5 className='text-sm font-normal dark:text-white/70 text-black/70 flex-shrink-0'>
+      <h5 className='text-sm font-normal dark:text-white/70 text-black/70 shrink-0'>
         - {title}
       </h5>
       <div className='flex flex-col gap-4 w-full'>

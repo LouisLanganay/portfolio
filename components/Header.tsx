@@ -36,7 +36,7 @@ export function Header() {
       className='sticky top-0 transition-all duration-300 z-10 bg-white/10 dark:bg-tertiary-600/10 backdrop-blur-lg'
     >
       <header className='py-4 px-5 flex flex-row justify-between max-w-4xl items-center m-auto'>
-        <div className='flex flex-row items-center flex-shrink-0'>
+        <div className='flex flex-row items-center shrink-0'>
           <img
             onClick={() => router.push('/') }
             src='https://avatars.githubusercontent.com/u/114762819?v=4'
@@ -54,7 +54,7 @@ export function Header() {
               key={i}
               target='_blank'
               className='group w-fit ease-in-out font-medium text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-gray-100 cursor-pointer hidden sm:block text-sm md:text-base'>
-              <span className='bg-left-bottom bg-gradient-to-r from-white/90 to-white/90 bg-[length:0%_1px] bg-no-repeat pb-0 group-hover:bg-[length:100%_1px] transition-all duration-500 ease-out flex gap-2'>
+              <span className='bg-left-bottom bg-linear-to-r from-white/90 to-white/90 bg-[length:0%_1px] bg-no-repeat pb-0 group-hover:bg-[length:100%_1px] transition-all duration-500 ease-out flex gap-2'>
                 {link.name}
               </span>
             </a>

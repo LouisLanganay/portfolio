@@ -1,5 +1,159 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap')
+layer(utilities);
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-*: initial;
+  --color-transparent: #00000000;
+
+  --color-main-0: #ffffff;
+  --color-main-500: #dd7373;
+  --color-main-1000: #000000;
+
+  --color-secondary-0: #ffffff;
+  --color-secondary-500: #55b5ff;
+  --color-secondary-1000: #000000;
+
+  --color-light-500: #ffc875;
+
+  --color-tertiary-0: #ffffff;
+  --color-tertiary-50: #fafafa;
+  --color-tertiary-100: #d1d1d1;
+  --color-tertiary-150: #b8b8b8;
+  --color-tertiary-200: #a3a3a3;
+  --color-tertiary-250: #8c8c8c;
+  --color-tertiary-300: #757575;
+  --color-tertiary-400: #484848;
+  --color-tertiary-450: #313131;
+  --color-tertiary-480: #232323;
+  --color-tertiary-500: #1a1a1a;
+  --color-tertiary-550: #171717;
+  --color-tertiary-600: #141414;
+  --color-tertiary-650: #121212;
+  --color-tertiary-700: #0f0f0f;
+  --color-tertiary-800: #0a0a0a;
+  --color-tertiary-900: #050505;
+  --color-tertiary-1000: #000000;
+
+  --color-green-500: #51ff86;
+
+  --color-red-0: #ffffff;
+  --color-red-100: #fbd9da;
+  --color-red-200: #f8b3b5;
+  --color-red-300: #f48d90;
+  --color-red-400: #f1686b;
+  --color-red-450: #ef5558;
+  --color-red-480: #ee4a4d;
+  --color-red-500: #ed4245;
+  --color-red-600: #be3537;
+  --color-red-700: #8f2829;
+  --color-red-800: #5f1b1b;
+  --color-red-900: #300e0e;
+  --color-red-1000: #000000;
+
+  --color-orange-0: #ffffff;
+  --color-orange-100: #fae5d3;
+  --color-orange-200: #f5cba7;
+  --color-orange-300: #f0b17b;
+  --color-orange-400: #eb984f;
+  --color-orange-450: #e98b39;
+  --color-orange-500: #e67e22;
+  --color-orange-600: #b8651b;
+  --color-orange-700: #8a4c14;
+  --color-orange-800: #5c330d;
+  --color-orange-900: #2e1a07;
+  --color-orange-1000: #000000;
+
+  --color-yellow: #ffc561;
+  --color-white: #fff;
+  --color-black: #000;
+
+  --color-gray-0: #ffffff;
+  --color-gray-100: #d6d6d8;
+  --color-gray-200: #adadb0;
+  --color-gray-300: #848489;
+  --color-gray-400: #5b5b62;
+  --color-gray-440: #4b4b53;
+  --color-gray-480: #3a3a43;
+  --color-gray-500: #32323b;
+  --color-gray-600: #28282f;
+  --color-gray-700: #1e1e23;
+  --color-gray-800: #141417;
+  --color-gray-900: #0a0a0c;
+  --color-gray-1000: #000000;
+
+  --color-blue-500: #2f81f7;
+
+  --color-purple-500: #bc88ff;
+
+  --font-*: initial;
+  --font-poppins: Poppins, sans-serif;
+
+  --scale-99: 0.99;
+  --scale-101: 1.01;
+
+  --transition-property-height: height;
+
+  --background-image-grid-texture: url('assets/grid.png');
+
+  --animate-blob: blob 7s infinite;
+  --animate-slide: slide 2s linear infinite;
+  --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
+
+  @keyframes blob {
+    0% {
+      transform: translate(0px, 0px) scale(1);
+    }
+    33% {
+      transform: translate(15px, -15px) scale(1.03);
+    }
+    66% {
+      transform: translate(-15px, 15px) scale(0.97);
+    }
+    100% {
+      transform: translate(0px, 0px) scale(1);
+    }
+  }
+  @keyframes slide {
+    0% {
+      transform: skew(-12deg) translateX(-100%);
+    }
+    50% {
+      transform: skew(-12deg) translateX(0);
+    }
+    100% {
+      transform: skew(-12deg) translateX(100%);
+    }
+  }
+  @keyframes spotlight {
+    0% {
+      opacity: 0%;
+      transform: translate(-72%, -62%) scale(0.5);
+    }
+    100% {
+      opacity: 100%;
+      transform: translate(-50%, -40%) scale(1);
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}

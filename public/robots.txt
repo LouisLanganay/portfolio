@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Sitemap: https://louislanganay.com/sitemap.xml
+
+# Disallow admin and private pages
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+
+# Crawl-delay
+Crawl-delay: 10
