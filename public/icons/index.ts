@@ -10,6 +10,7 @@ import adobeillustrator from './adobeillustrator.png';
 import c from './c.png';
 import postman from './postman.png';
 import sass from './sass.png';
+import django from './django.png';
 
 export {
   nodejs,
@@ -23,5 +24,6 @@ export {
   adobeillustrator,
   c,
   postman,
-  sass
+  sass,
+  django
 };

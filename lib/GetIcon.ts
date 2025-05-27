@@ -106,6 +106,10 @@ const emojis = [
   {
     'name': ['openai'],
     'emoji': '/icons/openai.svg'
+  },
+  {
+    'name': ['django'],
+    'emoji': '/icons/django.png'
   }
 ];
 

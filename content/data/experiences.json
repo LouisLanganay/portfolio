@@ -4,7 +4,9 @@
     "title": "Internship - Software Developer",
     "location": "Luminess",
     "date": "31 mar. 2025 - 31 jul. 2025",
-    "image": "/experiences/luminess.jpg"
+    "image": "/experiences/luminess.jpg",
+    "description": "Development of an internal tool designed for non-regression validation and API testing of RAD LAD, focusing on GDPR-compliant image and document management. It supports multiple APIs, user authentication via Keycloak, and various file management and export functionalities.",
+    "technologies": ["Django", "Python", "MongoDB"]
   },
   {
     "type": "job",
