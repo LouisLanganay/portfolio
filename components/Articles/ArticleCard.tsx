@@ -57,7 +57,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
   }, [article.publishedAt]);
 
   return (
-    <li className='w-full h-full max-w-[400px] max-h-[400px] rounded-lg'>
+    <li className='w-full h-full sm:max-w-[400px] max-h-[400px] rounded-lg'>
       <div
         className='dark:bg-tertiary-500 bg-white border-[1px] dark:border-tertiary-480 border-tertiary-100
         rounded-lg flex transition-all ease-in-out w-full cursor-pointer duration-200 group/card

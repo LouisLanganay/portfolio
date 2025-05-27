@@ -61,7 +61,7 @@ function HeroSection() {
         />
         <WordPullUp
           words="A Developer's Journey passionate about web development and design"
-          className='text-2xl md:text-4xl font-black flex bg-clip-text text-transparent bg-gradient-to-b dark:from-white dark:to-white/70 from-black to-black/70 flex-wrap'
+          className='text-2xl md:text-4xl font-black flex bg-clip-text text-transparent bg-linear-to-b dark:from-white dark:to-white/70 from-black to-black/70 flex-wrap'
         />
         <motion.p
           className='text-sm md:text-base dark:text-white/70 text-black/70 font-medium z-10 mt-4'
@@ -99,7 +99,7 @@ function SkillsSection() {
 
   return (
     <Section title='SKILLS'>
-      <div className='grid grid-cols-2 md:flex md:flex-row gap-4 w-full justify-between flex-wrap'>
+      <div className='grid grid-cols-1 sm:flex sm:flex-row gap-4 w-full justify-between flex-wrap'>
         {skills.map((skill, index) => (
           <SkillItem key={index} skill={skill} index={index} />
         ))}
@@ -109,13 +109,14 @@ function SkillsSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
-          className='mt-4 p-4 dark:bg-tertiary-600 bg-tertiary-50 rounded-md border dark:border-tertiary-480 border-tertiary-100 shadow-sm'
+          className='relative overflow-hidden mt-4 p-4 dark:bg-tertiary-600 bg-tertiary-50 rounded-md border dark:border-tertiary-480 border-tertiary-100 shadow-xs'
         >
-          <h4 className='text-md font-normal flex items-center mb-2'>
+          <div className='absolute -bottom-20 left-[-20%] w-[140%] bg-radial from-light-500/5 to-60% to-transparent h-40 pointer-events-none'></div>
+          <h4 className='text-md font-normal flex items-center mb-2 z-10'>
             <InformationCircleIcon className='size-4 mr-2' />
             Selected technologies
           </h4>
-          <div className='space-y-3'>
+          <div className='space-y-3 z-10'>
             {validTechEntries.map((tech) => {
               const techInfo = skills
                 .flatMap(category => category.options)
@@ -123,7 +124,7 @@ function SkillsSection() {
               const icon = getIcon(techInfo?.name.toLowerCase() || '');
               return techInfo && icon && techInfo.description && (
                 <div key={tech} className='text-sm flex flex-row items-start gap-2'>
-                  <div className='p-1 rounded-md bg-tertiary-600/30 border border-tertiary-480 flex flex-row items-center justify-center gap-1'>
+                  <div className='p-1 shrink-0 rounded-md bg-tertiary-600/30 border border-tertiary-480 flex flex-row items-center justify-center gap-1'>
                     <Image
                       src={icon}
                       alt={techInfo.name}
@@ -160,7 +161,7 @@ function SkillItem({ skill, index }: { skill: Skill, index: number }) {
   return (
     <ul
       ref={ref}
-      className='flex flex-row font-normal dark:text-white text-black text-sm gap-2 h-fit max-w-[200px] w-fit'
+      className='flex flex-row font-normal dark:text-white text-black text-sm gap-2 h-fit w-full sm:w-[30%]'
     >
       <div className='flex flex-col items-center'>
         <div className='flex items-center justify-center w-5 h-5 md:w-6 md:h-6 dark:bg-tertiary-500 bg-white border-[1px] dark:border-tertiary-650 border-tertiary-200 rounded-full mb-4 text-xs md:text-sm mt-1 dark:text-secondary-500 text-tertiary-650'>
@@ -175,6 +176,7 @@ function SkillItem({ skill, index }: { skill: Skill, index: number }) {
         <div className='flex flex-wrap gap-1'>
           {skill.options
             .filter(option => option.display)
+            .sort()
             .map((option, optionIndex) => {
               const icon = getIcon(option.name.toLowerCase());
               return (
@@ -221,13 +223,43 @@ function ExperienceList({ type, title }: { type: string; title: string }) {
   if (filteredExperiences.length === 0)
     return null;
 
+  // Group experiences by company (location)
+  const groupedExperiences = filteredExperiences.reduce((acc: any[], exp) => {
+    const existingCompany = acc.find(g => g.location === exp.location);
+    if (existingCompany) {
+      if (!existingCompany.roles) {
+        existingCompany.roles = [{ ...existingCompany }];
+        delete existingCompany.description;
+        delete existingCompany.technologies;
+        existingCompany.date = `${exp.date.split(' - ')[0]} - ${existingCompany.date.split(' - ')[1]}`;
+      }
+      existingCompany.roles.push(exp);
+      // Sort roles by date in descending order
+      existingCompany.roles.sort((a: Experience, b: Experience) => {
+        const aDate = new Date(a.date.split(' - ')[0]);
+        const bDate = new Date(b.date.split(' - ')[0]);
+        return bDate.getTime() - aDate.getTime();
+      });
+    } else {
+      acc.push({ ...exp });
+    }
+    return acc;
+  }, []);
+
+  // Sort companies by most recent experience
+  groupedExperiences.sort((a, b) => {
+    const aDate = new Date(a.date.split(' - ')[0]);
+    const bDate = new Date(b.date.split(' - ')[0]);
+    return bDate.getTime() - aDate.getTime();
+  });
+
   return (
     <>
-      <h5 className='text-sm font-normal dark:text-white/70 text-black/70 flex-shrink-0'>
+      <h5 className='text-sm font-normal dark:text-white/70 text-black/70 shrink-0'>
         - {title}
       </h5>
       <div className='flex flex-col gap-4 w-full'>
-        {filteredExperiences.map((experience: Experience, index: number) => (
+        {groupedExperiences.map((experience: Experience, index: number) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, scale: 0.99 }}
@@ -235,14 +267,7 @@ function ExperienceList({ type, title }: { type: string; title: string }) {
             exit={{ opacity: 0, scale: 0.99 }}
             transition={{ duration: 0.3 }}
           >
-            <ExperienceDropdown
-              title={experience.title}
-              location={experience.location}
-              date={experience.date}
-              description={experience.description}
-              image={experience.image}
-              technologies={experience.technologies}
-            />
+            <ExperienceDropdown {...experience} />
           </motion.div>
         ))}
       </div>

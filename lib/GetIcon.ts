@@ -110,7 +110,15 @@ const emojis = [
   {
     'name': ['django'],
     'emoji': '/icons/django.png'
-  }
+  },
+  {
+    'name': ['mysql', 'sql'],
+    'emoji': '/icons/mysql.svg'
+  },
+  {
+    'name': ['java'],
+    'emoji': '/icons/java.svg'
+  },
 ];
 
 export const getIcon = (name: string) => {

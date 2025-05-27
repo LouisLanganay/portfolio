@@ -42,7 +42,7 @@ export function ComponentPreview({
       return (
         <p className='text-sm text-muted-foreground'>
           Component{' '}
-          <code className='relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm'>
+          <code className='relative rounded-sm bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm'>
             {name}
           </code>{' '}
           not found in registry.
@@ -87,10 +87,10 @@ export function ComponentPreview({
           </div>
         </div>
         <div className='absolute inset-0 rounded-lg overflow-hidden pointer-events-none'>
-          <div className='absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-white dark:from-tertiary-650 to-transparent'/>
-          <div className='absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-white dark:from-tertiary-650 to-transparent'/>
-          <div className='absolute left-0 top-0 bottom-0 w-10 bg-gradient-to-r from-white dark:from-tertiary-650 to-transparent'/>
-          <div className='absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-white dark:from-tertiary-650 to-transparent'/>
+          <div className='absolute top-0 left-0 right-0 h-10 bg-linear-to-b from-white dark:from-tertiary-650 to-transparent'/>
+          <div className='absolute bottom-0 left-0 right-0 h-10 bg-linear-to-t from-white dark:from-tertiary-650 to-transparent'/>
+          <div className='absolute left-0 top-0 bottom-0 w-10 bg-linear-to-r from-white dark:from-tertiary-650 to-transparent'/>
+          <div className='absolute right-0 top-0 bottom-0 w-10 bg-linear-to-l from-white dark:from-tertiary-650 to-transparent'/>
         </div>
       </div>
     );
@@ -100,13 +100,13 @@ export function ComponentPreview({
     <TabGroup defaultIndex={defaultTab === 'preview' ? 0 : 1}>
       <TabList className='flex gap-4 border-b border-gray-300/30'>
         <Tab
-          className='font-medium text-gray-900 data-[selected]:border-b-2 border-gray-900 outline-none pb-[10px] data-[selected]:!pb-2 px-4 pt-4 dark:border-gray-700 dark:text-white'
+          className='font-medium text-gray-900 data-selected:border-b-2 border-gray-900 outline-hidden pb-[10px] data-selected:pb-2! px-4 pt-4 dark:border-gray-700 dark:text-white'
         >
           Preview
         </Tab>
         {source && (
           <Tab
-            className='font-medium text-gray-900 data-[selected]:border-b-2 border-gray-900 outline-none pb-[10px] data-[selected]:!pb-2 px-4 pt-4 dark:border-gray-700 dark:text-white'
+            className='font-medium text-gray-900 data-selected:border-b-2 border-gray-900 outline-hidden pb-[10px] data-selected:pb-2! px-4 pt-4 dark:border-gray-700 dark:text-white'
           >
             Source
           </Tab>
@@ -135,10 +135,10 @@ export function ComponentPreview({
             </div>
           </div>
           <div className='absolute inset-0 rounded-lg overflow-hidden pointer-events-none'>
-            <div className='absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-white dark:from-tertiary-650 to-transparent'/>
-            <div className='absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-white dark:from-tertiary-650 to-transparent'/>
-            <div className='absolute left-0 top-0 bottom-0 w-10 bg-gradient-to-r from-white dark:from-tertiary-650 to-transparent'/>
-            <div className='absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-white dark:from-tertiary-650 to-transparent'/>
+            <div className='absolute top-0 left-0 right-0 h-10 bg-linear-to-b from-white dark:from-tertiary-650 to-transparent'/>
+            <div className='absolute bottom-0 left-0 right-0 h-10 bg-linear-to-t from-white dark:from-tertiary-650 to-transparent'/>
+            <div className='absolute left-0 top-0 bottom-0 w-10 bg-linear-to-r from-white dark:from-tertiary-650 to-transparent'/>
+            <div className='absolute right-0 top-0 bottom-0 w-10 bg-linear-to-l from-white dark:from-tertiary-650 to-transparent'/>
           </div>
         </div>
         </TabPanel>
