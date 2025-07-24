@@ -72,7 +72,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
     const target = e.currentTarget;
     
     // Immediate visual animation for user feedback
-    target.style.opacity = '0.7';
+    target.style.opacity = '0.5';
     target.style.transform = 'scale(0.98)';
     
     // Navigation with error handling
