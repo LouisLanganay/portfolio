@@ -3,7 +3,7 @@
 import { ArrowDownIcon, InformationCircleIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 import { Spotlight } from '@/components/Aceternity/Spotlight';
 import GridPattern from '@/components/Magicui/GridPattern';
@@ -22,6 +22,8 @@ import { getIcon } from '@/lib/GetIcon';
 import { Experience, Project, Skill } from '@/types';
 import Image from 'next/image';
 import { ArticleCard } from '@/components/Articles/ArticleCard';
+import { useRouter } from 'next/navigation';
+import { useProjectPrefetch } from '@/lib/hooks/useProjectPrefetch';
 
 export default function Home() {
   const projects = getProjects();
@@ -29,6 +31,13 @@ export default function Home() {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
   const displayedProjects = isExpanded ? projects : projects.slice(0, 6);
+
+  // Intelligent project prefetching
+  useProjectPrefetch({ 
+    projects, 
+    maxPrefetch: 6,
+    delay: 500 
+  });
 
   return (
     <main className='space-y-16'>
