@@ -12,25 +12,51 @@ import { Mdx } from '@/components/Mdx';
 import { TechBadge } from '@/components/TechBadge';
 import { Button } from '@/components/Button';
 import HeroVideoDialog from '@/components/ui/hero-video-dialog';
+import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
 
 export default function ProjectPage({ project }: { project: any }) {
   const router = useRouter();
-  const [ repository, setRepository ] = useState<Repository | null>(null);
+  const [repository, setRepository] = useState<Repository | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (project.repository && !repository) {
-      getRepository(project.repository).then((repo) => {
-        setRepository(repo);
-      });
-    }
-  });
+    // Marquer comme chargé après un court délai
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 100);
 
-  if (!project) return (
-    <h4 className='font-Mbold text-2xl dark:text-tertiary-100 text-tertiary-650'>
-      Loading....
-    </h4>
-  );
-  console.log(project);
+    if (project.repository && !repository) {
+      getRepository(project.repository)
+        .then((repo) => {
+          setRepository(repo);
+        })
+        .catch((err) => {
+          console.warn(`Failed to load repository for ${project.title}:`, err);
+        });
+    }
+
+    return () => clearTimeout(timer);
+  }, [project.repository, repository, project.title]);
+
+  if (!project) {
+    return (
+      <div className="flex items-center justify-center min-h-[200px]">
+        <h4 className='font-Mbold text-2xl dark:text-tertiary-100 text-tertiary-650'>
+          Project not found
+        </h4>
+      </div>
+    );
+  }
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-[200px]">
+        <LoadingSpinner size="lg" />
+      </div>
+    );
+  }
+
   return (
     <div className='flex flex-col h-full w-full'>
       <Button variant='secondary' className='mb-4' onClick={() => router.push('/projects')}>
@@ -50,6 +76,7 @@ export default function ProjectPage({ project }: { project: any }) {
             className='w-full h-64 object-cover rounded-2xl shadow-lg'
             width={1000}
             height={256}
+            priority
           />
         ) : null
       )}
@@ -103,9 +130,20 @@ export default function ProjectPage({ project }: { project: any }) {
             ))}
           </div>
         <hr className='border-tertiary-400 my-5' />
-        <div className='font-Mregular dark:text-tertiary-100 text-tertiary-500 text-sm md:text-base'>
-          <Mdx code={project.code} raw={project.body.code} />
-        </div>
+        
+        {/* Rendu conditionnel du contenu MDX */}
+        {project.code ? (
+          <div className='font-Mregular dark:text-tertiary-100 text-tertiary-500 text-sm md:text-base'>
+            <Mdx code={project.code} raw={project.body.code} />
+          </div>
+        ) : (
+          <div className="p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg">
+            <p className="text-yellow-800 dark:text-yellow-200">
+              Content is being processed. Please refresh the page if this persists.
+            </p>
+          </div>
+        )}
+        
         <hr className='border-tertiary-400 my-5' />
         <div className='flex flex-col gap-2'>
           {project.repository && (

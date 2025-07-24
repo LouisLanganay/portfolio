@@ -15,6 +15,7 @@ import { Project, Repository } from '@/types';
 import { getRepository } from '@/lib/GetRepository';
 import { getIcon } from '@/lib/GetIcon';
 import { TechBadge } from '../TechBadge';
+import { LoadingSpinner } from '../ui/LoadingSpinner';
 
 interface ProjectCardProps {
   project: Project;
@@ -26,6 +27,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const [opacity, setOpacity] = useState(0);
   const [showPreview, setShowPreview] = useState(false);
   const [repository, setRepository] = useState<Repository | null>(null);
+  const [isNavigating, setIsNavigating] = useState(false);
   const router = useRouter();
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
@@ -41,6 +43,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
     setOpacity(1);
     setShowPreview(true);
 
+    // Préchargement plus agressif
     router.prefetch(`/projects/${project.slug}`);
   };
 
@@ -49,13 +52,39 @@ export function ProjectCard({ project }: ProjectCardProps) {
     setShowPreview(false);
   };
 
+  // Préchargement des données du repository au montage du composant
   useEffect(() => {
     if (project.repository && !repository) {
       getRepository(project.repository).then((repo: any) => {
         setRepository(repo);
+      }).catch(error => {
+        console.warn(`Failed to load repository for ${project.title}:`, error);
       });
     }
-  }, [project.repository, repository]);
+  }, [project.repository, repository, project.title]);
+
+  const handleClick = (e: MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    
+    if (isNavigating) return; // Éviter les clics multiples
+    
+    setIsNavigating(true);
+    const target = e.currentTarget;
+    
+    // Animation visuelle immédiate pour le feedback utilisateur
+    target.style.opacity = '0.7';
+    target.style.transform = 'scale(0.98)';
+    
+    // Navigation avec gestion d'erreur
+    try {
+      router.push(`/projects/${project.slug}`);
+    } catch (error) {
+      console.error('Navigation failed:', error);
+      setIsNavigating(false);
+      target.style.opacity = '1';
+      target.style.transform = 'scale(1)';
+    }
+  };
 
   return (
     <li className='w-full h-full rounded-lg' key={project.title}>
@@ -76,13 +105,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             );
           }
         }}
-        onClick={(e) => {
-          e.preventDefault();
-          const target = e.currentTarget;
-          target.style.opacity = '0.7';
-          target.style.transform = 'scale(0.98)';
-          router.push(`/projects/${project.slug}`);
-        }}
+        onClick={handleClick}
       >
         <div
           className='pointer-events-none absolute -inset-px opacity-0 transition duration-300 rounded-lg'
@@ -92,6 +115,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
             rgba(255,255,255,.03), transparent 40%)`,
           }}
         />
+        
+        {/* Indicateur de chargement */}
+        {isNavigating && (
+          <div className="absolute inset-0 bg-black/20 dark:bg-white/10 rounded-lg flex items-center justify-center z-10">
+            <LoadingSpinner />
+          </div>
+        )}
+        
         <div className='flex flex-col gap-5 w-full'>
           <div
             className='w-full h-40 md:h-56 overflow-hidden dark:border-tertiary-480 border-tertiary-100
@@ -105,6 +136,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 className='object-cover group-hover/card:scale-101 h-full w-full transition-all duration-500'
                 width={1920}
                 height={1080}
+                priority={false}
+                loading="lazy"
               />
             ) : project.image ? (
               <Image
@@ -113,6 +146,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 className='object-cover group-hover/card:scale-101 h-full w-full transition-all duration-500'
                 width={1920}
                 height={1080}
+                priority={false}
+                loading="lazy"
               />
             ) : (
               <div className='w-full h-full flex flex-row justify-center items-center'>

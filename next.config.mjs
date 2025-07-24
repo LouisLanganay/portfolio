@@ -12,9 +12,43 @@ const nextConfig = {
       'i.ibb.co',
       'avatars.githubusercontent.com',
     ],
+    formats: ['image/webp', 'image/avif'],
+  },
+  // Optimisations de performance
+  experimental: {
+    optimizePackageImports: ['@heroicons/react', 'framer-motion'],
+  },
+  // Optimisation du bundling
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      // Optimisations côté client
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+      };
+    }
+    return config;
+  },
+  // Headers pour le cache
+  async headers() {
+    return [
+      {
+        source: '/projects/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, s-maxage=3600, stale-while-revalidate=86400',
+          },
+        ],
+      },
+    ];
   },
 };
 
 export default withContentlayer(withMDX({
-  extension: /\.mdx?$/
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [],
+    rehypePlugins: [],
+  }
 })(nextConfig));
