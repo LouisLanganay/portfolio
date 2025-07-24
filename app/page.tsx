@@ -32,7 +32,7 @@ export default function Home() {
 
   const displayedProjects = isExpanded ? projects : projects.slice(0, 6);
 
-  // Préchargement intelligent des projets
+  // Intelligent project prefetching
   useProjectPrefetch({ 
     projects, 
     maxPrefetch: 6,

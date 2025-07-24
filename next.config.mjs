@@ -14,14 +14,14 @@ const nextConfig = {
     ],
     formats: ['image/webp', 'image/avif'],
   },
-  // Optimisations de performance
+  // Performance optimizations
   experimental: {
     optimizePackageImports: ['@heroicons/react', 'framer-motion'],
   },
-  // Optimisation du bundling
+  // Bundle optimization
   webpack: (config, { isServer }) => {
     if (!isServer) {
-      // Optimisations côté client
+      // Client-side optimizations
       config.resolve.fallback = {
         ...config.resolve.fallback,
         fs: false,
@@ -29,7 +29,7 @@ const nextConfig = {
     }
     return config;
   },
-  // Headers pour le cache
+  // Cache headers
   async headers() {
     return [
       {

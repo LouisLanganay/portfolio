@@ -1,7 +1,7 @@
 import { Project } from '@/types';
 import { allArticles, allProjects } from 'contentlayer/generated';
 
-// Cache pour la sérialisation MDX
+// Cache for MDX serialization
 const mdxCache = new Map<string, any>();
 
 export async function getDocFromParams(params: { slug: string[] }) {
@@ -13,7 +13,7 @@ export async function getDocFromParams(params: { slug: string[] }) {
   if (!project)
     return null;
 
-  // Vérifier le cache MDX
+  // Check MDX cache
   const cacheKey = `project-${project.slug}`;
   if (mdxCache.has(cacheKey)) {
     return mdxCache.get(cacheKey);
@@ -22,7 +22,7 @@ export async function getDocFromParams(params: { slug: string[] }) {
   try {
     const { serialize } = await import('next-mdx-remote/serialize');
     const serialized = await serialize(project.body.raw, {
-      // Optimisations pour la sérialisation
+      // Serialization optimizations
       parseFrontmatter: false,
       scope: {},
       mdxOptions: {
@@ -35,7 +35,7 @@ export async function getDocFromParams(params: { slug: string[] }) {
       code: serialized,
     };
 
-    // Mettre en cache le résultat
+    // Cache the result
     mdxCache.set(cacheKey, result);
     return result;
   } catch (error) {

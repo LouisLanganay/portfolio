@@ -21,7 +21,7 @@ export default function ProjectPage({ project }: { project: any }) {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Marquer comme chargé après un court délai
+    // Mark as loaded after a short delay
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 100);
@@ -131,7 +131,7 @@ export default function ProjectPage({ project }: { project: any }) {
           </div>
         <hr className='border-tertiary-400 my-5' />
         
-        {/* Rendu conditionnel du contenu MDX */}
+        {/* Conditional MDX content rendering */}
         {project.code ? (
           <div className='font-Mregular dark:text-tertiary-100 text-tertiary-500 text-sm md:text-base'>
             <Mdx code={project.code} raw={project.body.code} />

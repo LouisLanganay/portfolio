@@ -43,7 +43,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
     setOpacity(1);
     setShowPreview(true);
 
-    // Préchargement plus agressif
+    // More aggressive prefetching
     router.prefetch(`/projects/${project.slug}`);
   };
 
@@ -52,7 +52,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
     setShowPreview(false);
   };
 
-  // Préchargement des données du repository au montage du composant
+  // Prefetch repository data on component mount
   useEffect(() => {
     if (project.repository && !repository) {
       getRepository(project.repository).then((repo: any) => {
@@ -66,16 +66,16 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const handleClick = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     
-    if (isNavigating) return; // Éviter les clics multiples
+    if (isNavigating) return; // Prevent multiple clicks
     
     setIsNavigating(true);
     const target = e.currentTarget;
     
-    // Animation visuelle immédiate pour le feedback utilisateur
+    // Immediate visual animation for user feedback
     target.style.opacity = '0.7';
     target.style.transform = 'scale(0.98)';
     
-    // Navigation avec gestion d'erreur
+    // Navigation with error handling
     try {
       router.push(`/projects/${project.slug}`);
     } catch (error) {
@@ -116,7 +116,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           }}
         />
         
-        {/* Indicateur de chargement */}
+        {/* Loading indicator */}
         {isNavigating && (
           <div className="absolute inset-0 bg-black/20 dark:bg-white/10 rounded-lg flex items-center justify-center z-10">
             <LoadingSpinner />
