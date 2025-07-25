@@ -33,10 +33,10 @@ export default function Home() {
   const displayedProjects = isExpanded ? projects : projects.slice(0, 6);
 
   // Intelligent project prefetching
-  useProjectPrefetch({ 
-    projects, 
+  useProjectPrefetch({
+    projects,
     maxPrefetch: 6,
-    delay: 500 
+    delay: 500
   });
 
   return (
@@ -58,8 +58,8 @@ function HeroSection() {
         maxOpacity={0.1}
         duration={3}
         className={clsx(
-          'dark:[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]',
-          '[mask-image:radial-gradient(400px_circle_at_center,black,transparent)]',
+          'dark:mask-[radial-gradient(400px_circle_at_center,white,transparent)]',
+          'mask-[radial-gradient(400px_circle_at_center,black,transparent)]',
           'inset-x-0 inset-y-[+10%] h-[200%] skew-y-12 -left-5 md:-left-36'
         )}
       />
@@ -173,10 +173,10 @@ function SkillItem({ skill, index }: { skill: Skill, index: number }) {
       className='flex flex-row font-normal dark:text-white text-black text-sm gap-2 h-fit w-full sm:w-[30%]'
     >
       <div className='flex flex-col items-center'>
-        <div className='flex items-center justify-center w-5 h-5 md:w-6 md:h-6 dark:bg-tertiary-500 bg-white border-[1px] dark:border-tertiary-650 border-tertiary-200 rounded-full mb-4 text-xs md:text-sm mt-1 dark:text-secondary-500 text-tertiary-650'>
+        <div className='flex items-center justify-center w-5 h-5 md:w-6 md:h-6 dark:bg-tertiary-500 bg-white border dark:border-tertiary-650 border-tertiary-200 rounded-full mb-4 text-xs md:text-sm mt-1 dark:text-secondary-500 text-tertiary-650'>
           {index + 1}
         </div>
-        <hr className='w-[1px] h-full dark:bg-tertiary-450 bg-tertiary-100 border-0 mb-1' />
+        <hr className='w-px h-full dark:bg-tertiary-450 bg-tertiary-100 border-0 mb-1' />
       </div>
       <div className='flex flex-col h-fit'>
         <li className='font-bold text-base md:text-lg mb-2'>
@@ -255,11 +255,21 @@ function ExperienceList({ type, title }: { type: string; title: string }) {
     return acc;
   }, []);
 
-  // Sort companies by most recent experience
   groupedExperiences.sort((a, b) => {
-    const aDate = new Date(a.date.split(' - ')[0]);
-    const bDate = new Date(b.date.split(' - ')[0]);
-    return bDate.getTime() - aDate.getTime();
+    const [aStartDate, aEndDate] = a.date.split(' - ');
+    const [bStartDate, bEndDate] = b.date.split(' - ');
+
+    const aStart = new Date(aStartDate);
+    const aEnd = new Date(aEndDate);
+    const bStart = new Date(bStartDate);
+    const bEnd = new Date(bEndDate);
+
+    const endDateComparison = bEnd.getTime() - aEnd.getTime();
+    if (endDateComparison !== 0) {
+      return endDateComparison;
+    }
+
+    return bStart.getTime() - aStart.getTime();
   });
 
   return (

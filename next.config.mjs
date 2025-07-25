@@ -7,10 +7,19 @@ const nextConfig = {
   swcMinify: true,
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
   images: {
-    domains: [
-      'user-images.githubusercontent.com',
-      'i.ibb.co',
-      'avatars.githubusercontent.com',
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'user-images.githubusercontent.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.ibb.co',
+      },
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+      },
     ],
     formats: ['image/webp', 'image/avif'],
   },
@@ -27,6 +36,9 @@ const nextConfig = {
         fs: false,
       };
     }
+    config.infrastructureLogging = {
+      level: 'error',
+    };
     return config;
   },
   // Cache headers

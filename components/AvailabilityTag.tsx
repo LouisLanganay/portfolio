@@ -6,7 +6,7 @@ import { Button } from './ui/button';
 import { HiringModal } from './HiringModal';
 
 export function AvailabilityTag() {
-  const available = false;
+  const available = true;
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleClick = () => {

@@ -89,7 +89,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <li className='w-full h-full rounded-lg' key={project.title}>
       <div
-        className='dark:bg-tertiary-500 bg-white border-[1px] dark:border-tertiary-480 border-tertiary-100 items-center
+        className='dark:bg-tertiary-500 bg-white border dark:border-tertiary-480 border-tertiary-100 items-center
         rounded-lg flex transition-all ease-in-out w-full cursor-pointer duration-200 group/card
         flex-col shadow-sm p-4 dark:hover:border-tertiary-450 hover:border-tertiary-150
         relative h-full'
@@ -126,7 +126,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <div className='flex flex-col gap-5 w-full'>
           <div
             className='w-full h-40 md:h-56 overflow-hidden dark:border-tertiary-480 border-tertiary-100
-          duration-150 dark:group-hover/card:border-tertiary-450 group-hover/card:border-tertiary-150 rounded-lg border-[1px]
+          duration-150 dark:group-hover/card:border-tertiary-450 group-hover/card:border-tertiary-150 rounded-lg border
           transition-all'
           >
             {project.preview ? (
@@ -188,7 +188,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             {(project.stats?.downloads ||
               project.stats?.users ||
               repository?.watchers_count) ? (
-              <div className='h-[1px] dark:bg-tertiary-480 bg-tertiary-100 w-full my-3 dark:group-hover/card:bg-tertiary-450 group-hover/card:bg-tertiary-150 transition-all duration-150' />
+              <div className='h-px dark:bg-tertiary-480 bg-tertiary-100 w-full my-3 dark:group-hover/card:bg-tertiary-450 group-hover/card:bg-tertiary-150 transition-all duration-150' />
             ) : null}
             <div className='flex flex-row items-center gap-3'>
               {project.stats?.downloads ? (

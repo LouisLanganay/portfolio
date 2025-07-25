@@ -59,7 +59,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
   return (
     <li className='w-full h-full sm:max-w-[400px] max-h-[400px] rounded-lg'>
       <div
-        className='dark:bg-tertiary-500 bg-white border-[1px] dark:border-tertiary-480 border-tertiary-100
+        className='dark:bg-tertiary-500 bg-white border dark:border-tertiary-480 border-tertiary-100
         rounded-lg flex transition-all ease-in-out w-full cursor-pointer duration-200 group/card
         flex-col shadow-sm p-4 dark:hover:border-tertiary-450 hover:border-tertiary-150
         relative h-full'
@@ -80,7 +80,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
         <div className='flex flex-col gap-5 w-full'>
           {article.image && (
             <div className='w-full h-40 md:h-56 overflow-hidden dark:border-tertiary-480 border-tertiary-100
-              duration-150 dark:group-hover/card:border-tertiary-450 group-hover/card:border-tertiary-150 rounded-lg border-[1px]
+              duration-150 dark:group-hover/card:border-tertiary-450 group-hover/card:border-tertiary-150 rounded-lg border
               transition-all'>
               <Image
                 src={article.image}

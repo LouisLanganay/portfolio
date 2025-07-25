@@ -57,7 +57,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         // ... other variants ...
-        primaryOutline: 'border border-[#feca77] bg-gradient-to-r from-[#feca77] to-[#fed1b3] text-[#171717] hover:bg-opacity-80 ring-[1px] ring-[#feca77]/50 ring-offset-[3px] ring-offset-[#121212] hover:ring-[#feca77]/70'
+        primaryOutline: 'border border-[#feca77] bg-linear-to-r from-[#feca77] to-[#fed1b3] text-tertiary-550 hover:bg-opacity-80 ring-[1px] ring-[#feca77]/50 ring-offset-[3px] ring-offset-tertiary-650 hover:ring-[#feca77]/70'
       },
       // ... other configurations ...
     }
@@ -93,11 +93,11 @@ export default function MyComponent() {
 Let's break down the TailwindCSS classes used to create this effect:
 
 - `border border-[#feca77]`: Creates a golden-colored border
-- `bg-gradient-to-r from-[#feca77] to-[#fed1b3]`: Applies a horizontal gradient
-- `text-[#171717]`: Sets the text color
+- `bg-linear-to-r from-[#feca77] to-[#fed1b3]`: Applies a horizontal gradient
+- `text-tertiary-550`: Sets the text color
 - `hover:bg-opacity-80`: Slightly reduces opacity on hover
 - `ring-[1px] ring-[#feca77]/50`: Adds an outer ring with 50% opacity
-- `ring-offset-[3px] ring-offset-[#121212]`: Creates a ring offset
+- `ring-offset-[3px] ring-offset-tertiary-650`: Creates a ring offset
 - `hover:ring-[#feca77]/70`: Increases ring opacity on hover
 
 &nbsp;

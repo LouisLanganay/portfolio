@@ -146,61 +146,61 @@ export function ExperienceDropdown({
               </p>
             </div>
           </div>
-          <motion.div
-            initial={false}
-            animate={{ height: isExpanded ? 'auto' : 0 }}
-            transition={{ duration: 0.3 }}
-            className='overflow-hidden'
-          >
-            {description && (
-              <p className='font-light dark:text-white/70 text-black/70 text-sm'>{description}</p>
-            )}
-            {roles && roles.length > 0 && (
-              <div className='relative mt-4 space-y-4 pl-4'>
-                <div className='absolute left-1 h-full w-0.5 mt-1 dark:bg-tertiary-480 bg-tertiary-100' />
-                {roles.map((role, index) => (
-                  <div key={index} className='relative'>
-                    <div className='absolute -left-[15px] top-1 size-2 rounded-full dark:bg-tertiary-480 bg-tertiary-100' />
-                    <div className='flex flex-col gap-1'>
-                      <div className='flex flex-row justify-between items-start w-full'>
-                        <div className='flex flex-col'>
-                          <p className='font-medium dark:text-white/90 text-black/90 text-sm'>{role.title}</p>
-                          <p className='font-light dark:text-white/70 text-black/70 text-xs'>{checkDateInterval(role.date).display} - {calculateDuration(role.date)}</p>
-                        </div>
-                      </div>
-                      {role.description && (
-                        <p className='font-light dark:text-white/70 text-black/70 text-sm'>{role.description}</p>
-                      )}
-                      {role.technologies && role.technologies.length > 0 && (
-                        <div className='flex flex-wrap gap-2 mt-2'>
-                          {role.technologies.sort().map((tech, i) => (
-                            <TechBadge
-                              key={i}
-                              tech={tech}
-                              icon={getIcon(tech)}
-                            />
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-            {!roles && technologies && technologies.length > 0 && (
-              <div className='flex flex-wrap gap-2 mt-3'>
-                {technologies.sort().map((tech, i) => (
-                  <TechBadge
-                    key={i}
-                    tech={tech}
-                    icon={getIcon(tech)}
-                  />
-                ))}
-              </div>
-            )}
-          </motion.div>
         </div>
       </div>
+      <motion.div
+        initial={false}
+        animate={{ height: isExpanded ? 'auto' : 0 }}
+        transition={{ duration: 0.3 }}
+        className='overflow-hidden'
+      >
+        {description && (
+          <p className='font-light dark:text-white/70 text-black/70 text-sm'>{description}</p>
+        )}
+        {roles && roles.length > 0 && (
+          <div className='relative my-2 space-y-4 pl-4'>
+            <div className='absolute left-1 h-full w-0.5 mt-1 dark:bg-tertiary-480 bg-tertiary-100' />
+            {roles.map((role, index) => (
+              <div key={index} className='relative'>
+                <div className='absolute -left-[15px] top-1 size-2 rounded-full dark:bg-tertiary-480 bg-tertiary-100' />
+                <div className='flex flex-col gap-1'>
+                  <div className='flex flex-row justify-between items-start w-full'>
+                    <div className='flex flex-col'>
+                      <p className='font-medium dark:text-white/90 text-black/90 text-sm'>{role.title}</p>
+                      <p className='font-light dark:text-white/70 text-black/70 text-xs'>{checkDateInterval(role.date).display} - {calculateDuration(role.date)}</p>
+                    </div>
+                  </div>
+                  {role.description && (
+                    <p className='font-light dark:text-white/70 text-black/70 text-sm'>{role.description}</p>
+                  )}
+                  {role.technologies && role.technologies.length > 0 && (
+                    <div className='flex flex-wrap gap-2 mt-2'>
+                      {role.technologies.sort().map((tech, i) => (
+                        <TechBadge
+                          key={i}
+                          tech={tech}
+                          icon={getIcon(tech)}
+                        />
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+        {!roles && technologies && technologies.length > 0 && (
+          <div className='flex flex-wrap gap-2 mt-3'>
+            {technologies.sort().map((tech, i) => (
+              <TechBadge
+                key={i}
+                tech={tech}
+                icon={getIcon(tech)}
+              />
+            ))}
+          </div>
+        )}
+      </motion.div>
     </li>
   );
 }
