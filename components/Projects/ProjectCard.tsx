@@ -65,16 +65,16 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
   const handleClick = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
-    
+
     if (isNavigating) return; // Prevent multiple clicks
-    
+
     setIsNavigating(true);
     const target = e.currentTarget;
-    
+
     // Immediate visual animation for user feedback
     target.style.opacity = '0.5';
     target.style.transform = 'scale(0.98)';
-    
+
     // Navigation with error handling
     try {
       router.push(`/projects/${project.slug}`);
@@ -115,14 +115,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
             rgba(255,255,255,.03), transparent 40%)`,
           }}
         />
-        
+
         {/* Loading indicator */}
         {isNavigating && (
           <div className="absolute inset-0 bg-black/20 dark:bg-white/10 rounded-lg flex items-center justify-center z-10">
             <LoadingSpinner />
           </div>
         )}
-        
+
         <div className='flex flex-col gap-5 w-full'>
           <div
             className='w-full h-40 md:h-56 overflow-hidden dark:border-tertiary-480 border-tertiary-100

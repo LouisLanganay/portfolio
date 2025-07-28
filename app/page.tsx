@@ -236,12 +236,6 @@ function ExperienceList({ type, title }: { type: string; title: string }) {
   const groupedExperiences = filteredExperiences.reduce((acc: any[], exp) => {
     const existingCompany = acc.find(g => g.location === exp.location);
     if (existingCompany) {
-      if (!existingCompany.roles) {
-        existingCompany.roles = [{ ...existingCompany }];
-        delete existingCompany.description;
-        delete existingCompany.technologies;
-        existingCompany.date = `${exp.date.split(' - ')[0]} - ${existingCompany.date.split(' - ')[1]}`;
-      }
       existingCompany.roles.push(exp);
       // Sort roles by date in descending order
       existingCompany.roles.sort((a: Experience, b: Experience) => {
@@ -250,7 +244,14 @@ function ExperienceList({ type, title }: { type: string; title: string }) {
         return bDate.getTime() - aDate.getTime();
       });
     } else {
-      acc.push({ ...exp });
+      // Create new company with roles array
+      acc.push({
+        type: exp.type,
+        location: exp.location,
+        image: exp.image,
+        date: exp.date,
+        roles: [exp]
+      });
     }
     return acc;
   }, []);
@@ -278,7 +279,7 @@ function ExperienceList({ type, title }: { type: string; title: string }) {
         - {title}
       </h5>
       <div className='flex flex-col gap-4 w-full'>
-        {groupedExperiences.map((experience: Experience, index: number) => (
+        {groupedExperiences.map((experience: any, index: number) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, scale: 0.99 }}

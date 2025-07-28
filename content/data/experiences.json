@@ -5,15 +5,15 @@
     "location": "Luminess",
     "date": "31 mar. 2025 - 31 jul. 2025",
     "image": "/experiences/luminess.jpg",
-    "description": "Development of an internal tool designed for non-regression validation and API testing of RAD LAD, focusing on GDPR-compliant image and document management. It supports multiple APIs, user authentication via Keycloak, and various file management and export functionalities.",
-    "technologies": ["Django", "Python", "MongoDB"]
+    "description": "Development of an internal tool for non-regression validation and testing of IDP project services, focused on GDPR-compliant image and document management. It supports multiple services, user authentication via Keycloak, and various file management and export functionalities.\n\nKey technical contributions:\n- Backend development using FastAPI, then migration to Django.\n- Implementation of an authentication and permission management system with Keycloak.\n- Design and development of a connector for RAD LAD, facilitating non-regression testing.\n- Creation of a WEB dashboard in Angular, using the company's design system.\n\nSkills and technologies:\n- Backend: Django, FastAPI\n- Database: MongoDB\n- Project management: Jira, Scrum methodology\n- Frontend: Angular\n\nMajor technical challenge:\n- Transition from FastAPI to Django, requiring rapid skill development in Django.",
+    "technologies": ["Django", "MongoDB", "Angular", "Python"]
   },
   {
     "type": "job",
     "title": "Freelance - Web Developer",
     "location": "IDEA Explorers",
     "date": "feb. 2025 - jun. 2025",
-    "description": "Development of a website and a backend for IDEA Explorers, following a Figma mockup. Using Nextjs, MongoDB and Docker to create a solid and performant infrastructure.",
+    "description": "Design and development of a complete web platform for IDEA Explorer.\n\n- Frontend: development from a Figma mockup using Next.js and Tailwind CSS.\n- Backend: creation of a performant REST API with MongoDB for the database, and implementation of business logic.\n- Infrastructure: use of Docker for isolated development environment, facilitating deployment and maintenance.\n- Collaboration: working in pairs with a freelance UX/UI designer (Kylian), in complete autonomy, with regular check-ins with the client.",
     "technologies": ["Nextjs", "MongoDB", "Docker", "TailwindCSS", "TypeScript", "Stripe"],
     "image": "/experiences/ideaexplorers.png"
   },

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { FC, useState } from 'react';
-import { ChevronRightIcon } from '@heroicons/react/24/outline';
+import { ChevronRightIcon, PauseCircleIcon, PlayIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
 import clsx from 'clsx';
 import { Experience } from '@/types';
@@ -80,12 +80,16 @@ function calculateDuration(dateInterval: string) {
   }
 }
 
-interface GroupedExperience extends Experience {
-  roles?: Experience[];
+interface GroupedExperience {
+  type?: string;
+  location: string;
+  date: string;
+  image?: string;
+  roles: Experience[];
 }
 
 export function ExperienceDropdown({
-  title, location, date, description, image, technologies, roles
+  location, date, image, roles
 }: GroupedExperience) {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const dateInfo = checkDateInterval(date);
@@ -94,7 +98,7 @@ export function ExperienceDropdown({
     <li
       className={clsx(
         'flex flex-col gap-4 group',
-        (description || roles) && 'cursor-pointer'
+        roles && roles.length > 0 && 'cursor-pointer'
       )}
       onClick={() => setIsExpanded(!isExpanded)}
     >
@@ -104,7 +108,7 @@ export function ExperienceDropdown({
             <div className='relative shrink-0 overflow-hidden rounded-full size-11 m-auto flex items-center justify-between dark:bg-tertiary-600 bg-tertiary-400 border dark:border-tertiary-480 border-tertiary-650'>
               <Image
                 src={image}
-                alt={title}
+                alt={location}
                 height={100}
                 width={100}
                 className='rounded-full'
@@ -133,7 +137,7 @@ export function ExperienceDropdown({
                   className={clsx(
                     'w-4 h-4 dark:text-white/70 text-black/70 transform -translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300 ml-2',
                     isExpanded && 'rotate-90 translate-x-0 opacity-100',
-                    (!description && !roles) && 'hidden',
+                    (!roles || roles.length === 0) && 'hidden',
                   )}
                 />
               </p>
@@ -142,7 +146,7 @@ export function ExperienceDropdown({
             <div className='flex flex-col gap-1 w-full'>
               <p className='font-light dark:text-white/70 text-black/70 text-sm text-left block sm:hidden'>{dateInfo.display}</p>
               <p className='font-light dark:text-white/70 text-black/70 text-sm'>
-                {title}
+                {roles[0]?.title || location}
               </p>
             </div>
           </div>
@@ -154,15 +158,12 @@ export function ExperienceDropdown({
         transition={{ duration: 0.3 }}
         className='overflow-hidden'
       >
-        {description && (
-          <p className='font-light dark:text-white/70 text-black/70 text-sm'>{description}</p>
-        )}
         {roles && roles.length > 0 && (
           <div className='relative my-2 space-y-4 pl-4'>
-            <div className='absolute left-1 h-full w-0.5 mt-1 dark:bg-tertiary-480 bg-tertiary-100' />
+            <div className='absolute left-1 h-full w-0.5 mt-1 dark:bg-tertiary-450 bg-tertiary-100' />
             {roles.map((role, index) => (
               <div key={index} className='relative'>
-                <div className='absolute -left-[15px] top-1 size-2 rounded-full dark:bg-tertiary-480 bg-tertiary-100' />
+                <div className='absolute -left-[15px] top-1 size-2 rounded-full dark:bg-tertiary-450 bg-tertiary-100' />
                 <div className='flex flex-col gap-1'>
                   <div className='flex flex-row justify-between items-start w-full'>
                     <div className='flex flex-col'>
@@ -171,7 +172,7 @@ export function ExperienceDropdown({
                     </div>
                   </div>
                   {role.description && (
-                    <p className='font-light dark:text-white/70 text-black/70 text-sm'>{role.description}</p>
+                    <p className='font-light dark:text-white/70 text-black/70 text-sm whitespace-pre-line'>{role.description}</p>
                   )}
                   {role.technologies && role.technologies.length > 0 && (
                     <div className='flex flex-wrap gap-2 mt-2'>
@@ -186,17 +187,6 @@ export function ExperienceDropdown({
                   )}
                 </div>
               </div>
-            ))}
-          </div>
-        )}
-        {!roles && technologies && technologies.length > 0 && (
-          <div className='flex flex-wrap gap-2 mt-3'>
-            {technologies.sort().map((tech, i) => (
-              <TechBadge
-                key={i}
-                tech={tech}
-                icon={getIcon(tech)}
-              />
             ))}
           </div>
         )}
