@@ -30,8 +30,7 @@ export function CodeBlock({
     }
   }, [children, isOpened]);
 
-  console.log('children', children);
-  console.log('language', language);
+
 
   const CodeContainer = ({ isExpandable }: { isExpandable: boolean }) => (
     <div className={clsx('relative w-full rounded-lg border-gray-300/30 border dark:border-gray-700', isExpandable && !isOpened && 'max-h-52 overflow-hidden', isExpandable && isOpened && 'overflow-y-auto')}>

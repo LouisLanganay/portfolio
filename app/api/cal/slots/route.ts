@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
 
     if (!username || !eventTypeSlug || !start || !end) {
       return NextResponse.json(
-        { error: 'Paramètres manquants' },
+        { error: 'Missing parameters' },
         { status: 400 }
       )
     }
@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
 
     if (!calApiKey) {
       return NextResponse.json(
-        { error: 'Configuration API manquante - CAL_API_KEY non définie' },
+        { error: 'Missing API configuration - CAL_API_KEY not defined' },
         { status: 500 }
       )
     }
@@ -56,7 +56,7 @@ export async function GET(request: NextRequest) {
         if (data.data && data.status === 'success') {
           availableSlots = processCalComSlots(data.data, timezone)
         } else {
-          throw new Error('Format de données Cal.com invalide')
+          throw new Error('Invalid Cal.com data format')
         }
       } else {
         const errorText = await response.text()
@@ -77,11 +77,11 @@ export async function GET(request: NextRequest) {
     })
 
   } catch (error) {
-    console.error('💥 Erreur API Cal.com:', error)
+    console.error('💥 Cal.com API Error:', error)
     return NextResponse.json(
       {
-        error: 'Erreur lors de la récupération des créneaux',
-        details: error instanceof Error ? error.message : 'Erreur inconnue'
+        error: 'Error while fetching available slots',
+        details: error instanceof Error ? error.message : 'Unknown error'
       },
       { status: 500 }
     )
@@ -135,38 +135,38 @@ function processCalComSlots(calData: any, timezone: string) {
   return slots
 }
 
-// Fonction pour sélectionner les meilleurs créneaux
+// Function to select the best slots
 function selectBestSlots(allSlots: Array<{date: string, time: string, hour: number}>) {
   const selected: Array<{date: string, time: string, hour: number}> = []
   const dates = Array.from(new Set(allSlots.map(s => s.date))).sort()
 
-  // Stratégie : 2-3 créneaux par jour, à des heures variées
+  // Strategy: 2-3 slots per day, at varied hours
   dates.forEach((date: string) => {
     const daySlots = allSlots.filter(s => s.date === date)
 
-    // Sélectionner des créneaux à des heures différentes
+    // Select slots at different hours
     const morningSlots = daySlots.filter(s => s.hour >= 9 && s.hour <= 11)
     const afternoonSlots = daySlots.filter(s => s.hour >= 14 && s.hour <= 16)
     const lateSlots = daySlots.filter(s => s.hour >= 17 && s.hour <= 18)
 
-    // Prendre 1 créneau du matin, 1 de l'après-midi, et 1 en fin de journée si disponible
+    // Take 1 morning slot, 1 afternoon slot, and 1 late slot if available
     if (morningSlots.length > 0) {
-      selected.push(morningSlots[Math.floor(morningSlots.length / 2)]) // Milieu de la matinée
+      selected.push(morningSlots[Math.floor(morningSlots.length / 2)]) // Mid-morning
     }
 
     if (afternoonSlots.length > 0) {
-      selected.push(afternoonSlots[Math.floor(afternoonSlots.length / 2)]) // Milieu de l'après-midi
+      selected.push(afternoonSlots[Math.floor(afternoonSlots.length / 2)]) // Mid-afternoon
     }
 
     if (lateSlots.length > 0 && selected.length < 2) {
-      selected.push(lateSlots[0]) // Premier créneau de fin de journée
+      selected.push(lateSlots[0]) // First late slot
     }
 
-    // Limiter à 3 créneaux par jour maximum
+    // Limit to 3 slots per day maximum
     if (selected.filter(s => s.date === date).length >= 3) {
       return
     }
   })
-  // Limiter le total à 8 créneaux maximum
+  // Limit total to 8 slots maximum
   return selected.slice(0, 8)
 }
