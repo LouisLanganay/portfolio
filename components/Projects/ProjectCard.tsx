@@ -16,6 +16,7 @@ import { getRepository } from '@/lib/GetRepository';
 import { getIcon } from '@/lib/GetIcon';
 import { TechBadge } from '../TechBadge';
 import { LoadingSpinner } from '../ui/LoadingSpinner';
+import { cleanSlug } from '@/lib/utils';
 import clsx from 'clsx';
 
 interface ProjectCardProps {
@@ -45,7 +46,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
     setShowPreview(true);
 
     // More aggressive prefetching
-    router.prefetch(`/projects/${project.slug}`);
+    const cleanProjectSlug = cleanSlug(project.slug);
+    router.prefetch(`/projects/${cleanProjectSlug}`);
   };
 
   const handleMouseLeave = () => {
@@ -76,9 +78,13 @@ export function ProjectCard({ project }: ProjectCardProps) {
     target.style.opacity = '0.5';
     target.style.transform = 'scale(0.98)';
 
+    // Clean slug to avoid double slashes
+    const cleanProjectSlug = cleanSlug(project.slug);
+    console.log('Navigating to:', `/projects/${cleanProjectSlug}`);
+
     // Navigation with error handling
     try {
-      router.push(`/projects/${project.slug}`);
+      router.push(`/projects/${cleanProjectSlug}`);
     } catch (error) {
       console.error('Navigation failed:', error);
       setIsNavigating(false);
@@ -100,8 +106,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
         onMouseLeave={handleMouseLeave}
         onMouseDown={(e) => {
           if (e.button === 1) {
+            const cleanProjectSlug = cleanSlug(project.slug);
             window.open(
-              `/projects/${project.slug}`,
+              `/projects/${cleanProjectSlug}`,
               '_blank'
             );
           }

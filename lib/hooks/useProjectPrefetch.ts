@@ -1,5 +1,6 @@
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef } from 'react';
+import { cleanSlug } from '@/lib/utils';
 
 interface UseProjectPrefetchOptions {
   projects: Array<{ slug: string }>;
@@ -7,10 +8,10 @@ interface UseProjectPrefetchOptions {
   delay?: number;
 }
 
-export function useProjectPrefetch({ 
-  projects, 
-  maxPrefetch = 3, 
-  delay = 1000 
+export function useProjectPrefetch({
+  projects,
+  maxPrefetch = 3,
+  delay = 1000
 }: UseProjectPrefetchOptions) {
   const router = useRouter();
   const prefetchedRef = useRef(new Set<string>());
@@ -22,8 +23,9 @@ export function useProjectPrefetch({
         .filter(project => !prefetchedRef.current.has(project.slug));
 
       projectsToPrefetch.forEach(project => {
-        router.prefetch(`/projects/${project.slug}`);
-        prefetchedRef.current.add(project.slug);
+        const cleanProjectSlug = cleanSlug(project.slug);
+        router.prefetch(`/projects/${cleanProjectSlug}`);
+        prefetchedRef.current.add(cleanProjectSlug);
       });
     }, delay);
 
@@ -31,9 +33,10 @@ export function useProjectPrefetch({
   }, [projects, maxPrefetch, delay, router]);
 
   const prefetchProject = (slug: string) => {
-    if (!prefetchedRef.current.has(slug)) {
-      router.prefetch(`/projects/${slug}`);
-      prefetchedRef.current.add(slug);
+    const cleanProjectSlug = cleanSlug(slug);
+    if (!prefetchedRef.current.has(cleanProjectSlug)) {
+      router.prefetch(`/projects/${cleanProjectSlug}`);
+      prefetchedRef.current.add(cleanProjectSlug);
     }
   };
 
