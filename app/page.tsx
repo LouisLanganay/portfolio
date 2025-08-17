@@ -40,7 +40,7 @@ export default function Home() {
     delay: 500
   });
 
-  // Scroll automatique vers les ancres
+  // Automatic scroll to anchors
   useScrollToAnchor();
 
   return (

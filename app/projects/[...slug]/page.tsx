@@ -9,6 +9,5 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
   if (!project || !project.published)
     return notFound();
 
-  console.log("project", project.id);
   return <ProjectPage project={project} />;
 }
