@@ -4,20 +4,20 @@ import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { XMarkIcon, ArrowRightIcon } from '@heroicons/react/24/outline'
+import { XMarkIcon, ArrowTopRightOnSquareIcon, ArrowRightIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 
-interface LinkedInPopupProps {
+interface MaltPopupProps {
   delay?: number
 }
 
-export default function LinkedInPopup({ delay = 0 }: LinkedInPopupProps) {
+export default function MaltPopup({ delay = 0 }: MaltPopupProps) {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
     const isPopupClosed = document.cookie
       .split('; ')
-      .find(row => row.startsWith('linkedin-popup-closed='))
+      .find(row => row.startsWith('malt-popup-closed='))
 
     if (isPopupClosed) {
       return
@@ -33,12 +33,12 @@ export default function LinkedInPopup({ delay = 0 }: LinkedInPopupProps) {
   const handleClose = () => {
     const expires = new Date()
     expires.setTime(expires.getTime() + (60 * 60 * 1000))
-    document.cookie = `linkedin-popup-closed=true; expires=${expires.toUTCString()}; path=/`
+    document.cookie = `malt-popup-closed=true; expires=${expires.toUTCString()}; path=/`
     setIsVisible(false)
   }
 
-  const handleOpenLinkedIn = () => {
-    window.open('https://www.linkedin.com/in/louis-langanay', '_blank')
+  const handleOpenMalt = () => {
+    window.open('https://www.malt.fr/profile/louislanganay', '_blank')
   }
 
   return (
@@ -56,16 +56,16 @@ export default function LinkedInPopup({ delay = 0 }: LinkedInPopupProps) {
             duration: 0.3
           }}
         >
-          <Card className='group max-w-md shadow-lg shadow-[#0a66c2]/5'>
+          <Card className='group max-w-md shadow-lg shadow-[#fc5757]/5'>
             <CardHeader>
               <div className='flex items-center justify-between'>
-                <div className='flex items-center gap-2'>
+                <div className='flex items-center gap-3'>
                   <CardTitle className='text-lg font-bold'>
-                    Let's connect on
+                    Je suis disponible sur
                   </CardTitle>
                   <Image
-                    src='/linkedin.svg'
-                    alt='LinkedIn'
+                    src='/malt.png'
+                    alt='Malt'
                     width={80}
                     height={80}
                   />
@@ -82,26 +82,26 @@ export default function LinkedInPopup({ delay = 0 }: LinkedInPopupProps) {
             </CardHeader>
             <CardContent>
               <CardDescription className='text-sm text-gray-600 dark:text-gray-300 mb-4'>
-                Your project has been stuck for 3 months? I&apos;ve delivered several projects this year. All my clients are satisfied. Do you want to finally move forward or keep procrastinating? 💪
+                Louis Langanay est actuellement en <div className='size-2 ml-1 bg-green-500 rounded-full inline-block relative'><div className='size-2 bg-green-500 rounded-full absolute animate-ping'></div></div> ligne, envoyez-lui un message pour discuter de votre projet !
               </CardDescription>
               <div className='space-y-3'>
                 <div className='flex items-center justify-between'>
-                  <span className='text-sm text-gray-400'>Experience</span>
-                  <span className='font-semibold text-[#0a66c2]'>+3 years</span>
+                  <span className='text-sm text-gray-500 dark:text-gray-400'>TJM moyen</span>
+                  <span className='font-semibold text-[#fc5757]'>~300€</span>
                 </div>
                 <div className='flex items-center justify-between'>
-                  <span className='text-sm text-gray-400'>Followers</span>
-                  <span className='font-semibold text-[#0a66c2]'>+610</span>
+                  <span className='text-sm text-gray-500 dark:text-gray-400'>Temps de réponse</span>
+                  <span className='font-semibold text-green-600 dark:text-green-400'>~1h</span>
                 </div>
               </div>
             </CardContent>
             <CardFooter>
               <Button
-                onClick={handleOpenLinkedIn}
-                className='w-full group/cta font-semibold rounded-full bg-[#0a66c2] hover:bg-[#0a66c2]/80 text-white border-[#0a66c2] hover:border-[#0a66c2]/80'
+                onClick={handleOpenMalt}
+                className='w-full group/cta font-light rounded-full bg-[#fc5757] hover:bg-[#fc5757]/80 text-white border-[#fc5757] hover:border-[#fc5757]/80'
                 size='md'
               >
-                Connect
+                Proposer une mission
                 <ArrowRightIcon className='w-4 h-4 ml-2 group-hover/cta:translate-x-1 transition-transform duration-150' />
               </Button>
             </CardFooter>
