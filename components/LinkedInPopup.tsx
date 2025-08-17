@@ -82,7 +82,7 @@ export default function LinkedInPopup({ delay = 0 }: LinkedInPopupProps) {
             </CardHeader>
             <CardContent>
               <CardDescription className='text-sm text-gray-600 dark:text-gray-300 mb-4'>
-                Your project has been dragging on for 3 months? I've delivered several projects this year. All my clients are satisfied. Do you want to finally move forward or continue procrastinating? 💪
+                Your project has been dragging on for 3 months? I&apos;ve delivered several projects this year. All my clients are satisfied. Do you want to finally move forward or continue procrastinating? 💪
               </CardDescription>
               <div className='space-y-3'>
                 <div className='flex items-center justify-between'>

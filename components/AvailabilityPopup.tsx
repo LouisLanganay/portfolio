@@ -88,7 +88,7 @@ export default function AvailabilityPopup({ delay = 0 }: AvailabilityPopupProps)
             <CardContent>
               <CardDescription className='text-sm text-gray-600 dark:text-gray-300 mb-4'>
                         I am currently available to start new projects.
-        Book your slot and let's get started right now!
+                        Book your slot and let&apos;s get started right now!
               </CardDescription>
               {slots.length > 0 && !isLoading && (
                 <div className='space-y-3 mb-4'>
