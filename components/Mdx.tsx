@@ -5,6 +5,7 @@ import { InformationCircleIcon } from '@heroicons/react/20/solid';
 import { ChatBubbleBottomCenterTextIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 import { CodeBlock } from './CodeBlock';
 import { ComponentPreview } from './ComponentPreview';
+import Image from 'next/image';
 
 interface MDXProps {
   code: MDXRemoteSerializeResult;
@@ -141,9 +142,20 @@ const components = {
   br: ({ ...props }: React.HTMLAttributes<HTMLBRElement>) => (
     <br className='my-3' {...props} />
   ),
-  img: ({ ...props }: React.HTMLAttributes<HTMLImageElement>) => (
+  img: ({ src, ...props }: React.HTMLAttributes<HTMLImageElement> & { src?: string }) => (
     <div className='my-4'>
-      <img className='w-full h-auto rounded-lg shadow-lg' {...props} />
+      {src ? (
+        <Image 
+          src={src} 
+          alt='Image' 
+          width={800} 
+          height={600} 
+          className='w-full h-auto rounded-lg shadow-lg'
+          {...props}
+        />
+      ) : (
+        <img className='w-full h-auto rounded-lg shadow-lg' alt='Image' {...props} />
+      )}
     </div>
   ),
   strong: ({ ...props }: React.HTMLAttributes<HTMLElement>) => (

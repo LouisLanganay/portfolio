@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET(request: NextRequest) {
   try {
-    const { searchParams } = new URL(request.url)
+    const { searchParams } = request.nextUrl || new URL(request.url)
     const username = searchParams.get('username')
     const eventTypeSlug = searchParams.get('eventTypeSlug')
     const start = searchParams.get('start')

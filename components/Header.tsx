@@ -7,6 +7,7 @@ import { MoonIcon } from '@heroicons/react/24/outline';
 import { SunIcon } from '@heroicons/react/24/outline';
 import { AvailabilityTag } from './AvailabilityTag';
 import { Button } from './ui/button';
+import Image from 'next/image';
 
 const links = [
   {
@@ -37,10 +38,12 @@ export function Header() {
     >
       <header className='py-4 px-5 flex flex-row justify-between max-w-4xl items-center m-auto'>
         <div className='flex flex-row items-center shrink-0'>
-          <img
+          <Image
             onClick={() => router.push('/') }
             src='https://avatars.githubusercontent.com/u/114762819?v=4'
-            alt='Github'
+            alt='Avatar de Louis Langanay'
+            width={40}
+            height={40}
             className='w-8 h-8 md:w-10 md:h-10 rounded-full cursor-pointer'
           />
           <span className='sr-only'>

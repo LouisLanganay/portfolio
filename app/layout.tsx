@@ -9,6 +9,7 @@ import { TechBadgeProvider } from '@/contexts/TechBadgeContext';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import SmartPopup from '@/components/SmartPopup';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   title: 'Louis Langanay - Portfolio',
@@ -67,7 +68,9 @@ export default function RootLayout({
               </div>
               <Footer />
             </div>
-            <SmartPopup />
+            <Suspense fallback={null}>
+              <SmartPopup />
+            </Suspense>
           </TechBadgeProvider>
         </ThemeProvider>
       </body>

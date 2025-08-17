@@ -83,7 +83,7 @@ export function useCalSlots({
 
   useEffect(() => {
     fetchSlots()
-  }, [username, eventTypeSlug, daysAhead])
+  }, [fetchSlots])
 
   return {
     slots,

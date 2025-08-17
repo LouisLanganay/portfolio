@@ -51,7 +51,7 @@ export function ComponentPreview({
     }
 
     return <Component />;
-  }, [name, key]);
+  }, [name]);
 
   useEffect(() => {
     const source = registry[name]?.source;
