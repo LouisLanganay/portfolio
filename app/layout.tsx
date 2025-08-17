@@ -8,6 +8,7 @@ import clsx from 'clsx';
 import { TechBadgeProvider } from '@/contexts/TechBadgeContext';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import SmartPopup from '@/components/SmartPopup';
 
 export const metadata: Metadata = {
   title: 'Louis Langanay - Portfolio',
@@ -66,6 +67,7 @@ export default function RootLayout({
               </div>
               <Footer />
             </div>
+            <SmartPopup />
           </TechBadgeProvider>
         </ThemeProvider>
       </body>
