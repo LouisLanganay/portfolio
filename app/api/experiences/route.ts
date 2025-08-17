@@ -10,7 +10,7 @@ export async function GET() {
     
     return NextResponse.json(experiences);
   } catch (error) {
-    console.error('Erreur lors de la lecture des expériences:', error);
-    return NextResponse.json({ error: 'Erreur lors du chargement des expériences' }, { status: 500 });
+    console.error('Error while reading experiences:', error);
+    return NextResponse.json({ error: 'Error while loading experiences' }, { status: 500 });
   }
 }

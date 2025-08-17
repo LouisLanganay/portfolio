@@ -73,7 +73,7 @@ export default function AvailabilityPopup({ delay = 0 }: AvailabilityPopupProps)
             <CardHeader>
               <div className='flex items-center justify-between'>
                 <CardTitle className='text-lg font-bold text-white'>
-                  Tu veux discuter de ton projet ?
+                  Want to discuss your project?
                 </CardTitle>
                 <Button
                   variant='ghost'
@@ -87,15 +87,15 @@ export default function AvailabilityPopup({ delay = 0 }: AvailabilityPopupProps)
             </CardHeader>
             <CardContent>
               <CardDescription className='text-sm text-gray-600 dark:text-gray-300 mb-4'>
-                Je suis actuellement disponible pour démarrer de nouveaux projets.
-                Réserve ton créneau et commençons dès maintenant !
+                        I am currently available to start new projects.
+        Book your slot and let's get started right now!
               </CardDescription>
               {slots.length > 0 && !isLoading && (
                 <div className='space-y-3 mb-4'>
                   <div className='flex items-center gap-2 mb-3'>
                     <ClockIcon className='size-4 text-[#059669]' />
                     <span className='text-sm font-medium text-[#047857] dark:text-[#6ee7b7]'>
-                      Prochains créneaux disponibles
+                      Next available slots
                     </span>
                   </div>
                   <div className='space-y-2 max-h-32 overflow-y-auto'>
@@ -111,19 +111,19 @@ export default function AvailabilityPopup({ delay = 0 }: AvailabilityPopupProps)
                     ))}
                     {slots.length > 5 && (
                       <div className='text-xs text-gray-400 text-center'>
-                        +{slots.length - 5} autres créneaux disponibles
+                        +{slots.length - 5} other slots available
                       </div>
                     )}
                   </div>
                   <div className='flex flex-row flex-wrap md:flex-nowrap gap-2 text-xs'>
                     <div className='flex items-center gap-2 flex-nowrap text-nowrap'>
-                      <span className='text-gray-400 text-nowrap'>Temps de réponse</span>
+                      <span className='text-gray-400 text-nowrap'>Response time</span>
                       <span className='font-semibold text-white text-nowrap'>~30 min</span>
                     </div>
                     <div className='flex items-center gap-2 flex-nowrap text-nowrap'>
-                      <span className='text-gray-400 text-nowrap'>Créneaux libres</span>
+                      <span className='text-gray-400 text-nowrap'>Available slots</span>
                       <span className='font-semibold text-white text-nowrap'>
-                        {availableSlotsCount} cette semaine
+                        {availableSlotsCount} this week
                       </span>
                     </div>
                   </div>
@@ -132,7 +132,7 @@ export default function AvailabilityPopup({ delay = 0 }: AvailabilityPopupProps)
               {isLoading && (
                 <div className='flex items-center justify-center p-4'>
                   <div className='size-6 border-2 border-white border-t-transparent rounded-full animate-spin'></div>
-                  <span className='ml-2 text-sm text-white'>Vérification de la disponibilité...</span>
+                  <span className='ml-2 text-sm text-white'>Checking availability...</span>
                 </div>
               )}
             </CardContent>
@@ -144,7 +144,7 @@ export default function AvailabilityPopup({ delay = 0 }: AvailabilityPopupProps)
                 variant='primary'
                 shiny
               >
-                Réserver maintenant
+                Book now
                 <ArrowRightIcon className='w-4 h-4 ml-2 group-hover/cta:translate-x-1 transition-transform duration-150' />
               </Button>
             </CardFooter>

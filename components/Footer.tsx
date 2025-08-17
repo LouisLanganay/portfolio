@@ -36,7 +36,7 @@ export function Footer() {
     <footer className='py-4 px-5 flex flex-col justify-between max-w-4xl items-center m-auto w-full' role="contentinfo" aria-label="Footer">
       <div className='flex flex-row w-full'>
         <p className='text-white/70 font-normal text-sm md:text-base'>
-          © {Year} Louis Langanay - Développeur Full Stack
+          © {Year} Louis Langanay - Full Stack Developer
         </p>
       </div>
       <div className='w-full h-px border-tertiary-400 border-dashed border-t my-2' />

@@ -82,15 +82,15 @@ export default function LinkedInPopup({ delay = 0 }: LinkedInPopupProps) {
             </CardHeader>
             <CardContent>
               <CardDescription className='text-sm text-gray-600 dark:text-gray-300 mb-4'>
-                Ton projet traîne depuis 3 mois ? J&apos;ai livré plusieurs projets cette année. Tout mes clients sont satisfaits. Tu veux enfin avancer ou continuer à procrastiner ? 💪
+                Your project has been dragging on for 3 months? I've delivered several projects this year. All my clients are satisfied. Do you want to finally move forward or continue procrastinating? 💪
               </CardDescription>
               <div className='space-y-3'>
                 <div className='flex items-center justify-between'>
-                  <span className='text-sm text-gray-400'>Expérience</span>
+                                      <span className='text-sm text-gray-400'>Experience</span>
                   <span className='font-semibold text-[#0a66c2]'>+3 ans</span>
                 </div>
                 <div className='flex items-center justify-between'>
-                  <span className='text-sm text-gray-400'>Abonnés</span>
+                                      <span className='text-sm text-gray-400'>Followers</span>
                   <span className='font-semibold text-[#0a66c2]'>+610</span>
                 </div>
               </div>

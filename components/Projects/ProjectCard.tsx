@@ -80,7 +80,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
     // Clean slug to avoid double slashes
     const cleanProjectSlug = cleanSlug(project.slug);
-    console.log('Navigating to:', `/projects/${cleanProjectSlug}`);
+    
 
     // Navigation with error handling
     try {

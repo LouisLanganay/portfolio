@@ -90,7 +90,7 @@ export default function MaltPopup({ delay = 0 }: MaltPopupProps) {
                   <span className='font-semibold text-[#fc5757]'>~300€</span>
                 </div>
                 <div className='flex items-center justify-between'>
-                  <span className='text-sm text-gray-500 dark:text-gray-400'>Temps de réponse</span>
+                  <span className='text-sm text-gray-500 dark:text-gray-400'>Response time</span>
                   <span className='font-semibold text-green-600 dark:text-green-400'>~1h</span>
                 </div>
               </div>
