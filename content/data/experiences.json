@@ -6,7 +6,8 @@
     "date": "31 mar. 2025 - 31 jul. 2025",
     "image": "/experiences/luminess.jpg",
     "description": "Development of an internal tool for non-regression validation and testing of IDP project services, focused on GDPR-compliant image and document management. It supports multiple services, user authentication via Keycloak, and various file management and export functionalities.\n\nKey technical contributions:\n- Backend development using FastAPI, then migration to Django.\n- Implementation of an authentication and permission management system with Keycloak.\n- Design and development of a connector for RAD LAD, facilitating non-regression testing.\n- Creation of a WEB dashboard in Angular, using the company's design system.\n\nSkills and technologies:\n- Backend: Django, FastAPI\n- Database: MongoDB\n- Project management: Jira, Scrum methodology\n- Frontend: Angular\n\nMajor technical challenge:\n- Transition from FastAPI to Django, requiring rapid skill development in Django.",
-    "technologies": ["Django", "MongoDB", "Angular", "Python"]
+    "technologies": ["Django", "MongoDB", "Angular", "Python"],
+    "projects": ["weber"]
   },
   {
     "type": "job",
@@ -15,7 +16,8 @@
     "date": "feb. 2025 - jun. 2025",
     "description": "Design and development of a complete web platform for IDEA Explorer.\n\n- Frontend: development from a Figma mockup using Next.js and Tailwind CSS.\n- Backend: creation of a performant REST API with MongoDB for the database, and implementation of business logic.\n- Infrastructure: use of Docker for isolated development environment, facilitating deployment and maintenance.\n- Collaboration: working in pairs with a freelance UX/UI designer (Kylian), in complete autonomy, with regular check-ins with the client.",
     "technologies": ["Nextjs", "MongoDB", "Docker", "TailwindCSS", "TypeScript", "Stripe"],
-    "image": "/experiences/ideaexplorers.png"
+    "image": "/experiences/ideaexplorers.png",
+    "projects": []
   },
   {
     "type": "job",
@@ -24,7 +26,8 @@
     "date": "sep. 2024 - 21 feb. 2025",
     "image": "/experiences/luminess.jpg",
     "description": "I developed a web configuration panel using Angular for a photo analysis tool, primarily used by banks and insurance companies to process administrative documents, during my internship at Luminess.",
-    "technologies": ["Angular", "TailwindCSS", "PHP", "TypeScript"]
+    "technologies": ["Angular", "TailwindCSS", "PHP", "TypeScript"],
+    "projects": []
   },
   {
     "type": "job",
@@ -32,7 +35,8 @@
     "location": "Venture\"s Game",
     "date": "sep. 2023 - nov. 2023",
     "description": "A remote internship in a start-up that develops a discord bot. I was in charge of the front-end part of the showcase website and a part of the dashboard.",
-    "technologies": ["React", "Sass", "TypeScript"]
+    "technologies": ["React", "Sass", "TypeScript"],
+    "projects": []
   },
   {
     "type": "job",
@@ -41,7 +45,18 @@
     "date": "jul. 2023 - aug. 2023",
     "description": "Start of the development of a web application for the hospital's workers. I was in charge of the front-end and back-end part of the application.",
     "image": "/experiences/chielvr.png",
-    "technologies": ["WordPress", "PHP"]
+    "technologies": ["WordPress", "PHP"],
+    "projects": []
+  },
+  {
+    "type": "educational",
+    "title": "UX/UI Design Specialization Program",
+    "location": "School of Engineering, Jönköping University",
+    "date": "25 aug. 2025 - 07 jun. 2026",
+    "description": "Specialized program in UX/UI design at the School of Engineering, focusing on user experience and interface design principles, methodologies, and practical applications.",
+    "image": "/experiences/ju.svg",
+    "technologies": ["Figma"],
+    "projects": []
   },
   {
     "type": "educational",
@@ -50,7 +65,8 @@
     "date": "sep. 2022 - jul. 2027",
     "description": "RNCP 7 Professional Certification - BAC +5.",
     "image": "/experiences/epitech.png",
-    "technologies": ["C", "C++", "JavaScript", "TypeScript", "Python", "Java", "SQL", "Git", "Docker"]
+    "technologies": ["C", "C++", "JavaScript", "TypeScript", "Python", "Java", "SQL", "Git", "Docker"],
+    "projects": []
   },
   {
     "type": "educational",
@@ -58,6 +74,7 @@
     "location": "Campus La Chataigneraie",
     "date": "sep. 2019 - jul. 2022",
     "description": "Information and Digital Systems (SIN) specialism (distinction).",
-    "image": "/experiences/chatos.jpg"
+    "image": "/experiences/chatos.jpg",
+    "projects": []
   }
 ]

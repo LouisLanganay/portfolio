@@ -1,27 +1,37 @@
 'use client';
 
-import ProjectCardItem from '@/components/Projects/ProjectCardItem';
-import { ArrowDownTrayIcon, StarIcon, TagIcon, UsersIcon } from '@heroicons/react/24/outline';
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import { getRepository } from '@/lib/GetRepository';
-import { Repository } from '@/types';
-import { getIcon } from '@/lib/GetIcon';
-import Image from 'next/image';
-import { Mdx } from '@/components/Mdx';
-import { TechBadge } from '@/components/TechBadge';
 import { Button } from '@/components/Button';
+import { ExperienceLink } from '@/components/ExperienceLink';
+import { Mdx } from '@/components/Mdx';
+import ProjectCardItem from '@/components/Projects/ProjectCardItem';
+import { TechBadge } from '@/components/TechBadge';
 import HeroVideoDialog from '@/components/ui/hero-video-dialog';
 import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
+import { getIcon } from '@/lib/GetIcon';
+import { getRepository } from '@/lib/GetRepository';
+import { Repository } from '@/types';
+import { ArrowDownTrayIcon, StarIcon, UsersIcon } from '@heroicons/react/24/outline';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export default function ProjectPage({ project }: { project: any }) {
   const router = useRouter();
   const [repository, setRepository] = useState<Repository | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [experiences, setExperiences] = useState<any[]>([]);
 
   useEffect(() => {
-    // Mark as loaded after a short delay
+    fetch('/api/experiences')
+      .then(res => res.json())
+      .then(data => {
+        setExperiences(data)
+      })
+      .catch(err => console.error('Error while loading experiences:', err));
+  }, []);
+
+  useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 100);
@@ -124,11 +134,14 @@ export default function ProjectPage({ project }: { project: any }) {
             ) : null}
           </div>
         </div>
-          <div className='flex flex-row gap-2 flex-wrap'>
-            {project.tools.sort().map((tool: string, index: number) => (
-              <TechBadge tech={tool} icon={getIcon(tool)} key={index} />
-            ))}
-          </div>
+        <div className='flex flex-row gap-2 flex-wrap'>
+          {project.tools.sort().map((tool: string, index: number) => (
+            <TechBadge tech={tool} icon={getIcon(tool)} key={index} />
+          ))}
+        </div>
+        {project.id && experiences.length > 0 && (
+          <ExperienceLink projectId={project.id} experiences={experiences} />
+        )}
         <hr className='border-tertiary-400 my-5' />
         
         {/* Conditional MDX content rendering */}

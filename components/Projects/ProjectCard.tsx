@@ -16,6 +16,7 @@ import { getRepository } from '@/lib/GetRepository';
 import { getIcon } from '@/lib/GetIcon';
 import { TechBadge } from '../TechBadge';
 import { LoadingSpinner } from '../ui/LoadingSpinner';
+import clsx from 'clsx';
 
 interface ProjectCardProps {
   project: Project;
@@ -130,15 +131,32 @@ export function ProjectCard({ project }: ProjectCardProps) {
           transition-all'
           >
             {project.preview ? (
-              <Image
-                src={showPreview && project.preview ? project.preview : project.image || ''}
-                alt={project.title}
-                className='object-cover group-hover/card:scale-101 h-full w-full transition-all duration-500'
-                width={1920}
-                height={1080}
-                priority={false}
-                loading="lazy"
-              />
+              <div className="relative w-full h-full">
+                <Image
+                  src={project.image || ''}
+                  alt={project.title}
+                  className={clsx('object-cover group-hover/card:scale-101 h-full w-full transition-all duration-500 absolute inset-0',
+                    showPreview ? 'opacity-0' : 'opacity-100',
+                    'transition-opacity duration-500'
+                  )}
+                  width={1920}
+                  height={1080}
+                  priority={false}
+                  loading="lazy"
+                />
+                <Image
+                  src={project.preview}
+                  alt={project.title}
+                  className={clsx('object-cover group-hover/card:scale-101 h-full w-full transition-all duration-500 absolute inset-0',
+                    showPreview ? 'opacity-100' : 'opacity-0',
+                    'transition-opacity duration-500'
+                  )}
+                  width={1920}
+                  height={1080}
+                  priority={false}
+                  loading="lazy"
+                />
+              </div>
             ) : project.image ? (
               <Image
                 src={project.image}
@@ -168,7 +186,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               <h3 className='font-bold dark:text-white/90 text-black/90 text-sm md:text-base'>
                 {project.title}
               </h3>
-              <ArrowTopRightOnSquareIcon className='w-4 h-4 md:w-5 md:h-5 dark:text-white/90 text-black/90' />
+              <ArrowTopRightOnSquareIcon className='w-4 h-4 md:w-5 md:h-5 dark:text-white/90 text-black/90 flex-shrink-0' />
             </div>
             <div className='flex flex-row gap-1 flex-wrap'>
               {project.tools.sort().map((tool: string, index: number) => {
@@ -182,8 +200,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
               {project.date}
             </h4>
             <p className='font-normal dark:text-white/70 text-black/70 text-xs md:text-sm'>
-              {project.description.slice(0, 200)}
-              {project.description.length > 100 && '...'}
+              {project.description.slice(0, 100)}
+              {project.description.length > 100 && (
+                <span className='text-xs text-white text-nowrap'>
+                  {' '}... view more
+                </span>
+              )}
             </p>
             {(project.stats?.downloads ||
               project.stats?.users ||

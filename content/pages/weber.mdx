@@ -1,0 +1,121 @@
+---
+title: WEBER - Plateforme de Test et Comparaison d'APIs de Traitement de Documents
+description: Outil interne développé chez Luminess pour moderniser les tests des APIs de traitement de documents, remplaçant l'ancien système TestNR avec une architecture moderne et sécurisée
+tags: [Web, API, Backend, IA, Gestion de Documents]
+tools: [Python, Django, MongoDB, Angular]
+image: /preview/weber.png
+preview: /preview/weber.gif
+date: sep. 2024 - 21 feb. 2025
+id: weber
+index: 2
+---
+
+# WEBER - Plateforme de Test et Comparaison d'APIs de Traitement de Documents
+
+WEBER est un outil interne que j'ai développé chez Luminess, une entreprise française spécialisée dans les services numériques, la gestion de documents et l'intelligence artificielle. Ce projet remplace l'ancien système TestNR, qui était devenu obsolète et limitatif. WEBER est spécifiquement conçu pour tester et comparer les résultats de différentes versions des APIs de traitement de documents, en particulier RAD LAD (un service de traitement et d'analyse de documents).
+
+&nbsp;
+
+# Mon Expérience de Développement
+
+## Backend et Migration Technologique
+
+J'ai commencé le développement du backend avec FastAPI en raison de sa simplicité et de son intuitivité. Cependant, une décision stratégique a été prise pour migrer vers Django, principalement pour aligner le projet avec les compétences internes de l'équipe et pour bénéficier des fonctionnalités déjà développées dans le template Django de Luminess.
+
+**Ce que j'ai développé :**
+- API RESTful pour gérer les données et les permissions
+- Système de gestion des groupes et des permissions pour sécuriser l'accès aux données sensibles, conformément aux exigences GDPR
+- Connecteur pour RAD LAD, facilitant les tests de non-régression en permettant une communication fluide entre WEBER et RAD LAD
+
+## Architecture de Communication
+
+L'architecture de WEBER que j'ai conçue repose sur une API RESTful avec des endpoints pour l'authentification, la gestion des permissions et des datasets. J'ai implémenté un mécanisme de callback pour permettre à WEBER de recevoir et de traiter les résultats d'analyse de RAD LAD.
+
+**Le flux de communication que j'ai mis en place :**
+1. WEBER envoie une requête à RAD LAD pour lancer une analyse de document
+2. La requête inclut le nom du fichier, un identifiant unique, le fichier lui-même sous forme de multipart, et une URL de callback
+3. RAD LAD utilise l'URL de callback pour envoyer une réponse à WEBER
+4. En cas de création de pages, WEBER répond avec une nouvelle URL de callback pour récupérer les résultats d'analyse
+
+&nbsp;
+
+# Schémas et Architecture
+
+## Schéma de Communication entre WEBER et RAD LAD
+
+WEBER envoie une requête à RAD LAD pour lancer une analyse de document. Cette requête inclut des informations telles que le nom du fichier, un identifiant unique, le fichier lui-même sous forme de multipart, et une URL de callback à laquelle RAD LAD répondra.
+
+RAD LAD utilise l'URL de callback pour envoyer une réponse à WEBER. Cette réponse peut inclure la création de pages ou fournir le statut de l'analyse. En cas de création de pages, WEBER répond avec une nouvelle URL de callback qui permet de récupérer les résultats d'analyse.
+
+<img src="/preview/weber-communication.svg" alt="Schéma de communication entre WEBER et RAD LAD montrant le flux de requêtes et callbacks" className="rounded-lg w-full" />
+
+## Interface Utilisateur WEBER
+
+L'interface web de WEBER que j'ai développée permet aux développeurs de visualiser les fichiers téléchargés et d'effectuer diverses actions, telles que lancer une analyse, entrer des données de référence (Ground Truth), et comparer les résultats. Voici un exemple d'interface montrant une liste de fichiers fictifs de cartes d'identité avec des options pour visualiser, analyser, vérifier ou supprimer ces fichiers.
+
+<img src="/preview/weber-interface.png" alt="Interface web de WEBER montrant la liste des fichiers et les options d'action" className="rounded-lg w-full" />
+
+## Popup de Lancement d'Analyse
+
+Lorsqu'un développeur souhaite lancer une analyse sur un fichier, une popup s'ouvre lui permettant de configurer les paramètres de l'analyse. Cette interface que j'ai créée permet de choisir le connecteur à utiliser (par exemple RAD LAD) et de sélectionner le serveur sur lequel l'analyse sera envoyée.
+
+<img src="/preview/weber_workflow1.png" alt="Popup de lancement d'analyse WEBER montrant la sélection du connecteur et du serveur" className="rounded-lg w-full" />
+
+## Popup de Création de Build
+
+Pour les tests à grande échelle ou lors du déploiement d'une nouvelle version en production, les développeurs peuvent créer des builds via une popup dédiée. Cette interface que j'ai développée permet de sélectionner les fichiers concernés, de définir un nom et une description pour le build, de choisir le connecteur et le serveur, et d'indiquer si le build est une campagne ou non.
+
+**Builds de campagnes :** Ces builds spéciaux conservent les résultats d'analyse pendant 1 an au lieu des 30 jours habituels. Ils sont utilisés lors du déploiement de nouvelles versions en production, tandis que les builds classiques suffisent pour les tests de routine.
+
+<img src="/preview/weber_workflow2.png" alt="Popup de création de build WEBER avec options de campagne et configuration avancée" className="rounded-lg w-full" />
+
+&nbsp;
+
+# Mes Résultats et l'Impact de Mon Travail
+
+Le projet WEBER a abouti à la création d'une plateforme de test moderne et flexible, capable de tester non seulement RAD LAD mais aussi d'autres services au sein de Luminess. 
+
+**Ce que j'ai accompli techniquement :**
+- **Plateforme moderne** : J'ai remplacé complètement l'ancien système TestNR par une solution actuelle et maintenable
+- **Système sécurisé** : J'ai assuré la conformité GDPR et mis en place une gestion robuste des permissions
+- **Architecture flexible** : J'ai créé une base solide pour les futures évolutions du projet
+- **Intégration réussie** : J'ai établi une communication fluide avec RAD LAD via le système de callbacks
+
+**Les compétences que j'ai acquises :**
+- Développement backend avec Django et FastAPI
+- Gestion de projet avec la méthodologie Scrum
+- Intégration d'APIs complexes et gestion des callbacks
+- Sécurisation d'applications et conformité réglementaire
+
+&nbsp;
+
+# Les Défis Techniques que J'ai Rencontrés
+
+## Migration de FastAPI à Django
+**Le défi :** La migration d'un framework à un autre en cours de développement s'est avérée plus complexe et chronophage que prévu.
+
+**Ma solution :** J'ai suivi une période de formation intensive sur Django, accompagnée de l'utilisation de tutoriels en ligne et de la documentation officielle. Cette approche m'a permis de surmonter cette difficulté et de m'adapter rapidement au nouveau framework.
+
+## Compréhension de l'Architecture IDP
+**Le défi :** L'architecture IDP est complexe, avec de nombreuses interactions entre différents services que je devais comprendre pour intégrer WEBER correctement.
+
+**Ma solution :** J'ai organisé des réunions régulières avec le Product Owner et d'autres développeurs pour clarifier les aspects techniques et garantir une intégration fluide avec WEBER. Ces échanges m'ont été très précieux pour comprendre la complexité du système.
+
+## Configuration du Port Forwarding
+**Le défi :** Permettre la communication entre RAD LAD, hébergé sur des serveurs de production, et WEBER, en développement local sur ma machine.
+
+**Ma solution :** J'ai configuré le port forwarding pour établir une communication sécurisée et efficace entre les deux systèmes, ce qui m'a permis de tester l'intégration en conditions réelles.
+
+## Gestion des Erreurs et Exceptions
+**Le défi :** Assurer la robustesse du système en cas de défaillances ou de réponses inattendues de RAD LAD.
+
+**Ma solution :** J'ai implémenté des mécanismes de gestion des erreurs et des exceptions pour notifier les utilisateurs en cas d'échec de l'analyse, améliorant ainsi l'expérience utilisateur et la fiabilité du système.
+
+
+&nbsp;
+
+# Ma Conclusion
+
+Le projet WEBER représente une avancée significative dans les capacités de test et de comparaison des APIs de traitement de documents chez Luminess. Les compétences techniques que j'ai acquises et les contributions que j'ai apportées au projet ouvrent la voie à de futures opportunités de développement et d'innovation au sein de l'entreprise.
+
+Ce projet m'a non seulement permis de moderniser les outils de test internes, mais m'a également offert une expérience précieuse en matière de développement logiciel, de gestion de projet et de collaboration d'équipe. La plateforme WEBER que j'ai développée constitue désormais une base solide pour l'évolution future des capacités de test de Luminess, tout en respectant les exigences de sécurité et de conformité de l'entreprise.

@@ -111,6 +111,10 @@ export const Project = defineDocumentType(() => ({
     index: {
       type: 'number',
     },
+    id: {
+      type: 'string',
+      required: false,
+    },
   },
   computedFields: {
     url: {
@@ -166,6 +170,10 @@ export const Article = defineDocumentType(() => ({
       of: { type: 'string' },
     },
     repository: {
+      type: 'string',
+      required: false,
+    },
+    id: {
       type: 'string',
       required: false,
     }

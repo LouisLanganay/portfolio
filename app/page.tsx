@@ -24,6 +24,7 @@ import Image from 'next/image';
 import { ArticleCard } from '@/components/Articles/ArticleCard';
 import { useRouter } from 'next/navigation';
 import { useProjectPrefetch } from '@/lib/hooks/useProjectPrefetch';
+import { useScrollToAnchor } from '@/lib/hooks/useScrollToAnchor';
 
 export default function Home() {
   const projects = getProjects();
@@ -38,6 +39,9 @@ export default function Home() {
     maxPrefetch: 6,
     delay: 500
   });
+
+  // Scroll automatique vers les ancres
+  useScrollToAnchor();
 
   return (
     <main className='space-y-16'>
@@ -107,7 +111,7 @@ function SkillsSection() {
   });
 
   return (
-    <Section title='SKILLS'>
+    <Section title='SKILLS' id='skills'>
       <div className='grid grid-cols-1 sm:flex sm:flex-row gap-4 w-full justify-between flex-wrap'>
         {skills.map((skill, index) => (
           <SkillItem key={index} skill={skill} index={index} />
@@ -212,7 +216,7 @@ function SkillItem({ skill, index }: { skill: Skill, index: number }) {
 
 function ExperienceSection() {
   return (
-    <Section title='EXPERIENCES & EDUCATION'>
+    <Section title='EXPERIENCES & EDUCATION' id='experiences'>
       <ul className='flex flex-col font-normal dark:text-white text-black text-sm gap-4 w-full'>
         <ExperienceList type='job' title='Work Experience' />
         <ExperienceList type='educational' title='Educational Experience' />
@@ -311,7 +315,7 @@ function ProjectsSection({
   );
 
   return (
-    <Section title='PROJECTS'>
+    <Section title='PROJECTS' id='projects'>
       <ul className='grid sm:grid-cols-1 md:grid-cols-2 font-normal text-white text-sm gap-4 w-full'>
         {filteredProjects.map((project: Project, index: number) => (
           <motion.div
@@ -351,8 +355,8 @@ function ArticlesSection({ articles }: { articles: any[] }) {
   );
 
   return (
-    <Section title='ARTICLES'>
-      <ul className='grid sm:grid-cols-1 md:grid-cols-2 font-normal text-white text-sm gap-4 w-full'>
+    <Section title='ARTICLES' id='articles'>
+      <ul className='grid sm:grid-cols-2 md:grid-cols-2 font-normal text-white text-sm gap-4 w-full'>
         {filteredArticles.map((article, index) => (
           <motion.div
             key={index}

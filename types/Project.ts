@@ -22,6 +22,7 @@ interface Project {
   repository?: string;
   slug?: string;
   preview?: string;
+  id?: string;
 }
 
 export default Project;

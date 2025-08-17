@@ -43,7 +43,7 @@ export function AvailabilityTag() {
               )}
             />
           </div>
-          <span>{available ? 'AVAILABLE FOR HIRING' : 'NOT AVAILABLE FOR HIRING'}</span>
+          <span>{available ? 'Book a call with me' : 'Not available'}</span>
         </div>
       </Button>
     </>

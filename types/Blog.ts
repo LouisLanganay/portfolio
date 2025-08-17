@@ -11,6 +11,7 @@ interface Article {
   repository?: string;
   published: boolean;
   slug: string;
+  id?: string;
 }
 
 export default Article;
