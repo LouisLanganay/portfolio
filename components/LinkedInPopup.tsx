@@ -61,7 +61,7 @@ export default function LinkedInPopup({ delay = 0 }: LinkedInPopupProps) {
               <div className='flex items-center justify-between'>
                 <div className='flex items-center gap-2'>
                   <CardTitle className='text-lg font-bold'>
-                    Let's connect on
+                    Let&apos;s connect on
                   </CardTitle>
                   <Image
                     src='/linkedin.svg'
