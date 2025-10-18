@@ -61,7 +61,7 @@ export default function LinkedInPopup({ delay = 0 }: LinkedInPopupProps) {
               <div className='flex items-center justify-between'>
                 <div className='flex items-center gap-2'>
                   <CardTitle className='text-lg font-bold'>
-                    Connectons-nous sur
+                    Let's connect on
                   </CardTitle>
                   <Image
                     src='/linkedin.svg'
@@ -87,7 +87,7 @@ export default function LinkedInPopup({ delay = 0 }: LinkedInPopupProps) {
               <div className='space-y-3'>
                 <div className='flex items-center justify-between'>
                                       <span className='text-sm text-gray-400'>Experience</span>
-                  <span className='font-semibold text-[#0a66c2]'>+3 ans</span>
+                  <span className='font-semibold text-[#0a66c2]'>+3 years</span>
                 </div>
                 <div className='flex items-center justify-between'>
                                       <span className='text-sm text-gray-400'>Followers</span>
@@ -101,7 +101,7 @@ export default function LinkedInPopup({ delay = 0 }: LinkedInPopupProps) {
                 className='w-full group/cta font-semibold rounded-full bg-[#0a66c2] hover:bg-[#0a66c2]/80 text-white border-[#0a66c2] hover:border-[#0a66c2]/80'
                 size='md'
               >
-                Se connecter
+                Connect
                 <ArrowRightIcon className='w-4 h-4 ml-2 group-hover/cta:translate-x-1 transition-transform duration-150' />
               </Button>
             </CardFooter>

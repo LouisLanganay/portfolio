@@ -61,7 +61,7 @@ export default function MaltPopup({ delay = 0 }: MaltPopupProps) {
               <div className='flex items-center justify-between'>
                 <div className='flex items-center gap-3'>
                   <CardTitle className='text-lg font-bold'>
-                    Je suis disponible sur
+                    I am available on
                   </CardTitle>
                   <Image
                     src='/malt.png'
@@ -82,11 +82,11 @@ export default function MaltPopup({ delay = 0 }: MaltPopupProps) {
             </CardHeader>
             <CardContent>
               <CardDescription className='text-sm text-gray-600 dark:text-gray-300 mb-4'>
-                Louis Langanay est actuellement en <div className='size-2 ml-1 bg-green-500 rounded-full inline-block relative'><div className='size-2 bg-green-500 rounded-full absolute animate-ping'></div></div> ligne, envoyez-lui un message pour discuter de votre projet !
+                Louis Langanay is currently <div className='size-2 ml-1 bg-green-500 rounded-full inline-block relative'><div className='size-2 bg-green-500 rounded-full absolute animate-ping'></div></div> online, send him a message to discuss your project!
               </CardDescription>
               <div className='space-y-3'>
                 <div className='flex items-center justify-between'>
-                  <span className='text-sm text-gray-500 dark:text-gray-400'>TJM moyen</span>
+                  <span className='text-sm text-gray-500 dark:text-gray-400'>Average daily rate</span>
                   <span className='font-semibold text-[#fc5757]'>~300€</span>
                 </div>
                 <div className='flex items-center justify-between'>
@@ -101,7 +101,7 @@ export default function MaltPopup({ delay = 0 }: MaltPopupProps) {
                 className='w-full group/cta font-light rounded-full bg-[#fc5757] hover:bg-[#fc5757]/80 text-white border-[#fc5757] hover:border-[#fc5757]/80'
                 size='md'
               >
-                Proposer une mission
+                Open Malt profile
                 <ArrowRightIcon className='w-4 h-4 ml-2 group-hover/cta:translate-x-1 transition-transform duration-150' />
               </Button>
             </CardFooter>
