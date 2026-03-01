@@ -143,7 +143,7 @@ export default function ProjectPage({ project }: { project: any }) {
           <ExperienceLink projectId={project.id} experiences={experiences} />
         )}
         <hr className='border-tertiary-400 my-5' />
-        
+
         {/* Conditional MDX content rendering */}
         {project.code ? (
           <div className='font-Mregular dark:text-tertiary-100 text-tertiary-500 text-sm md:text-base'>
@@ -156,9 +156,14 @@ export default function ProjectPage({ project }: { project: any }) {
             </p>
           </div>
         )}
-        
+
         <hr className='border-tertiary-400 my-5' />
         <div className='flex flex-col gap-2'>
+          {project.button?.name && project.button?.url && (
+            <Button variant='secondary' link={project.button.url}>
+              {project.button.name} &rarr;
+            </Button>
+          )}
           {project.repository && (
             <Button variant='secondary' link={project.repository}>
               View on GitHub &rarr;

@@ -10,8 +10,12 @@ interface SmartPopupProps {
   delay?: number
 }
 
+const POPUPS_ENABLED = false
+
 export default function SmartPopup({ delay = 0 }: SmartPopupProps) {
   const searchParams = useSearchParams()
+  if (!POPUPS_ENABLED) return null
+
   const source = searchParams.get('source')
 
   if (source === 'linkedin') {

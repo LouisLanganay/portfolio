@@ -1,0 +1,88 @@
+---
+title: Fynex — Investment Tracking & AI Insights Dashboard
+description: A SaaS dashboard that centralizes portfolios, watchlists, market data, news and key company events — and turns it into clear, actionable insights (Fynex is not a broker).
+tags: [SaaS, FinTech, Dashboard, Web, API, AI]
+tools: [React, Vite, TailwindCSS, Nodejs, TypeScript, MongoDB, Docker, OpenAI]
+image: /preview/fynex.png
+date: Sep. 2025 — Present
+index: 1
+author: Louis Langanay
+button:
+  name: Go to Fynex
+  url: https://fynexapp.com
+---
+
+# Project Overview
+
+Fynex is a premium investment tracking experience designed to **save time** for investors by centralizing everything that’s usually scattered across multiple apps: portfolio positions, watchlists, market data, relevant news, and upcoming events (dividends, earnings, general meetings, reports).
+
+This project is a **2-year school project** developed as part of our curriculum, built by a team of three: **Augustin Bost** ([https://www.linkedin.com/in/augustin-bost/](https://www.linkedin.com/in/augustin-bost/)) and **Guillaume Blaizot** ([https://www.linkedin.com/in/guillaume-blaizot-138225262/](https://www.linkedin.com/in/guillaume-blaizot-138225262/)) on the backend/product side, and me as the **Frontend Developer** in charge of the web interface, UI integration, and overall dashboard experience (design system, components, and user flows).
+
+
+My focus on the project is both **product/design** and **frontend implementation**, with a strong emphasis on:
+- a consistent dark UI with high information density (without feeling cluttered),
+- “3-click access” to the most important actions and signals,
+- event-driven investing (what’s coming next and why it matters).
+
+&nbsp;
+
+# 🚀 Landing & Waitlist (Closed Beta)
+
+<img src="/preview/fynex-preview-home.png" alt="Fynex landing page (waitlist + product preview)" className="rounded-lg w-full" />
+
+&nbsp;
+
+The landing page positions Fynex around a simple promise: **invest smarter and save hours every week**.
+It also supports a closed beta flow with a waitlist CTA, allowing us to validate interest early and onboard users progressively.
+
+&nbsp;
+
+# 📈 Stock View — Price, Metrics & Upcoming Events in One Screen
+
+<img src="/preview/fynex-preview-stock.png" alt="Fynex stock view with price chart, earnings/event card and key metrics" className="rounded-lg w-full" />
+
+&nbsp;
+
+A core screen in Fynex is the **stock view**: a single place to understand *what’s happening*, *what changed*, and *what’s next*.
+
+What this screen emphasizes:
+- **Readable charting** with timeframe switching and a clean tooltip experience.
+- **Key metrics** (market cap, P/E, EPS, revenue, dividend yield, 52w range, volume) always visible.
+- A dedicated **events panel** (ex: earnings) with a calendar-like display and an **“Add to calendar”** action.
+- A space for **AI news summaries** and “upcoming event” context (so users don’t have to read 15 articles to understand the signal).
+
+&nbsp;
+
+# 🤖 AI Summaries & Signal-Driven Monitoring
+
+Fynex is built around *reducing analysis time*, not adding more charts.
+The AI layer is designed to:
+- summarize relevant news (daily/weekly),
+- highlight **what changed vs. the previous period**,
+- detect early warning signals (abnormal volatility, event proximity, repeated negative headlines),
+- adapt to the user’s watchlist / portfolio focus.
+
+*(No financial advice: the goal is to help users organize, understand and monitor information faster.)*
+
+&nbsp;
+
+# 💻 Technical Stack
+
+Fynex uses a modern, production-oriented stack:
+
+- **Frontend:** React + Vite, React Router, TailwindCSS, Axios, Zod
+- **Backend:** Node.js + TypeScript (Express), MongoDB + Mongoose, JWT auth, dotenv
+- **AI:** OpenAI API for summarization and insight extraction
+- **Infra / DevOps:** Docker + Docker Compose, Nginx reverse proxy, HTTPS with Certbot, CI/CD with GitHub Actions
+- **API Docs:** Swagger / OpenAPI
+
+&nbsp;
+
+# 🎯 Key Features (Now & Next)
+
+- Portfolio tracking (manual input first, automated aggregation later)
+- Watchlist with quick actions + sorting/filtering
+- Stock view with charting + key metrics
+- Event timeline (earnings, dividends, reports, general meetings)
+- AI-powered news summaries and monitoring signals
+- Alerts/notifications configurable per user
