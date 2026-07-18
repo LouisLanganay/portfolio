@@ -2,7 +2,7 @@
 title: Fynex — Investment Tracking & AI Insights Dashboard
 description: A SaaS dashboard that centralizes portfolios, watchlists, market data, news and key company events — and turns it into clear, actionable insights (Fynex is not a broker).
 tags: [SaaS, FinTech, Dashboard, Web, API, AI]
-tools: [React, Vite, TailwindCSS, Nodejs, TypeScript, MongoDB, Docker, OpenAI]
+tools: [React, Vite, TailwindCSS, NestJS, Nodejs, TypeScript, Supabase, Redis, Docker]
 image: /preview/fynex.png
 date: Sep. 2025 - Present
 index: 2
@@ -71,9 +71,10 @@ The AI layer is designed to:
 Fynex uses a modern, production-oriented stack:
 
 - **Frontend:** React + Vite, React Router, TailwindCSS, Axios, Zod
-- **Backend:** Node.js + TypeScript (Express), MongoDB + Mongoose, JWT auth, dotenv
-- **AI:** OpenAI API for summarization and insight extraction
-- **Infra / DevOps:** Docker + Docker Compose, Nginx reverse proxy, HTTPS with Certbot, CI/CD with GitHub Actions
+- **Backend:** NestJS (Node.js + TypeScript), JWT auth, dotenv
+- **Data:** Supabase (PostgreSQL) as the primary database, Redis for caching
+- **Market data:** Twelve Data API for prices, fundamentals and company events
+- **Infra / DevOps:** Docker + Docker Compose on a VPS, Nginx reverse proxy, HTTPS with Certbot, CI/CD with GitHub Actions
 - **API Docs:** Swagger / OpenAPI
 
 &nbsp;
