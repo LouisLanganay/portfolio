@@ -1,0 +1,69 @@
+---
+title: Pignouf - Autonomous Personal AI Agent
+description: A self-hosted, always-on AI agent built on Claude that autonomously manages a real software project, from Discord and email to CI, analytics and nightly automation.
+tags: [AI, Agent, Automation, DevOps, Discord, SaaS]
+tools: [TypeScript, Nodejs, React, Python, Docker, OpenAI]
+image: /preview/pignouf.png
+date: 2025 - Present
+index: 1
+author: Louis Langanay
+button:
+  name: Visit Nightshift
+  url: https://nightshift.louisl.me
+---
+
+# Project Overview
+
+**Pignouf** is a personal, self-hosted AI agent I built on top of Claude and Claude Code to actually run day-to-day operations of a real software project (Fynex) instead of just answering questions. It lives in persistent `tmux` sessions on my own infrastructure, stays online 24/7, and acts on its own through a large set of integrations.
+
+The idea was simple: most AI assistants stop at the chat box. I wanted an agent that could read my team's Discord, triage my inbox, keep a GitHub board clean, run scheduled jobs at night, watch competitors, and report back the next morning, all without me babysitting it.
+
+&nbsp;
+
+# 🤖 What It Does
+
+Pignouf is wired into the tools I use every day and takes real actions in them:
+
+- **Custom Discord bot:** a `discord.js` bot with slash commands, right-click context menus and an embedded MCP server, so the team can trigger deploys, ask for a board recap, or create issues straight from Discord.
+- **Real-time Gmail pipeline:** incoming emails are pushed through a webhook to bridge, then surfaced to me with only the actionable ones highlighted.
+- **Nightly automation:** cron-driven jobs run every night to audit the GitHub project board, detect anomalies, check open PRs, and prepare a morning briefing.
+- **Competitive and market watch:** an automated X (Twitter) watch that turns signals into documented decisions.
+- **Deep integrations:** GitHub Projects, Figma, Resend, Better Stack and more, each usable by the agent to read state or take action.
+
+&nbsp;
+
+# 🧠 Memory & Autonomy
+
+A big part of the project is making the agent *reliable over time*, not just capable in a single session:
+
+- A **persistent memory layer** stores user preferences, project decisions and feedback across sessions, indexed and loaded automatically at startup.
+- A **task system** lets the agent schedule work for the night, wait for missing information, and archive completed tasks.
+- Strong **guardrails** against prompt injection: content coming from issues, PRs, Discord messages or emails is treated as untrusted data and can never change the agent's permissions or configuration.
+
+&nbsp;
+
+# 📊 Supervision Dashboard
+
+To keep an eye on an agent that runs on its own, I built a **React web dashboard** that supervises Pignouf in real time: current session state, task queue, health checks and quick controls. It turns a black-box background process into something I can actually observe and steer.
+
+&nbsp;
+
+# 💻 Technical Stack
+
+- **Agent core:** Claude / Claude Code driving autonomous multi-step work, running inside persistent `tmux` sessions.
+- **Bot & services:** Node.js + TypeScript, `discord.js`, MCP servers, Python scripts for schedulers and health watchdogs.
+- **Automation:** cron jobs, webhook bridges, systemd services on self-hosted infrastructure.
+- **Dashboard:** React + Vite, TailwindCSS.
+- **Integrations:** GitHub Projects, Gmail, Figma, Resend, Better Stack, X.
+
+&nbsp;
+
+# 🏢 From Personal Agent to a Product: Nightshift
+
+The system proved useful enough that I started turning it into a B2B product concept, **Nightshift**: the same idea of an autonomous agent that works while you sleep, packaged for teams that want automated night-time operations on their own projects. The personal agent stays my daily driver and testbed, and Nightshift is its productized, outward-facing version.
+
+&nbsp;
+
+# 🎯 Key Takeaways
+
+Building Pignouf pushed me well beyond prompt writing into **agent engineering**: designing durable memory, orchestrating background jobs safely, wiring many external APIs together, and defending an autonomous system against untrusted input. It is the project where I learned the most about making AI genuinely *operational* rather than conversational.
