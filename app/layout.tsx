@@ -9,14 +9,19 @@ import { TechBadgeProvider } from '@/contexts/TechBadgeContext';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import SmartPopup from '@/components/SmartPopup';
+import { MotionProvider } from '@/components/MotionProvider';
 import { Suspense } from 'react';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.louisl.me'),
   title: 'Louis Langanay - Portfolio',
   description: "Louis Langanay's portfolio, a student in computer science, passionate about web development.",
   applicationName: 'Louis Langanay - Portfolio',
   authors: [{ name: 'Louis Langanay' }],
   keywords: ['portfolio', 'projects', 'dev', 'developer', 'web', 'student'],
+  alternates: {
+    canonical: '/',
+  },
   icons: {
     icon: 'https://avatars.githubusercontent.com/u/114762819?v=4',
   },
@@ -28,11 +33,22 @@ export const metadata: Metadata = {
     type: 'website',
     title: 'Louis Langanay - Portfolio',
     description: "Louis Langanay's portfolio, a student in computer science, passionate about web development.",
-    url: 'https://portfolio-brown-phi-30.vercel.app/',
+    url: 'https://www.louisl.me',
+    siteName: 'Louis Langanay - Portfolio',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Louis Langanay - Portfolio',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Louis Langanay - Portfolio',
+    description: "Louis Langanay's portfolio, a student in computer science, passionate about web development.",
+    images: ['/og-image.png'],
   },
 };
 
@@ -56,6 +72,7 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider attribute='class' defaultTheme='dark' forcedTheme='dark'>
+          <MotionProvider>
           <TechBadgeProvider>
             <div className='dark:bg-tertiary-600 bg-white h-fit min-h-screen flex flex-col relative'>
               <Header />
@@ -72,6 +89,7 @@ export default function RootLayout({
               <SmartPopup />
             </Suspense>
           </TechBadgeProvider>
+          </MotionProvider>
         </ThemeProvider>
       </body>
     </html>
