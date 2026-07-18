@@ -97,7 +97,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
     <li className='w-full h-full rounded-lg' key={project.title}>
       <div
         className='dark:bg-tertiary-500 bg-white border dark:border-tertiary-480 border-tertiary-100 items-center
-        rounded-lg flex transition-all ease-in-out w-full cursor-pointer duration-200 group/card
+        rounded-lg flex transition-[border-color,transform,opacity] ease-out-strong w-full cursor-pointer duration-200 group/card
         flex-col shadow-sm p-4 dark:hover:border-tertiary-450 hover:border-tertiary-150
         relative h-full'
         ref={divRef}
@@ -142,7 +142,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 <Image
                   src={project.image || ''}
                   alt={project.title}
-                  className={clsx('object-cover group-hover/card:scale-101 h-full w-full transition-all duration-500 absolute inset-0',
+                  className={clsx('object-cover can-hover:group-hover/card:scale-101 h-full w-full transition-all duration-500 absolute inset-0',
                     showPreview ? 'opacity-0' : 'opacity-100',
                     'transition-opacity duration-500'
                   )}
@@ -154,7 +154,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 <Image
                   src={project.preview}
                   alt={project.title}
-                  className={clsx('object-cover group-hover/card:scale-101 h-full w-full transition-all duration-500 absolute inset-0',
+                  className={clsx('object-cover can-hover:group-hover/card:scale-101 h-full w-full transition-all duration-500 absolute inset-0',
                     showPreview ? 'opacity-100' : 'opacity-0',
                     'transition-opacity duration-500'
                   )}
@@ -168,7 +168,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               <Image
                 src={project.image}
                 alt={project.title}
-                className='object-cover group-hover/card:scale-101 h-full w-full transition-all duration-500'
+                className='object-cover can-hover:group-hover/card:scale-101 h-full w-full transition-all duration-500'
                 width={1920}
                 height={1080}
                 priority={false}

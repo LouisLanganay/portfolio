@@ -4,6 +4,7 @@
 layer(utilities);
 
 @custom-variant dark (&:is(.dark *));
+@custom-variant can-hover (@media (hover: hover) and (pointer: fine));
 
 @theme {
   --color-*: initial;
@@ -92,8 +93,13 @@ layer(utilities);
   --font-*: initial;
   --font-poppins: Poppins, sans-serif;
 
+  --scale-97: 0.97;
   --scale-99: 0.99;
   --scale-101: 1.01;
+
+  /* Strong custom easing curves (Emil Kowalski) for intentional motion */
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
 
   --transition-property-height: height;
 
@@ -279,5 +285,21 @@ layer(utilities);
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/*
+  Accessibility: respect the user's reduced-motion preference.
+  Movement and looping animations are neutralized, while opacity and color
+  transitions that aid comprehension are kept short rather than removed.
+*/
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

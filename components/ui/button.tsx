@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils"
 import ArrowPathIcon from '@heroicons/react/24/outline/ArrowPathIcon'
 
 const buttonVariants = cva(
-  "group/button cursor-pointer items-center w-fit font-normal h-fit rounded-lg flex flex-row justify-center disabled:opacity-70 disabled:cursor-not-allowed transition duration-200 ease-in-out",
+  "group/button cursor-pointer items-center w-fit font-normal h-fit rounded-lg flex flex-row justify-center disabled:opacity-70 disabled:cursor-not-allowed transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out-strong active:scale-97 disabled:active:scale-100",
   {
     variants: {
       variant: {
