@@ -44,7 +44,7 @@ export function Footer() {
         <div className='flex flex-row items-center shrink-0'>
           <Image
             src='https://avatars.githubusercontent.com/u/114762819?v=4'
-            alt='Louis Langanay - Photo de profil'
+            alt='Louis Langanay profile picture'
             className='w-8 h-8 md:w-10 md:h-10 rounded-full cursor-pointer transition-transform duration-150 ease-out-strong active:scale-95 can-hover:hover:scale-105'
             onClick={() => { router.push('/') }}
             loading="lazy"
@@ -52,7 +52,7 @@ export function Footer() {
             height={32}
           />
         </div>
-        <nav className='flex flex-row gap-4 justify-end md:justify-end w-full items-center flex-wrap md:flex-nowrap' aria-label="Liens sociaux">
+        <nav className='flex flex-row gap-4 justify-end md:justify-end w-full items-center flex-wrap md:flex-nowrap' aria-label="Social links">
           {links.map((link, i) => (
             <a
               href={link.url}
