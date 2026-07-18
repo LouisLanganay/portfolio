@@ -20,7 +20,7 @@ export function TechBadge({ tech, icon }: TechBadgeProps) {
         tech && toggleTech(tech);
       }}
       className={clsx(
-        'flex items-center space-x-1.5 py-1 rounded-md cursor-pointer transition-all duration-300',
+        'flex items-center space-x-1.5 py-1 rounded-md cursor-pointer transition-[transform,opacity,background-color,border-color] duration-200 ease-out-strong active:scale-99',
         'dark:bg-tertiary-600/30 bg-tertiary-600 border border-tertiary-480',
         tech ? 'px-2' : 'px-1.5',
         isSelected && 'scale-101',

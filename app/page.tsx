@@ -82,7 +82,7 @@ function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
-          My name is Louis, and I am a third-year student developer at Epitech in
+          My name is Louis, and I am a fourth-year student developer at Epitech in
           France, loving web development and UI/UX design.
         </motion.p>
       </div>

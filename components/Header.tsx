@@ -44,7 +44,7 @@ export function Header() {
             alt='Avatar de Louis Langanay'
             width={40}
             height={40}
-            className='w-8 h-8 md:w-10 md:h-10 rounded-full cursor-pointer'
+            className='w-8 h-8 md:w-10 md:h-10 rounded-full cursor-pointer transition-transform duration-150 ease-out-strong active:scale-95 can-hover:hover:scale-105'
           />
           <span className='sr-only'>
             Louis Langanay
