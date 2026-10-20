@@ -141,7 +141,7 @@
       {
         "name": "Anthropic API",
         "display": true,
-        "description": "I use it for the AI features of Fynex, each with a versioned prompt and its own spending cap."
+        "description": "I use it for the AI features of Fynex, each with a versioned prompt and a spending cap."
       },
       {
         "name": "MCP",
