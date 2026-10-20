@@ -1,9 +1,9 @@
 ---
 title: Fynex - Investment Tracking & AI Insights Dashboard
-description: An investment tracking app for active stock investors, with an MCP server for AI assistants and AI market analyses (Fynex is not a broker).
+description: A live investment tracking app for active stock investors, with an MCP server for AI assistants and AI market analyses (Fynex is not a broker).
 tags: [SaaS, FinTech, Dashboard, Web, API, AI]
-tools: [React, Vite, TailwindCSS, NestJS, Nodejs, TypeScript, Supabase, Redis, Docker]
-image: /preview/fynex.png
+tools: [React, Vite, TailwindCSS, NestJS, Nodejs, TypeScript, PostgreSQL, Redis, Docker, Claude, MCP, Twelve Data]
+image: /preview/fynex-2026-home.png
 date: Sep. 2025 - Present
 index: 2
 author: Louis Langanay
@@ -28,7 +28,7 @@ My focus on the project is both **product/design** and **frontend implementation
 
 # 🚀 Live in Production
 
-<img src="/preview/fynex-preview-home.png" alt="Fynex landing page and product preview" className="rounded-lg w-full" />
+<img src="/preview/fynex-2026-home.png" alt="Fynex dashboard as shown on fynexapp.com, with demo data" className="rounded-lg w-full" />
 
 &nbsp;
 
@@ -36,15 +36,15 @@ Fynex started with a waitlist, then a closed beta in April 2026 and an open beta
 
 &nbsp;
 
-# 📈 Stock View: Price, Metrics & Upcoming Events in One Screen
+# 📈 Portfolio & Stock View
 
-<img src="/preview/fynex-preview-stock.png" alt="Fynex stock view with price chart, earnings/event card and key metrics" className="rounded-lg w-full" />
+<img src="/preview/fynex-2026-portfolio.png" alt="Fynex portfolio view, from the public portfolio page of fynexapp.com" className="rounded-lg w-full" />
 
 &nbsp;
 
-A core screen in Fynex is the **stock view**: a single place to understand *what’s happening*, *what changed*, and *what’s next*.
+The **portfolio view** shows every position across accounts in one place, with gains, income and how it compares with the market. Each stock then gets its own screen: a single place to understand *what’s happening*, *what changed*, and *what’s next*.
 
-What this screen emphasizes:
+What the stock screen shows:
 - **Readable charting** with timeframe switching and a clean tooltip experience.
 - **Key metrics** (market cap, P/E, EPS, revenue, dividend yield, 52w range, volume) always visible.
 - A dedicated **events panel** (ex: earnings) with a calendar-like display and an **“Add to calendar”** action.
@@ -53,6 +53,10 @@ What this screen emphasizes:
 &nbsp;
 
 # 🔌 MCP Server for AI Assistants
+
+<img src="/preview/fynex-2026-mcp.png" alt="Fynex in an AI assistant, from the public MCP page of fynexapp.com" className="rounded-lg w-full" />
+
+&nbsp;
 
 Fynex includes a remote **MCP server**, so a user can connect an AI assistant such as Claude, ChatGPT or Cursor to their account and ask about their portfolio, upcoming dividends, sector allocation or a quote.
 
@@ -63,6 +67,10 @@ Fynex includes a remote **MCP server**, so a user can connect an AI assistant su
 &nbsp;
 
 # 🤖 Fynex Intelligence
+
+<img src="/preview/fynex-2026-intelligence.png" alt="A Fynex Intelligence note on a stock move, from the public page of fynexapp.com" className="rounded-lg w-full" />
+
+&nbsp;
 
 Fynex Intelligence is the AI layer, built on the **Claude API**. It is designed to *reduce analysis time*, not to add more charts:
 - news summaries and the tone of the news on each stock,

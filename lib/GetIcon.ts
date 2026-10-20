@@ -135,6 +135,18 @@ const emojis = [
     'name': ['mistral', 'mistral ai'],
     'emoji': '/icons/mistral.svg'
   },
+  {
+    'name': ['claude'],
+    'emoji': '/icons/claude.svg'
+  },
+  {
+    'name': ['postgresql', 'postgres'],
+    'emoji': '/icons/postgresql.svg'
+  },
+  {
+    'name': ['twelve data', 'twelvedata'],
+    'emoji': '/icons/twelvedata.png'
+  },
 ];
 
 export const getIcon = (name: string) => {
