@@ -132,6 +132,21 @@
         "name": "OpenAI",
         "display": true,
         "description": "I've been using OpenAI for a while now, and I find it a powerful tool for AI-powered applications."
+      },
+      {
+        "name": "Claude Code",
+        "display": true,
+        "description": "I run Pignouf, my autonomous agent, on Claude Code: skills, hooks, sub-agents and MCP servers."
+      },
+      {
+        "name": "Anthropic API",
+        "display": true,
+        "description": "I use it for the AI features of Fynex, each with a versioned prompt and its own spending cap."
+      },
+      {
+        "name": "MCP",
+        "display": true,
+        "description": "I built the remote MCP server of Fynex, with OAuth 2.1, and I connect MCP servers to my own agent."
       }
     ]
   }

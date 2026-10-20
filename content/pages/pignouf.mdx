@@ -1,8 +1,8 @@
 ---
 title: Pignouf - Autonomous Personal AI Agent
-description: A self-hosted, always-on AI agent built on Claude that autonomously manages a real software project, from Discord and email to CI, analytics and nightly automation.
+description: The autonomous agent I built on Claude Code to run a real software project, 24/7, from Discord and email to nightly board audits and a morning recap.
 tags: [AI, Agent, Automation, DevOps, Discord, SaaS]
-tools: [TypeScript, Nodejs, React, Python, Docker, OpenAI]
+tools: [TypeScript, Nodejs, React, Python, Docker, OpenAI, Claude Code, MCP, Anthropic API]
 image: /preview/pignouf.png
 date: 2025 - Present
 index: 1
@@ -14,56 +14,71 @@ button:
 
 # Project Overview
 
-**Pignouf** is a personal, self-hosted AI agent I built on top of Claude and Claude Code to actually run day-to-day operations of a real software project (Fynex) instead of just answering questions. It lives in persistent `tmux` sessions on my own infrastructure, stays online 24/7, and acts on its own through a large set of integrations.
+**Pignouf** is the agent I built on Claude Code to run the day-to-day of Fynex, the investment app I work on at Epitech. It lives in a persistent `tmux` session on my own server, stays online 24/7 and acts through its integrations.
 
-The idea was simple: most AI assistants stop at the chat box. I wanted an agent that could read my team's Discord, triage my inbox, keep a GitHub board clean, run scheduled jobs at night, watch competitors, and report back the next morning, all without me babysitting it.
+Most assistants stop at the chat box. I wanted one that reads the team's Discord, triages my inbox, keeps the GitHub board clean, works at night and reports back in the morning, without me watching it.
+
+&nbsp;
+
+# 📐 By the Numbers
+
+Counted from the agent's own files on 20 Oct 2026:
+
+- **40 skills**, playbooks the agent loads when a task needs them (board triage, PR review, release notes, reports, design work).
+- **23 scheduled jobs**: the night run at 05:15, the morning recap at 07:05, health checks every 15 minutes.
+- **6 sub-agent profiles**, picked by stakes: a careful reviewer for production and migrations, a developer, a read-only explorer, a researcher, a writer, a small-edits profile.
+- **603 tasks closed** through its task queue, archive included.
+- **270+ memory notes**, with an index loaded at every start.
 
 &nbsp;
 
 # 🤖 What It Does
 
-Pignouf is wired into the tools I use every day and takes real actions in them:
-
-- **Custom Discord bot:** a `discord.js` bot with slash commands, right-click context menus and an embedded MCP server, so the team can trigger deploys, ask for a board recap, or create issues straight from Discord.
-- **Real-time Gmail pipeline:** incoming emails are pushed through a webhook to bridge, then surfaced to me with only the actionable ones highlighted.
-- **Nightly automation:** cron-driven jobs run every night to audit the GitHub project board, detect anomalies, check open PRs, and prepare a morning briefing.
-- **Competitive and market watch:** an automated X (Twitter) watch that turns signals into documented decisions.
-- **Deep integrations:** GitHub Projects, Figma, Resend, Better Stack and more, each usable by the agent to read state or take action.
+- **Discord bot:** a `discord.js` bot with 18 slash commands, 3 right-click actions and an embedded MCP server. The team triggers a deploy, asks for a board recap or creates an issue from Discord.
+- **Email triage:** incoming emails arrive through a webhook, and only the ones that need action reach me.
+- **Night run:** at 05:15 it audits the GitHub board, flags anomalies, reviews open PRs, checks deadlines and archives old tasks. At 07:05 I get one recap, and every open question becomes a one-click to-do.
+- **A second agent:** Strawpoll, an autonomous agent in its own session, maintains my Discord polling bot. Pignouf sets its priorities and relays my answers. It has closed 234 tasks since June 2026 and runs 42 end-to-end test scripts.
+- **Integrations:** GitHub Projects, Figma, Google Drive, Calendar, Resend, Better Stack, through MCP servers and CLIs.
 
 &nbsp;
 
-# 🧠 Memory & Autonomy
+# 🧠 Memory & Guardrails
 
-A big part of the project is making the agent *reliable over time*, not just capable in a single session:
+- **Memory:** preferences, decisions and feedback persist across sessions, indexed and loaded at startup.
+- **Task queue:** work waits for the night, for a missing answer, or for its dependencies, then gets archived.
+- **Decision grid:** every choice falls in one of three levels. The agent acts and reports, acts on its own recommendation and lets me cancel, or asks first. Production, money and anything public always wait for a yes.
+- **Untrusted input:** content from issues, PRs, emails or chat is data, never instructions, and can never change permissions.
+- **Guardrails from real incidents:** a memory gate on builds and tests since a VM freeze in September 2026, a lock against a double night run, and health checks every 15 minutes.
 
-- A **persistent memory layer** stores user preferences, project decisions and feedback across sessions, indexed and loaded automatically at startup.
-- A **task system** lets the agent schedule work for the night, wait for missing information, and archive completed tasks.
-- Strong **guardrails** against prompt injection: content coming from issues, PRs, Discord messages or emails is treated as untrusted data and can never change the agent's permissions or configuration.
+&nbsp;
+
+# 🧪 Measured Before Trusted
+
+I tested a calibrated decision model on email triage, in observation only, against my own blind labels. Agreement was 43% the first week and 62% the second, and it filed real, actionable emails as noise. So it never got a say in what reaches me. The test cost a few cents.
 
 &nbsp;
 
 # 📊 Supervision Dashboard
 
-To keep an eye on an agent that runs on its own, I built a **React web dashboard** that supervises Pignouf in real time: current session state, task queue, health checks and quick controls. It turns a black-box background process into something I can actually observe and steer.
+To keep an eye on an agent that runs alone, I built a **React dashboard** that follows Pignouf in real time over WebSocket: task board, live console, memory graph, cron schedule and usage. A voice mode lets me talk to it. Every action from the dashboard goes through the agent and is logged, more than 1,600 so far.
 
 &nbsp;
 
 # 💻 Technical Stack
 
-- **Agent core:** Claude / Claude Code driving autonomous multi-step work, running inside persistent `tmux` sessions.
-- **Bot & services:** Node.js + TypeScript, `discord.js`, MCP servers, Python scripts for schedulers and health watchdogs.
-- **Automation:** cron jobs, webhook bridges, systemd services on self-hosted infrastructure.
-- **Dashboard:** React + Vite, TailwindCSS.
-- **Integrations:** GitHub Projects, Gmail, Figma, Resend, Better Stack, X.
+- **Agent core:** Claude Code in a persistent `tmux` session, with skills, hooks and sub-agents.
+- **Bot & services:** Node.js and TypeScript, `discord.js`, MCP servers, Python scripts for schedulers and watchdogs.
+- **Automation:** cron jobs, webhook bridges, systemd services on my own server.
+- **Dashboard:** React, Vite, TailwindCSS, WebSocket.
 
 &nbsp;
 
 # 🏢 From Personal Agent to a Product: Nightshift
 
-The system proved useful enough that I started turning it into a B2B product concept, **Nightshift**: the same idea of an autonomous agent that works while you sleep, packaged for teams that want automated night-time operations on their own projects. The personal agent stays my daily driver and testbed, and Nightshift is its productized, outward-facing version.
+The system proved useful enough that I started turning it into a product, **Nightshift**: the same agent that works while you sleep, for teams that want night-time operations on their own projects. Pignouf stays my daily driver and test bed.
 
 &nbsp;
 
 # 🎯 Key Takeaways
 
-Building Pignouf pushed me well beyond prompt writing into **agent engineering**: designing durable memory, orchestrating background jobs safely, wiring many external APIs together, and defending an autonomous system against untrusted input. It is the project where I learned the most about making AI genuinely *operational* rather than conversational.
+Pignouf took me from prompt writing to **agent engineering**: durable memory, safe background jobs, many APIs wired together, measuring a model before trusting it, and defending an autonomous system against untrusted input.

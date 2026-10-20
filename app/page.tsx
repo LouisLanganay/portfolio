@@ -73,7 +73,7 @@ function HeroSection() {
           fill='white'
         />
         <WordPullUp
-          words="A Developer's Journey passionate about web development and design"
+          words="AI engineer and full-stack developer, building agents that do real work"
           className='text-2xl md:text-4xl font-black flex bg-clip-text text-transparent bg-linear-to-b dark:from-white dark:to-white/70 from-black to-black/70 flex-wrap'
         />
         <motion.p
@@ -82,8 +82,8 @@ function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
-          My name is Louis, and I am a fourth-year student developer at Epitech in
-          France, loving web development and UI/UX design.
+          I&apos;m Louis, a fifth-year student at Epitech in France. I build AI agents,
+          MCP servers and LLM features, and the web apps around them.
         </motion.p>
       </div>
     </section>

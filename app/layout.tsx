@@ -15,10 +15,10 @@ import { Suspense } from 'react';
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.louisl.me'),
   title: 'Louis Langanay - Portfolio',
-  description: "Louis Langanay's portfolio, a student in computer science, passionate about web development.",
+  description: "Louis Langanay, AI engineer and full-stack developer. I build AI agents, MCP servers and LLM features, and the web apps around them.",
   applicationName: 'Louis Langanay - Portfolio',
   authors: [{ name: 'Louis Langanay' }],
-  keywords: ['portfolio', 'projects', 'dev', 'developer', 'web', 'student'],
+  keywords: ['portfolio', 'AI engineer', 'AI agents', 'MCP', 'Claude Code', 'LLM', 'full-stack developer', 'web', 'Epitech'],
   alternates: {
     canonical: '/',
   },
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     title: 'Louis Langanay - Portfolio',
-    description: "Louis Langanay's portfolio, a student in computer science, passionate about web development.",
+    description: "Louis Langanay, AI engineer and full-stack developer. I build AI agents, MCP servers and LLM features, and the web apps around them.",
     url: 'https://www.louisl.me',
     siteName: 'Louis Langanay - Portfolio',
     images: [
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Louis Langanay - Portfolio',
-    description: "Louis Langanay's portfolio, a student in computer science, passionate about web development.",
+    description: "Louis Langanay, AI engineer and full-stack developer. I build AI agents, MCP servers and LLM features, and the web apps around them.",
     images: ['/og-image.png'],
   },
 };
