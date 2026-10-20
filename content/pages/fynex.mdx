@@ -1,6 +1,6 @@
 ---
-title: Fynex — Investment Tracking & AI Insights Dashboard
-description: A SaaS dashboard that centralizes portfolios, watchlists, market data, news and key company events — and turns it into clear, actionable insights (Fynex is not a broker).
+title: Fynex - Investment Tracking & AI Insights Dashboard
+description: An investment tracking app for active stock investors, with an MCP server for AI assistants and AI market analyses (Fynex is not a broker).
 tags: [SaaS, FinTech, Dashboard, Web, API, AI]
 tools: [React, Vite, TailwindCSS, NestJS, Nodejs, TypeScript, Supabase, Redis, Docker]
 image: /preview/fynex.png
@@ -14,9 +14,9 @@ button:
 
 # Project Overview
 
-Fynex is a premium investment tracking experience designed to **save time** for investors by centralizing everything that’s usually scattered across multiple apps: portfolio positions, watchlists, market data, relevant news, and upcoming events (dividends, earnings, general meetings, reports).
+Fynex is an investment tracking app for **active stock investors**: people who manage their own shares and place orders every month. It **saves them time** by centralizing what is usually scattered across several apps: portfolio positions, watchlists, market data, relevant news and upcoming events (dividends, earnings, general meetings, reports). It is live at [fynexapp.com](https://fynexapp.com).
 
-This project is a **2-year school project** developed as part of our curriculum, built by a team of three: **Augustin Bost** ([https://www.linkedin.com/in/augustin-bost/](https://www.linkedin.com/in/augustin-bost/)) and **Guillaume Blaizot** ([https://www.linkedin.com/in/guillaume-blaizot-138225262/](https://www.linkedin.com/in/guillaume-blaizot-138225262/)) on the backend/product side, and me as the **Frontend Developer** in charge of the web interface, UI integration, and overall dashboard experience (design system, components, and user flows).
+This project is a **2-year school project** developed as part of our curriculum, built by a team of three: **Augustin Bost** ([https://www.linkedin.com/in/augustin-bost/](https://www.linkedin.com/in/augustin-bost/)) and **Guillaume Blaizot** ([https://www.linkedin.com/in/guillaume-blaizot-138225262/](https://www.linkedin.com/in/guillaume-blaizot-138225262/)) on the backend/product side, and me as the **Frontend Developer** in charge of the web interface, UI integration, and overall dashboard experience (design system, components, and user flows). I also built the MCP server and the AI features described below.
 
 
 My focus on the project is both **product/design** and **frontend implementation**, with a strong emphasis on:
@@ -26,18 +26,17 @@ My focus on the project is both **product/design** and **frontend implementation
 
 &nbsp;
 
-# 🚀 Landing & Waitlist (Closed Beta)
+# 🚀 Live in Production
 
-<img src="/preview/fynex-preview-home.png" alt="Fynex landing page (waitlist + product preview)" className="rounded-lg w-full" />
-
-&nbsp;
-
-The landing page positions Fynex around a simple promise: **invest smarter and save hours every week**.
-We started with a waitlist to validate interest early, then progressively onboarded users. Since **April 2026** the MVP is live, and the beta is now **open in self-service**, so new testers can get access directly from the login flow instead of waiting for a manual invite.
+<img src="/preview/fynex-preview-home.png" alt="Fynex landing page and product preview" className="rounded-lg w-full" />
 
 &nbsp;
 
-# 📈 Stock View — Price, Metrics & Upcoming Events in One Screen
+Fynex started with a waitlist, then a closed beta in April 2026 and an open beta in July. It is now in production: version **1.4.1** shipped in October 2026, with the interface available in **English** as well as French.
+
+&nbsp;
+
+# 📈 Stock View: Price, Metrics & Upcoming Events in One Screen
 
 <img src="/preview/fynex-preview-stock.png" alt="Fynex stock view with price chart, earnings/event card and key metrics" className="rounded-lg w-full" />
 
@@ -53,16 +52,32 @@ What this screen emphasizes:
 
 &nbsp;
 
-# 🤖 AI Summaries & Signal-Driven Monitoring
+# 🔌 MCP Server for AI Assistants
 
-Fynex is built around *reducing analysis time*, not adding more charts.
-The AI layer is designed to:
-- summarize relevant news (daily/weekly),
-- highlight **what changed vs. the previous period**,
-- detect early warning signals (abnormal volatility, event proximity, repeated negative headlines),
-- adapt to the user’s watchlist / portfolio focus.
+Fynex includes a remote **MCP server**, so a user can connect an AI assistant such as Claude, ChatGPT or Cursor to their account and ask about their portfolio, upcoming dividends, sector allocation or a quote.
+
+- **OAuth 2.1** sign-in, with a consent screen and access the user can revoke from their profile.
+- **Read-only by default**: editing the portfolio tracking is an explicit opt-in.
+- No tool can place an order or delete a portfolio, and every call is logged.
+
+&nbsp;
+
+# 🤖 Fynex Intelligence
+
+Fynex Intelligence is the AI layer, built on the **Claude API**. It is designed to *reduce analysis time*, not to add more charts:
+- news summaries and the tone of the news on each stock,
+- short company descriptions and a market outline,
+- a stock analysis, and explanations of notable moves on the stocks a user follows.
+
+Each feature has its own versioned prompt and spending cap, monitored from an admin page.
 
 *(No financial advice: the goal is to help users organize, understand and monitor information faster.)*
+
+&nbsp;
+
+# 📰 Market News Newsletter
+
+A newsletter sends subscribers a short article on a market move: the stocks involved, what changed and why it matters, without any buy or sell advice. Anyone can sign up at [fynexapp.com/newsletter](https://fynexapp.com/newsletter).
 
 &nbsp;
 
@@ -75,18 +90,20 @@ Fynex uses a modern, production-oriented stack:
 - **Data:** Supabase (PostgreSQL) as the primary database, Redis for caching
 - **Market data:** Twelve Data API for prices, fundamentals and company events
 - **Infra / DevOps:** Docker + Docker Compose on a VPS, Nginx reverse proxy, HTTPS with Certbot, CI/CD with GitHub Actions
+- **AI:** Claude API (Anthropic), MCP server with OAuth 2.1
 - **API Docs:** Swagger / OpenAPI
 
 &nbsp;
 
-# 🎯 Key Features (Now & Next)
+# 🎯 Key Features
 
-- Portfolio tracking (manual input first, automated aggregation later)
-- Watchlist with quick actions + sorting/filtering
-- Stock view with charting + key metrics
+- Portfolio tracking, by hand or by importing a statement
+- Watchlist with quick actions, sorting and filtering
+- Stock view with charting and key metrics
 - Event timeline (earnings, dividends, reports, general meetings)
-- AI-powered news summaries and monitoring signals
-- Alerts/notifications configurable per user
+- Fynex Intelligence: AI news summaries and analyses
+- MCP server to use Fynex from an AI assistant
+- Alerts and notifications configurable per user
 
 &nbsp;
 
@@ -95,3 +112,4 @@ Fynex uses a modern, production-oriented stack:
 - **April 2026:** MVP shipped and closed beta launched.
 - **July 2026:** open beta (phase 2) rolled out in self-service.
 - **July 2026:** passed the mid-term **Greenlight jury** with a score of **16.5/20**, validating the project and its roadmap for the next school year.
+- **October 2026:** version 1.4 with the MCP server and Fynex Intelligence, then version 1.4.1 in English.

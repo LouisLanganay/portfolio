@@ -1,6 +1,15 @@
 [
   {
     "type": "job",
+    "title": "Full-Stack Developer",
+    "location": "Advanced Schema",
+    "date": "sep. 2026 - present",
+    "description": "Full-stack developer on a permanent contract, based in Paris, since September 2026.",
+    "technologies": [],
+    "projects": []
+  },
+  {
+    "type": "job",
     "title": "Internship - Software Developer",
     "location": "Luminess",
     "date": "31 mar. 2025 - 31 jul. 2025",

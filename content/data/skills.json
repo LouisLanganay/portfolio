@@ -147,6 +147,11 @@
         "name": "MCP",
         "display": true,
         "description": "I built the remote MCP server of Fynex, with OAuth 2.1, and I connect MCP servers to my own agent."
+      },
+      {
+        "name": "Mistral",
+        "display": true,
+        "description": "I use Mistral's Voxtral models for speech-to-text and text-to-speech in the voice mode of Pignouf."
       }
     ]
   }

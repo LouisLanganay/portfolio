@@ -119,6 +119,22 @@ const emojis = [
     'name': ['java'],
     'emoji': '/icons/java.svg'
   },
+  {
+    'name': ['claude code', 'claudecode'],
+    'emoji': '/icons/claudecode.svg'
+  },
+  {
+    'name': ['anthropic api', 'anthropic'],
+    'emoji': '/icons/anthropic.svg'
+  },
+  {
+    'name': ['mcp'],
+    'emoji': '/icons/mcp.svg'
+  },
+  {
+    'name': ['mistral', 'mistral ai'],
+    'emoji': '/icons/mistral.svg'
+  },
 ];
 
 export const getIcon = (name: string) => {
