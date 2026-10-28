@@ -10,8 +10,10 @@ interface CacheEntry {
 }
 
 export const getRepository = async (link: string) => {
-  const repositoryName = link.split('/').slice(-1)[0];
-  const cacheKey = `LouisLanganay/${repositoryName}`;
+  const parts = link.replace(/\/+$/, '').split('/');
+  const repositoryName = parts[parts.length - 1];
+  const owner = parts.length > 1 ? parts[parts.length - 2] : 'LouisLanganay';
+  const cacheKey = `${owner}/${repositoryName}`;
   
   // Check cache
   const cached = repositoryCache.get(cacheKey) as CacheEntry;
