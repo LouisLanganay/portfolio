@@ -1,0 +1,72 @@
+---
+title: Fynex Icons - Animated Icons for React
+description: 310 animated icons for React, open source under the MIT license. Drawn in the lucide style and extracted from the Fynex app, with many finance icons.
+tags: [Open Source, Design, React, UI, Animation]
+tools: [React, TypeScript, Motion, Vite, Vitest, shadcn]
+image: /preview/fynex-icons.png
+date: Oct. 2026
+index: 2.5
+author: Louis Langanay
+repository: https://github.com/FynexApp/icons
+button:
+  name: Browse the icons
+  url: https://icons.fynexapp.com
+---
+
+# Project Overview
+
+**Fynex Icons** is an open source set of **310 animated icons for React**, released under the MIT license on 28 Oct 2026 and published on npm as `@fynex/icons`.
+
+The icons started in Fynex, the investment tracking app I work on, where they are used in production. I extracted them into their own package and expanded the set, with many finance icons: stock charts and candlesticks, banks and vaults, Bitcoin, wallets, piggy banks, receipts and currency signs (euro, pound, yen, Swiss franc, krona).
+
+They are drawn in the lucide style (24 x 24 grid, stroke 2, round caps, `currentColor`) with the same names and props as `lucide-react`, so moving from lucide mostly means changing the package name.
+
+<img src="/preview/fynex-icons.png" alt="Fynex Icons: 310 animated icons for React, open source under the MIT license" className="rounded-lg w-full" />
+
+&nbsp;
+
+# 🎞️ One Motion Grammar
+
+Most animated icon sets give each icon its own motion design. That works for a hero section and gets tiring in a product, where dozens of icons sit side by side.
+
+Here, an icon is data (a list of shapes, some of them named parts) and its animation comes from a small grammar shared by the whole set: an arrow nudges a pixel or two in its own direction, a check draws itself, a symmetric shape holds a quarter turn.
+
+- Every gesture lasts between **0.2 and 0.8 seconds** and moves by one or two pixels on the grid.
+- Gestures only animate transforms, opacity and path length, nothing that triggers a layout.
+- The test suite enforces these rules for every icon.
+
+&nbsp;
+
+# ⚡ Built for a Real Interface
+
+- **Plain SVG at rest:** the `motion` elements are mounted only while a gesture plays, so a long table of icons costs about what static SVGs cost.
+- **Triggers that fit a design system:** an icon plays on its own hover, on the hover of the button or menu row that contains it, or on demand (`animate`, `loop`, `animateOnTap`, `animateOnView`).
+- **Accessible by default:** decorative unless labelled, still under `prefers-reduced-motion`, no fake hover on touch screens.
+
+&nbsp;
+
+# 📦 Two Ways to Install
+
+- **npm:** `npm i @fynex/icons motion` (`motion` is a peer dependency). The package is ESM only, typed and tree-shakable, and works in React Server Components trees.
+- **shadcn registry:** the shadcn CLI copies the source of an icon into your own project, with the shared core the first time.
+
+&nbsp;
+
+# 🌐 The Website
+
+[icons.fynexapp.com](https://icons.fynexapp.com) shows the whole set: every icon plays its gesture on hover, the search understands English and French synonyms, and each icon has its import line and shadcn command ready to copy.
+
+&nbsp;
+
+# 💻 Technical Stack
+
+- **Library:** React, TypeScript, Motion
+- **Tests:** Vitest with jsdom
+- **Website:** a prerendered Vite app, deployed with the shadcn registry by a GitHub Actions workflow
+- **Distribution:** npm (`@fynex/icons`, version 0.2.0) and a shadcn registry
+
+&nbsp;
+
+# 📄 License
+
+MIT for the code, the animations and the original drawings. The other shapes derive from [Lucide](https://lucide.dev) and keep its ISC license.
